@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+# vim: set et ts=2 sw=2:
+#  manafirewall
+# -*- coding: utf-8 -*-
+import manafirewall.dialog
+
+if __name__ == '__main__':
+  mfw = manafirewall.dialog.ManaWallDialog()
+  mfw.run()
