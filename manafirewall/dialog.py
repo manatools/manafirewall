@@ -86,6 +86,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.enabled = _("enabled")
     self.disabled = _("disabled")
     self.connection_lost = False
+    self.default_zone = ""
+    self.log_denied = ""
+    self.automatic_helpers = ""
 
     self.fwEventQueue = SimpleQueue()
 
@@ -135,15 +138,22 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
-    hbox = self.factory.createHBox(align)
-    self.statusLabel = self.factory.createLabel(hbox, self.failed_to_connect_label)
+    statusLine = self.factory.createHBox(align)
+    self.statusLabel = self.factory.createLabel(statusLine, self.failed_to_connect_label)
+    align = self.factory.createLeft(layout)
+    statusLine = self.factory.createHBox(align)
+    self.defaultZoneLabel  = self.factory.createLabel(statusLine,     _("Default Zone: {}").format("--------"))
+    self.logDeniedLabel = self.factory.createLabel(statusLine,        _("Log Denied: {}").format("--------"))
+    self.panicLabel = self.factory.createLabel(statusLine,            _("Panic Mode: {}").format("--------"))
+    self.automaticHelpersLabel = self.factory.createLabel(statusLine, _("Automatic Helpers: {}").format("--------"))
+    self.lockdownLabel = self.factory.createLabel(statusLine,         _("Lockdown: {}").format("--------"))
 
     #### buttons on the last line
     align = self.factory.createRight(layout)
-    hbox = self.factory.createHBox(align)
-    aboutButton = self.factory.createPushButton(hbox, _("&About") )
+    bottomLine = self.factory.createHBox(align)
+    aboutButton = self.factory.createPushButton(bottomLine, _("&About") )
     self.eventManager.addWidgetEvent(aboutButton, self.onAbout)
-    quitButton = self.factory.createPushButton(hbox, _("&Quit"))
+    quitButton = self.factory.createPushButton(bottomLine, _("&Quit"))
     self.eventManager.addWidgetEvent(quitButton, self.onQuitEvent, sendObjOnEvent)
 
     # Let's test a cancel event
@@ -177,7 +187,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     connection changed
     '''
     if self.fw.connected:
-      self.fw.authorizeAll()
       self.fwEventQueue.put({'event': "connection-changed", 'value': True})
       print("connected")
     else:
@@ -227,11 +236,32 @@ class ManaWallDialog(basedialog.BaseDialog):
     try:
       item = self.fwEventQueue.get_nowait()
       if item['event'] == "connection-changed":
-        if self.statusLabel.text() == self.connected_label:
-          self.connection_lost = True
-        t = self.connected_label if item['value'] else self.trying_to_connect_label
+        connected = item['value']
+        self.connection_lost = not connected
+        t = self.connected_label if connected else self.trying_to_connect_label
         self.statusLabel.setText(t)
-        self.pollEvent()
+        if connected:
+          self.fw.authorizeAll()
+          self.default_zone = self.fw.getDefaultZone()
+          self.defaultZoneLabel.setText(_("Default Zone: {}").format(self.default_zone))
+          self.log_denied = self.fw.getLogDenied()
+          self.logDeniedLabel.setText(("Log Denied: {}").format(self.log_denied))
+          self.automatic_helpers = self.fw.getAutomaticHelpers()
+          self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format(self.automatic_helpers))
+          #### TODO self.set_automaticHelpersLabel(self.automatic_helpers)
+          lockdown = self.fw.queryLockdown()
+          t = self.enabled if lockdown else self.disabled
+          self.lockdownLabel.setText(_("Lockdown: {}").format(t))
+          panic = self.fw.queryPanicMode()
+          t = self.enabled if panic else self.disabled
+          self.panicLabel.setText(_("Panic Mode: {}").format(t))
+        else:
+          self.defaultZoneLabel.setText(_("Default Zone: {}").format("--------"))
+          self.logDeniedLabel.setText(("Log Denied: {}").format("--------"))
+          self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
+          self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
+          self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
+#        self.pollEvent()
 
     except Empty as e:
       pass
