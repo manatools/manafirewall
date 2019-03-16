@@ -196,7 +196,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     # Let's test a cancel event
     self.eventManager.addCancelEvent(self.onCancelEvent)
     # Let's check external events every 100 msec
-    self.timeout = 100
+    self.timeout = 500
     #self.eventManager.addTimeOutEvent(self.onTimeOutEvent)
     # End Dialof layout
 
@@ -247,6 +247,33 @@ class ManaWallDialog(basedialog.BaseDialog):
       item = yui.YItem(zone, False)
       if zone == default_zone:
         item.setSelected(True)
+      itemColl.push_back(item)
+      item.this.own(False)
+
+    self.selectedConfigurationCombo.addItems(itemColl)
+    self.selectedConfigurationCombo.doneMultipleChanges()
+
+
+  def load_services(self):
+    '''
+    load services into selectedConfigurationCombo
+    '''
+    self.selectedConfigurationCombo.startMultipleChanges()
+    self.selectedConfigurationCombo.deleteAllItems()
+
+    self.selectedConfigurationCombo.setEnabled(True)
+    self.selectedConfigurationCombo.setLabel(self.configureViews['services']['title'])
+
+    services = []
+    if self.runtime_view:
+      services = self.fw.listServices()
+    else:
+      services = self.fw.config().getServiceNames()
+
+    # services
+    itemColl = yui.YItemCollection()
+    for service in services:
+      item = yui.YItem(service, False)
       itemColl.push_back(item)
       item.this.own(False)
 
@@ -343,6 +370,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     if item == self.configureViews['zones']['item']:
       #Zones selected
       self.load_zones()
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      self.load_services()
     else:
       # disabling info combo
       self.selectedConfigurationCombo.startMultipleChanges()
