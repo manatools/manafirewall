@@ -89,6 +89,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.default_zone = ""
     self.log_denied = ""
     self.automatic_helpers = ""
+    self.active_zones = { }
+    self.runtime_view = True
 
     self.fwEventQueue = SimpleQueue()
 
@@ -110,17 +112,20 @@ class ManaWallDialog(basedialog.BaseDialog):
     col1 = self.factory.createVBox(cols)
     col2 = self.factory.createVBox(cols)
     self.tree = self.factory.createTree(col1, _("Active bindings"))
-    self.tree.setWeight(0,20)
-    align = self.factory.createLeft(col2)
+    col1.setWeight(yui.YD_HORIZ, 30)
+    align = self.factory.createTop(col2) #self.factory.createLeft(col2)
+    align = self.factory.createLeft(align)
     hbox = self.factory.createHBox(align)
-    label = self.factory.createLabel(hbox, _("Configuration:"),False,False)
+    col2.setWeight(yui.YD_HORIZ, 80)
+
+    #label = self.factory.createLabel(hbox, _("Configuration:"),False,False)
     self.views = {
             'runtime'   : {'title' : _("Runtime")},
             'permanent' : {'title' : _("Permanent")},
         }
     ordered_views = [ 'runtime', 'permanent' ]
 
-    self.currentViewCombobox = self.factory.createComboBox(hbox,"")
+    self.currentViewCombobox = self.factory.createComboBox(hbox,_("Configuration"))
     itemColl = yui.YItemCollection()
 
     for v in ordered_views:
@@ -135,6 +140,38 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.currentViewCombobox.addItems(itemColl)
     self.currentViewCombobox.setNotify(True)
+    self.eventManager.addWidgetEvent(self.currentViewCombobox, self.onChangeView)
+
+    # mainNotebook (configure combo box)
+    # TODO icmp_types, helpers, direct_configurations, lockdown_whitelist
+    self.configureViews = {
+            'zones'    : {'title' : _("Zones")},
+            'services' : {'title' : _("Services")},
+            'ipsets'   : {'title' : _("IP Sets")},
+    }
+    ordered_configureViews = [ 'zones', 'services', 'ipsets' ]
+    self.configureCombobox = self.factory.createComboBox(hbox,_("Configure"))
+    itemColl = yui.YItemCollection()
+
+    for v in ordered_configureViews:
+      item = yui.YItem(self.configureViews[v]['title'], False)
+      show_item = 'zones'
+      if show_item == v :
+          item.setSelected(True)
+      # adding item to views to find the item selected
+      self.configureViews[v]['item'] = item
+      itemColl.push_back(item)
+      item.this.own(False)
+
+    self.configureCombobox.addItems(itemColl)
+    self.configureCombobox.setNotify(True)
+    self.eventManager.addWidgetEvent(self.configureCombobox, self.onConfigurationViewChanged)
+
+
+    # selectedConfigurationCombo is filled if requested by selected configuration view
+    self.selectedConfigurationCombo = self.factory.createComboBox(hbox,"     ")
+    self.selectedConfigurationCombo.setEnabled(False)
+
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
@@ -186,6 +223,39 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("panic-mode-disabled", self.panic_mode_disabled_cb)
 
 
+  def load_zones(self):
+    '''
+    load zones into selectedConfigurationCombo
+    '''
+    self.selectedConfigurationCombo.startMultipleChanges()
+    self.selectedConfigurationCombo.deleteAllItems()
+
+    self.selectedConfigurationCombo.setEnabled(True)
+    self.selectedConfigurationCombo.setLabel(self.configureViews['zones']['title'])
+
+    default_zone = self.fw.getDefaultZone()
+
+    zones = []
+    if self.runtime_view:
+      zones = self.fw.getZones()
+    else:
+      zones = self.fw.config().getZoneNames()
+
+    # zones
+    itemColl = yui.YItemCollection()
+    for zone in zones:
+      item = yui.YItem(zone, False)
+      if zone == default_zone:
+        item.setSelected(True)
+      itemColl.push_back(item)
+      item.this.own(False)
+
+    self.selectedConfigurationCombo.addItems(itemColl)
+    self.selectedConfigurationCombo.doneMultipleChanges()
+
+
+#### Firewall events
+
   def fwConnectionChanged(self):
     '''
     connection changed
@@ -222,6 +292,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fwEventQueue.put({'event': "panicmode-changed", 'value': False})
 
 
+#### GUI events
 
   def onCancelEvent(self) :
     '''
@@ -255,7 +326,32 @@ class ManaWallDialog(basedialog.BaseDialog):
           'description' : _("{}  is a graphical configuration tool for firewalld.").format(PROJECT),
           'size': {'column': 50, 'lines': 6},
     })
-  
+
+  def onChangeView(self):
+    '''
+    manages currentViewCombobox chenges
+    '''
+    item = self.currentViewCombobox.selectedItem()
+    self.runtime_view = item == self.views['runtime']['item']
+    # TODO enabling edit mode when added
+
+  def onConfigurationViewChanged(self):
+    '''
+    manages configureCombobox changes
+    '''
+    item = self.configureCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      self.load_zones()
+    else:
+      # disabling info combo
+      self.selectedConfigurationCombo.startMultipleChanges()
+      self.selectedConfigurationCombo.deleteAllItems()
+      self.selectedConfigurationCombo.setLabel("     ")
+      self.selectedConfigurationCombo.setEnabled(False)
+      self.selectedConfigurationCombo.doneMultipleChanges()
+
+
   def onTimeOutEvent(self):
     print ("Timeout occurred")
 
@@ -292,6 +388,11 @@ class ManaWallDialog(basedialog.BaseDialog):
           self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
           self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
           self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
+        item = self.configureCombobox.selectedItem()
+        if item == self.configureViews['zones']['item']:
+          self.load_zones()
+
+
       elif item['event'] == 'lockdown-changed':
         t = self.enabled if item['value'] else self.disabled
         self.lockdownLabel.setText(_("Lockdown: {}").format(t))
