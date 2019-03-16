@@ -180,6 +180,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.setNotAuthorizedLoop(True)
 
     self.fw.connect("connection-changed", self.fwConnectionChanged)
+    self.fw.connect("lockdown-enabled", self.lockdown_enabled_cb)
+    self.fw.connect("lockdown-disabled", self.lockdown_disabled_cb)
+    self.fw.connect("panic-mode-enabled", self.panic_mode_enabled_cb)
+    self.fw.connect("panic-mode-disabled", self.panic_mode_disabled_cb)
 
 
   def fwConnectionChanged(self):
@@ -192,6 +196,32 @@ class ManaWallDialog(basedialog.BaseDialog):
     else:
       self.fwEventQueue.put({'event': "connection-changed", 'value': False})
       print("disc")
+
+  def lockdown_enabled_cb(self):
+    '''
+    manage lockdown enabled evend from fw
+    '''
+    self.fwEventQueue.put({'event': "lockdown-changed", 'value': True})
+
+  def lockdown_disabled_cb(self):
+    '''
+    manage lockdown disabled evend from fw
+    '''
+    self.fwEventQueue.put({'event': "lockdown-changed", 'value': False})
+
+  def panic_mode_enabled_cb(self):
+    '''
+    manage panicmode enabled evend from fw
+    '''
+    self.fwEventQueue.put({'event': "panicmode-changed", 'value': True})
+
+  def panic_mode_disabled_cb(self):
+    '''
+    manage panicmode disabled evend from fw
+    '''
+    self.fwEventQueue.put({'event': "panicmode-changed", 'value': False})
+
+
 
   def onCancelEvent(self) :
     '''
@@ -235,7 +265,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     try:
       item = self.fwEventQueue.get_nowait()
-      if item['event'] == "connection-changed":
+      # managing deferred firewall events
+      if item['event'] == 'connection-changed':
         connected = item['value']
         self.connection_lost = not connected
         t = self.connected_label if connected else self.trying_to_connect_label
@@ -261,7 +292,14 @@ class ManaWallDialog(basedialog.BaseDialog):
           self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
           self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
           self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
-#        self.pollEvent()
+      elif item['event'] == 'lockdown-changed':
+        t = self.enabled if item['value'] else self.disabled
+        self.lockdownLabel.setText(_("Lockdown: {}").format(t))
+        # TODO manage menu items if needed
+      elif item['event'] == 'panicmode-changed':
+        t = self.enabled if item['value'] else self.disabled
+        self.panicLabel.setText(_("Panic Mode: {}").format(t))
+        # TODO manage menu items if needed
 
     except Empty as e:
       pass
