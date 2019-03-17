@@ -86,7 +86,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.enabled = _("enabled")
     self.disabled = _("disabled")
     self.connection_lost = False
-    self.default_zone = ""
     self.log_denied = ""
     self.automatic_helpers = ""
     self.active_zones = { }
@@ -225,6 +224,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("lockdown-disabled", self.lockdown_disabled_cb)
     self.fw.connect("panic-mode-enabled", self.panic_mode_enabled_cb)
     self.fw.connect("panic-mode-disabled", self.panic_mode_disabled_cb)
+    self.fw.connect("default-zone-changed", self.default_zone_changed_cb)
 
 
   def load_zones(self):
@@ -327,27 +327,33 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def lockdown_enabled_cb(self):
     '''
-    manage lockdown enabled evend from fw
+    manage lockdown enabled evend from firewalld
     '''
     self.fwEventQueue.put({'event': "lockdown-changed", 'value': True})
 
   def lockdown_disabled_cb(self):
     '''
-    manage lockdown disabled evend from fw
+    manage lockdown disabled evend from firewalld
     '''
     self.fwEventQueue.put({'event': "lockdown-changed", 'value': False})
 
   def panic_mode_enabled_cb(self):
     '''
-    manage panicmode enabled evend from fw
+    manage panicmode enabled evend from firewalld
     '''
     self.fwEventQueue.put({'event': "panicmode-changed", 'value': True})
 
   def panic_mode_disabled_cb(self):
     '''
-    manage panicmode disabled evend from fw
+    manage panicmode disabled evend from firewalld
     '''
     self.fwEventQueue.put({'event': "panicmode-changed", 'value': False})
+
+  def default_zone_changed_cb(self, zone):
+    '''
+    manage default zone changed from firewalld
+    '''
+    self.fwEventQueue.put({'event': "default-zone-changed", 'value': zone})
 
 
 #### GUI events
@@ -432,8 +438,8 @@ class ManaWallDialog(basedialog.BaseDialog):
         self.statusLabel.setText(t)
         if connected:
           self.fw.authorizeAll()
-          self.default_zone = self.fw.getDefaultZone()
-          self.defaultZoneLabel.setText(_("Default Zone: {}").format(self.default_zone))
+          default_zone = self.fw.getDefaultZone()
+          self.defaultZoneLabel.setText(_("Default Zone: {}").format(default_zone))
           self.log_denied = self.fw.getLogDenied()
           self.logDeniedLabel.setText(("Log Denied: {}").format(self.log_denied))
           self.automatic_helpers = self.fw.getAutomaticHelpers()
@@ -464,6 +470,10 @@ class ManaWallDialog(basedialog.BaseDialog):
         t = self.enabled if item['value'] else self.disabled
         self.panicLabel.setText(_("Panic Mode: {}").format(t))
         # TODO manage menu items if needed
+      elif item['event'] == 'default-zone-changed':
+        zone = item['value']
+        self.defaultZoneLabel.setText(_("Default Zone: {}").format(zone))
+        # TODO self.update_active_zones()
 
     except Empty as e:
       pass
