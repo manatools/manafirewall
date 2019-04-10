@@ -7,6 +7,7 @@
 
 ## REQUIREMENTS
 python-manatools
+
 python3-firewall
 
 ## INSTALLATION
