@@ -149,7 +149,7 @@ class ManaWallDialog(basedialog.BaseDialog):
             'ipsets'   : {'title' : _("IP Sets")},
     }
     ordered_configureViews = [ 'zones', 'services', 'ipsets' ]
-    self.configureCombobox = self.factory.createComboBox(hbox,_("Configure"))
+    self.configureViewCombobox = self.factory.createComboBox(hbox,_("View"))
     itemColl = yui.YItemCollection()
 
     for v in ordered_configureViews:
@@ -162,10 +162,9 @@ class ManaWallDialog(basedialog.BaseDialog):
       itemColl.push_back(item)
       item.this.own(False)
 
-    self.configureCombobox.addItems(itemColl)
-    self.configureCombobox.setNotify(True)
-    self.eventManager.addWidgetEvent(self.configureCombobox, self.onConfigurationViewChanged)
-
+    self.configureViewCombobox.addItems(itemColl)
+    self.configureViewCombobox.setNotify(True)
+    self.eventManager.addWidgetEvent(self.configureViewCombobox, self.onConfigurationViewChanged)
 
     # selectedConfigurationCombo is filled if requested by selected configuration view
     self.selectedConfigurationCombo = self.factory.createComboBox(hbox,"     ")
@@ -175,6 +174,39 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.selectedConfigurationCombo.addItem(item)
     self.selectedConfigurationCombo.setEnabled(False)
 
+    ###
+    # ZoneNotebook and other (combo box to configure selected thing)
+    self.zoneConfigurationView = {
+            'services'        : {'title' : _("Services")},
+            'ports'           : {'title' : _("Ports")},
+            'protocols'       : {'title' : _("Protocols")},
+            'source_ports'    : {'title' : _("Source Ports")},
+            'masquerading'    : {'title' : _("Masquerading")},
+            'port_forwarding' : {'title' : _("Port Forwarding")},
+            'icmp_filter'     : {'title' : _("ICMP Filter")},
+            'rich_rules'      : {'title' : _("Rich Rules")},
+            'interfaces'      : {'title' : _("Interfaces")},
+            'sources'         : {'title' : _("Sources")},
+    }
+    # ServiceNotebook
+    self.serviceConfigurationView = {
+      'ports'         : {'title' : _("Ports")},
+      'protocols'     : {'title' : _("Protocols")},
+      'source_ports'  : {'title' : _("Source Ports")},
+      'modules'       : {'title' : _("Modules")},
+      'destinations'  : {'title' : _("Destinations")},
+    }
+    # ServiceNotebook
+    self.ipsecConfigurationView = {
+      'entries'       : {'title' : _("Entries")},
+    }
+    self.configureCombobox = self.factory.createComboBox(hbox,_("Configure"))
+    # adding a dummy item to enlarge combobox
+    itemColl = self._zoneConfigurationViewCollection()
+    self.configureCombobox.addItems(itemColl)
+    self.configureCombobox.setNotify(True)
+    self.eventManager.addWidgetEvent(self.configureCombobox, self.onSelectedConfigurationChanged)
+    ###
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
@@ -205,6 +237,77 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.initFWClient()
 
+
+  def _zoneConfigurationViewCollection(self):
+    '''
+    returns an YItemCollection containing Zone configuration views
+    '''
+    ordered_configureViews = [ 'services',
+                               'ports',
+                               'protocols',
+                               'source_ports',
+                               'masquerading',
+                               'port_forwarding',
+                               'icmp_filter',
+                               'rich_rules',
+                               'interfaces',
+                               'sources'
+    ]
+    itemColl = yui.YItemCollection()
+    for v in ordered_configureViews:
+      item = yui.YItem(self.zoneConfigurationView[v]['title'], False)
+      show_item = 'services'
+      if show_item == v :
+          item.setSelected(True)
+      # adding item to views to find the item selected
+      self.zoneConfigurationView[v]['item'] = item
+      itemColl.push_back(item)
+      item.this.own(False)
+
+    return itemColl
+
+  def _serviceConfigurationViewCollection(self):
+    '''
+    returns an YItemCollection containing Service configuration views
+    '''
+    ordered_Views = [
+      'ports',
+      'protocols',
+      'source_ports',
+      'modules',
+      'destinations'
+    ]
+    itemColl = yui.YItemCollection()
+    for v in ordered_Views:
+      item = yui.YItem(self.serviceConfigurationView[v]['title'], False)
+      show_item = 'ports'
+      if show_item == v :
+          item.setSelected(True)
+      # adding item to views to find the item selected
+      self.serviceConfigurationView[v]['item'] = item
+      itemColl.push_back(item)
+      item.this.own(False)
+    return itemColl
+
+  def _ipsecConfigurationViewCollection(self):
+    '''
+    returns an YItemCollection containing IPSEC configuration views
+    '''
+    ordered_Views = [
+      'entries',
+    ]
+    itemColl = yui.YItemCollection()
+    for v in ordered_Views:
+      item = yui.YItem(self.ipsecConfigurationView[v]['title'], False)
+      show_item = 'entries'
+      if show_item == v :
+          item.setSelected(True)
+      # adding item to views to find the item selected
+      self.ipsecConfigurationView[v]['item'] = item
+      itemColl.push_back(item)
+      item.this.own(False)
+
+    return itemColl
 
   def _exception_handler(self, exception_message):
     if not self.__use_exception_handler:
@@ -401,18 +504,36 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def onConfigurationViewChanged(self):
     '''
-    manages configureCombobox changes
+    manages configureViewCombobox changes
     '''
-    item = self.configureCombobox.selectedItem()
+    item = self.configureViewCombobox.selectedItem()
     if item == self.configureViews['zones']['item']:
       #Zones selected
       self.load_zones()
+      self.configureCombobox.startMultipleChanges()
+      self.configureCombobox.deleteAllItems()
+      itemColl = self._zoneConfigurationViewCollection()
+      self.configureCombobox.addItems(itemColl)
+      self.configureCombobox.setEnabled(True)
+      self.configureCombobox.doneMultipleChanges()
     elif item == self.configureViews['services']['item']:
       #Services selected
       self.load_services()
+      self.configureCombobox.startMultipleChanges()
+      self.configureCombobox.deleteAllItems()
+      itemColl = self._serviceConfigurationViewCollection()
+      self.configureCombobox.addItems(itemColl)
+      self.configureCombobox.setEnabled(True)
+      self.configureCombobox.doneMultipleChanges()
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       self.load_ipsets()
+      self.configureCombobox.startMultipleChanges()
+      self.configureCombobox.deleteAllItems()
+      itemColl = self._ipsecConfigurationViewCollection()
+      self.configureCombobox.addItems(itemColl)
+      self.configureCombobox.setEnabled(True)
+      self.configureCombobox.doneMultipleChanges()
     else:
       # disabling info combo
       self.selectedConfigurationCombo.startMultipleChanges()
@@ -420,6 +541,17 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.selectedConfigurationCombo.setLabel("     ")
       self.selectedConfigurationCombo.setEnabled(False)
       self.selectedConfigurationCombo.doneMultipleChanges()
+      #disabling configure view
+      self.configureCombobox.startMultipleChanges()
+      self.configureCombobox.deleteAllItems()
+      self.configureCombobox.setEnabled(False)
+      self.configureCombobox.doneMultipleChanges()
+
+
+  def onSelectedConfigurationChanged(self):
+    '''
+    manages configureCombobox changes
+    '''
 
   def onTimeOutEvent(self):
     print ("Timeout occurred")
@@ -457,7 +589,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
           self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
           self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
-        item = self.configureCombobox.selectedItem()
+        item = self.configureViewCombobox.selectedItem()
         if item == self.configureViews['zones']['item']:
           self.load_zones()
 
