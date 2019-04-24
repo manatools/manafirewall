@@ -107,11 +107,34 @@ class ManaWallDialog(basedialog.BaseDialog):
     sendObjOnEvent=True
     self.eventManager.addMenuEvent(qm, self.onQuitEvent, sendObjOnEvent)
 
+    # _______
+    #|   |   |
+    #
     cols = self.factory.createHBox(layout)
     col1 = self.factory.createVBox(cols)
     col2 = self.factory.createVBox(cols)
-    self.tree = self.factory.createTree(col1, _("Active bindings"))
+
+    # Column 1
+    self.activeBindingsTree = self.factory.createTree(col1, _("Active bindings"))
     col1.setWeight(yui.YD_HORIZ, 30)
+    changeBindingsButton = self.factory.createPushButton(col1, _("&Change binding") )
+    self.eventManager.addWidgetEvent(changeBindingsButton, self.onChangeBinding, sendObjOnEvent)
+    #### zoneEditFrame contains button to modify zones (add, remove, edit, load defaults)
+    self.zoneEditFrame = self.factory.createFrame(col1, _("Edit zones"))
+    hbox = self.factory.createHBox( self.zoneEditFrame )
+    vbox1 = self.factory.createVBox(hbox)
+    vbox2 = self.factory.createVBox(hbox)
+    zoneEditAddButton          = self.factory.createPushButton(vbox1, _("&Add") )
+    self.eventManager.addWidgetEvent(zoneEditAddButton, self.onAddZone)
+    zoneEditEditButton         = self.factory.createPushButton(vbox1, _("&Edit") )
+    self.eventManager.addWidgetEvent(zoneEditEditButton, self.onEditZone)
+    zoneEditRemoveButton       = self.factory.createPushButton(vbox2, _("&Remove") )
+    self.eventManager.addWidgetEvent(zoneEditRemoveButton, self.onRemoveZone)
+    zoneEditLoadDefaultsButton = self.factory.createPushButton(vbox2, _("&Load default") )
+    self.eventManager.addWidgetEvent(zoneEditLoadDefaultsButton, self.onLoadDefaultsZone)
+    self.zoneEditFrame.setEnabled(False)
+
+    # Column 2
     align = self.factory.createTop(col2) #self.factory.createLeft(col2)
     align = self.factory.createLeft(align)
     hbox = self.factory.createHBox(align)
@@ -207,6 +230,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.configureCombobox.setNotify(True)
     self.eventManager.addWidgetEvent(self.configureCombobox, self.onSelectedConfigurationChanged)
     ###
+
+    #### Replace Point to change configuration view
+    #self.rightPaneFrame = self.factory.createFrame(col2, "TEST")
+    self.replacePoint = self.factory.createReplacePoint ( col2 ) #self.rightPaneFrame)
+    self.configurationPanel = self.factory.createVBox(self.replacePoint)
+
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
@@ -479,6 +508,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.ExitLoop()
 
 
+  def onChangeBinding(self, obj):
+    '''
+    manages changeBindingsButton button pressed
+    '''
+    print ("TODO: Change binding pressed")
+
   def onAbout(self) :
     '''
     About dialog invoked
@@ -500,7 +535,48 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     item = self.currentViewCombobox.selectedItem()
     self.runtime_view = item == self.views['runtime']['item']
-    # TODO enabling edit mode when added
+    self.zoneEditFrame.setEnabled(not self.runtime_view)
+
+  def onAddZone(self):
+    '''
+    manages add zone button
+    '''
+    if self.runtime_view:
+      return
+    # TODO self.add_edit_zone(True)
+
+  def onRemoveZone(self):
+    '''
+    manages remove zone button
+    '''
+    if self.runtime_view:
+      return
+    # TODO selected_zone = self.get_selected_zone()
+    # TODO zone = self.fw.config().getZoneByName(selected_zone)
+    # TODO zone.remove()
+    # TODO self.changes_applied()
+    # TODO self.load_zones()
+    # TODO self.onChangeZone()
+
+  def onEditZone(self):
+    '''
+    manages edit zone button
+    '''
+    if self.runtime_view:
+      return
+    # TODO self.add_edit_zone(False)
+
+  def onLoadDefaultsZone(self):
+    '''
+    manages load defaults zone Button
+    '''
+    if self.runtime_view:
+      return
+    # TODO selected_zone = self.get_selected_zone()
+    # TODO zone = self.fw.config().getZoneByName(selected_zone)
+    # TODO zone.loadDefaults()
+    # TODO self.changes_applied()
+    # TODO self.onChangeZone()
 
   def onConfigurationViewChanged(self):
     '''
