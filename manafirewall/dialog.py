@@ -1,4 +1,3 @@
-#!/usr/bin/python3 -O
 #  dialog.py
 # -*- coding: utf-8 -*-
 
@@ -45,6 +44,8 @@ from manafirewall.version import __project_version__ as VERSION
 from manafirewall.version import __project_name__ as PROJECT
 
 from queue import SimpleQueue, Empty
+
+import manafirewall.zoneBaseDialog as zoneBaseDialog
 
 def TimeFunction(func):
     """
@@ -543,7 +544,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     if self.runtime_view:
       return
-    # TODO self.add_edit_zone(True)
+    self._add_edit_zone(True)
 
   def onRemoveZone(self):
     '''
@@ -564,7 +565,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     if self.runtime_view:
       return
-    # TODO self.add_edit_zone(False)
+    self._add_edit_zone(False)
 
   def onLoadDefaultsZone(self):
     '''
@@ -577,6 +578,144 @@ class ManaWallDialog(basedialog.BaseDialog):
     # TODO zone.loadDefaults()
     # TODO self.changes_applied()
     # TODO self.onChangeZone()
+
+  #### TODO HERE
+  def _add_edit_zone(self, add):
+    '''
+    adds or edit zone (parameter add True if adding)
+    '''
+
+    zoneBaseInfo = {}
+    if not add:
+      # fill zoneBaseInfo for zoneBaseDialog fields
+      selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+      if selected_zoneitem:
+        selected_zone = selected_zoneitem.label()
+        zone = self.fw.config().getZoneByName(selected_zone)
+        settings = zone.getSettings()
+        props = zone.get_properties()
+        zoneBaseInfo['name'] = zone.get_property("name")
+        zoneBaseInfo['version'] = settings.getVersion()
+        zoneBaseInfo['short'] = settings.getShort()
+        zoneBaseInfo['description'] = settings.getDescription()
+        zoneBaseInfo['default'] = props["default"]
+        zoneBaseInfo['builtin'] = props["builtin"]
+        zoneBaseInfo['target'] = settings.getTarget()
+
+
+    zoneBaseDlg = zoneBaseDialog.ZoneBaseDialog(zoneBaseInfo)
+    newZoneBaseInfo = zoneBaseDlg.run()
+
+    #### l = functions.max_zone_name_len()
+    #### self.zoneBaseDialogNameEntry.set_max_length(l)
+    #### self.zoneBaseDialogNameEntry.set_width_chars(l)
+    #### self.zoneBaseDialogNameEntry.set_max_width_chars(l)
+    ####
+    #### if add:
+    ####     default = True
+    ####     builtin = False
+    ####     old_name = None
+    ####     old_version = None
+    ####     old_short = None
+    ####     old_desc = None
+    ####     old_target = None
+    ####
+    ####     self.zoneBaseDialogNameEntry.set_text("")
+    ####     self.zoneBaseDialogVersionEntry.set_text("")
+    ####     self.zoneBaseDialogShortEntry.set_text("")
+    ####     self.zoneBaseDialogDescText.get_buffer().set_text("")
+    ####     self.zoneBaseDialogTargetCheck.set_active(True)
+    ####     self.zoneBaseDialogTargetCombobox.set_active(0)
+    #### else:
+    ####     selected_zone = self.get_selected_zone()
+    ####     zone = self.fw.config().getZoneByName(selected_zone)
+    ####     settings = zone.getSettings()
+    ####     props = zone.get_properties()
+    ####     default = props["default"]
+    ####     builtin = props["builtin"]
+    ####
+    ####     old_name = zone.get_property("name")
+    ####     old_version = settings.getVersion()
+    ####     old_short = settings.getShort()
+    ####     old_desc = settings.getDescription()
+    ####     old_target = settings.getTarget()
+    ####
+    ####     self.zoneBaseDialogNameEntry.set_text(old_name)
+    ####     self.zoneBaseDialogVersionEntry.set_text(old_version)
+    ####     self.zoneBaseDialogShortEntry.set_text(old_short)
+    ####     self.zoneBaseDialogDescText.get_buffer().set_text(old_desc)
+    ####     if old_target == "default" or \
+    ####         old_target == DEFAULT_ZONE_TARGET:
+    ####         self.zoneBaseDialogTargetCheck.set_active(True)
+    ####         self.zoneBaseDialogTargetCombobox.set_active(0)
+    ####     else:
+    ####         self.zoneBaseDialogTargetCheck.set_active(False)
+    ####         combobox_select_text(self.zoneBaseDialogTargetCombobox,
+    ####                               old_target if old_target != "%%REJECT%%"
+    ####                               else "REJECT")
+    ####
+    #### self.zoneBaseDialogOkButton.set_sensitive(False)
+    #### if builtin:
+    ####     self.zoneBaseDialogNameEntry.set_tooltip_markup(\
+    ####         _("Built-in zone, rename not supported."))
+    #### else:
+    ####     self.zoneBaseDialogNameEntry.set_tooltip_markup("")
+    #### self.zoneBaseDialogNameEntry.set_sensitive(not builtin and default)
+    ####
+    #### self.zoneBaseDialog.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
+    #### self.zoneBaseDialog.set_transient_for(self.mainWindow)
+    #### self.zoneBaseDialog.show_all()
+    #### self.add_visible_dialog(self.zoneBaseDialog)
+    #### result = self.zoneBaseDialog.run()
+    #### self.zoneBaseDialog.hide()
+    #### self.remove_visible_dialog(self.zoneBaseDialog)
+    ####
+    #### if result != 1:
+    ####     return
+    ####
+    #### name = self.zoneBaseDialogNameEntry.get_text()
+    #### version = self.zoneBaseDialogVersionEntry.get_text()
+    #### short = self.zoneBaseDialogShortEntry.get_text()
+    #### buffer = self.zoneBaseDialogDescText.get_buffer()
+    #### desc = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(),
+    ####                         False)
+    #### target = "default" # this has been DEFAULT_ZONE_TARGET before
+    #### if not self.zoneBaseDialogTargetCheck.get_active():
+    ####     target = self.zoneBaseDialogTargetCombobox.get_active_text()
+    ####     if target == "REJECT":
+    ####         target = "%%REJECT%%"
+    ####
+    #### if old_name == name and \
+    ####         old_version == version and old_short == short and \
+    ####         old_desc == desc and old_target == target:
+    ####     # no changes
+    ####     return
+    ####
+    #### if not add:
+    ####     selected_zone = self.get_selected_zone()
+    ####     zone = self.fw.config().getZoneByName(selected_zone)
+    ####     settings = zone.getSettings()
+    #### else:
+    ####     settings = client.FirewallClientZoneSettings()
+    ####
+    #### if old_version != version or old_short != short or \
+    ####         old_desc != desc or old_target != target:
+    ####     # settings
+    ####     settings.setVersion(version)
+    ####     settings.setShort(short)
+    ####     settings.setDescription(desc)
+    ####     settings.setTarget(target)
+    ####     if not add:
+    ####         zone.update(settings)
+    ####
+    #### if not add:
+    ####     if old_name == name:
+    ####         return
+    ####     zone.rename(name)
+    #### else:
+    ####     self.fw.config().addZone(name, settings)
+    #### self.changes_applied()
+
 
   def onConfigurationViewChanged(self):
     '''
