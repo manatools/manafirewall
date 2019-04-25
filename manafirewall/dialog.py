@@ -120,20 +120,20 @@ class ManaWallDialog(basedialog.BaseDialog):
     col1.setWeight(yui.YD_HORIZ, 30)
     changeBindingsButton = self.factory.createPushButton(col1, _("&Change binding") )
     self.eventManager.addWidgetEvent(changeBindingsButton, self.onChangeBinding, sendObjOnEvent)
-    #### zoneEditFrame contains button to modify zones (add, remove, edit, load defaults)
-    self.zoneEditFrame = self.factory.createFrame(col1, _("Edit zones"))
-    hbox = self.factory.createHBox( self.zoneEditFrame )
+    #### editFrameBox contains button to modify zones (add, remove, edit, load defaults)
+    self.editFrameBox = self.factory.createFrame(col1, _("Edit zones"))
+    hbox = self.factory.createHBox( self.editFrameBox )
     vbox1 = self.factory.createVBox(hbox)
     vbox2 = self.factory.createVBox(hbox)
-    zoneEditAddButton          = self.factory.createPushButton(vbox1, _("&Add") )
-    self.eventManager.addWidgetEvent(zoneEditAddButton, self.onAddZone)
-    zoneEditEditButton         = self.factory.createPushButton(vbox1, _("&Edit") )
-    self.eventManager.addWidgetEvent(zoneEditEditButton, self.onEditZone)
-    zoneEditRemoveButton       = self.factory.createPushButton(vbox2, _("&Remove") )
-    self.eventManager.addWidgetEvent(zoneEditRemoveButton, self.onRemoveZone)
-    zoneEditLoadDefaultsButton = self.factory.createPushButton(vbox2, _("&Load default") )
-    self.eventManager.addWidgetEvent(zoneEditLoadDefaultsButton, self.onLoadDefaultsZone)
-    self.zoneEditFrame.setEnabled(False)
+    editFrameAddButton          = self.factory.createPushButton(vbox1, _("&Add") )
+    self.eventManager.addWidgetEvent(editFrameAddButton, self.onEditFrameAddButtonEvent)
+    editFrameEditButton         = self.factory.createPushButton(vbox1, _("&Edit") )
+    self.eventManager.addWidgetEvent(editFrameEditButton, self.onEditFrameEditButtonEvent)
+    editFrameRemoveButton       = self.factory.createPushButton(vbox2, _("&Remove") )
+    self.eventManager.addWidgetEvent(editFrameRemoveButton, self.onEditFrameRemoveButtonEvent)
+    editFrameLoadDefaultsButton = self.factory.createPushButton(vbox2, _("&Load default") )
+    self.eventManager.addWidgetEvent(editFrameLoadDefaultsButton, self.onEditFrameLoadDefaultsButtonEvent)
+    self.editFrameBox.setEnabled(False)
 
     # Column 2
     align = self.factory.createTop(col2) #self.factory.createLeft(col2)
@@ -362,6 +362,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("panic-mode-disabled", self.panic_mode_disabled_cb)
     self.fw.connect("default-zone-changed", self.default_zone_changed_cb)
 
+    self.fw.connect("config:zone-added", self.conf_zone_changed_cb)
+    self.fw.connect("config:zone-updated", self.conf_zone_changed_cb)
+    self.fw.connect("config:zone-removed", self.conf_zone_changed_cb)
+    self.fw.connect("config:zone-renamed", self.conf_zone_changed_cb)
+
 
   def load_zones(self, selected = None):
     '''
@@ -493,6 +498,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fwEventQueue.put({'event': "default-zone-changed", 'value': zone})
 
+  def conf_zone_changed_cb(self, zone):
+    '''
+    zones have been modified
+    '''
+    self.fwEventQueue.put({'event': "config-zone-changed", 'value': zone})
 
 #### GUI events
 
@@ -541,9 +551,70 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     item = self.currentViewCombobox.selectedItem()
     self.runtime_view = item == self.views['runtime']['item']
-    self.zoneEditFrame.setEnabled(not self.runtime_view)
     # Let's change view as if a new configuration has been chosen
     self.onConfigurationViewChanged()
+    self.editFrameBox.setEnabled(not self.runtime_view)
+
+
+  def onEditFrameAddButtonEvent(self):
+    '''
+    from edit frame Add has benn pressed, let's call the right add event
+    '''
+    item = self.configureViewCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      self.onAddZone()
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      pass
+    elif item == self.configureViews['ipsets']['item']:
+      # ip sets selected
+      pass
+
+  def onEditFrameEditButtonEvent(self):
+    '''
+    from edit frame Edit has benn pressed, let's call the right edit event
+    '''
+    item = self.configureViewCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      self.onEditZone()
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      pass
+    elif item == self.configureViews['ipsets']['item']:
+      # ip sets selected
+      pass
+
+  def onEditFrameRemoveButtonEvent(self):
+    '''
+    from edit frame Remove has benn pressed, let's call the right remove event
+    '''
+    item = self.configureViewCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      self.onRemoveZone()
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      pass
+    elif item == self.configureViews['ipsets']['item']:
+      # ip sets selected
+      pass
+
+  def onEditFrameLoadDefaultsButtonEvent(self):
+    '''
+    from edit frame Remove has benn pressed, let's call the right remove event
+    '''
+    item = self.configureViewCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      self.onLoadDefaultsZone()
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      pass
+    elif item == self.configureViews['ipsets']['item']:
+      # ip sets selected
+      pass
 
   def onAddZone(self):
     '''
@@ -581,18 +652,18 @@ class ManaWallDialog(basedialog.BaseDialog):
       selected_zone = selected_zoneitem.label()
     self.load_zones(selected_zone)
 
-  #### TODO HERE
-  def onLoadDefaultsZone(self, selected_zone):
+  def onLoadDefaultsZone(self):
     '''
     manages load defaults zone Button
     '''
     if self.runtime_view:
       return
-    # TODO selected_zone = self.get_selected_zone()
-    # TODO zone = self.fw.config().getZoneByName(selected_zone)
-    # TODO zone.loadDefaults()
-    # TODO self.changes_applied()
-    # TODO self.onChangeZone()
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      zone = self.fw.config().getZoneByName(selected_zone)
+      zone.loadDefaults()
+      # TODO self.onChangeZone()
 
   def _add_edit_zone(self, add):
     '''
@@ -689,6 +760,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
       self.configureCombobox.doneMultipleChanges()
+      self.editFrameBox.setLabel(_("Edit zones"))
     elif item == self.configureViews['services']['item']:
       #Services selected
       self.load_services()
@@ -698,6 +770,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
       self.configureCombobox.doneMultipleChanges()
+      self.editFrameBox.setLabel(_("Edit services"))
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       self.load_ipsets()
@@ -707,6 +780,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
       self.configureCombobox.doneMultipleChanges()
+      self.editFrameBox.setLabel(_("Edit ipsets"))
     else:
       # disabling info combo
       self.selectedConfigurationCombo.startMultipleChanges()
@@ -719,6 +793,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.deleteAllItems()
       self.configureCombobox.setEnabled(False)
       self.configureCombobox.doneMultipleChanges()
+      self.editFrameBox.setLabel("")
 
 
   def onSelectedConfigurationChanged(self):
@@ -779,6 +854,18 @@ class ManaWallDialog(basedialog.BaseDialog):
         zone = item['value']
         self.defaultZoneLabel.setText(_("Default Zone: {}").format(zone))
         # TODO self.update_active_zones()
+      elif item['event'] == 'config-zone-changed':
+        print (item['event'])
+        zone = item['value']
+        if not self.runtime_view:
+          item = self.configureViewCombobox.selectedItem()
+          if item == self.configureViews['zones']['item']:
+            #Zones selected
+            selected_zone = None
+            selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+            if selected_zoneitem:
+              selected_zone = selected_zoneitem.label()
+            self.load_zones(selected_zone)
 
     except Empty as e:
       pass
