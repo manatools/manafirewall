@@ -46,6 +46,7 @@ from manafirewall.version import __project_name__ as PROJECT
 from queue import SimpleQueue, Empty
 
 import manafirewall.zoneBaseDialog as zoneBaseDialog
+import manafirewall.serviceBaseDialog as serviceBaseDialog
 
 def TimeFunction(func):
     """
@@ -366,7 +367,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("config:zone-updated", self.conf_zone_changed_cb)
     self.fw.connect("config:zone-removed", self.conf_zone_changed_cb)
     self.fw.connect("config:zone-renamed", self.conf_zone_changed_cb)
-
+    self.fw.connect("config:service-added", self.conf_service_changed_cb)
+    self.fw.connect("config:service-updated", self.conf_service_changed_cb)
+    self.fw.connect("config:service-removed", self.conf_service_changed_cb)
+    self.fw.connect("config:service-renamed", self.conf_service_changed_cb)
 
   def load_zones(self, selected = None):
     '''
@@ -401,7 +405,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.selectedConfigurationCombo.doneMultipleChanges()
 
 
-  def load_services(self):
+  def load_services(self, service_name = None):
     '''
     load services into selectedConfigurationCombo
     '''
@@ -421,6 +425,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     itemColl = yui.YItemCollection()
     for service in services:
       item = yui.YItem(service, False)
+      if service == service_name:
+        item.setSelected(True)
       itemColl.push_back(item)
       item.this.own(False)
 
@@ -504,6 +510,13 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fwEventQueue.put({'event': "config-zone-changed", 'value': zone})
 
+  def conf_service_changed_cb(self, service):
+    '''
+    service have been modified
+    '''
+    self.fwEventQueue.put({'event': "config-service-changed", 'value': service})
+
+
 #### GUI events
 
   def onCancelEvent(self) :
@@ -566,7 +579,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.onAddZone()
     elif item == self.configureViews['services']['item']:
       #Services selected
-      pass
+      self.onServiceConfAddService()
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       pass
@@ -581,7 +594,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.onEditZone()
     elif item == self.configureViews['services']['item']:
       #Services selected
-      pass
+      self.onServiceConfEditService()
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       pass
@@ -596,7 +609,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.onRemoveZone()
     elif item == self.configureViews['services']['item']:
       #Services selected
-      pass
+      self.onServiceConfRemoveService()
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       pass
@@ -611,7 +624,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.onLoadDefaultsZone()
     elif item == self.configureViews['services']['item']:
       #Services selected
-      pass
+      self.onServiceConfLoadDefaultsService()
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       pass
@@ -727,6 +740,104 @@ class ManaWallDialog(basedialog.BaseDialog):
       settings.setDescription(newZoneBaseInfo['description'])
       settings.setTarget(newZoneBaseInfo['target'])
       self.fw.config().addZone(newZoneBaseInfo['name'], settings)
+
+  def onServiceConfAddService(self, *args):
+    '''
+    manages add service button
+    '''
+    if self.runtime_view:
+      return
+    self._add_edit_service(True)
+
+  def onServiceConfRemoveService(self, *args):
+    '''
+    manages remove zone button
+    '''
+    if self.runtime_view:
+      return
+    selected_item = self.selectedConfigurationCombo.selectedItem()
+    if selected_item:
+      active_service = selected_item.label()
+      service = self.fw.config().getServiceByName(active_service)
+      service.remove()
+      self.load_services()
+      # TODO self.onChangeService()
+
+  def onServiceConfEditService(self, *args):
+    if self.runtime_view:
+      return
+    self._add_edit_service(False)
+
+  def onServiceConfLoadDefaultsService(self, *args):
+    '''
+    manages load defaults service Button
+    '''
+    if self.runtime_view:
+      return
+    selected_item = self.selectedConfigurationCombo.selectedItem()
+    if selected_item:
+      active_service = selected_item.label()
+      service = self.fw.config().getServiceByName(active_service)
+      service.loadDefaults()
+      # TODO self.onChangeService()
+
+  def _add_edit_service(self, add):
+    '''
+    adds or edit service (parameter add True if adding)
+    '''
+    serviceBaseInfo = {}
+    if not add:
+      # fill serviceBaseInfo for serviceBaseDialog fields
+      selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+      if selected_serviceitem:
+        active_service = selected_serviceitem.label()
+        service = self.fw.config().getServiceByName(active_service)
+        settings = service.getSettings()
+        props = service.get_properties()
+        serviceBaseInfo['default']     = props["default"]
+        serviceBaseInfo['builtin']     = props["builtin"]
+        serviceBaseInfo['name']        = service.get_property("name")
+        serviceBaseInfo['version']     = settings.getVersion()
+        serviceBaseInfo['short']       = settings.getShort()
+        serviceBaseInfo['description'] = settings.getDescription()
+
+    serviceBaseDlg = serviceBaseDialog.ServiceBaseDialog(serviceBaseInfo)
+    newServiceBaseInfo = serviceBaseDlg.run()
+    # Cancelled if None is returned
+    if newServiceBaseInfo is None:
+      return
+
+    if not add:
+      if serviceBaseInfo['name']        == newServiceBaseInfo['name'] and \
+         serviceBaseInfo['version']     == newServiceBaseInfo['version'] and  \
+         serviceBaseInfo['short']       == newServiceBaseInfo['short'] and \
+         serviceBaseInfo['description'] == newServiceBaseInfo['description']:
+        # no changes
+        return
+
+      selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+      if selected_serviceitem:
+        selected_service = selected_serviceitem.label()
+        service = self.fw.config().getServiceByName(active_service)
+
+        if serviceBaseInfo['version'] != newServiceBaseInfo['version'] or  \
+           serviceBaseInfo['short'] != newServiceBaseInfo['short'] or \
+           serviceBaseInfo['description'] != newServiceBaseInfo['description']:
+          settings = service.getSettings()
+          settings.setVersion(newServiceBaseInfo['version'])
+          settings.setShort(newServiceBaseInfo['short'])
+          settings.setDescription(newServiceBaseInfo['description'])
+          service.update(settings)
+        if serviceBaseInfo['name'] == newServiceBaseInfo['name']:
+          return
+        service.rename(newServiceBaseInfo['name'])
+    else:
+      settings = client.FirewallClientServiceSettings()
+      settings.setVersion(newServiceBaseInfo['version'])
+      settings.setShort(newServiceBaseInfo['short'])
+      settings.setDescription(newServiceBaseInfo['description'])
+      self.fw.config().addService(newServiceBaseInfo['name'], settings)
+
 
 
   def onSelectedConfigurationComboChanged(self):
@@ -855,18 +966,27 @@ class ManaWallDialog(basedialog.BaseDialog):
         self.defaultZoneLabel.setText(_("Default Zone: {}").format(zone))
         # TODO self.update_active_zones()
       elif item['event'] == 'config-zone-changed':
-        print (item['event'])
         zone = item['value']
         if not self.runtime_view:
           item = self.configureViewCombobox.selectedItem()
           if item == self.configureViews['zones']['item']:
-            #Zones selected
+            # Zones selected
             selected_zone = None
-            selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
-            if selected_zoneitem:
-              selected_zone = selected_zoneitem.label()
+            selected_item = self.selectedConfigurationCombo.selectedItem()
+            if selected_item:
+              selected_zone = selected_item.label()
             self.load_zones(selected_zone)
-
+      elif item['event'] == 'config-service-changed':
+        service = item['value']
+        if not self.runtime_view:
+          item = self.configureViewCombobox.selectedItem()
+          if item == self.configureViews['services']['item']:
+            # Services selected
+            selected_service = None
+            selected_item = self.selectedConfigurationCombo.selectedItem()
+            if selected_item:
+              selected_service = selected_item.label()
+            self.load_services(selected_service)
     except Empty as e:
       pass
 
