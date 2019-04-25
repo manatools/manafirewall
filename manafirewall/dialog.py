@@ -542,6 +542,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     item = self.currentViewCombobox.selectedItem()
     self.runtime_view = item == self.views['runtime']['item']
     self.zoneEditFrame.setEnabled(not self.runtime_view)
+    # Let's change view as if a new configuration has been chosen
+    self.onConfigurationViewChanged()
 
   def onAddZone(self):
     '''
