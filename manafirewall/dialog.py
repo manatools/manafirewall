@@ -190,13 +190,16 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.configureViewCombobox.setNotify(True)
     self.eventManager.addWidgetEvent(self.configureViewCombobox, self.onConfigurationViewChanged)
 
-    # selectedConfigurationCombo is filled if requested by selected configuration view
+    # selectedConfigurationCombo is filled if requested by selected configuration view (which zones, services ...)
     self.selectedConfigurationCombo = self.factory.createComboBox(hbox,"     ")
     # adding a dummy item to enlarge combobox
     item = yui.YItem("--------------------", False)
     item.this.own(False)
     self.selectedConfigurationCombo.addItem(item)
     self.selectedConfigurationCombo.setEnabled(False)
+    self.selectedConfigurationCombo.setNotify(True)
+    self.eventManager.addWidgetEvent(self.selectedConfigurationCombo, self.onSelectedConfigurationComboChanged)
+
 
     ###
     # ZoneNotebook and other (combo box to configure selected thing)
@@ -360,7 +363,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("default-zone-changed", self.default_zone_changed_cb)
 
 
-  def load_zones(self):
+  def load_zones(self, selected = None):
     '''
     load zones into selectedConfigurationCombo
     '''
@@ -370,19 +373,21 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.selectedConfigurationCombo.setEnabled(True)
     self.selectedConfigurationCombo.setLabel(self.configureViews['zones']['title'])
 
-    default_zone = self.fw.getDefaultZone()
-
     zones = []
     if self.runtime_view:
       zones = self.fw.getZones()
     else:
       zones = self.fw.config().getZoneNames()
 
+    selected_zone = selected
+    if selected not in zones:
+      selected_zone = self.fw.getDefaultZone()
+
     # zones
     itemColl = yui.YItemCollection()
     for zone in zones:
       item = yui.YItem(zone, False)
-      if zone == default_zone:
+      if zone == selected_zone:
         item.setSelected(True)
       itemColl.push_back(item)
       item.this.own(False)
@@ -545,6 +550,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     if self.runtime_view:
       return
     self._add_edit_zone(True)
+    self.load_zones()
 
   def onRemoveZone(self):
     '''
@@ -552,12 +558,13 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     if self.runtime_view:
       return
-    # TODO selected_zone = self.get_selected_zone()
-    # TODO zone = self.fw.config().getZoneByName(selected_zone)
-    # TODO zone.remove()
-    # TODO self.changes_applied()
-    # TODO self.load_zones()
-    # TODO self.onChangeZone()
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      zone = self.fw.config().getZoneByName(selected_zone)
+      zone.remove()
+      self.load_zones()
+      # TODO self.onChangeZone()
 
   def onEditZone(self):
     '''
@@ -566,8 +573,14 @@ class ManaWallDialog(basedialog.BaseDialog):
     if self.runtime_view:
       return
     self._add_edit_zone(False)
+    selected_zone = None
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+    self.load_zones(selected_zone)
 
-  def onLoadDefaultsZone(self):
+  #### TODO HERE
+  def onLoadDefaultsZone(self, selected_zone):
     '''
     manages load defaults zone Button
     '''
@@ -579,13 +592,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     # TODO self.changes_applied()
     # TODO self.onChangeZone()
 
-  #### TODO HERE
   def _add_edit_zone(self, add):
     '''
     adds or edit zone (parameter add True if adding)
     '''
-
     zoneBaseInfo = {}
+    zoneBaseInfo['max_zone_name_len'] = functions.max_zone_name_len()
     if not add:
       # fill zoneBaseInfo for zoneBaseDialog fields
       selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
@@ -601,121 +613,65 @@ class ManaWallDialog(basedialog.BaseDialog):
         zoneBaseInfo['default'] = props["default"]
         zoneBaseInfo['builtin'] = props["builtin"]
         zoneBaseInfo['target'] = settings.getTarget()
-
+        if zoneBaseInfo['target'] == DEFAULT_ZONE_TARGET:
+          zoneBaseInfo['target'] = 'default'
 
     zoneBaseDlg = zoneBaseDialog.ZoneBaseDialog(zoneBaseInfo)
     newZoneBaseInfo = zoneBaseDlg.run()
+    # Cancelled if None is returned
+    if newZoneBaseInfo is None:
+      return
 
-    #### l = functions.max_zone_name_len()
-    #### self.zoneBaseDialogNameEntry.set_max_length(l)
-    #### self.zoneBaseDialogNameEntry.set_width_chars(l)
-    #### self.zoneBaseDialogNameEntry.set_max_width_chars(l)
-    ####
-    #### if add:
-    ####     default = True
-    ####     builtin = False
-    ####     old_name = None
-    ####     old_version = None
-    ####     old_short = None
-    ####     old_desc = None
-    ####     old_target = None
-    ####
-    ####     self.zoneBaseDialogNameEntry.set_text("")
-    ####     self.zoneBaseDialogVersionEntry.set_text("")
-    ####     self.zoneBaseDialogShortEntry.set_text("")
-    ####     self.zoneBaseDialogDescText.get_buffer().set_text("")
-    ####     self.zoneBaseDialogTargetCheck.set_active(True)
-    ####     self.zoneBaseDialogTargetCombobox.set_active(0)
-    #### else:
-    ####     selected_zone = self.get_selected_zone()
-    ####     zone = self.fw.config().getZoneByName(selected_zone)
-    ####     settings = zone.getSettings()
-    ####     props = zone.get_properties()
-    ####     default = props["default"]
-    ####     builtin = props["builtin"]
-    ####
-    ####     old_name = zone.get_property("name")
-    ####     old_version = settings.getVersion()
-    ####     old_short = settings.getShort()
-    ####     old_desc = settings.getDescription()
-    ####     old_target = settings.getTarget()
-    ####
-    ####     self.zoneBaseDialogNameEntry.set_text(old_name)
-    ####     self.zoneBaseDialogVersionEntry.set_text(old_version)
-    ####     self.zoneBaseDialogShortEntry.set_text(old_short)
-    ####     self.zoneBaseDialogDescText.get_buffer().set_text(old_desc)
-    ####     if old_target == "default" or \
-    ####         old_target == DEFAULT_ZONE_TARGET:
-    ####         self.zoneBaseDialogTargetCheck.set_active(True)
-    ####         self.zoneBaseDialogTargetCombobox.set_active(0)
-    ####     else:
-    ####         self.zoneBaseDialogTargetCheck.set_active(False)
-    ####         combobox_select_text(self.zoneBaseDialogTargetCombobox,
-    ####                               old_target if old_target != "%%REJECT%%"
-    ####                               else "REJECT")
-    ####
-    #### self.zoneBaseDialogOkButton.set_sensitive(False)
-    #### if builtin:
-    ####     self.zoneBaseDialogNameEntry.set_tooltip_markup(\
-    ####         _("Built-in zone, rename not supported."))
-    #### else:
-    ####     self.zoneBaseDialogNameEntry.set_tooltip_markup("")
-    #### self.zoneBaseDialogNameEntry.set_sensitive(not builtin and default)
-    ####
-    #### self.zoneBaseDialog.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
-    #### self.zoneBaseDialog.set_transient_for(self.mainWindow)
-    #### self.zoneBaseDialog.show_all()
-    #### self.add_visible_dialog(self.zoneBaseDialog)
-    #### result = self.zoneBaseDialog.run()
-    #### self.zoneBaseDialog.hide()
-    #### self.remove_visible_dialog(self.zoneBaseDialog)
-    ####
-    #### if result != 1:
-    ####     return
-    ####
-    #### name = self.zoneBaseDialogNameEntry.get_text()
-    #### version = self.zoneBaseDialogVersionEntry.get_text()
-    #### short = self.zoneBaseDialogShortEntry.get_text()
-    #### buffer = self.zoneBaseDialogDescText.get_buffer()
-    #### desc = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(),
-    ####                         False)
-    #### target = "default" # this has been DEFAULT_ZONE_TARGET before
-    #### if not self.zoneBaseDialogTargetCheck.get_active():
-    ####     target = self.zoneBaseDialogTargetCombobox.get_active_text()
-    ####     if target == "REJECT":
-    ####         target = "%%REJECT%%"
-    ####
-    #### if old_name == name and \
-    ####         old_version == version and old_short == short and \
-    ####         old_desc == desc and old_target == target:
-    ####     # no changes
-    ####     return
-    ####
-    #### if not add:
-    ####     selected_zone = self.get_selected_zone()
-    ####     zone = self.fw.config().getZoneByName(selected_zone)
-    ####     settings = zone.getSettings()
-    #### else:
-    ####     settings = client.FirewallClientZoneSettings()
-    ####
-    #### if old_version != version or old_short != short or \
-    ####         old_desc != desc or old_target != target:
-    ####     # settings
-    ####     settings.setVersion(version)
-    ####     settings.setShort(short)
-    ####     settings.setDescription(desc)
-    ####     settings.setTarget(target)
-    ####     if not add:
-    ####         zone.update(settings)
-    ####
-    #### if not add:
-    ####     if old_name == name:
-    ####         return
-    ####     zone.rename(name)
-    #### else:
-    ####     self.fw.config().addZone(name, settings)
-    #### self.changes_applied()
+    if not add:
+      if zoneBaseInfo['name']        == newZoneBaseInfo['name'] and \
+         zoneBaseInfo['version']     == newZoneBaseInfo['version'] and  \
+         zoneBaseInfo['short']       == newZoneBaseInfo['short'] and \
+         zoneBaseInfo['description'] == newZoneBaseInfo['description'] and \
+         zoneBaseInfo['target']      == newZoneBaseInfo['target']:
+        # no changes
+        return
+      selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+      if selected_zoneitem:
+        selected_zone = selected_zoneitem.label()
+        zone = self.fw.config().getZoneByName(selected_zone)
+        if zoneBaseInfo['version'] != newZoneBaseInfo['version'] or  \
+         zoneBaseInfo['short'] != newZoneBaseInfo['short'] or \
+         zoneBaseInfo['description'] != newZoneBaseInfo['description'] or \
+         zoneBaseInfo['target'] != newZoneBaseInfo['target']:
+          settings = zone.getSettings()
+          settings.setVersion(newZoneBaseInfo['version'])
+          settings.setShort(newZoneBaseInfo['short'])
+          settings.setDescription(newZoneBaseInfo['description'])
+          settings.setTarget(newZoneBaseInfo['target'])
+          zone.update(settings)
+        if zoneBaseInfo['name'] == newZoneBaseInfo['name']:
+          return
+        zone.rename(newZoneBaseInfo['name'])
+    else:
+      settings = client.FirewallClientZoneSettings()
+      settings.setVersion(newZoneBaseInfo['version'])
+      settings.setShort(newZoneBaseInfo['short'])
+      settings.setDescription(newZoneBaseInfo['description'])
+      settings.setTarget(newZoneBaseInfo['target'])
+      self.fw.config().addZone(newZoneBaseInfo['name'], settings)
 
+
+  def onSelectedConfigurationComboChanged(self):
+    '''
+    depending on what configuration view is selected it manages zones,
+    services, etc
+    '''
+    item = self.configureViewCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      # self.onChangeZone()
+      pass
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      pass
+    elif item == self.configureViews['ipsets']['item']:
+      # ip sets selected
+      pass
 
   def onConfigurationViewChanged(self):
     '''
