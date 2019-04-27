@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 '''
-Python manatools.config contains an application configuration file management
+Python manafirewall.dialog contains main manafirewall window
 
 License: LGPLv2+
 
@@ -92,6 +92,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.automatic_helpers = ""
     self.active_zones = { }
     self.runtime_view = True
+    self.replacePointWidgetsAndCallbacks = []
 
     self.fwEventQueue = SimpleQueue()
 
@@ -241,6 +242,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.replacePoint = self.factory.createReplacePoint ( col2 ) #self.rightPaneFrame)
     self.configurationPanel = self.factory.createVBox(self.replacePoint)
 
+    self._replacePointServices()
+
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
@@ -271,6 +274,68 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.initFWClient()
 
+  def _replacePointServices(self):
+    '''
+    draw services frame
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      print ("Error there are still widget events for ReplacePoint") #TODO log
+      return
+
+    if self.configurationPanel.hasChildren():
+      print ("Error there are still widgets into ReplacePoint") #TODO log
+      return
+
+    #self.mgaFactory.create
+
+    services_header = yui.YTableHeader()
+    columns = [ _('Service') ]
+
+    services_header.addColumn("")
+    for col in (columns):
+        services_header.addColumn(col)
+
+    self.serviceList = self.mgaFactory.createCBTable(self.configurationPanel, services_header, yui.YCBTableCheckBoxOnFirstColumn)
+    self.serviceList.setImmediateMode(True)
+
+    if isinstance(self.serviceList, yui.YMGA_CBTable):
+      print("YMGA_CBTable")
+    self.replacePointWidgetsAndCallbacks.append({'widget': self.serviceList, 'action': self.onRPServiceChecked})
+    self.eventManager.addWidgetEvent(self.serviceList, self.onRPServiceChecked)
+
+  def _fillRPServices(self):
+    services = None
+    if self.runtime_view:
+      services = self.fw.listServices()
+    else:
+      services = self.fw.config().getServiceNames()
+
+    v = []
+    for service in services:
+      item = yui.YCBTableItem(service)
+      item.check(False)
+      item.this.own(False)
+      v.append(item)
+
+    #NOTE workaround to get YItemCollection working in python
+    itemCollection = yui.YItemCollection(v)
+    self.serviceList.startMultipleChanges()
+    # cleanup old changed items since we are removing all of them
+    self.serviceList.setChangedItem(None)
+    self.serviceList.addItems(itemCollection)
+    self.serviceList.doneMultipleChanges()
+
+  def onRPServiceChecked(self, widgetEvent):
+    '''
+    works on enabling/disabling service for zone
+    '''
+    if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
+      item = self.serviceList.changedItem()
+      if item:
+        if item.checked():
+          print ("%s checked"%item.cell(0).label())
+        else:
+          print ("%s unchecked"%item.cell(0).label())
 
   def _zoneConfigurationViewCollection(self):
     '''
@@ -911,6 +976,19 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     manages configureCombobox changes
     '''
+    config_item = self.configureCombobox.selectedItem()
+
+    item = self.configureViewCombobox.selectedItem()
+    if item == self.configureViews['zones']['item']:
+      #Zones selected
+      if config_item == self.zoneConfigurationView['services']['item']:
+        self._fillRPServices()
+    elif item == self.configureViews['services']['item']:
+      #Services selected
+      pass
+    elif item == self.configureViews['ipsets']['item']:
+      # ip sets selected
+      pass
 
   def onTimeOutEvent(self):
     print ("Timeout occurred")
