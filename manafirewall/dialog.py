@@ -239,7 +239,6 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     #### Replace Point to change configuration view
     self.replacePoint = self.factory.createReplacePoint ( col2 ) #self.rightPaneFrame)
-    self.configurationPanel = self.factory.createVBox(self.replacePoint)
 
     #self._replacePointServices()
 
@@ -305,11 +304,11 @@ class ManaWallDialog(basedialog.BaseDialog):
       print ("Error there are still widget events for ReplacePoint") #TODO log
       return
 
-    if self.configurationPanel.hasChildren():
+    if self.replacePoint.hasChildren():
       print ("Error there are still widgets into ReplacePoint") #TODO log
       return
 
-    #self.mgaFactory.create
+    vbox = self.factory.createVBox(self.replacePoint)
 
     services_header = yui.YTableHeader()
     columns = [ _('Service') ]
@@ -318,7 +317,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     for col in (columns):
         services_header.addColumn(col)
 
-    self.serviceList = self.mgaFactory.createCBTable(self.configurationPanel, services_header, yui.YCBTableCheckBoxOnFirstColumn)
+    self.serviceList = self.mgaFactory.createCBTable(vbox, services_header, yui.YCBTableCheckBoxOnFirstColumn)
 
     self._fillRPServices()
     self.serviceList.setImmediateMode(True)
@@ -1051,10 +1050,7 @@ class ManaWallDialog(basedialog.BaseDialog):
         self.eventManager.removeWidgetEvent(rpwc['widget'], rpwc['action'])
       self.replacePointWidgetsAndCallbacks.clear()
 
-      while self.configurationPanel.hasChildren() :
-        self.configurationPanel.deleteChildren()
       self.replacePoint.deleteChildren()
-      self.configurationPanel = self.factory.createVBox(self.replacePoint)
 
       item = self.configureViewCombobox.selectedItem()
       if item == self.configureViews['zones']['item']:
