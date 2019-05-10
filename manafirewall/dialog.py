@@ -238,11 +238,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     ###
 
     #### Replace Point to change configuration view
-    #self.rightPaneFrame = self.factory.createFrame(col2, "TEST")
     self.replacePoint = self.factory.createReplacePoint ( col2 ) #self.rightPaneFrame)
     self.configurationPanel = self.factory.createVBox(self.replacePoint)
 
-    self._replacePointServices()
+    #self._replacePointServices()
 
 
     #### bottom status lines
@@ -274,6 +273,30 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.initFWClient()
 
+  def _zoneSettings(self):
+    '''
+    retruns current zone settings
+    '''
+    settings = None
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      if self.runtime_view:
+        # load runtime configuration
+        try:
+          settings = self.fw.getZoneSettings(selected_zone)
+        except:
+          return settings
+      else:
+        # load permanent configuration
+        try:
+          zone = self.fw.config().getZoneByName(selected_zone)
+        except:
+          return settings
+        settings = zone.getSettings()
+
+    return settings
+
   def _replacePointServices(self):
     '''
     draw services frame
@@ -296,34 +319,48 @@ class ManaWallDialog(basedialog.BaseDialog):
         services_header.addColumn(col)
 
     self.serviceList = self.mgaFactory.createCBTable(self.configurationPanel, services_header, yui.YCBTableCheckBoxOnFirstColumn)
+
+    self._fillRPServices()
     self.serviceList.setImmediateMode(True)
 
-    if isinstance(self.serviceList, yui.YMGA_CBTable):
-      print("YMGA_CBTable")
-    self.replacePointWidgetsAndCallbacks.append({'widget': self.serviceList, 'action': self.onRPServiceChecked})
     self.eventManager.addWidgetEvent(self.serviceList, self.onRPServiceChecked)
+    self.replacePointWidgetsAndCallbacks.append({'widget': self.serviceList, 'action': self.onRPServiceChecked})
 
   def _fillRPServices(self):
-    services = None
-    if self.runtime_view:
-      services = self.fw.listServices()
-    else:
-      services = self.fw.config().getServiceNames()
+    '''
+    fill current sercices into replace point
+    '''
+    settings = self._zoneSettings()
+    if settings:
+      configured_services = settings.getServices()
 
-    v = []
-    for service in services:
-      item = yui.YCBTableItem(service)
-      item.check(False)
-      item.this.own(False)
-      v.append(item)
+      services = None
+      if self.runtime_view:
+        services = self.fw.listServices()
+      else:
+        services = self.fw.config().getServiceNames()
 
-    #NOTE workaround to get YItemCollection working in python
-    itemCollection = yui.YItemCollection(v)
-    self.serviceList.startMultipleChanges()
-    # cleanup old changed items since we are removing all of them
-    self.serviceList.setChangedItem(None)
-    self.serviceList.addItems(itemCollection)
-    self.serviceList.doneMultipleChanges()
+      current_service = ""
+      current = self.serviceList.selectedItem()
+      if current:
+        current = yui.toYTableItem(current)
+      current_service = current.cell(0).label() if current else ""
+      v = []
+      for service in services:
+        item = yui.YCBTableItem(service)
+        item.check(service in configured_services)
+        item.setSelected(service == current_service)
+        item.this.own(False)
+        v.append(item)
+
+      #NOTE workaround to get YItemCollection working in python
+      itemCollection = yui.YItemCollection(v)
+      self.serviceList.startMultipleChanges()
+      # cleanup old changed items since we are removing all of them
+      self.serviceList.setChangedItem(None)
+      self.serviceList.deleteAllItems()
+      self.serviceList.addItems(itemCollection)
+      self.serviceList.doneMultipleChanges()
 
   def onRPServiceChecked(self, widgetEvent):
     '''
@@ -332,10 +369,22 @@ class ManaWallDialog(basedialog.BaseDialog):
     if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
       item = self.serviceList.changedItem()
       if item:
-        if item.checked():
-          print ("%s checked"%item.cell(0).label())
-        else:
-          print ("%s unchecked"%item.cell(0).label())
+        selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+        if selected_zoneitem:
+          selected_zone = selected_zoneitem.label()
+          service_name = item.cell(0).label()
+          if self.runtime_view:
+            if item.checked():
+              self.fw.addService(selected_zone, service_name)
+            else:
+              self.fw.removeService(selected_zone, service_name)
+          else:
+            zone = self.fw.config().getZoneByName(selected_zone)
+            if item.checked():
+              zone.addService(service_name)
+            else:
+              zone.removeService(service_name)
+
 
   def _zoneConfigurationViewCollection(self):
     '''
@@ -427,6 +476,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("panic-mode-enabled", self.panic_mode_enabled_cb)
     self.fw.connect("panic-mode-disabled", self.panic_mode_disabled_cb)
     self.fw.connect("default-zone-changed", self.default_zone_changed_cb)
+    self.fw.connect("service-added", self.service_added_cb)
+    self.fw.connect("service-removed", self.service_removed_cb)
 
     self.fw.connect("config:zone-added", self.conf_zone_changed_cb)
     self.fw.connect("config:zone-updated", self.conf_zone_changed_cb)
@@ -577,9 +628,22 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def conf_service_changed_cb(self, service):
     '''
-    service have been modified
+    service configuration has been modified
     '''
     self.fwEventQueue.put({'event': "config-service-changed", 'value': service})
+
+
+  def service_added_cb(self, zone, service, timeout):
+    '''
+    service has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "service-added", 'value': {'zone' : zone, 'service': service } })
+
+  def service_removed_cb(self, zone, service):
+    '''
+    service has been removed at run time
+    '''
+    self.fwEventQueue.put({'event': "service-removed", 'value': {'zone' : zone, 'service': service } })
 
 
 #### GUI events
@@ -921,6 +985,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       pass
+    self.onSelectedConfigurationChanged(None)
 
   def onConfigurationViewChanged(self):
     '''
@@ -970,25 +1035,43 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.setEnabled(False)
       self.configureCombobox.doneMultipleChanges()
       self.editFrameBox.setLabel("")
+    self.onSelectedConfigurationComboChanged()
 
 
-  def onSelectedConfigurationChanged(self):
+  def onSelectedConfigurationChanged(self, widgetEvent):
     '''
     manages configureCombobox changes
     '''
-    config_item = self.configureCombobox.selectedItem()
+    if (widgetEvent is not None and widgetEvent.reason() == yui.YEvent.ValueChanged) :
+      config_item = self.configureCombobox.selectedItem()
 
-    item = self.configureViewCombobox.selectedItem()
-    if item == self.configureViews['zones']['item']:
-      #Zones selected
-      if config_item == self.zoneConfigurationView['services']['item']:
-        self._fillRPServices()
-    elif item == self.configureViews['services']['item']:
-      #Services selected
-      pass
-    elif item == self.configureViews['ipsets']['item']:
-      # ip sets selected
-      pass
+      # cleanup replace point
+      self.dialog.startMultipleChanges()
+
+      for rpwc in self.replacePointWidgetsAndCallbacks:
+        self.eventManager.removeWidgetEvent(rpwc['widget'], rpwc['action'])
+      self.replacePointWidgetsAndCallbacks.clear()
+
+      while self.configurationPanel.hasChildren() :
+        self.configurationPanel.deleteChildren()
+      self.replacePoint.deleteChildren()
+      self.configurationPanel = self.factory.createVBox(self.replacePoint)
+
+      item = self.configureViewCombobox.selectedItem()
+      if item == self.configureViews['zones']['item']:
+        #Zones selected
+        if config_item == self.zoneConfigurationView['services']['item']:
+          self._replacePointServices()
+      elif item == self.configureViews['services']['item']:
+        #Services selected
+        pass
+      elif item == self.configureViews['ipsets']['item']:
+        # ip sets selected
+        pass
+
+      self.replacePoint.showChild()
+      self.dialog.recalcLayout()
+      self.dialog.doneMultipleChanges()
 
   def onTimeOutEvent(self):
     print ("Timeout occurred")
@@ -1020,6 +1103,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           panic = self.fw.queryPanicMode()
           t = self.enabled if panic else self.disabled
           self.panicLabel.setText(_("Panic Mode: {}").format(t))
+          self.onChangeView()
         else:
           self.defaultZoneLabel.setText(_("Default Zone: {}").format("--------"))
           self.logDeniedLabel.setText(("Log Denied: {}").format("--------"))
@@ -1065,6 +1149,20 @@ class ManaWallDialog(basedialog.BaseDialog):
             if selected_item:
               selected_service = selected_item.label()
             self.load_services(selected_service)
+      elif item['event'] == 'service-added' or item['event'] == 'service-removed':
+        # runtime and view zone and service is selected
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['services']['item']:
+          value = item['value']
+          print("fw service change", value) #TODO remove
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if value['zone'] == selected_zone.label():
+              self._fillRPServices()
+
     except Empty as e:
       pass
 
