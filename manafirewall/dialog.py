@@ -985,7 +985,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       pass
-    self.onSelectedConfigurationChanged(None)
+    self.onSelectedConfigurationChanged()
 
   def onConfigurationViewChanged(self):
     '''
@@ -1038,13 +1038,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.onSelectedConfigurationComboChanged()
 
 
-  def onSelectedConfigurationChanged(self, widgetEvent):
+  def onSelectedConfigurationChanged(self, widgetEvent=None):
     '''
     manages configureCombobox changes
     '''
-    if (widgetEvent is not None and widgetEvent.reason() == yui.YEvent.ValueChanged) :
+    if (widgetEvent is None or (widgetEvent is not None and widgetEvent.reason() == yui.YEvent.ValueChanged)) :
       config_item = self.configureCombobox.selectedItem()
-
       # cleanup replace point
       self.dialog.startMultipleChanges()
 
