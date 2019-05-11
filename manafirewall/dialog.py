@@ -1111,9 +1111,18 @@ class ManaWallDialog(basedialog.BaseDialog):
           self._replacePointServices()
         elif config_item == self.zoneConfigurationView['ports']['item']:
           self._replacePointPort()
+          if self.buttons is not None:
+            self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
       elif item == self.configureViews['services']['item']:
         #Services selected
-        pass
+        if config_item == self.serviceConfigurationView['ports']['item']:
+          self._replacePointPort()
+          if self.buttons is not None:
+            self.buttons['add'].setEnabled(not self.runtime_view)
+            self.buttons['edit'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
+
       elif item == self.configureViews['ipsets']['item']:
         # ip sets selected
         pass
