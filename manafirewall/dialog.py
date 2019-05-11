@@ -47,6 +47,7 @@ from queue import SimpleQueue, Empty
 
 import manafirewall.zoneBaseDialog as zoneBaseDialog
 import manafirewall.serviceBaseDialog as serviceBaseDialog
+import manafirewall.portDialog as portDialog
 
 def TimeFunction(func):
     """
@@ -200,7 +201,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.selectedConfigurationCombo.setEnabled(False)
     self.selectedConfigurationCombo.setNotify(True)
     self.eventManager.addWidgetEvent(self.selectedConfigurationCombo, self.onSelectedConfigurationComboChanged)
-
 
     ###
     # ZoneNotebook and other (combo box to configure selected thing)
@@ -488,17 +488,86 @@ class ManaWallDialog(basedialog.BaseDialog):
             else:
               zone.removeService(service_name)
 
+  def _del_edit_port(self):
+    '''
+    remove the selected port
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      if selected_portitem:
+        port_range = selected_portitem.cell(0).label()
+        protocol   = selected_portitem.cell(1).label()
+
+        if self.runtime_view:
+          self.fw.removePort(selected_zone, port_range, protocol)
+        else:
+          zone = self.fw.config().getZoneByName(selected_zone)
+          zone.removePort(port_range, protocol)
+
+  def _add_edit_port(self, add):
+    '''
+    add or edit port (add is True for new port)
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+
+      oldPortInfo = {'port_range': "", 'protocol': ""}
+      if not add:
+        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        if selected_portitem:
+          oldPortInfo['port_range'] = selected_portitem.cell(0).label()
+          oldPortInfo['protocol']   = selected_portitem.cell(1).label()
+
+      dlg = portDialog.PortDialog(oldPortInfo)
+      newPortInfo = dlg.run()
+      # Cancelled if None is returned
+      if newPortInfo is None:
+        return
+
+      if oldPortInfo['port_range'] == newPortInfo['port_range'] and \
+          oldPortInfo['protocol'] == newPortInfo['protocol']:
+        # nothing to change
+        return
+
+      if self.runtime_view:
+        if not self.fw.queryPort(selected_zone, newPortInfo['port_range'], newPortInfo['protocol']):
+          self.fw.addPort(selected_zone, newPortInfo['port_range'], newPortInfo['protocol'])
+          if not add:
+            self.fw.removePort(selected_zone, oldPortInfo['port_range'], oldPortInfo['protocol'])
+      else:
+        zone = self.fw.config().getZoneByName(selected_zone)
+        if not zone.queryPort(newPortInfo['port_range'], newPortInfo['protocol']):
+          if not add:
+            zone.removePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
+          zone.addPort(newPortInfo['port_range'], newPortInfo['protocol'])
+
+
+
   def onPortButtonsPressed(self, button):
     '''
     add, edit, remove port has been pressed
     '''
+    item = self.configureViewCombobox.selectedItem()
+    isZones = (item == self.configureViews['zones']['item'])
+    configure_item = self.configureCombobox.selectedItem()
+    isZonePort = (configure_item == self.zoneConfigurationView['ports']['item'])
+
     if isinstance(button, yui.YPushButton):
       if button == self.buttons['add']:
         print('Add')
+        if isZones and isZonePort:
+          self._add_edit_port(True)
       elif button == self.buttons['edit']:
         print('Edit')
+        if isZones and isZonePort:
+          self._add_edit_port(False)
       elif button == self.buttons['remove']:
         print('Remove')
+        if isZones and isZonePort:
+          self._del_edit_port()
       else:
         print('Why here?')
 
