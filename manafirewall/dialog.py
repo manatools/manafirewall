@@ -595,6 +595,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("default-zone-changed", self.default_zone_changed_cb)
     self.fw.connect("service-added", self.service_added_cb)
     self.fw.connect("service-removed", self.service_removed_cb)
+    self.fw.connect("port-added", self.port_added_cb)
+    self.fw.connect("port-removed", self.port_removed_cb)
 
     self.fw.connect("config:zone-added", self.conf_zone_changed_cb)
     self.fw.connect("config:zone-updated", self.conf_zone_changed_cb)
@@ -762,6 +764,17 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fwEventQueue.put({'event': "service-removed", 'value': {'zone' : zone, 'service': service } })
 
+  def port_added_cb(self, zone, port, protocol, timeout):
+    '''
+    port has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "port-added", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
+
+  def port_removed_cb(self, zone, port, protocol):
+    '''
+    port has been removed at run time
+    '''
+    self.fwEventQueue.put({'event': "port-removed", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
 
 #### GUI events
 
@@ -1284,6 +1297,7 @@ class ManaWallDialog(basedialog.BaseDialog):
               selected_service = selected_item.label()
             self.load_services(selected_service)
       elif item['event'] == 'service-added' or item['event'] == 'service-removed':
+        print(item['event'], item['value']) #TODO remove
         # runtime and view zone and service is selected
         view_item      = self.configureViewCombobox.selectedItem()
         configure_item = self.configureCombobox.selectedItem()
@@ -1291,11 +1305,23 @@ class ManaWallDialog(basedialog.BaseDialog):
           view_item == self.configureViews['zones']['item'] and \
           configure_item == self.zoneConfigurationView['services']['item']:
           value = item['value']
-          print("fw service change", value) #TODO remove
           selected_zone = self.selectedConfigurationCombo.selectedItem()
           if selected_zone:
             if value['zone'] == selected_zone.label():
               self._fillRPServices()
+      elif item['event'] == 'port-added' or item['event'] == 'port-removed':
+        print(item['event'], item['value']) #TODO remove
+        # runtime and view zone and port is selected
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['ports']['item']:
+          value = item['value']
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if value['zone'] == selected_zone.label():
+              self._fillRPPort("zone_ports")
 
     except Empty as e:
       pass
