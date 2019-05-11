@@ -143,7 +143,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     hbox = self.factory.createHBox(align)
     col2.setWeight(yui.YD_HORIZ, 80)
 
-    #label = self.factory.createLabel(hbox, _("Configuration:"),False,False)
     self.views = {
             'runtime'   : {'title' : _("Runtime")},
             'permanent' : {'title' : _("Permanent")},
@@ -238,10 +237,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     ###
 
     #### Replace Point to change configuration view
-    self.replacePoint = self.factory.createReplacePoint ( col2 ) #self.rightPaneFrame)
-
-    #self._replacePointServices()
-
+    self.replacePoint = self.factory.createReplacePoint(col2)
+    self.replacePoint.setWeight(yui.YD_VERT, 80)
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
