@@ -96,10 +96,10 @@ class ZoneBaseDialog(basedialog.BaseDialog):
     align = self.factory.createRight(layout)
     bottomLine = self.factory.createHBox(align)
 
-    cancelButton = self.factory.createPushButton(bottomLine, "&Cancel")
+    cancelButton = self.factory.createPushButton(bottomLine, _("&Cancel"))
     self.eventManager.addWidgetEvent(cancelButton, self.onCancelButtonEvent)
 
-    okButton = self.factory.createPushButton(bottomLine, "&Ok")
+    okButton = self.factory.createPushButton(bottomLine, _("&Ok"))
     self.eventManager.addWidgetEvent(okButton, self.onOkEvent)
     
     # Let's test a cancel event
