@@ -269,9 +269,30 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.initFWClient()
 
+  def _serviceSettings(self):
+    '''
+    returns current service settings
+    '''
+    settings = None
+    selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_serviceitem:
+      selected_service = selected_serviceitem.label()
+      if self.runtime_view:
+        # load runtime configuration
+        settings = self.fw.getServiceSettings(selected_service)
+      else:
+        try:
+          service = self.fw.config().getServiceByName(selected_service)
+        except:
+          return settings
+        # load permanent configuration
+        settings = service.getSettings()
+
+    return settings
+
   def _zoneSettings(self):
     '''
-    retruns current zone settings
+    returns current zone settings
     '''
     settings = None
     selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
@@ -308,7 +329,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['remove'] = self.factory.createPushButton(hbox, _("Remove"))
     return buttons
 
-  def _replacePointPort(self):
+  def _replacePointPort(self, context):
     '''
     draw Port frame
     '''
@@ -329,10 +350,55 @@ class ManaWallDialog(basedialog.BaseDialog):
         port_header.addColumn(col)
 
     self.portList = self.factory.createTable(vbox, port_header, False)
+
     self.buttons = self._AddEditRemoveButtons(vbox)
     for op in self.buttons.keys():
       self.eventManager.addWidgetEvent(self.buttons[op], self.onPortButtonsPressed, True)
       self.replacePointWidgetsAndCallbacks.append({'widget': self.buttons[op], 'action': self.onPortButtonsPressed})
+
+    self._fillRPPort(context)
+
+  def _fillRPPort(self, context):
+    '''
+    fill current ports into replace point
+    '''
+    ports = None
+    if context == 'zone_ports':
+      settings = self._zoneSettings()
+      if settings:
+        ports = settings.getPorts()
+    elif context == 'zone_sourceports':
+      settings = self._zoneSettings()
+      if settings:
+        ports = settings.getSourcePorts()
+    elif context == 'service_ports':
+      settings = self._serviceSettings()
+      if settings:
+        ports = settings.getPorts()
+    elif context == 'service_sourceports':
+      settings = self._serviceSettings()
+      if settings:
+        ports = settings.getSourcePorts()
+
+    current_port = ""
+    current = self.portList.selectedItem()
+    #### TODO try to select the same
+
+    v = []
+    for port in ports:
+      item = yui.YTableItem(*port)
+      #item.setSelected(service == current_service)
+      item.this.own(False)
+      v.append(item)
+
+    #NOTE workaround to get YItemCollection working in python
+    itemCollection = yui.YItemCollection(v)
+    self.portList.startMultipleChanges()
+    self.portList.deleteAllItems()
+    self.portList.addItems(itemCollection)
+    self.portList.doneMultipleChanges()
+
+
 
   def _replacePointServices(self):
     '''
@@ -365,7 +431,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _fillRPServices(self):
     '''
-    fill current sercices into replace point
+    fill current services into replace point
     '''
     settings = self._zoneSettings()
     if settings:
@@ -1110,14 +1176,14 @@ class ManaWallDialog(basedialog.BaseDialog):
         if config_item == self.zoneConfigurationView['services']['item']:
           self._replacePointServices()
         elif config_item == self.zoneConfigurationView['ports']['item']:
-          self._replacePointPort()
+          self._replacePointPort('zone_ports')
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
       elif item == self.configureViews['services']['item']:
         #Services selected
         if config_item == self.serviceConfigurationView['ports']['item']:
-          self._replacePointPort()
+          self._replacePointPort('service_ports')
           if self.buttons is not None:
             self.buttons['add'].setEnabled(not self.runtime_view)
             self.buttons['edit'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
