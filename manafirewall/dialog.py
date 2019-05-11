@@ -1180,6 +1180,11 @@ class ManaWallDialog(basedialog.BaseDialog):
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+        elif config_item == self.zoneConfigurationView['source_ports']['item']:
+          self._replacePointPort('zone_sourceports')
+          if self.buttons is not None:
+            self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
       elif item == self.configureViews['services']['item']:
         #Services selected
         if config_item == self.serviceConfigurationView['ports']['item']:
@@ -1188,7 +1193,12 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.buttons['add'].setEnabled(not self.runtime_view)
             self.buttons['edit'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
-
+        if config_item == self.serviceConfigurationView['source_ports']['item']:
+          self._replacePointPort('service_sourceports')
+          if self.buttons is not None:
+            self.buttons['add'].setEnabled(not self.runtime_view)
+            self.buttons['edit'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
       elif item == self.configureViews['ipsets']['item']:
         # ip sets selected
         pass
