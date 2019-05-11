@@ -293,6 +293,47 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     return settings
 
+  def _AddEditRemoveButtons(self, container):
+    '''
+    adds Add, Edit and Remove buttons on the left of the given container
+    returns a widget dictionary which keys are 'add', 'edit' and 'remove'
+    '''
+    buttons = None
+    if isinstance(container, yui.YLayoutBox):
+      buttons = { 'add' : None, 'edit': None, 'remove': None }
+      align = self.factory.createLeft(container)
+      hbox = self.factory.createHBox(align)
+      buttons['add']    = self.factory.createPushButton(hbox, _("Add"))
+      buttons['edit']   = self.factory.createPushButton(hbox, _("Edit"))
+      buttons['remove'] = self.factory.createPushButton(hbox, _("Remove"))
+    return buttons
+
+  def _replacePointPort(self):
+    '''
+    draw Port frame
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      print ("Error there are still widget events for ReplacePoint") #TODO log
+      return
+
+    if self.replacePoint.hasChildren():
+      print ("Error there are still widgets into ReplacePoint") #TODO log
+      return
+
+    vbox = self.factory.createVBox(self.replacePoint)
+
+    port_header = yui.YTableHeader()
+    columns = [ _('Port'), _('Protocol') ]
+
+    for col in (columns):
+        port_header.addColumn(col)
+
+    self.portList = self.factory.createTable(vbox, port_header, False)
+    self.buttons = self._AddEditRemoveButtons(vbox)
+    for op in self.buttons.keys():
+      self.eventManager.addWidgetEvent(self.buttons[op], self.onPortButtonsPressed, True)
+      self.replacePointWidgetsAndCallbacks.append({'widget': self.buttons[op], 'action': self.onPortButtonsPressed})
+
   def _replacePointServices(self):
     '''
     draw services frame
@@ -380,6 +421,20 @@ class ManaWallDialog(basedialog.BaseDialog):
               zone.addService(service_name)
             else:
               zone.removeService(service_name)
+
+  def onPortButtonsPressed(self, button):
+    '''
+    add, edit, remove port has been pressed
+    '''
+    if isinstance(button, yui.YPushButton):
+      if button == self.buttons['add']:
+        print('Add')
+      elif button == self.buttons['edit']:
+        print('Edit')
+      elif button == self.buttons['remove']:
+        print('Remove')
+      else:
+        print('Why here?')
 
 
   def _zoneConfigurationViewCollection(self):
@@ -1054,6 +1109,8 @@ class ManaWallDialog(basedialog.BaseDialog):
         #Zones selected
         if config_item == self.zoneConfigurationView['services']['item']:
           self._replacePointServices()
+        elif config_item == self.zoneConfigurationView['ports']['item']:
+          self._replacePointPort()
       elif item == self.configureViews['services']['item']:
         #Services selected
         pass
