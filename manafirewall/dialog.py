@@ -666,15 +666,19 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("service-removed", self.service_removed_cb)
     self.fw.connect("port-added", self.port_added_cb)
     self.fw.connect("port-removed", self.port_removed_cb)
+    #self.fw.connect("protocol-added", self.protocol_added_cb)
+    #self.fw.connect("protocol-removed", self.protocol_removed_cb)
+    #self.fw.connect("source-port-added", self.source_port_added_cb)
+    #self.fw.connect("source-port-removed", self.source_port_removed_cb)
 
     self.fw.connect("config:zone-added",   self.conf_zone_added_cb)
     self.fw.connect("config:zone-updated", self.conf_zone_updated_cb)
     self.fw.connect("config:zone-removed", self.conf_zone_removed_cb)
     self.fw.connect("config:zone-renamed", self.conf_zone_renamed_cb)
-    self.fw.connect("config:service-added", self.conf_service_changed_cb)
-    self.fw.connect("config:service-updated", self.conf_service_changed_cb)
-    self.fw.connect("config:service-removed", self.conf_service_changed_cb)
-    self.fw.connect("config:service-renamed", self.conf_service_changed_cb)
+    self.fw.connect("config:service-added", self.conf_service_added_cb)
+    self.fw.connect("config:service-updated", self.conf_service_updated_cb)
+    self.fw.connect("config:service-removed", self.conf_service_removed_cb)
+    self.fw.connect("config:service-renamed", self.conf_service_renamed_cb)
 
     self.fw.connect("zone-of-interface-changed", self.zone_of_interface_changed_cb)
     self.fw.connect("reloaded", self.reload_cb)
@@ -811,36 +815,53 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fwEventQueue.put({'event': "default-zone-changed", 'value': zone})
 
-  def conf_zone_added_cb(self, zone)    :
+  def conf_zone_added_cb(self, zone):
     '''
     config zone has been added
     '''
     self.fwEventQueue.put({'event': "config-zone-added", 'value': zone})
 
-  def conf_zone_updated_cb(self, zone)  :
+  def conf_zone_updated_cb(self, zone):
     '''
     config zone has been updated
     '''
     self.fwEventQueue.put({'event': "config-zone-updated", 'value': zone})
 
-  def conf_zone_removed_cb(self, zone)  :
+  def conf_zone_removed_cb(self, zone):
     '''
     config zone has been removed
     '''
     self.fwEventQueue.put({'event': "config-zone-removed", 'value': zone})
 
-  def conf_zone_renamed_cb(self, zone)  :
+  def conf_zone_renamed_cb(self, zone):
     '''
     config zone has been removed
     '''
     self.fwEventQueue.put({'event': "config-zone-renamed", 'value': zone})
 
+  def conf_service_added_cb(self, service):
+    '''
+    config service has been added
+    '''
+    self.fwEventQueue.put({'event': "config-service-added", 'value': service})
 
-  def conf_service_changed_cb(self, service):
+  def conf_service_updated_cb(self, service):
     '''
-    service configuration has been modified
+    config service has been updated
     '''
-    self.fwEventQueue.put({'event': "config-service-changed", 'value': service})
+    self.fwEventQueue.put({'event': "config-service-updated", 'value': service})
+
+  def conf_service_removed_cb(self, service):
+    '''
+    config service has been removed
+    '''
+    self.fwEventQueue.put({'event': "config-service-removed", 'value': service})
+
+  def conf_service_renamed_cb(self, service):
+    '''
+    config service has been removed
+    '''
+    self.fwEventQueue.put({'event': "config-service-renamed", 'value': service})
 
   def service_added_cb(self, zone, service, timeout):
     '''
@@ -1325,6 +1346,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     try:
       item = self.fwEventQueue.get_nowait()
+      print(item['event'], item['value']) #TODO remove
+
       # managing deferred firewall events
       if item['event'] == 'connection-changed':
         connected = item['value']
@@ -1356,8 +1379,6 @@ class ManaWallDialog(basedialog.BaseDialog):
         item = self.configureViewCombobox.selectedItem()
         if item == self.configureViews['zones']['item']:
           self.load_zones()
-
-
       elif item['event'] == 'lockdown-changed':
         t = self.enabled if item['value'] else self.disabled
         self.lockdownLabel.setText(_("Lockdown: {}").format(t))
@@ -1372,7 +1393,6 @@ class ManaWallDialog(basedialog.BaseDialog):
         # TODO self.update_active_zones()
       elif item['event'] == 'config-zone-added' or item['event'] == 'config-zone-updated' or \
            item['event'] == 'config-zone-renamed' or item['event'] == 'config-zone-removed':
-        print(item['event'], item['value']) #TODO remove
         zone = item['value']
         if not self.runtime_view:
           selected_configureViewItem = self.configureViewCombobox.selectedItem()
@@ -1391,19 +1411,27 @@ class ManaWallDialog(basedialog.BaseDialog):
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-      elif item['event'] == 'config-service-changed':
+      elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
+           item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
         service = item['value']
         if not self.runtime_view:
-          item = self.configureViewCombobox.selectedItem()
-          if item == self.configureViews['services']['item']:
+          selected_configureViewItem = self.configureViewCombobox.selectedItem()
+          if selected_configureViewItem == self.configureViews['services']['item']:
             # Services selected
             selected_service = None
             selected_item = self.selectedConfigurationCombo.selectedItem()
             if selected_item:
               selected_service = selected_item.label()
             self.load_services(selected_service)
+            if item['event'] == 'config-service-updated':
+              configure_item = self.configureCombobox.selectedItem()
+              if configure_item == self.serviceConfigurationView['ports']['item']:
+                self._fillRPPort("service_ports")
+                if self.buttons is not None:
+                  # disabling/enabling edit and remove buttons accordingly
+                  self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                  self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
       elif item['event'] == 'service-added' or item['event'] == 'service-removed':
-        print(item['event'], item['value']) #TODO remove
         # runtime and view zone and service is selected
         view_item      = self.configureViewCombobox.selectedItem()
         configure_item = self.configureCombobox.selectedItem()
@@ -1416,7 +1444,6 @@ class ManaWallDialog(basedialog.BaseDialog):
             if value['zone'] == selected_zone.label():
               self._fillRPServices()
       elif item['event'] == 'port-added' or item['event'] == 'port-removed':
-        print(item['event'], item['value']) #TODO remove
         # runtime and view zone and port is selected
         view_item      = self.configureViewCombobox.selectedItem()
         configure_item = self.configureCombobox.selectedItem()
