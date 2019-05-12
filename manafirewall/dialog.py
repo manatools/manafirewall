@@ -1430,8 +1430,13 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.load_services(selected_service)
             if item['event'] == 'config-service-updated':
               configure_item = self.configureCombobox.selectedItem()
+              port_type = None
               if configure_item == self.serviceConfigurationView['ports']['item']:
-                self._fillRPPort("service_ports")
+                port_type = "service_ports"
+              elif configure_item == self.serviceConfigurationView['source_ports']['item']:
+                port_type = "service_sourceports"
+              if port_type is not None:
+                self._fillRPPort(port_type)
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
