@@ -606,6 +606,63 @@ class ManaWallDialog(basedialog.BaseDialog):
           service.removePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
         service.addPort(newPortInfo['port_range'], newPortInfo['protocol'])
 
+  def _add_edit_source_port(self, add):
+    '''
+    add or edit source port from zone (add is True for new port)
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+
+      oldPortInfo = {'port_range': "", 'protocol': ""}
+      if not add:
+        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        if selected_portitem:
+          oldPortInfo['port_range'] = selected_portitem.cell(0).label()
+          oldPortInfo['protocol']   = selected_portitem.cell(1).label()
+
+      dlg = portDialog.PortDialog(oldPortInfo)
+      newPortInfo = dlg.run()
+      # Cancelled if None is returned
+      if newPortInfo is None:
+        return
+
+      if oldPortInfo['port_range'] == newPortInfo['port_range'] and \
+          oldPortInfo['protocol'] == newPortInfo['protocol']:
+        # nothing to change
+        return
+
+      if self.runtime_view:
+        if not self.fw.querySourcePort(selected_zone, newPortInfo['port_range'], newPortInfo['protocol']):
+          self.fw.addSourcePort(selected_zone, newPortInfo['port_range'], newPortInfo['protocol'])
+          if not add:
+            self.fw.removeSourcePort(selected_zone, oldPortInfo['port_range'], oldPortInfo['protocol'])
+      else:
+        zone = self.fw.config().getZoneByName(selected_zone)
+        if not zone.querySourcePort(newPortInfo['port_range'], newPortInfo['protocol']):
+          if not add:
+            zone.removeSourcePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
+          zone.addSourcePort(newPortInfo['port_range'], newPortInfo['protocol'])
+
+  def _del_edit_source_port(self):
+    '''
+    remove the selected source port
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      if selected_portitem:
+        port_range = selected_portitem.cell(0).label()
+        protocol   = selected_portitem.cell(1).label()
+
+        if self.runtime_view:
+          self.fw.removeSourcePort(selected_zone, port_range, protocol)
+        else:
+          zone = self.fw.config().getZoneByName(selected_zone)
+          zone.removeSourcePort(port_range, protocol)
+
+
   def onPortButtonsPressed(self, button):
     '''
     add, edit, remove port has been pressed
@@ -627,7 +684,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           if isZonePort:
             self._add_edit_port(True)
           elif isZoneSourcePort:
-            pass
+            self._add_edit_source_port(True)
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(True)
@@ -639,7 +696,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           if isZonePort:
             self._add_edit_port(False)
           elif isZoneSourcePort:
-            pass
+            self._add_edit_source_port(False)
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(False)
@@ -651,7 +708,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           if isZonePort:
             self._del_edit_port()
           elif isZoneSourcePort:
-            pass
+            self._del_edit_source_port()
         elif isServices:
           if isServicePort:
             self._service_conf_del_edit_port()
