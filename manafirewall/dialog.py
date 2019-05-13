@@ -324,9 +324,9 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons = { 'add' : None, 'edit': None, 'remove': None }
       align = self.factory.createLeft(container)
       hbox = self.factory.createHBox(align)
-      buttons['add']    = self.factory.createPushButton(hbox, _("Add"))
-      buttons['edit']   = self.factory.createPushButton(hbox, _("Edit"))
-      buttons['remove'] = self.factory.createPushButton(hbox, _("Remove"))
+      buttons['add']    = self.factory.createPushButton(hbox, _("A&dd"))
+      buttons['edit']   = self.factory.createPushButton(hbox, _("&Edit"))
+      buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
     return buttons
 
   def _replacePointPort(self, context):
