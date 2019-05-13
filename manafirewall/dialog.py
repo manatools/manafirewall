@@ -1576,8 +1576,21 @@ class ManaWallDialog(basedialog.BaseDialog):
                 self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                 self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
       elif item['event'] == 'source-port-added' or item['event'] == 'source-port-removed':
-        pass
-
+        # runtime and view zone and port is selected
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['source_ports']['item']:
+          value = item['value']
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if value['zone'] == selected_zone.label():
+              self._fillRPPort("zone_sourceports")
+              if self.buttons is not None:
+                # disabling/enabling edit and remove buttons accordingly
+                self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
 
     except Empty as e:
       pass
