@@ -544,30 +544,104 @@ class ManaWallDialog(basedialog.BaseDialog):
             zone.removePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
           zone.addPort(newPortInfo['port_range'], newPortInfo['protocol'])
 
+  def _service_conf_del_edit_port(self):
+    '''
+    remove the selected port from a seervice
+    '''
+    selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_serviceitem:
+      active_service = selected_serviceitem.label()
+      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      if selected_portitem:
+        port_range = selected_portitem.cell(0).label()
+        protocol   = selected_portitem.cell(1).label()
 
+        service = self.fw.config().getServiceByName(active_service)
+        service.removePort(port_range, protocol)
+
+  def _service_conf_add_edit_port(self, add):
+    '''
+    add, edit or remove port from a service (add is True for new port)
+    '''
+    selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_serviceitem:
+      active_service = selected_serviceitem.label()
+
+      oldPortInfo = {'port_range': "", 'protocol': ""}
+      if not add:
+        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        if selected_portitem:
+          oldPortInfo['port_range'] = selected_portitem.cell(0).label()
+          oldPortInfo['protocol']   = selected_portitem.cell(1).label()
+
+      dlg = portDialog.PortDialog(oldPortInfo)
+      newPortInfo = dlg.run()
+      if newPortInfo is None:
+        # Cancelled if None is returned
+        return
+
+      if oldPortInfo['port_range'] == newPortInfo['port_range'] and \
+          oldPortInfo['protocol'] == newPortInfo['protocol']:
+        # nothing to change
+        return
+
+      service = self.fw.config().getServiceByName(active_service)
+      if not service.queryPort(newPortInfo['port_range'], newPortInfo['protocol']):
+        if not add:
+          service.removePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
+        service.addPort(newPortInfo['port_range'], newPortInfo['protocol'])
 
   def onPortButtonsPressed(self, button):
     '''
     add, edit, remove port has been pressed
     '''
-    item = self.configureViewCombobox.selectedItem()
-    isZones = (item == self.configureViews['zones']['item'])
+    view_item = self.configureViewCombobox.selectedItem()
+    isZones = (view_item == self.configureViews['zones']['item'])
+    isServices = (view_item == self.configureViews['services']['item'])
     configure_item = self.configureCombobox.selectedItem()
     isZonePort = (configure_item == self.zoneConfigurationView['ports']['item'])
+    isZoneSourcePort = (configure_item == self.zoneConfigurationView['source_ports']['item'])
+    isServicePort = (configure_item == self.serviceConfigurationView['ports']['item'])
+    isServiceSourcePort = (configure_item == self.serviceConfigurationView['source_ports']['item'])
 
     if isinstance(button, yui.YPushButton):
       if button == self.buttons['add']:
         print('Add')
-        if isZones and isZonePort:
-          self._add_edit_port(True)
+        if isZones:
+          if isZonePort:
+            self._add_edit_port(True)
+          elif isZoneSourcePort:
+            pass
+        elif isServices:
+          if isServicePort:
+            self._service_conf_add_edit_port(True)
+          elif isServiceSourcePort:
+            pass
       elif button == self.buttons['edit']:
         print('Edit')
-        if isZones and isZonePort:
-          self._add_edit_port(False)
+        if isZones:
+          if isZonePort:
+            self._add_edit_port(False)
+          elif isZoneSourcePort:
+            pass
+        elif isServices:
+          if isServicePort:
+            self._service_conf_add_edit_port(False)
+          elif isServiceSourcePort:
+            pass
       elif button == self.buttons['remove']:
         print('Remove')
-        if isZones and isZonePort:
-          self._del_edit_port()
+        if isZones:
+          if isZonePort:
+            self._del_edit_port()
+          elif isZoneSourcePort:
+            pass
+        elif isServices:
+          if isServicePort:
+            self._service_conf_del_edit_port()
+          elif isServiceSourcePort:
+            pass
+
       else:
         print('Why here?')
 
