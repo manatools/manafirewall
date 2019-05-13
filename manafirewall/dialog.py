@@ -39,6 +39,9 @@ from firewall import errors
 from firewall.errors import FirewallError
 import gettext
 import time
+import threading
+#we need a glib.MainLoop in TUI :(
+from gi.repository import GLib
 
 from manafirewall.version import __project_version__ as VERSION
 from manafirewall.version import __project_name__ as PROJECT
@@ -65,6 +68,7 @@ def TimeFunction(func):
     newFunc.__doc__ = func.__doc__
     newFunc.__dict__.update(func.__dict__)
     return newFunc
+
 
 class ManaWallDialog(basedialog.BaseDialog):
   '''
@@ -97,6 +101,17 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.fwEventQueue = SimpleQueue()
 
+    if yui.YUI.app().isTextMode():
+      self.glib_loop = GLib.MainLoop()
+      self.glib_thread = threading.Thread(target=self.glib_mainloop, args=(self.glib_loop,))
+      self.glib_thread.start()
+
+
+  def glib_mainloop(self, loop):
+    '''
+    thread function for glib main loop
+    '''
+    loop.run()
 
   def UIlayout(self, layout):
     '''
@@ -145,8 +160,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     col2.setWeight(yui.YD_HORIZ, 80)
 
     self.views = {
-            'runtime'   : {'title' : _("Runtime")},
-            'permanent' : {'title' : _("Permanent")},
+            'runtime'   : {'title' : _("Runtime"), 'item' : None},
+            'permanent' : {'title' : _("Permanent"), 'item' : None},
         }
     ordered_views = [ 'runtime', 'permanent' ]
 
@@ -170,9 +185,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     # mainNotebook (configure combo box)
     # TODO icmp_types, helpers, direct_configurations, lockdown_whitelist
     self.configureViews = {
-            'zones'    : {'title' : _("Zones")},
-            'services' : {'title' : _("Services")},
-            'ipsets'   : {'title' : _("IP Sets")},
+            'zones'    : {'title' : _("Zones"), 'item' : None},
+            'services' : {'title' : _("Services"), 'item' : None},
+            'ipsets'   : {'title' : _("IP Sets"), 'item' : None},
     }
     ordered_configureViews = [ 'zones', 'services', 'ipsets' ]
     self.configureViewCombobox = self.factory.createComboBox(hbox,_("View"))
@@ -205,28 +220,28 @@ class ManaWallDialog(basedialog.BaseDialog):
     ###
     # ZoneNotebook and other (combo box to configure selected thing)
     self.zoneConfigurationView = {
-            'services'        : {'title' : _("Services")},
-            'ports'           : {'title' : _("Ports")},
-            'protocols'       : {'title' : _("Protocols")},
-            'source_ports'    : {'title' : _("Source Ports")},
-            'masquerading'    : {'title' : _("Masquerading")},
-            'port_forwarding' : {'title' : _("Port Forwarding")},
-            'icmp_filter'     : {'title' : _("ICMP Filter")},
-            'rich_rules'      : {'title' : _("Rich Rules")},
-            'interfaces'      : {'title' : _("Interfaces")},
-            'sources'         : {'title' : _("Sources")},
+            'services'        : {'title' : _("Services"), 'item' : None},
+            'ports'           : {'title' : _("Ports"), 'item' : None},
+            'protocols'       : {'title' : _("Protocols"), 'item' : None},
+            'source_ports'    : {'title' : _("Source Ports"), 'item' : None},
+            'masquerading'    : {'title' : _("Masquerading"), 'item' : None},
+            'port_forwarding' : {'title' : _("Port Forwarding"), 'item' : None},
+            'icmp_filter'     : {'title' : _("ICMP Filter"), 'item' : None},
+            'rich_rules'      : {'title' : _("Rich Rules"), 'item' : None},
+            'interfaces'      : {'title' : _("Interfaces"), 'item' : None},
+            'sources'         : {'title' : _("Sources"), 'item' : None},
     }
     # ServiceNotebook
     self.serviceConfigurationView = {
-      'ports'         : {'title' : _("Ports")},
-      'protocols'     : {'title' : _("Protocols")},
-      'source_ports'  : {'title' : _("Source Ports")},
-      'modules'       : {'title' : _("Modules")},
-      'destinations'  : {'title' : _("Destinations")},
+      'ports'         : {'title' : _("Ports"), 'item' : None},
+      'protocols'     : {'title' : _("Protocols"), 'item' : None},
+      'source_ports'  : {'title' : _("Source Ports"), 'item' : None},
+      'modules'       : {'title' : _("Modules"), 'item' : None},
+      'destinations'  : {'title' : _("Destinations"), 'item' : None},
     }
     # ServiceNotebook
     self.ipsecConfigurationView = {
-      'entries'       : {'title' : _("Entries")},
+      'entries'       : {'title' : _("Entries"), 'item' : None},
     }
     self.configureCombobox = self.factory.createComboBox(hbox,_("Configure"))
     # adding a dummy item to enlarge combobox
@@ -598,6 +613,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     view_item = self.configureViewCombobox.selectedItem()
     isZones = (view_item == self.configureViews['zones']['item'])
     isServices = (view_item == self.configureViews['services']['item'])
+
     configure_item = self.configureCombobox.selectedItem()
     isZonePort = (configure_item == self.zoneConfigurationView['ports']['item'])
     isZoneSourcePort = (configure_item == self.zoneConfigurationView['source_ports']['item'])
@@ -742,8 +758,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("port-removed", self.port_removed_cb)
     #self.fw.connect("protocol-added", self.protocol_added_cb)
     #self.fw.connect("protocol-removed", self.protocol_removed_cb)
-    #self.fw.connect("source-port-added", self.source_port_added_cb)
-    #self.fw.connect("source-port-removed", self.source_port_removed_cb)
+    self.fw.connect("source-port-added", self.source_port_added_cb)
+    self.fw.connect("source-port-removed", self.source_port_removed_cb)
 
     self.fw.connect("config:zone-added",   self.conf_zone_added_cb)
     self.fw.connect("config:zone-updated", self.conf_zone_updated_cb)
@@ -961,6 +977,18 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fwEventQueue.put({'event': "port-removed", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
 
+  def source_port_added_cb(self, zone, port, protocol, timeout):
+    '''
+    source port has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "source-port-added", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
+
+  def source_port_removed_cb(self, zone, port, protocol):
+    '''
+    source port has been removed at run time
+    '''
+    self.fwEventQueue.put({'event': "source-port-removed", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
+
   def zone_of_interface_changed_cb(self, zone, interface):
     print("zone_of_interface_changed_cb", zone, interface)
 
@@ -983,8 +1011,12 @@ class ManaWallDialog(basedialog.BaseDialog):
       print ("Quit menu pressed")
     else:
       print ("Quit button pressed")
+    if yui.YUI.app().isTextMode():
+      self.glib_loop.quit()
     # BaseDialog needs to force to exit the handle event loop
     self.ExitLoop()
+    if yui.YUI.app().isTextMode():
+      self.glib_thread.join()
 
 
   def onChangeBinding(self, obj):
@@ -1543,6 +1575,9 @@ class ManaWallDialog(basedialog.BaseDialog):
                 # disabling/enabling edit and remove buttons accordingly
                 self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                 self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+      elif item['event'] == 'source-port-added' or item['event'] == 'source-port-removed':
+        pass
+
 
     except Empty as e:
       pass
