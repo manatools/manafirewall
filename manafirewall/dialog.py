@@ -413,8 +413,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.portList.addItems(itemCollection)
     self.portList.doneMultipleChanges()
 
-
-
   def _replacePointServices(self):
     '''
     draw services frame
@@ -479,6 +477,61 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.serviceList.deleteAllItems()
       self.serviceList.addItems(itemCollection)
       self.serviceList.doneMultipleChanges()
+
+  def _replacePointForwardPorts(self):
+    '''
+    draw Port frame
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      print ("Error there are still widget events for ReplacePoint") #TODO log
+      return
+
+    if self.replacePoint.hasChildren():
+      print ("Error there are still widgets into ReplacePoint") #TODO log
+      return
+
+    vbox = self.factory.createVBox(self.replacePoint)
+
+    port_header = yui.YTableHeader()
+    columns = [ _('Port'), _('Protocol'), _("To Port"), _("To Address") ]
+
+    for col in (columns):
+        port_header.addColumn(col)
+
+    self.portForwardList = self.factory.createTable(vbox, port_header, False)
+
+    self.buttons = self._AddEditRemoveButtons(vbox)
+    for op in self.buttons.keys():
+      self.eventManager.addWidgetEvent(self.buttons[op], self.onPortButtonsPressed, True)
+      self.replacePointWidgetsAndCallbacks.append({'widget': self.buttons[op], 'action': self.onPortButtonsPressed})
+
+    self._fillRPForwardPorts()
+
+
+  def _fillRPForwardPorts(self):
+    '''
+    fill current forwarding ports into replace point
+    '''
+    settings = self._zoneSettings()
+    if settings:
+      ports = settings.getForwardPorts()
+      current_port = ""
+      current = self.portForwardList.selectedItem()
+      #### TODO try to select the same
+
+      v = []
+      for port in ports:
+        item = yui.YTableItem(*port)
+        #item.setSelected(service == current_service)
+        item.this.own(False)
+        v.append(item)
+
+      #NOTE workaround to get YItemCollection working in python
+      itemCollection = yui.YItemCollection(v)
+      self.portForwardList.startMultipleChanges()
+      self.portForwardList.deleteAllItems()
+      self.portForwardList.addItems(itemCollection)
+      self.portForwardList.doneMultipleChanges()
 
   def onRPServiceChecked(self, widgetEvent):
     '''
@@ -721,6 +774,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     configure_item = self.configureCombobox.selectedItem()
     isZonePort = (configure_item == self.zoneConfigurationView['ports']['item'])
     isZoneSourcePort = (configure_item == self.zoneConfigurationView['source_ports']['item'])
+    isZoneForwardPort = (configure_item == self.zoneConfigurationView['port_forwarding']['item'])
     isServicePort = (configure_item == self.serviceConfigurationView['ports']['item'])
     isServiceSourcePort = (configure_item == self.serviceConfigurationView['source_ports']['item'])
 
@@ -732,6 +786,8 @@ class ManaWallDialog(basedialog.BaseDialog):
             self._add_edit_port(True)
           elif isZoneSourcePort:
             self._add_edit_source_port(True)
+          elif isZoneForwardPort:
+            pass
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(True)
@@ -744,6 +800,8 @@ class ManaWallDialog(basedialog.BaseDialog):
             self._add_edit_port(False)
           elif isZoneSourcePort:
             self._add_edit_source_port(False)
+          elif isZoneForwardPort:
+            pass
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(False)
@@ -756,6 +814,8 @@ class ManaWallDialog(basedialog.BaseDialog):
             self._del_edit_port()
           elif isZoneSourcePort:
             self._del_edit_source_port()
+          elif isZoneForwardPort:
+            pass
         elif isServices:
           if isServicePort:
             self._service_conf_del_edit_port()
@@ -864,6 +924,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     #self.fw.connect("protocol-removed", self.protocol_removed_cb)
     self.fw.connect("source-port-added", self.source_port_added_cb)
     self.fw.connect("source-port-removed", self.source_port_removed_cb)
+    #self.fw.connect("masquerade-added", self.masquerade_added_cb)
+    #self.fw.connect("masquerade-removed", self.masquerade_removed_cb)
+    self.fw.connect("forward-port-added", self.forward_port_added_cb)
+    self.fw.connect("forward-port-removed", self.forward_port_removed_cb)
 
     self.fw.connect("config:zone-added",   self.conf_zone_added_cb)
     self.fw.connect("config:zone-updated", self.conf_zone_updated_cb)
@@ -1092,6 +1156,19 @@ class ManaWallDialog(basedialog.BaseDialog):
     source port has been removed at run time
     '''
     self.fwEventQueue.put({'event': "source-port-removed", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
+
+  def forward_port_added_cb(self, zone, port, protocol, to_port, to_address, timeout):
+    '''
+    forward port has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "forward-port-added", 'value': {'zone' : zone, 'to_port': to_port, 'protocol' : protocol, 'to_address': to_address } })
+
+  def forward_port_removed_cb(self, zone, port, protocol, to_port, to_address):
+    '''
+    forward port has been removed at run time
+    '''
+    self.fwEventQueue.put({'event': "forward-port-removed", 'value': {'zone' : zone, 'to_port': to_port, 'protocol' : protocol, 'to_address': to_address } })
+
 
   def zone_of_interface_changed_cb(self, zone, interface):
     print("zone_of_interface_changed_cb", zone, interface)
@@ -1424,8 +1501,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       settings.setDescription(newServiceBaseInfo['description'])
       self.fw.config().addService(newServiceBaseInfo['name'], settings)
 
-
-
   def onSelectedConfigurationComboChanged(self):
     '''
     depending on what configuration view is selected it manages zones,
@@ -1525,6 +1600,11 @@ class ManaWallDialog(basedialog.BaseDialog):
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+        elif config_item == self.zoneConfigurationView['port_forwarding']['item']:
+          self._replacePointForwardPorts()
+          if self.buttons is not None:
+            self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
       elif item == self.configureViews['services']['item']:
         #Services selected
         if config_item == self.serviceConfigurationView['ports']['item']:
@@ -1618,14 +1698,24 @@ class ManaWallDialog(basedialog.BaseDialog):
               port_type = None
               if configure_item == self.zoneConfigurationView['ports']['item']:
                 port_type = "zone_ports"
-              elif configure_item == self.zoneConfigurationView['source_ports']['item']:
-                port_type = "zone_sourceports"
-              if port_type is not None:
                 self._fillRPPort(port_type)
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+              elif configure_item == self.zoneConfigurationView['source_ports']['item']:
+                port_type = "zone_sourceports"
+                self._fillRPPort(port_type)
+                if self.buttons is not None:
+                  # disabling/enabling edit and remove buttons accordingly
+                  self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                  self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+              elif configure_item == self.zoneConfigurationView['port_forwarding']['item']:
+                self._fillRPForwardPorts()
+                if self.buttons is not None:
+                  # disabling/enabling edit and remove buttons accordingly
+                  self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
+                  self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
       elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
            item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
         service = item['value']
@@ -1695,6 +1785,22 @@ class ManaWallDialog(basedialog.BaseDialog):
                 # disabling/enabling edit and remove buttons accordingly
                 self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                 self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+      elif item['event'] == 'forward-port-added' or item['event'] == 'forward-port-removed':
+        # runtime and view zone and port forwarding is selected
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['port_forwarding']['item']:
+          value = item['value']
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if value['zone'] == selected_zone.label():
+              self._fillRPForwardPorts()
+              if self.buttons is not None:
+                # disabling/enabling edit and remove buttons accordingly
+                self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
+                self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
 
     except Empty as e:
       pass
