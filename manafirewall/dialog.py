@@ -51,6 +51,7 @@ from queue import SimpleQueue, Empty
 import manafirewall.zoneBaseDialog as zoneBaseDialog
 import manafirewall.serviceBaseDialog as serviceBaseDialog
 import manafirewall.portDialog as portDialog
+import manafirewall.forwardDialog as forwardDialog
 
 def TimeFunction(func):
     """
@@ -762,6 +763,85 @@ class ManaWallDialog(basedialog.BaseDialog):
           service.removeSourcePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
         service.addSourcePort(newPortInfo['port_range'], newPortInfo['protocol'])
 
+  def _add_edit_forward_port(self, add):
+    '''
+    add or edit forward port from zone (add is True for new port)
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+
+      oldPortForwardingInfo = {'port': "", 'protocol': "", 'to_port': "", 'to_address': "" }
+      if not add:
+        selected_portitem = yui.toYTableItem(self.portForwardList.selectedItem());
+        if selected_portitem:
+          oldPortForwardingInfo['port']       = selected_portitem.cell(0).label() if selected_portitem.cell(0) else ""
+          oldPortForwardingInfo['protocol']   = selected_portitem.cell(1).label() if selected_portitem.cell(1) else ""
+          oldPortForwardingInfo['to_port']    = selected_portitem.cell(2).label() if selected_portitem.cell(2) else ""
+          oldPortForwardingInfo['to_address'] = selected_portitem.cell(3).label() if selected_portitem.cell(3) else ""
+
+      dlg = forwardDialog.PortForwardingDialog(oldPortForwardingInfo)
+      newPortForwardingInfo = dlg.run()
+      # Cancelled if None is returned
+      if newPortForwardingInfo is None:
+        return
+
+      if oldPortForwardingInfo['port'] == newPortForwardingInfo['port'] and \
+          oldPortForwardingInfo['to_port'] == newPortForwardingInfo['to_port'] and \
+          oldPortForwardingInfo['to_address'] == newPortForwardingInfo['to_address'] and \
+          oldPortForwardingInfo['protocol'] == newPortForwardingInfo['protocol']:
+        # nothing to change
+        return
+
+      if self.runtime_view:
+        if not self.fw.queryForwardPort(selected_zone, newPortForwardingInfo['port'], newPortForwardingInfo['protocol'],
+                                        newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address']):
+          self.fw.addForwardPort(selected_zone, newPortForwardingInfo['port'], newPortForwardingInfo['protocol'],
+                                 newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address'])
+          if not add:
+            self.fw.removeForwardPort(selected_zone, oldPortForwardingInfo['port'], oldPortForwardingInfo['protocol'],
+                                       oldPortForwardingInfo['to_port'], oldPortForwardingInfo['to_address'])
+          if add and newPortForwardingInfo['to_address'] and not self.fw.queryMasquerade(selected_zone):
+            if common.askYesOrNo({'title': _("Information needed"),
+                                  'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone ?"),
+                                  'richtext': True, 'default_button': 1}):
+              self.fw.addMasquerade(selected_zone)
+      else:
+        zone = self.fw.config().getZoneByName(selected_zone)
+        if not zone.queryForwardPort(newPortForwardingInfo['port'], newPortForwardingInfo['protocol'],
+                                     newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address']):
+          if not add:
+            zone.removeForwardPort(oldPortForwardingInfo['port'], oldPortForwardingInfo['protocol'],
+                                   oldPortForwardingInfo['to_port'], oldPortForwardingInfo['to_address'])
+            zone.addForwardPort(newPortForwardingInfo['port'], newPortForwardingInfo['protocol'],
+                                newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address'])
+            if add and newPortForwardingInfo['to_address'] and not zone.getMasquerade():
+              if common.askYesOrNo({'title': _("Information needed"),
+                                    'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone ?"),
+                                    'richtext': True, 'default_button': 1}):
+                zone.setMasquerade(True)
+
+  def _del_edit_forward_port(self):
+    '''
+    remove the selected forward port
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      selected_portitem = yui.toYTableItem(self.portForwardList.selectedItem());
+      if selected_portitem:
+        port       = selected_portitem.cell(0).label() if selected_portitem.cell(0) else ""
+        protocol   = selected_portitem.cell(1).label() if selected_portitem.cell(1) else ""
+        to_port    = selected_portitem.cell(2).label() if selected_portitem.cell(2) else ""
+        to_address = selected_portitem.cell(3).label() if selected_portitem.cell(3) else ""
+
+        if self.runtime_view:
+            self.fw.removeForwardPort(selected_zone, port, protocol,
+                                      to_port, to_address)
+        else:
+            zone = self.fw.config().getZoneByName(selected_zone)
+            zone.removeForwardPort(port, protocol, to_port, to_address)
+
 
   def onPortButtonsPressed(self, button):
     '''
@@ -787,7 +867,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isZoneSourcePort:
             self._add_edit_source_port(True)
           elif isZoneForwardPort:
-            pass
+            self._add_edit_forward_port(True)
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(True)
@@ -801,7 +881,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isZoneSourcePort:
             self._add_edit_source_port(False)
           elif isZoneForwardPort:
-            pass
+            self._add_edit_forward_port(False)
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(False)
@@ -815,7 +895,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isZoneSourcePort:
             self._del_edit_source_port()
           elif isZoneForwardPort:
-            pass
+            self._del_edit_forward_port()
         elif isServices:
           if isServicePort:
             self._service_conf_del_edit_port()
