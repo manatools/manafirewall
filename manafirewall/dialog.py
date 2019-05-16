@@ -391,7 +391,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     current_protocol = ""
     current = self.protocolList.selectedItem()
     if current:
-      current_protocol = current_protocol.label()
+      current_protocol = current.label()
 
     v = []
     for protocol in protocols:
@@ -1063,8 +1063,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("service-removed", self.service_removed_cb)
     self.fw.connect("port-added", self.port_added_cb)
     self.fw.connect("port-removed", self.port_removed_cb)
-    #self.fw.connect("protocol-added", self.protocol_added_cb)
-    #self.fw.connect("protocol-removed", self.protocol_removed_cb)
+    self.fw.connect("protocol-added", self.protocol_added_cb)
+    self.fw.connect("protocol-removed", self.protocol_removed_cb)
     self.fw.connect("source-port-added", self.source_port_added_cb)
     self.fw.connect("source-port-removed", self.source_port_removed_cb)
     #self.fw.connect("masquerade-added", self.masquerade_added_cb)
@@ -1287,6 +1287,18 @@ class ManaWallDialog(basedialog.BaseDialog):
     port has been removed at run time
     '''
     self.fwEventQueue.put({'event': "port-removed", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
+
+  def protocol_added_cb(self, zone, protocol, timeout):
+    '''
+    protocol has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "protocol-added", 'value': {'zone' : zone, 'protocol' : protocol}})
+
+  def protocol_removed_cb(self, zone, protocol):
+    '''
+    protocol has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "protocol-removed", 'value': {'zone' : zone, 'protocol' : protocol}})
 
   def source_port_added_cb(self, zone, port, protocol, timeout):
     '''
@@ -1727,6 +1739,11 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.replacePointWidgetsAndCallbacks.clear()
 
       self.replacePoint.deleteChildren()
+      # cleaning entry points (we could use just one)
+      self.portForwardList = None
+      self.portList        = None
+      self.serviceList     = None
+      self.protocolList    = None
 
       item = self.configureViewCombobox.selectedItem()
       if item == self.configureViews['zones']['item']:
@@ -1877,6 +1894,12 @@ class ManaWallDialog(basedialog.BaseDialog):
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
+              elif configure_item == self.zoneConfigurationView['protocols']['item']:
+                self._fillRPProtocols('zone_protocols')
+                if self.buttons is not None:
+                  # disabling/enabling edit and remove buttons accordingly
+                  self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
+                  self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
       elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
            item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
         service = item['value']
@@ -1894,14 +1917,24 @@ class ManaWallDialog(basedialog.BaseDialog):
               port_type = None
               if configure_item == self.serviceConfigurationView['ports']['item']:
                 port_type = "service_ports"
-              elif configure_item == self.serviceConfigurationView['source_ports']['item']:
-                port_type = "service_sourceports"
-              if port_type is not None:
                 self._fillRPPort(port_type)
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+              elif configure_item == self.serviceConfigurationView['source_ports']['item']:
+                port_type = "service_sourceports"
+                self._fillRPPort(port_type)
+                if self.buttons is not None:
+                  # disabling/enabling edit and remove buttons accordingly
+                  self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                  self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+              elif configure_item == self.serviceConfigurationView['protocols']['item']:
+                self._fillRPProtocols('service_protocols')
+                if self.buttons is not None:
+                  # disabling/enabling edit and remove buttons accordingly
+                  self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
+                  self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
       elif item['event'] == 'service-added' or item['event'] == 'service-removed':
         # runtime and view zone and service is selected
         view_item      = self.configureViewCombobox.selectedItem()
@@ -1962,7 +1995,22 @@ class ManaWallDialog(basedialog.BaseDialog):
                 # disabling/enabling edit and remove buttons accordingly
                 self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
                 self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
-
+      elif item['event'] == 'protocol-added' or item['event'] == 'protocol-removed':
+        # runtime and view zone and port forwarding is selected
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['protocols']['item']:
+          value = item['value']
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if value['zone'] == selected_zone.label():
+              self._fillRPProtocols('zone_protocols')
+              if self.buttons is not None:
+                # disabling/enabling edit and remove buttons accordingly
+                self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
+                self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
     except Empty as e:
       pass
 
