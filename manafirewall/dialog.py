@@ -52,6 +52,7 @@ import manafirewall.zoneBaseDialog as zoneBaseDialog
 import manafirewall.serviceBaseDialog as serviceBaseDialog
 import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
+import manafirewall.protocolDialog as protocolDialog
 
 def TimeFunction(func):
     """
@@ -723,6 +724,59 @@ class ManaWallDialog(basedialog.BaseDialog):
           service.removePort(oldPortInfo['port_range'], oldPortInfo['protocol'])
         service.addPort(newPortInfo['port_range'], newPortInfo['protocol'])
 
+  def _add_edit_protocol(self, add):
+    '''
+    add or edit port (add is True for new port)
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+
+      oldInfo = {'protocol': ""}
+      if not add:
+        selected_protocol = yui.toYTableItem(self.protocolList.selectedItem());
+        if selected_protocol:
+          oldInfo['protocol'] = selected_protocol.cell(0).label()
+
+      dlg = protocolDialog.ProtocolDialog(oldInfo)
+      newInfo = dlg.run()
+      # Cancelled if None is returned
+      if newInfo is None:
+        return
+
+      if oldInfo['protocol'] == newInfo['protocol']:
+        # nothing to change
+        return
+
+      if self.runtime_view:
+        if not self.fw.queryProtocol(selected_zone, newInfo['protocol']):
+          self.fw.addProtocol(selected_zone, newInfo['protocol'])
+          if not add:
+            self.fw.removeProtocol(selected_zone, oldInfo['protocol'])
+      else:
+        zone = self.fw.config().getZoneByName(selected_zone)
+        if not zone.queryProtocol(newInfo['protocol']):
+          if not add:
+            zone.removeProtocol(oldInfo['protocol'])
+          zone.addProtocol(newInfo['protocol'])
+
+  def _del_edit_protocol(self):
+    '''
+    remove the selected protocol
+    '''
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      selected_portitem = yui.toYTableItem(self.protocolList.selectedItem());
+      if selected_portitem:
+        protocol   = selected_portitem.cell(0).label()
+
+        if self.runtime_view:
+          self.fw.removeProtocol(selected_zone, protocol)
+        else:
+          zone = self.fw.config().getZoneByName(selected_zone)
+          zone.removeProtocol(protocol)
+
   def _add_edit_source_port(self, add):
     '''
     add or edit source port from zone (add is True for new port)
@@ -918,8 +972,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     isZonePort = (configure_item == self.zoneConfigurationView['ports']['item'])
     isZoneSourcePort = (configure_item == self.zoneConfigurationView['source_ports']['item'])
     isZoneForwardPort = (configure_item == self.zoneConfigurationView['port_forwarding']['item'])
+    isZoneProtocol = (configure_item == self.zoneConfigurationView['protocols']['item'])
     isServicePort = (configure_item == self.serviceConfigurationView['ports']['item'])
     isServiceSourcePort = (configure_item == self.serviceConfigurationView['source_ports']['item'])
+    isServiceProtocol = (configure_item == self.serviceConfigurationView['protocols']['item'])
 
     if isinstance(button, yui.YPushButton):
       if button == self.buttons['add']:
@@ -931,11 +987,15 @@ class ManaWallDialog(basedialog.BaseDialog):
             self._add_edit_source_port(True)
           elif isZoneForwardPort:
             self._add_edit_forward_port(True)
+          elif isZoneProtocol:
+            self._add_edit_protocol(True)
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(True)
           elif isServiceSourcePort:
             self._service_conf_add_edit_source_port(True)
+          elif isServiceProtocol:
+            pass
       elif button == self.buttons['edit']:
         print('Edit')
         if isZones:
@@ -945,11 +1005,15 @@ class ManaWallDialog(basedialog.BaseDialog):
             self._add_edit_source_port(False)
           elif isZoneForwardPort:
             self._add_edit_forward_port(False)
+          elif isZoneProtocol:
+            self._add_edit_protocol(False)
         elif isServices:
           if isServicePort:
             self._service_conf_add_edit_port(False)
           elif isServiceSourcePort:
             self._service_conf_add_edit_source_port(False)
+          elif isServiceProtocol:
+            pass
       elif button == self.buttons['remove']:
         print('Remove')
         if isZones:
@@ -959,12 +1023,15 @@ class ManaWallDialog(basedialog.BaseDialog):
             self._del_edit_source_port()
           elif isZoneForwardPort:
             self._del_edit_forward_port()
+          elif isZoneProtocol:
+            self._del_edit_protocol()
         elif isServices:
           if isServicePort:
             self._service_conf_del_edit_port()
           elif isServiceSourcePort:
             self._service_conf_del_edit_source_port()
-
+          elif isServiceProtocol:
+            pass
       else:
         print('Why here?')
 
