@@ -346,6 +346,37 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
     return buttons
 
+  def _replacePointMasquerade(self):
+    '''
+    draw Port frame
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      print ("Error there are still widget events for ReplacePoint") #TODO log
+      return
+
+    if self.replacePoint.hasChildren():
+      print ("Error there are still widgets into ReplacePoint") #TODO log
+      return
+
+    vbox = self.factory.createVBox(self.replacePoint)
+    align = self.factory.createLeft(vbox)
+    self.masquerade   = self.factory.createCheckBox(align, _("Masquerade zone"), False)
+    self.masquerade.setNotify(True)
+
+    self.eventManager.addWidgetEvent(self.masquerade, self.onZoneMasquerade)
+    self.replacePointWidgetsAndCallbacks.append({'widget': self.masquerade, 'action': self.onZoneMasquerade})
+    self._fillRPMasquerade()
+
+  def _fillRPMasquerade(self):
+    '''
+    sets masquerade value
+    '''
+    settings = self._zoneSettings()
+    masquerade = settings.getMasquerade()
+    self.masquerade.setNotify(False)
+    self.masquerade.setValue(yui.YCheckBox_on if masquerade else yui.YCheckBox_off)
+    self.masquerade.setNotify(True)
+
   def _replacePointProtocols(self, context):
     '''
     draw Port frame
@@ -407,8 +438,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.protocolList.deleteAllItems()
     self.protocolList.addItems(itemCollection)
     self.protocolList.doneMultipleChanges()
-
-
 
   def _replacePointPort(self, context):
     '''
@@ -1003,6 +1032,27 @@ class ManaWallDialog(basedialog.BaseDialog):
         service = self.fw.config().getServiceByName(active_service)
         service.removeProtocol(protocol)
 
+  def onZoneMasquerade(self):
+    '''
+    Zone masquerade has changed
+    '''
+    view_item = self.configureViewCombobox.selectedItem()
+    if view_item == self.configureViews['zones']['item']:
+      selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+      if selected_zoneitem:
+        selected_zone = selected_zoneitem.label()
+        checked = self.masquerade.isChecked()
+        if self.runtime_view:
+          if checked:
+            if not self.fw.queryMasquerade(selected_zone):
+              self.fw.addMasquerade(selected_zone)
+          else:
+            if self.fw.queryMasquerade(selected_zone):
+              self.fw.removeMasquerade(selected_zone)
+        else:
+          zone = self.fw.config().getZoneByName(selected_zone)
+          zone.setMasquerade(checked)
+
   def onPortButtonsPressed(self, button):
     '''
     add, edit, remove port has been pressed
@@ -1177,8 +1227,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("protocol-removed", self.protocol_removed_cb)
     self.fw.connect("source-port-added", self.source_port_added_cb)
     self.fw.connect("source-port-removed", self.source_port_removed_cb)
-    #self.fw.connect("masquerade-added", self.masquerade_added_cb)
-    #self.fw.connect("masquerade-removed", self.masquerade_removed_cb)
+    self.fw.connect("masquerade-added", self.masquerade_added_cb)
+    self.fw.connect("masquerade-removed", self.masquerade_removed_cb)
     self.fw.connect("forward-port-added", self.forward_port_added_cb)
     self.fw.connect("forward-port-removed", self.forward_port_removed_cb)
 
@@ -1421,6 +1471,18 @@ class ManaWallDialog(basedialog.BaseDialog):
     source port has been removed at run time
     '''
     self.fwEventQueue.put({'event': "source-port-removed", 'value': {'zone' : zone, 'port': port, 'protocol' : protocol } })
+
+  def masquerade_added_cb(self, zone, timeout):
+    '''
+    masquerade has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "masquerade-added", 'value': zone})
+
+  def masquerade_removed_cb(self, zone):
+    '''
+    masquerade has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "masquerade-removed", 'value': zone})
 
   def forward_port_added_cb(self, zone, port, protocol, to_port, to_address, timeout):
     '''
@@ -1884,6 +1946,8 @@ class ManaWallDialog(basedialog.BaseDialog):
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
+        elif config_item == self.zoneConfigurationView['masquerading']['item']:
+          self._replacePointMasquerade()
       elif item == self.configureViews['services']['item']:
         #Services selected
         if config_item == self.serviceConfigurationView['ports']['item']:
@@ -2010,6 +2074,8 @@ class ManaWallDialog(basedialog.BaseDialog):
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
+              elif configure_item == self.zoneConfigurationView['masquerading']['item']:
+                self._fillRPMasquerade()
       elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
            item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
         service = item['value']
@@ -2121,6 +2187,35 @@ class ManaWallDialog(basedialog.BaseDialog):
                 # disabling/enabling edit and remove buttons accordingly
                 self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
                 self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
+      elif item['event'] == 'masquerade-added':
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['masquerading']['item']:
+          zone = item['value']
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if zone == selected_zone.label():
+              if not self.masquerade.isChecked():
+                self.masquerade.setNotify(False)
+                self.masquerade.setValue(yui.YCheckBox_on)
+                self.masquerade.setNotify(True)
+      elif item['event'] == 'masquerade-removed':
+        view_item      = self.configureViewCombobox.selectedItem()
+        configure_item = self.configureCombobox.selectedItem()
+        if self.runtime_view and \
+          view_item == self.configureViews['zones']['item'] and \
+          configure_item == self.zoneConfigurationView['masquerading']['item']:
+          zone = item['value']
+          selected_zone = self.selectedConfigurationCombo.selectedItem()
+          if selected_zone:
+            if zone == selected_zone.label():
+              if self.masquerade.isChecked():
+                self.masquerade.setNotify(False)
+                self.masquerade.setValue(yui.YCheckBox_off)
+                self.masquerade.setNotify(True)
+
     except Empty as e:
       pass
 
