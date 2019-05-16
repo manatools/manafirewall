@@ -345,6 +345,70 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
     return buttons
 
+  def _replacePointProtocols(self, context):
+    '''
+    draw Port frame
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      print ("Error there are still widget events for ReplacePoint") #TODO log
+      return
+
+    if self.replacePoint.hasChildren():
+      print ("Error there are still widgets into ReplacePoint") #TODO log
+      return
+
+    vbox = self.factory.createVBox(self.replacePoint)
+
+    port_header = yui.YTableHeader()
+    columns = [ _('Protocol') ]
+
+    for col in (columns):
+        port_header.addColumn(col)
+
+    self.protocolList = self.factory.createTable(vbox, port_header, False)
+
+    self.buttons = self._AddEditRemoveButtons(vbox)
+    for op in self.buttons.keys():
+      self.eventManager.addWidgetEvent(self.buttons[op], self.onPortButtonsPressed, True)
+      self.replacePointWidgetsAndCallbacks.append({'widget': self.buttons[op], 'action': self.onPortButtonsPressed})
+
+    self._fillRPProtocols(context)
+
+  def _fillRPProtocols(self, context):
+    '''
+    fill current protocols into replace point
+    '''
+    protocols = None
+    if context == 'zone_protocols':
+      settings = self._zoneSettings()
+      if settings:
+        protocols = settings.getProtocols()
+    elif context == 'service_protocols':
+      settings = self._serviceSettings()
+      if settings:
+        protocols = settings.getProtocols()
+
+    current_protocol = ""
+    current = self.protocolList.selectedItem()
+    if current:
+      current_protocol = current_protocol.label()
+
+    v = []
+    for protocol in protocols:
+      item = yui.YTableItem(protocol)
+      item.setSelected(protocol == current_protocol)
+      item.this.own(False)
+      v.append(item)
+
+    #NOTE workaround to get YItemCollection working in python
+    itemCollection = yui.YItemCollection(v)
+    self.protocolList.startMultipleChanges()
+    self.protocolList.deleteAllItems()
+    self.protocolList.addItems(itemCollection)
+    self.protocolList.doneMultipleChanges()
+
+
+
   def _replacePointPort(self, context):
     '''
     draw Port frame
@@ -507,7 +571,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.replacePointWidgetsAndCallbacks.append({'widget': self.buttons[op], 'action': self.onPortButtonsPressed})
 
     self._fillRPForwardPorts()
-
 
   def _fillRPForwardPorts(self):
     '''
@@ -1671,34 +1734,52 @@ class ManaWallDialog(basedialog.BaseDialog):
         if config_item == self.zoneConfigurationView['services']['item']:
           self._replacePointServices()
         elif config_item == self.zoneConfigurationView['ports']['item']:
+          # ports
           self._replacePointPort('zone_ports')
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
         elif config_item == self.zoneConfigurationView['source_ports']['item']:
+          #source port
           self._replacePointPort('zone_sourceports')
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
         elif config_item == self.zoneConfigurationView['port_forwarding']['item']:
+          # port forwarding
           self._replacePointForwardPorts()
           if self.buttons is not None:
             self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
+        elif config_item == self.zoneConfigurationView['protocols']['item']:
+          # protocols
+          self._replacePointProtocols('zone_protocols')
+          if self.buttons is not None:
+            self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
       elif item == self.configureViews['services']['item']:
         #Services selected
         if config_item == self.serviceConfigurationView['ports']['item']:
+          # ports
           self._replacePointPort('service_ports')
           if self.buttons is not None:
             self.buttons['add'].setEnabled(not self.runtime_view)
             self.buttons['edit'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
-        if config_item == self.serviceConfigurationView['source_ports']['item']:
+        elif config_item == self.serviceConfigurationView['source_ports']['item']:
+          # source ports
           self._replacePointPort('service_sourceports')
           if self.buttons is not None:
             self.buttons['add'].setEnabled(not self.runtime_view)
             self.buttons['edit'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
             self.buttons['remove'].setEnabled(not self.runtime_view and self.portList.itemsCount() > 0)
+        elif config_item == self.serviceConfigurationView['protocols']['item']:
+          # protocols
+          self._replacePointProtocols('service_protocols')
+          if self.buttons is not None:
+            self.buttons['add'].setEnabled(not self.runtime_view)
+            self.buttons['edit'].setEnabled(not self.runtime_view and self.protocolList.itemsCount() > 0)
+            self.buttons['remove'].setEnabled(not self.runtime_view and self.protocolList.itemsCount() > 0)
       elif item == self.configureViews['ipsets']['item']:
         # ip sets selected
         pass
