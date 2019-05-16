@@ -130,10 +130,10 @@ class ProtocolDialog(basedialog.BaseDialog):
     if checked:
       protocol = self.other_protocol.value()
       if not protocol:
-        ui.warningMsgBox({'title': _("Protocol is mandatory"), 'text': _("Please insert a valid protocol")})
+        ui.warningMsgBox({'title': _("Protocol is mandatory"), 'text': _("Please insert a valid protocol (see /etc/protocols)")})
         return
       if not functions.checkProtocol(protocol):
-        ui.warningMsgBox({'title': _("Wrong protocol entry"), 'text': _("Please insert a valid protocol")})
+        ui.warningMsgBox({'title': _("Wrong protocol entry"), 'text': _("Please insert a valid protocol (see /etc/protocols)")})
         return
 
     self._info['protocol'] = protocol
