@@ -679,7 +679,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _service_conf_del_edit_port(self):
     '''
-    remove the selected port from a seervice
+    remove the selected port from a service
     '''
     selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
     if selected_serviceitem:
@@ -726,7 +726,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _add_edit_protocol(self, add):
     '''
-    add or edit port (add is True for new port)
+    add or edit protocol (add is True for new protocol)
     '''
     selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
     if selected_zoneitem:
@@ -835,7 +835,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _service_conf_del_edit_source_port(self):
     '''
-    remove the selected source port from a seervice
+    remove the selected source port from a service
     '''
     selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
     if selected_serviceitem:
@@ -959,6 +959,49 @@ class ManaWallDialog(basedialog.BaseDialog):
             zone = self.fw.config().getZoneByName(selected_zone)
             zone.removeForwardPort(port, protocol, to_port, to_address)
 
+  def _service_conf_add_edit_protocol(self, add):
+    '''
+    add or edit protocol from a service (add is True for new protocol)
+    '''
+    selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_serviceitem:
+      active_service = selected_serviceitem.label()
+
+      oldInfo = {'protocol': ""}
+      if not add:
+        selected_protocol = yui.toYTableItem(self.protocolList.selectedItem());
+        if selected_protocol:
+          oldInfo['protocol'] = selected_protocol.cell(0).label()
+
+      dlg = protocolDialog.ProtocolDialog(oldInfo)
+      newInfo = dlg.run()
+      if newInfo is None:
+        # Cancelled if None is returned
+        return
+
+      if oldInfo['protocol'] == newInfo['protocol']:
+        # nothing to change
+        return
+
+      service = self.fw.config().getServiceByName(active_service)
+      if not service.queryProtocol(newInfo['protocol']):
+        if not add:
+          service.removeProtocol(oldInfo['protocol'])
+        service.addProtocol(newInfo['protocol'])
+
+  def _service_conf_del_edit_protocol(self):
+    '''
+    remove the selected protocol from a service
+    '''
+    selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_serviceitem:
+      active_service = selected_serviceitem.label()
+      selected_portitem = yui.toYTableItem(self.protocolList.selectedItem());
+      if selected_portitem:
+        protocol   = selected_portitem.cell(0).label()
+
+        service = self.fw.config().getServiceByName(active_service)
+        service.removeProtocol(protocol)
 
   def onPortButtonsPressed(self, button):
     '''
@@ -995,7 +1038,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isServiceSourcePort:
             self._service_conf_add_edit_source_port(True)
           elif isServiceProtocol:
-            pass
+            self._service_conf_add_edit_protocol(True)
       elif button == self.buttons['edit']:
         print('Edit')
         if isZones:
@@ -1013,7 +1056,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isServiceSourcePort:
             self._service_conf_add_edit_source_port(False)
           elif isServiceProtocol:
-            pass
+            self._service_conf_add_edit_protocol(False)
       elif button == self.buttons['remove']:
         print('Remove')
         if isZones:
@@ -1031,7 +1074,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isServiceSourcePort:
             self._service_conf_del_edit_source_port()
           elif isServiceProtocol:
-            pass
+            self._service_conf_del_edit_protocol()
       else:
         print('Why here?')
 
