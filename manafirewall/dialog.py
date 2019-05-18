@@ -15,6 +15,7 @@ Author:  Angelo Naselli <anaselli@linux.it>
 import manatools.ui.common as common
 import manatools.ui.basedialog as basedialog
 import manatools.services as mnservices
+import manatools.ui.helpdialog as helpdialog
 import yui
 
 from dbus.exceptions import DBusException
@@ -53,6 +54,7 @@ import manafirewall.serviceBaseDialog as serviceBaseDialog
 import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
 import manafirewall.protocolDialog as protocolDialog
+import manafirewall.helpinfo as helpinfo
 
 def TimeFunction(func):
     """
@@ -136,6 +138,18 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.option_menu.addItem(rfwm)
     self.option_menu.rebuildMenuTree()
     self.eventManager.addMenuEvent(rfwm, self.onReloadFirewalld)
+
+    # Help menu is the last on the right
+    align = self.factory.createLeft(menu_line)
+    self.help_menu = self.factory.createMenuButton(menu_line, _("&Help"))
+    hm = yui.YMenuItem(_("&Help"))
+    self.help_menu.addItem(hm)
+    am = yui.YMenuItem(_("&About"))
+    self.help_menu.addItem(am)
+    self.help_menu.rebuildMenuTree()
+    self.eventManager.addMenuEvent(hm, self.onHelp)
+    self.eventManager.addMenuEvent(am, self.onAbout)
+
 
     # _______
     #|   |   |
@@ -1568,6 +1582,15 @@ class ManaWallDialog(basedialog.BaseDialog):
           'description' : _("{}  is a graphical configuration tool for firewalld.").format(PROJECT),
           'size': {'column': 50, 'lines': 6},
     })
+
+  def onHelp(self):
+    '''
+    Help menu invoked
+    '''
+    info = helpinfo.ManaFirewallHelpInfo()
+    hd = helpdialog.HelpDialog(info)
+    hd.run()
+
 
   def onChangeView(self):
     '''
