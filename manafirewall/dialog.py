@@ -100,7 +100,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.active_zones = { }
     self.runtime_view = True
     self.replacePointWidgetsAndCallbacks = []
-
+    self._reloaded = False
     self.fwEventQueue = SimpleQueue()
 
     if yui.YUI.app().isTextMode():
@@ -120,13 +120,22 @@ class ManaWallDialog(basedialog.BaseDialog):
     layout implementation called in base class to setup UI
     '''
 
-    # Let's test a Menu widget
-    self.file_menu = self.factory.createMenuButton(self.factory.createLeft(layout), _("&File"))
+    align = self.factory.createLeft(layout)
+
+    # Menu widget
+    menu_line = self.factory.createHBox(align)
+    self.file_menu = self.factory.createMenuButton(menu_line, _("&File"))
     qm = yui.YMenuItem(_("&Quit"))
     self.file_menu.addItem(qm)
     self.file_menu.rebuildMenuTree()
     sendObjOnEvent=True
     self.eventManager.addMenuEvent(qm, self.onQuitEvent, sendObjOnEvent)
+
+    self.option_menu = self.factory.createMenuButton(menu_line, _("&Options"))
+    rfwm = yui.YMenuItem(_("&Reload Firewalld"))
+    self.option_menu.addItem(rfwm)
+    self.option_menu.rebuildMenuTree()
+    self.eventManager.addMenuEvent(rfwm, self.onReloadFirewalld)
 
     # _______
     #|   |   |
@@ -284,6 +293,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     #self.eventManager.addTimeOutEvent(self.onTimeOutEvent)
     # End Dialof layout
 
+    self.dialog.setEnabled(False)
     self.initFWClient()
 
   def _serviceSettings(self):
@@ -1501,7 +1511,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     print("zone_of_interface_changed_cb", zone, interface)
 
   def reload_cb(self):
-    print("reload_cb")
+    '''
+    firewalld reloaded event
+    '''
+    self.fwEventQueue.put({'event': "reloaded", 'value': True})
+
 
 #### GUI events
 
@@ -1526,6 +1540,13 @@ class ManaWallDialog(basedialog.BaseDialog):
     if yui.YUI.app().isTextMode():
       self.glib_thread.join()
 
+  def onReloadFirewalld(self):
+    '''
+    Reload Firewalld menu pressed
+    '''
+    self._reloaded = True
+    self.dialog.setEnabled(False)
+    self.fw.reload()
 
   def onChangeBinding(self, obj):
     '''
@@ -1987,234 +2008,252 @@ class ManaWallDialog(basedialog.BaseDialog):
     check on internal queue if any fw event has been managed
     '''
     try:
-      item = self.fwEventQueue.get_nowait()
-      print(item['event'], item['value']) #TODO remove
 
-      # managing deferred firewall events
-      if item['event'] == 'connection-changed':
-        connected = item['value']
-        self.connection_lost = not connected
-        t = self.connected_label if connected else self.trying_to_connect_label
-        self.statusLabel.setText(t)
-        if connected:
-          self.fw.authorizeAll()
-          default_zone = self.fw.getDefaultZone()
-          self.defaultZoneLabel.setText(_("Default Zone: {}").format(default_zone))
-          self.log_denied = self.fw.getLogDenied()
-          self.logDeniedLabel.setText(("Log Denied: {}").format(self.log_denied))
-          self.automatic_helpers = self.fw.getAutomaticHelpers()
-          self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format(self.automatic_helpers))
-          #### TODO self.set_automaticHelpersLabel(self.automatic_helpers)
-          lockdown = self.fw.queryLockdown()
-          t = self.enabled if lockdown else self.disabled
+      #firewald should not be chatty, but reloaded events produce addition of service and zone one by one,
+      #let's check 20 by 20 events in that case to avoid stopping GUI too much
+      #if there are no events, get_nowait rise an exception so it exits the loop
+      counter = 0
+      count_max = 20 if self._reloaded else 1
+
+      while counter < count_max:
+        counter = counter + 1
+        item = self.fwEventQueue.get_nowait()
+        print(item['event'], item['value']) #TODO remove
+
+        # managing deferred firewall events
+        if item['event'] == 'connection-changed':
+          connected = item['value']
+          self.connection_lost = not connected
+          t = self.connected_label if connected else self.trying_to_connect_label
+          self.statusLabel.setText(t)
+          if connected:
+            self.fw.authorizeAll()
+            default_zone = self.fw.getDefaultZone()
+            self.defaultZoneLabel.setText(_("Default Zone: {}").format(default_zone))
+            self.log_denied = self.fw.getLogDenied()
+            self.logDeniedLabel.setText(("Log Denied: {}").format(self.log_denied))
+            self.automatic_helpers = self.fw.getAutomaticHelpers()
+            self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format(self.automatic_helpers))
+            #### TODO self.set_automaticHelpersLabel(self.automatic_helpers)
+            lockdown = self.fw.queryLockdown()
+            t = self.enabled if lockdown else self.disabled
+            self.lockdownLabel.setText(_("Lockdown: {}").format(t))
+            panic = self.fw.queryPanicMode()
+            t = self.enabled if panic else self.disabled
+            self.panicLabel.setText(_("Panic Mode: {}").format(t))
+            self.onChangeView()
+            item = self.configureViewCombobox.selectedItem()
+            if item == self.configureViews['zones']['item']:
+              self.load_zones()
+            elif item == self.configureViews['services']['item']:
+              self.load_services()
+            self.dialog.setEnabled(True)
+          else:
+            self.defaultZoneLabel.setText(_("Default Zone: {}").format("--------"))
+            self.logDeniedLabel.setText(("Log Denied: {}").format("--------"))
+            self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
+            self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
+            self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
+            self.dialog.setEnabled(False)
+        elif item['event'] == 'lockdown-changed':
+          t = self.enabled if item['value'] else self.disabled
           self.lockdownLabel.setText(_("Lockdown: {}").format(t))
-          panic = self.fw.queryPanicMode()
-          t = self.enabled if panic else self.disabled
+          # TODO manage menu items if needed
+        elif item['event'] == 'panicmode-changed':
+          t = self.enabled if item['value'] else self.disabled
           self.panicLabel.setText(_("Panic Mode: {}").format(t))
-          self.onChangeView()
-        else:
-          self.defaultZoneLabel.setText(_("Default Zone: {}").format("--------"))
-          self.logDeniedLabel.setText(("Log Denied: {}").format("--------"))
-          self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
-          self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
-          self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
-        item = self.configureViewCombobox.selectedItem()
-        if item == self.configureViews['zones']['item']:
-          self.load_zones()
-      elif item['event'] == 'lockdown-changed':
-        t = self.enabled if item['value'] else self.disabled
-        self.lockdownLabel.setText(_("Lockdown: {}").format(t))
-        # TODO manage menu items if needed
-      elif item['event'] == 'panicmode-changed':
-        t = self.enabled if item['value'] else self.disabled
-        self.panicLabel.setText(_("Panic Mode: {}").format(t))
-        # TODO manage menu items if needed
-      elif item['event'] == 'default-zone-changed':
-        zone = item['value']
-        self.defaultZoneLabel.setText(_("Default Zone: {}").format(zone))
-        # TODO self.update_active_zones()
-      elif item['event'] == 'config-zone-added' or item['event'] == 'config-zone-updated' or \
-           item['event'] == 'config-zone-renamed' or item['event'] == 'config-zone-removed':
-        zone = item['value']
-        if not self.runtime_view:
-          selected_configureViewItem = self.configureViewCombobox.selectedItem()
-          if selected_configureViewItem == self.configureViews['zones']['item']:
-            # Zones selected
-            selected_zone = None
-            selected_item = self.selectedConfigurationCombo.selectedItem()
-            if selected_item:
-              selected_zone = selected_item.label()
-            self.load_zones(selected_zone)
-            if item['event'] == 'config-zone-updated':
-              configure_item = self.configureCombobox.selectedItem()
-              port_type = None
-              if configure_item == self.zoneConfigurationView['ports']['item']:
-                port_type = "zone_ports"
-                self._fillRPPort(port_type)
+          # TODO manage menu items if needed
+        elif item['event'] == 'default-zone-changed':
+          zone = item['value']
+          self.defaultZoneLabel.setText(_("Default Zone: {}").format(zone))
+          # TODO self.update_active_zones()
+        elif item['event'] == 'config-zone-added' or item['event'] == 'config-zone-updated' or \
+            item['event'] == 'config-zone-renamed' or item['event'] == 'config-zone-removed':
+          zone = item['value']
+          if not self.runtime_view:
+            selected_configureViewItem = self.configureViewCombobox.selectedItem()
+            if selected_configureViewItem == self.configureViews['zones']['item']:
+              # Zones selected
+              selected_zone = None
+              selected_item = self.selectedConfigurationCombo.selectedItem()
+              if selected_item:
+                selected_zone = selected_item.label()
+              self.load_zones(selected_zone)
+              if item['event'] == 'config-zone-updated':
+                configure_item = self.configureCombobox.selectedItem()
+                port_type = None
+                if configure_item == self.zoneConfigurationView['ports']['item']:
+                  port_type = "zone_ports"
+                  self._fillRPPort(port_type)
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+                elif configure_item == self.zoneConfigurationView['source_ports']['item']:
+                  port_type = "zone_sourceports"
+                  self._fillRPPort(port_type)
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+                elif configure_item == self.zoneConfigurationView['port_forwarding']['item']:
+                  self._fillRPForwardPorts()
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
+                elif configure_item == self.zoneConfigurationView['protocols']['item']:
+                  self._fillRPProtocols('zone_protocols')
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
+                elif configure_item == self.zoneConfigurationView['masquerading']['item']:
+                  self._fillRPMasquerade()
+        elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
+            item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
+          service = item['value']
+          if not self.runtime_view:
+            selected_configureViewItem = self.configureViewCombobox.selectedItem()
+            if selected_configureViewItem == self.configureViews['services']['item']:
+              # Services selected
+              selected_service = None
+              selected_item = self.selectedConfigurationCombo.selectedItem()
+              if selected_item:
+                selected_service = selected_item.label()
+              self.load_services(selected_service)
+              if item['event'] == 'config-service-updated':
+                configure_item = self.configureCombobox.selectedItem()
+                port_type = None
+                if configure_item == self.serviceConfigurationView['ports']['item']:
+                  port_type = "service_ports"
+                  self._fillRPPort(port_type)
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+                elif configure_item == self.serviceConfigurationView['source_ports']['item']:
+                  port_type = "service_sourceports"
+                  self._fillRPPort(port_type)
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
+                elif configure_item == self.serviceConfigurationView['protocols']['item']:
+                  self._fillRPProtocols('service_protocols')
+                  if self.buttons is not None:
+                    # disabling/enabling edit and remove buttons accordingly
+                    self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
+                    self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
+        elif item['event'] == 'service-added' or item['event'] == 'service-removed':
+          # runtime and view zone and service is selected
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['services']['item']:
+            value = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if value['zone'] == selected_zone.label():
+                self._fillRPServices()
+        elif item['event'] == 'port-added' or item['event'] == 'port-removed':
+          # runtime and view zone and port is selected
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['ports']['item']:
+            value = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if value['zone'] == selected_zone.label():
+                self._fillRPPort("zone_ports")
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-              elif configure_item == self.zoneConfigurationView['source_ports']['item']:
-                port_type = "zone_sourceports"
-                self._fillRPPort(port_type)
+        elif item['event'] == 'source-port-added' or item['event'] == 'source-port-removed':
+          # runtime and view zone and port is selected
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['source_ports']['item']:
+            value = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if value['zone'] == selected_zone.label():
+                self._fillRPPort("zone_sourceports")
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-              elif configure_item == self.zoneConfigurationView['port_forwarding']['item']:
+        elif item['event'] == 'forward-port-added' or item['event'] == 'forward-port-removed':
+          # runtime and view zone and port forwarding is selected
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['port_forwarding']['item']:
+            value = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if value['zone'] == selected_zone.label():
                 self._fillRPForwardPorts()
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
-              elif configure_item == self.zoneConfigurationView['protocols']['item']:
+        elif item['event'] == 'protocol-added' or item['event'] == 'protocol-removed':
+          # runtime and view zone and port forwarding is selected
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['protocols']['item']:
+            value = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if value['zone'] == selected_zone.label():
                 self._fillRPProtocols('zone_protocols')
                 if self.buttons is not None:
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
-              elif configure_item == self.zoneConfigurationView['masquerading']['item']:
-                self._fillRPMasquerade()
-      elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
-           item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
-        service = item['value']
-        if not self.runtime_view:
-          selected_configureViewItem = self.configureViewCombobox.selectedItem()
-          if selected_configureViewItem == self.configureViews['services']['item']:
-            # Services selected
-            selected_service = None
-            selected_item = self.selectedConfigurationCombo.selectedItem()
-            if selected_item:
-              selected_service = selected_item.label()
-            self.load_services(selected_service)
-            if item['event'] == 'config-service-updated':
-              configure_item = self.configureCombobox.selectedItem()
-              port_type = None
-              if configure_item == self.serviceConfigurationView['ports']['item']:
-                port_type = "service_ports"
-                self._fillRPPort(port_type)
-                if self.buttons is not None:
-                  # disabling/enabling edit and remove buttons accordingly
-                  self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
-                  self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-              elif configure_item == self.serviceConfigurationView['source_ports']['item']:
-                port_type = "service_sourceports"
-                self._fillRPPort(port_type)
-                if self.buttons is not None:
-                  # disabling/enabling edit and remove buttons accordingly
-                  self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
-                  self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-              elif configure_item == self.serviceConfigurationView['protocols']['item']:
-                self._fillRPProtocols('service_protocols')
-                if self.buttons is not None:
-                  # disabling/enabling edit and remove buttons accordingly
-                  self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
-                  self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
-      elif item['event'] == 'service-added' or item['event'] == 'service-removed':
-        # runtime and view zone and service is selected
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['services']['item']:
-          value = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if value['zone'] == selected_zone.label():
-              self._fillRPServices()
-      elif item['event'] == 'port-added' or item['event'] == 'port-removed':
-        # runtime and view zone and port is selected
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['ports']['item']:
-          value = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if value['zone'] == selected_zone.label():
-              self._fillRPPort("zone_ports")
-              if self.buttons is not None:
-                # disabling/enabling edit and remove buttons accordingly
-                self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
-                self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-      elif item['event'] == 'source-port-added' or item['event'] == 'source-port-removed':
-        # runtime and view zone and port is selected
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['source_ports']['item']:
-          value = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if value['zone'] == selected_zone.label():
-              self._fillRPPort("zone_sourceports")
-              if self.buttons is not None:
-                # disabling/enabling edit and remove buttons accordingly
-                self.buttons['edit'].setEnabled(self.portList.itemsCount() > 0)
-                self.buttons['remove'].setEnabled(self.portList.itemsCount() > 0)
-      elif item['event'] == 'forward-port-added' or item['event'] == 'forward-port-removed':
-        # runtime and view zone and port forwarding is selected
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['port_forwarding']['item']:
-          value = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if value['zone'] == selected_zone.label():
-              self._fillRPForwardPorts()
-              if self.buttons is not None:
-                # disabling/enabling edit and remove buttons accordingly
-                self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
-                self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
-      elif item['event'] == 'protocol-added' or item['event'] == 'protocol-removed':
-        # runtime and view zone and port forwarding is selected
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['protocols']['item']:
-          value = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if value['zone'] == selected_zone.label():
-              self._fillRPProtocols('zone_protocols')
-              if self.buttons is not None:
-                # disabling/enabling edit and remove buttons accordingly
-                self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
-                self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
-      elif item['event'] == 'masquerade-added':
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['masquerading']['item']:
-          zone = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if zone == selected_zone.label():
-              if not self.masquerade.isChecked():
-                self.masquerade.setNotify(False)
-                self.masquerade.setValue(yui.YCheckBox_on)
-                self.masquerade.setNotify(True)
-      elif item['event'] == 'masquerade-removed':
-        view_item      = self.configureViewCombobox.selectedItem()
-        configure_item = self.configureCombobox.selectedItem()
-        if self.runtime_view and \
-          view_item == self.configureViews['zones']['item'] and \
-          configure_item == self.zoneConfigurationView['masquerading']['item']:
-          zone = item['value']
-          selected_zone = self.selectedConfigurationCombo.selectedItem()
-          if selected_zone:
-            if zone == selected_zone.label():
-              if self.masquerade.isChecked():
-                self.masquerade.setNotify(False)
-                self.masquerade.setValue(yui.YCheckBox_off)
-                self.masquerade.setNotify(True)
+        elif item['event'] == 'masquerade-added':
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['masquerading']['item']:
+            zone = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if zone == selected_zone.label():
+                if not self.masquerade.isChecked():
+                  self.masquerade.setNotify(False)
+                  self.masquerade.setValue(yui.YCheckBox_on)
+                  self.masquerade.setNotify(True)
+        elif item['event'] == 'masquerade-removed':
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['masquerading']['item']:
+            zone = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if zone == selected_zone.label():
+                if self.masquerade.isChecked():
+                  self.masquerade.setNotify(False)
+                  self.masquerade.setValue(yui.YCheckBox_off)
+                  self.masquerade.setNotify(True)
+        elif item['event'] == 'reloaded':
+          if self.runtime_view:
+            self.onSelectedConfigurationChanged()
+          self._reloaded = False
+          self.dialog.setEnabled(True)
 
     except Empty as e:
       pass
