@@ -140,8 +140,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.eventManager.addMenuEvent(rfwm, self.onReloadFirewalld)
 
     # Help menu is the last on the right
-    align = self.factory.createLeft(menu_line)
-    self.help_menu = self.factory.createMenuButton(menu_line, _("&Help"))
+    align = self.factory.createRight(menu_line)
+    self.help_menu = self.factory.createMenuButton(align, _("&Help"))
     hm = yui.YMenuItem(_("&Help"))
     self.help_menu.addItem(hm)
     am = yui.YMenuItem(_("&About"))
@@ -369,6 +369,77 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['edit']   = self.factory.createPushButton(hbox, _("&Edit"))
       buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
     return buttons
+
+  def _replacePointICMP(self):
+    '''
+    draw icmp filter frame
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      print ("Error there are still widget events for ReplacePoint") #TODO log
+      return
+
+    if self.replacePoint.hasChildren():
+      print ("Error there are still widgets into ReplacePoint") #TODO log
+      return
+
+    hbox = self.factory.createHBox(self.replacePoint)
+
+    table_header = yui.YTableHeader()
+    columns = [ _('ICMP Filter') ]
+
+    table_header.addColumn("")
+    for col in (columns):
+        table_header.addColumn(col)
+
+    self.icmpFilterList = self.mgaFactory.createCBTable(hbox, table_header, yui.YCBTableCheckBoxOnFirstColumn)
+    self.icmpFilterInversionCheck   = self.factory.createCheckBox(hbox, _("Invert filter"), False)
+    self.icmpFilterInversionCheck.setNotify(True)
+
+
+    self._fillRPICMP()
+    self.icmpFilterList.setImmediateMode(True)
+
+    self.eventManager.addWidgetEvent(self.icmpFilterList, self.onRPICMPFilterChecked)
+    self.replacePointWidgetsAndCallbacks.append({'widget': self.icmpFilterList, 'action': self.onRPICMPFilterChecked})
+    self.eventManager.addWidgetEvent(self.icmpFilterInversionCheck, self.OnICMPFilterInversionChecked)
+    self.replacePointWidgetsAndCallbacks.append({'widget': self.icmpFilterInversionCheck, 'action': self.OnICMPFilterInversionChecked})
+
+  def _fillRPICMP(self):
+    '''
+    fill current ICMP into replace point
+    '''
+    settings = self._zoneSettings()
+    if settings:
+      configured_icmp = settings.getIcmpBlocks()
+
+      icmp_types = None
+      if self.runtime_view:
+        icmp_types = self.fw.listIcmpTypes()
+      else:
+        icmp_types = self.fw.config().getIcmpTypeNames()
+
+      current_icmp = ""
+      current = self.icmpFilterList.selectedItem()
+      if current:
+        current = yui.toYTableItem(current)
+      current_icmp = current.cell(0).label() if current else ""
+      v = []
+      for icmp in icmp_types:
+        item = yui.YCBTableItem(icmp)
+        item.check(icmp in configured_icmp)
+        item.setSelected(icmp == current_icmp)
+        item.this.own(False)
+        v.append(item)
+
+      #NOTE workaround to get YItemCollection working in python
+      itemCollection = yui.YItemCollection(v)
+      self.icmpFilterList.startMultipleChanges()
+      # cleanup old changed items since we are removing all of them
+      self.icmpFilterList.setChangedItem(None)
+      self.icmpFilterList.deleteAllItems()
+      self.icmpFilterList.addItems(itemCollection)
+      self.icmpFilterList.doneMultipleChanges()
+
 
   def _replacePointMasquerade(self):
     '''
@@ -650,6 +721,18 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.portForwardList.deleteAllItems()
       self.portForwardList.addItems(itemCollection)
       self.portForwardList.doneMultipleChanges()
+
+  def onRPICMPFilterChecked(self, widgetEvent):
+    '''
+    works on enabling/disabling icmp filter for zone
+    '''
+    pass
+
+  def OnICMPFilterInversionChecked(self):
+    '''
+    TODO icmp_block_inversion_check_cb
+    '''
+    pass
 
   def onRPServiceChecked(self, widgetEvent):
     '''
@@ -1992,6 +2075,8 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
         elif config_item == self.zoneConfigurationView['masquerading']['item']:
           self._replacePointMasquerade()
+        elif config_item == self.zoneConfigurationView['icmp_filter']['item']:
+          self._replacePointICMP()
       elif item == self.configureViews['services']['item']:
         #Services selected
         if config_item == self.serviceConfigurationView['ports']['item']:
