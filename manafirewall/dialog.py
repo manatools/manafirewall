@@ -122,6 +122,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     layout implementation called in base class to setup UI
     '''
 
+    # TEST self.eventManager.addTimeOutEvent(self.onTimeOutEvent)
+
     align = self.factory.createLeft(layout)
 
     # Menu widget
@@ -392,11 +394,11 @@ class ManaWallDialog(basedialog.BaseDialog):
         table_header.addColumn(col)
 
     self.icmpFilterList = self.mgaFactory.createCBTable(hbox, table_header, yui.YCBTableCheckBoxOnFirstColumn)
-    self.icmpFilterInversionCheck   = self.factory.createCheckBox(hbox, _("Invert filter"), False)
+    self.icmpFilterInversionCheck   = self.factory.createCheckBox(hbox, _("Selected are accepted"), False)
     self.icmpFilterInversionCheck.setNotify(True)
 
 
-    self._fillRPICMP()
+    self._fillRPICMPFilter()
     self.icmpFilterList.setImmediateMode(True)
 
     self.eventManager.addWidgetEvent(self.icmpFilterList, self.onRPICMPFilterChecked)
@@ -404,13 +406,14 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.eventManager.addWidgetEvent(self.icmpFilterInversionCheck, self.OnICMPFilterInversionChecked)
     self.replacePointWidgetsAndCallbacks.append({'widget': self.icmpFilterInversionCheck, 'action': self.OnICMPFilterInversionChecked})
 
-  def _fillRPICMP(self):
+  def _fillRPICMPFilter(self):
     '''
     fill current ICMP into replace point
     '''
     settings = self._zoneSettings()
     if settings:
       configured_icmp = settings.getIcmpBlocks()
+      icmp_block_inversion = settings.getIcmpBlockInversion()
 
       icmp_types = None
       if self.runtime_view:
@@ -439,6 +442,10 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.icmpFilterList.deleteAllItems()
       self.icmpFilterList.addItems(itemCollection)
       self.icmpFilterList.doneMultipleChanges()
+
+      self.icmpFilterInversionCheck.setNotify(False)
+      self.icmpFilterInversionCheck.setValue(yui.YCheckBox_on if icmp_block_inversion else yui.YCheckBox_off)
+      self.icmpFilterInversionCheck.setNotify(True)
 
 
   def _replacePointMasquerade(self):
@@ -726,13 +733,42 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     works on enabling/disabling icmp filter for zone
     '''
-    pass
+    if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
+      item = self.icmpFilterList.changedItem()
+      if item:
+        selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+        if selected_zoneitem:
+          selected_zone = selected_zoneitem.label()
+          name = item.cell(0).label()
+          if self.runtime_view:
+            if item.checked():
+              self.fw.addIcmpBlock(selected_zone, name)
+            else:
+              self.fw.removeIcmpBlock(selected_zone, name)
+          else:
+            zone = self.fw.config().getZoneByName(selected_zone)
+            if item.checked():
+              zone.addIcmpBlock(name)
+            else:
+              zone.removeIcmpBlock(name)
 
   def OnICMPFilterInversionChecked(self):
     '''
-    TODO icmp_block_inversion_check_cb
+    manages ICMP Block Inversion checked (Accept if checked)
     '''
-    pass
+    selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
+    if selected_zoneitem:
+      selected_zone = selected_zoneitem.label()
+      if self.runtime_view:
+        if self.icmpFilterInversionCheck.isChecked():
+          if not self.fw.queryIcmpBlockInversion(selected_zone):
+            self.fw.addIcmpBlockInversion(selected_zone)
+        else:
+          if self.fw.queryIcmpBlockInversion(selected_zone):
+            self.fw.removeIcmpBlockInversion(selected_zone)
+      else:
+        zone = self.fw.config().getZoneByName(selected_zone)
+        zone.setIcmpBlockInversion(self.icmpFilterInversionCheck.isChecked())
 
   def onRPServiceChecked(self, widgetEvent):
     '''
@@ -1338,6 +1374,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("masquerade-removed", self.masquerade_removed_cb)
     self.fw.connect("forward-port-added", self.forward_port_added_cb)
     self.fw.connect("forward-port-removed", self.forward_port_removed_cb)
+    self.fw.connect("icmp-block-added", self.icmp_added_cb)
+    self.fw.connect("icmp-block-removed", self.icmp_removed_cb)
+    self.fw.connect("icmp-block-inversion-added", self.icmp_inversion_added_cb)
+    self.fw.connect("icmp-block-inversion-removed", self.icmp_inversion_removed_cb)
 
     self.fw.connect("config:zone-added",   self.conf_zone_added_cb)
     self.fw.connect("config:zone-updated", self.conf_zone_updated_cb)
@@ -1602,6 +1642,30 @@ class ManaWallDialog(basedialog.BaseDialog):
     forward port has been removed at run time
     '''
     self.fwEventQueue.put({'event': "forward-port-removed", 'value': {'zone' : zone, 'to_port': to_port, 'protocol' : protocol, 'to_address': to_address } })
+
+  def icmp_added_cb(self, zone, icmp, timeout):
+    '''
+    ICMP filter has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "icmp-changed", 'value': {'zone' : zone, 'icmp': icmp, 'added': True} })
+
+  def icmp_removed_cb(self, zone, icmp):
+    '''
+    ICMP filter has been removed at run time
+    '''
+    self.fwEventQueue.put({'event': "icmp-changed", 'value': {'zone' : zone, 'icmp': icmp, 'added': False}})
+
+  def icmp_inversion_added_cb(self, zone):
+    '''
+    ICMP inversion has been added at run time
+    '''
+    self.fwEventQueue.put({'event': "icmp-inversion", 'value': {'zone' : zone, 'inversion': True}})
+
+  def icmp_inversion_removed_cb(self, zone):
+    '''
+    ICMP inversion has been removed at run time
+    '''
+    self.fwEventQueue.put({'event': "icmp-inversion", 'value': {'zone' : zone, 'inversion': False}})
 
 
   def zone_of_interface_changed_cb(self, zone, interface):
@@ -2043,6 +2107,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.portList        = None
       self.serviceList     = None
       self.protocolList    = None
+      self.icmpFilterList  = None
 
       item = self.configureViewCombobox.selectedItem()
       if item == self.configureViews['zones']['item']:
@@ -2218,6 +2283,8 @@ class ManaWallDialog(basedialog.BaseDialog):
                     self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
                 elif configure_item == self.zoneConfigurationView['masquerading']['item']:
                   self._fillRPMasquerade()
+                elif configure_item == self.zoneConfigurationView['icmp_filter']['item']:
+                  self._fillRPICMPFilter()
         elif item['event'] == 'config-service-added' or item['event'] == 'config-service-updated' or \
             item['event'] == 'config-service-renamed' or item['event'] == 'config-service-removed':
           service = item['value']
@@ -2313,6 +2380,18 @@ class ManaWallDialog(basedialog.BaseDialog):
                   # disabling/enabling edit and remove buttons accordingly
                   self.buttons['edit'].setEnabled(self.portForwardList.itemsCount() > 0)
                   self.buttons['remove'].setEnabled(self.portForwardList.itemsCount() > 0)
+        elif item['event'] == 'icmp-changed' or item['event'] == 'icmp-inversion':
+          # runtime and view zone and ICMP filter is selected
+          view_item      = self.configureViewCombobox.selectedItem()
+          configure_item = self.configureCombobox.selectedItem()
+          if self.runtime_view and \
+            view_item == self.configureViews['zones']['item'] and \
+            configure_item == self.zoneConfigurationView['icmp_filter']['item']:
+            value = item['value']
+            selected_zone = self.selectedConfigurationCombo.selectedItem()
+            if selected_zone:
+              if value['zone'] == selected_zone.label():
+                self._fillRPICMPFilter()
         elif item['event'] == 'protocol-added' or item['event'] == 'protocol-removed':
           # runtime and view zone and port forwarding is selected
           view_item      = self.configureViewCombobox.selectedItem()
@@ -2363,6 +2442,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           self._reloaded = False
           self.dialog.setEnabled(True)
 
+      self.dialog.pollEvent()
     except Empty as e:
       pass
 
