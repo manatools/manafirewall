@@ -1,0 +1,650 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the manafirewall package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Yuri Chornoivan <yurchor@ukr.net>, 2020
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: manafirewall 0.xx\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-21 18:42+0300\n"
+"PO-Revision-Date: 2020-07-21 15:45+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
+"Language-Team: Maltese (https://www.transifex.com/MageiaLinux/teams/9361/mt/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: mt\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==0 || ( n%100>1 && n%100<11) ? 1 : (n%100>10 && n%100<20 ) ? 2 : 3);\n"
+
+#: manafirewall/dialog.py:83
+msgid "Manatools - firewalld configurator"
+msgstr ""
+
+#: manafirewall/dialog.py:84
+msgid "{} - ManaTools firewalld configurator"
+msgstr ""
+
+#: manafirewall/dialog.py:87
+msgid "Connection to firewalld established."
+msgstr ""
+
+#: manafirewall/dialog.py:89
+msgid "Trying to connect to firewalld, waiting..."
+msgstr ""
+
+#: manafirewall/dialog.py:91
+msgid ""
+"Failed to connect to firewalld. Please make sure that the service has been "
+"started correctly and try again."
+msgstr ""
+
+#: manafirewall/dialog.py:93
+msgid "Changes applied."
+msgstr ""
+
+#: manafirewall/dialog.py:94
+#, python-format
+msgid "Used by network connection '%s'"
+msgstr ""
+
+#: manafirewall/dialog.py:95
+#, python-format
+msgid "Default zone used by network connection '%s'"
+msgstr ""
+
+#: manafirewall/dialog.py:97
+msgid "enabled"
+msgstr "attivat"
+
+#: manafirewall/dialog.py:98
+msgid "disabled"
+msgstr "mitfi"
+
+#: manafirewall/dialog.py:131
+msgid "&File"
+msgstr ""
+
+#: manafirewall/dialog.py:132 manafirewall/dialog.py:302
+msgid "&Quit"
+msgstr ""
+
+#: manafirewall/dialog.py:138
+msgid "&Options"
+msgstr ""
+
+#: manafirewall/dialog.py:139
+msgid "&Reload Firewalld"
+msgstr ""
+
+#: manafirewall/dialog.py:146 manafirewall/dialog.py:147
+msgid "&Help"
+msgstr ""
+
+#: manafirewall/dialog.py:149 manafirewall/dialog.py:300
+msgid "&About"
+msgstr ""
+
+#: manafirewall/dialog.py:164
+msgid "Active bindings"
+msgstr ""
+
+#: manafirewall/dialog.py:166
+msgid "&Change binding"
+msgstr ""
+
+#: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
+msgid "Edit zones"
+msgstr ""
+
+#: manafirewall/dialog.py:173
+msgid "&Add"
+msgstr ""
+
+#: manafirewall/dialog.py:175 manafirewall/dialog.py:371
+msgid "&Edit"
+msgstr ""
+
+#: manafirewall/dialog.py:177 manafirewall/dialog.py:372
+msgid "&Remove"
+msgstr ""
+
+#: manafirewall/dialog.py:179
+msgid "&Load default"
+msgstr ""
+
+#: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
+msgid "Runtime"
+msgstr ""
+
+#: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
+msgid "Permanent"
+msgstr ""
+
+#: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
+msgid "Configuration"
+msgstr "Konfigurazzjoni"
+
+#: manafirewall/dialog.py:215
+msgid "Zones"
+msgstr ""
+
+#: manafirewall/dialog.py:216 manafirewall/dialog.py:250
+msgid "Services"
+msgstr "Servizzi"
+
+#: manafirewall/dialog.py:217
+msgid "IP Sets"
+msgstr ""
+
+#: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
+#: manafirewall/helpinfo.py:75
+msgid "View"
+msgstr "Video"
+
+#: manafirewall/dialog.py:251 manafirewall/dialog.py:263
+msgid "Ports"
+msgstr ""
+
+#: manafirewall/dialog.py:252 manafirewall/dialog.py:264
+msgid "Protocols"
+msgstr ""
+
+#: manafirewall/dialog.py:253 manafirewall/dialog.py:265
+msgid "Source Ports"
+msgstr ""
+
+#: manafirewall/dialog.py:254
+msgid "Masquerading"
+msgstr ""
+
+#: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
+msgid "Port Forwarding"
+msgstr ""
+
+#: manafirewall/dialog.py:256 manafirewall/dialog.py:390
+msgid "ICMP Filter"
+msgstr ""
+
+#: manafirewall/dialog.py:257
+msgid "Rich Rules"
+msgstr ""
+
+#: manafirewall/dialog.py:258
+msgid "Interfaces"
+msgstr ""
+
+#: manafirewall/dialog.py:259
+msgid "Sources"
+msgstr ""
+
+#: manafirewall/dialog.py:266
+msgid "Modules"
+msgstr ""
+
+#: manafirewall/dialog.py:267
+msgid "Destinations"
+msgstr ""
+
+#: manafirewall/dialog.py:271
+msgid "Entries"
+msgstr ""
+
+#: manafirewall/dialog.py:273
+msgid "Configure"
+msgstr "Ikkonfigura"
+
+#: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
+#: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
+msgid "Default Zone: {}"
+msgstr ""
+
+#: manafirewall/dialog.py:292
+msgid "Log Denied: {}"
+msgstr ""
+
+#: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
+#: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
+msgid "Panic Mode: {}"
+msgstr ""
+
+#: manafirewall/dialog.py:294 manafirewall/dialog.py:2209
+#: manafirewall/dialog.py:2227
+msgid "Automatic Helpers: {}"
+msgstr ""
+
+#: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
+#: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
+msgid "Lockdown: {}"
+msgstr ""
+
+#: manafirewall/dialog.py:370
+msgid "A&dd"
+msgstr ""
+
+#: manafirewall/dialog.py:397
+msgid "Selected are accepted"
+msgstr ""
+
+#: manafirewall/dialog.py:465
+msgid "Masquerade zone"
+msgstr ""
+
+#: manafirewall/dialog.py:497 manafirewall/dialog.py:559
+#: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
+#: manafirewall/portDialog.py:45 manafirewall/protocolDialog.py:29
+#: manafirewall/protocolDialog.py:41
+msgid "Protocol"
+msgstr "Protokoll"
+
+#: manafirewall/dialog.py:559 manafirewall/dialog.py:693
+msgid "Port"
+msgstr "Port"
+
+#: manafirewall/dialog.py:628
+msgid "Service"
+msgstr "Servizz"
+
+#: manafirewall/dialog.py:693
+msgid "To Address"
+msgstr ""
+
+#: manafirewall/dialog.py:693
+msgid "To Port"
+msgstr ""
+
+#: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
+msgid "Information needed"
+msgstr ""
+
+#: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
+msgid ""
+"Forwarding to another system is only useful if the interface is "
+"masqueraded.<br>Do you want to masquerade this zone ?"
+msgstr ""
+
+#: manafirewall/dialog.py:1726
+msgid "Credits {}"
+msgstr ""
+
+#: manafirewall/dialog.py:1729
+msgid "{}  is a graphical configuration tool for firewalld."
+msgstr ""
+
+#: manafirewall/dialog.py:2064
+msgid "Edit services"
+msgstr ""
+
+#: manafirewall/dialog.py:2074
+msgid "Edit ipsets"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:38
+msgid "Source"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
+#: manafirewall/portDialog.py:40
+msgid "Port / Port Range"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:59
+msgid "Destination"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:61
+msgid "IP address"
+msgstr "Indirizz IP"
+
+#: manafirewall/forwardDialog.py:83 manafirewall/portDialog.py:66
+#: manafirewall/protocolDialog.py:80 manafirewall/serviceBaseDialog.py:64
+#: manafirewall/zoneBaseDialog.py:99
+msgid "&Cancel"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:86 manafirewall/portDialog.py:69
+#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:67
+#: manafirewall/zoneBaseDialog.py:102
+msgid "&Ok"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:126
+msgid "Source port is mandatory"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
+#: manafirewall/portDialog.py:109
+msgid "Use port number or range (10000 or 12000-12002)"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:132
+msgid "The given IP address is not valid."
+msgstr ""
+
+#: manafirewall/forwardDialog.py:132
+msgid "Wrong IP address"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:139
+msgid "Wrong to_port range"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:146
+msgid "Wrong port given"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:147
+msgid "<b>local forwarding</b><br>port and to_port must be different"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:156
+msgid "Missing data"
+msgstr ""
+
+#: manafirewall/forwardDialog.py:156
+msgid ""
+"Valid configuration are:<br>        <b>local forwarding</b> fill port and "
+"to_port, note that those ports must be different<br>         <b>forward to "
+"address</b> fill port and to_address<br>         <b>forward to a remote "
+"port</b> fill port, to_address and to_port"
+msgstr ""
+
+#: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
+msgid "Zones view"
+msgstr ""
+
+#: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
+msgid "Services view"
+msgstr ""
+
+#: manafirewall/helpinfo.py:30
+msgid "IP sets view"
+msgstr ""
+
+#: manafirewall/helpinfo.py:31
+msgid "Go to index"
+msgstr ""
+
+#: manafirewall/helpinfo.py:36
+msgid ""
+"Permanent mode allows to configure things that are not active immediately. "
+"If you want to have changes also in the runtime environment, then either add"
+" the changes there also or reload firewalld."
+msgstr ""
+
+#: manafirewall/helpinfo.py:37
+msgid ""
+"Runtime mode allows to configure things at runtime. Things changed at "
+"runtime will not present at next start up or relading firewalld, if you want"
+" that you need to add those changes in permanent mode also. "
+msgstr ""
+
+#: manafirewall/helpinfo.py:38
+msgid ""
+"A zone is a set of services that can be applied to a binding. A collection "
+"of zones is predefined for different levels of trust. If you select the "
+"\"Permanent\" configuration, you can also add, edit or delete your own zone "
+"and define which services will be allowed in your zone. "
+msgstr ""
+
+#: manafirewall/helpinfo.py:39
+msgid ""
+"For a zone, available fields are name, version, short as more descriptive "
+"name, and description. A check box allows to active default target or to "
+"select the default behaviour for packets that don't match any rule. Targets "
+"are DROP, REJECT or ACCEPT. "
+msgstr ""
+
+#: manafirewall/helpinfo.py:40
+msgid ""
+"Predefined zones are: block - dmz - drop - external - home - home - internal"
+" - public - trusted - work"
+msgstr ""
+
+#: manafirewall/helpinfo.py:41
+msgid ""
+"After selecting \"Zones\" for view and one of the Zones, you can configure "
+"said zone. There is some parameters for each zone:"
+msgstr ""
+
+#: manafirewall/helpinfo.py:42
+msgid ""
+"<ul><li><b>Services</b>: when selected in \"Configure\" option, you see a "
+"list of services that are predefined. According to the zone, some services "
+"are already selected. If you tick or untick a checkbox in regard to a "
+"service, the according rules will applying to allow said service on "
+"interafces having the zone. In permanent mode, the configuration is "
+"registered directly, but not applied. It will be applied after a firewalld "
+"reload.</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:43
+msgid ""
+"<li><b>Ports</b>: this configure option allows to specify a rule with "
+"\"Add\" button with a port number or range and a protocol selected in the "
+"list tcp, udp, sctp and dccp. The list view displays the already defined "
+"rules. A range is defined with a hyphen between two numbers, for example "
+"with 80-88. The effect will be that these ports will be open.</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:44
+msgid ""
+"<li><b>Protocols</b>Here, you can add a protocol among a list of supported "
+"protocols by firewalld or to add a specific one that you can name. (to "
+"complete with what is the effect of this addition</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:45
+msgid ""
+"<li><b>Source Ports</b>: this configure option allows to specify a rule with"
+" \"Add\" button with a port number or range and a protocol selected in the "
+"list tcp, udp, sctp and dccp. The list view displays the already defined "
+"rules.(to complete with what is the effect of this addition)</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:46
+msgid ""
+"<li><b>Masquerading</b>: this option allows to tick or untick a \"Masquerade"
+" zone\". Thus this zone is used for masquerading (only for IPv4).(to "
+"complete with what is the effect of this addition)</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:47
+msgid ""
+"<li><b>Port Forwarding</b>:  port forwarding is an application of network "
+"address translation (NAT) that redirects a communication request from one "
+"address and port number combination to another while the packets are "
+"traversing the firewall in IPv4 technology. Adding a rule needs to specify a"
+" port or port range of incoming requests and its protocol (source) and "
+"either a port or range for the destination for local forwarding or address "
+"of the destination and optionnaly port or range if port is changed.</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:48
+msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:49
+msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:50
+msgid "<li><b>Interfaces</b>: not yet implemented</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:51
+msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:53
+msgid ""
+"A service is a collection of rules that are applied together in relation to "
+"an application. This concept helps to apply what is need for an application "
+"by just ticking a checkbox. A lot of services are already defined, but you "
+"can add your own for an application which is not provided."
+msgstr ""
+
+#: manafirewall/helpinfo.py:54
+msgid ""
+"In view \"Services\", next combobox allow to choice a service. Then "
+"\"Configure\" Selecting one update the table with a list of couples Port-"
+"Protocol "
+msgstr ""
+
+#: manafirewall/helpinfo.py:55
+msgid "For each service, you can define:"
+msgstr ""
+
+#: manafirewall/helpinfo.py:56
+msgid ""
+"<ul><li><b>Ports</b>: when selected, the list view contains the ports "
+"already defined. Each port is defined by a number or a range, and a "
+"protocol.</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:57
+msgid "<li><b>Protocols</b>:not yet implemented</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:58
+msgid "<li><b>Source Ports</b>:not yet implemented</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:59
+msgid "<li><b>Modules</b>: not yet implemented</li>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:60
+msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
+msgstr ""
+
+#: manafirewall/helpinfo.py:64
+msgid ""
+"ManaFirewall is a graphical configuration tool for firewall features "
+"provided by firewalld."
+msgstr ""
+
+#: manafirewall/helpinfo.py:65
+msgid ""
+"firewalld provides a dynamically managed firewall with support for "
+"network/firewall “zones” to assign a level of trust to a network and its "
+"associated connections, interfaces or sources."
+msgstr ""
+
+#: manafirewall/helpinfo.py:66
+msgid ""
+"It has support for IPv4, IPv6, Ethernet bridges and also for IPSet firewall "
+"settings. There is a separation of the runtime and permanent configuration "
+"options."
+msgstr ""
+
+#: manafirewall/helpinfo.py:67
+msgid ""
+"ManaFirewall is part of manatools and it is based on libyui so that it can "
+"work using Gtk, Qt or ncureses, e.g. graphical or textual user interfaces."
+msgstr ""
+
+#: manafirewall/helpinfo.py:68
+msgid ""
+"On the left there is the overview of the active bindings. These are the "
+"zones, that have a connection, interface or source bound or added to it. "
+"Here it is possible to easily change the          zone of these bindings."
+msgstr ""
+
+#: manafirewall/helpinfo.py:70
+msgid ""
+"On the right there are comboboxes to select what to look or configure such "
+"as zones, services etc."
+msgstr ""
+
+#: manafirewall/helpinfo.py:73
+msgid "Duration"
+msgstr ""
+
+#: manafirewall/helpinfo.py:77
+msgid "Configure zone"
+msgstr ""
+
+#: manafirewall/helpinfo.py:79
+msgid "Configure services"
+msgstr ""
+
+#: manafirewall/helpinfo.py:81
+msgid "IP Sets view"
+msgstr ""
+
+#: manafirewall/portDialog.py:30
+msgid "Port and Protocol"
+msgstr ""
+
+#: manafirewall/portDialog.py:109
+msgid "Wrong port range"
+msgstr ""
+
+#: manafirewall/protocolDialog.py:59
+msgid "Other Protocol"
+msgstr ""
+
+#: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
+msgid "Please insert a valid protocol (see /etc/protocols)"
+msgstr ""
+
+#: manafirewall/protocolDialog.py:133
+msgid "Protocol is mandatory"
+msgstr ""
+
+#: manafirewall/protocolDialog.py:136
+msgid "Wrong protocol entry"
+msgstr ""
+
+#: manafirewall/serviceBaseDialog.py:33
+msgid "Service Settings"
+msgstr ""
+
+#: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
+msgid "Name"
+msgstr "Isem"
+
+#: manafirewall/serviceBaseDialog.py:44 manafirewall/zoneBaseDialog.py:46
+msgid "Version"
+msgstr ""
+
+#: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
+msgid "Short"
+msgstr ""
+
+#: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
+msgid "Description"
+msgstr "Deskrizzjoni"
+
+#: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
+msgid "Missing value"
+msgstr ""
+
+#: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
+msgid "Name is mandatory"
+msgstr ""
+
+#: manafirewall/zoneBaseDialog.py:35
+msgid "Zone Settings"
+msgstr ""
+
+#: manafirewall/zoneBaseDialog.py:65
+msgid "Default Target"
+msgstr ""
+
+#: manafirewall/zoneBaseDialog.py:69
+msgid "Accept"
+msgstr "Naċċetta"
+
+#: manafirewall/zoneBaseDialog.py:70
+msgid "Drop"
+msgstr ""
+
+#: manafirewall/zoneBaseDialog.py:71
+msgid "Reject"
+msgstr ""
