@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[mageia.manafirewall]
+file_filter = <lang>.po
+source_file = manafirewall.pot
+source_lang = en
+type = PO
