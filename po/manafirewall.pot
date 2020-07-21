@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 18:42+0300\n"
+"POT-Creation-Date: 2020-07-21 21:15+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,7 +260,7 @@ msgstr ""
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
-"<br>Do you want to masquerade this zone ?"
+"<br>Do you want to masquerade this zone?"
 msgstr ""
 
 #: manafirewall/dialog.py:1726
@@ -375,8 +375,8 @@ msgstr ""
 #: manafirewall/helpinfo.py:37
 msgid ""
 "Runtime mode allows to configure things at runtime. Things changed at "
-"runtime will not present at next start up or relading firewalld, if you want "
-"that you need to add those changes in permanent mode also. "
+"runtime will not present at next start up or reloading firewalld, if you "
+"want that you need to add those changes in permanent mode also. "
 msgstr ""
 
 #: manafirewall/helpinfo.py:38
@@ -390,7 +390,7 @@ msgstr ""
 #: manafirewall/helpinfo.py:39
 msgid ""
 "For a zone, available fields are name, version, short as more descriptive "
-"name, and description. A check box allows to active default target or to "
+"name, and description. A check box allows to activate default target or to "
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
@@ -404,7 +404,7 @@ msgstr ""
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
-"said zone. There is some parameters for each zone:"
+"said zone. There are some parameters for each zone:"
 msgstr ""
 
 #: manafirewall/helpinfo.py:42
@@ -413,7 +413,7 @@ msgid ""
 "list of services that are predefined. According to the zone, some services "
 "are already selected. If you tick or untick a checkbox in regard to a "
 "service, the according rules will applying to allow said service on "
-"interafces having the zone. In permanent mode, the configuration is "
+"interfaces having the zone. In permanent mode, the configuration is "
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
@@ -431,7 +431,7 @@ msgstr ""
 msgid ""
 "<li><b>Protocols</b>Here, you can add a protocol among a list of supported "
 "protocols by firewalld or to add a specific one that you can name. (to "
-"complete with what is the effect of this addition</li>"
+"complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:45
@@ -445,19 +445,19 @@ msgstr ""
 #: manafirewall/helpinfo.py:46
 msgid ""
 "<li><b>Masquerading</b>: this option allows to tick or untick a \"Masquerade "
-"zone\". Thus this zone is used for masquerading (only for IPv4).(to complete "
-"with what is the effect of this addition)</li>"
+"zone\". Thus this zone is used for masquerading (only for IPv4). (to "
+"complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:47
 msgid ""
-"<li><b>Port Forwarding</b>:  port forwarding is an application of network "
+"<li><b>Port Forwarding</b>: port forwarding is an application of network "
 "address translation (NAT) that redirects a communication request from one "
 "address and port number combination to another while the packets are "
 "traversing the firewall in IPv4 technology. Adding a rule needs to specify a "
 "port or port range of incoming requests and its protocol (source) and either "
 "a port or range for the destination for local forwarding or address of the "
-"destination and optionnaly port or range if port is changed.</li>"
+"destination and optionally port or range if port is changed.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:48
@@ -486,9 +486,9 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:54
 msgid ""
-"In view \"Services\", next combobox allow to choice a service. Then "
-"\"Configure\" Selecting one update the table with a list of couples Port-"
-"Protocol "
+"In view \"Services\", the \"Configure\" button next to the combobox allows "
+"to choose a service. Selecting one updates the table with a list of couples "
+"Port-Protocol "
 msgstr ""
 
 #: manafirewall/helpinfo.py:55
@@ -503,11 +503,11 @@ msgid ""
 msgstr ""
 
 #: manafirewall/helpinfo.py:57
-msgid "<li><b>Protocols</b>:not yet implemented</li>"
+msgid "<li><b>Protocols</b>: not yet implemented</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:58
-msgid "<li><b>Source Ports</b>:not yet implemented</li>"
+msgid "<li><b>Source Ports</b>: not yet implemented</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:59
@@ -541,7 +541,7 @@ msgstr ""
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
-"work using Gtk, Qt or ncureses, e.g. graphical or textual user interfaces."
+"work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."
 msgstr ""
 
 #: manafirewall/helpinfo.py:68

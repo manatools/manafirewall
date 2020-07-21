@@ -1,61 +1,64 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the manafirewall package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
-# 
-#, fuzzy
+#
+# Yuri Chornoivan <yurchor@ukr.net>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 18:42+0300\n"
-"PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
-"Language-Team: Ukrainian (https://www.transifex.com/MageiaLinux/teams/9361/uk/)\n"
+"POT-Creation-Date: 2020-07-21 21:15+0300\n"
+"PO-Revision-Date: 2020-07-21 21:14+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
+"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: uk\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"X-Generator: Lokalize 20.07.70\n"
 
 #: manafirewall/dialog.py:83
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools — засіб налаштовування firewalld"
 
 #: manafirewall/dialog.py:84
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} — засіб налаштовування firewalld у Manatools"
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "Встановлено з'єднання із firewalld."
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "Намагаємося встановити з'єднання із firewalld, зачекайте…"
 
 #: manafirewall/dialog.py:91
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"Не вдалося встановити з'єднання із firewalld. Будь ласка, переконайтеся, що "
+"службу належним чином запущено і повторіть спробу."
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
-msgstr ""
+msgstr "Зміни застосовано."
 
 #: manafirewall/dialog.py:94
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "Використовується з'єднанням мережі «%s»"
 
 #: manafirewall/dialog.py:95
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr ""
+msgstr "Типова зона, яка використовується з'єднанням мережі «%s»"
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
@@ -79,7 +82,7 @@ msgstr "П&араметри"
 
 #: manafirewall/dialog.py:139
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "П&ерезавантажити Firewalld"
 
 #: manafirewall/dialog.py:146 manafirewall/dialog.py:147
 msgid "&Help"
@@ -91,19 +94,19 @@ msgstr "Пр&о програму"
 
 #: manafirewall/dialog.py:164
 msgid "Active bindings"
-msgstr ""
+msgstr "Активні прив'язки"
 
 #: manafirewall/dialog.py:166
 msgid "&Change binding"
-msgstr ""
+msgstr "З&мінити прив'язку"
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr ""
+msgstr "Редагувати зони"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
-msgstr ""
+msgstr "&Додати"
 
 #: manafirewall/dialog.py:175 manafirewall/dialog.py:371
 msgid "&Edit"
@@ -115,15 +118,15 @@ msgstr "Ви&лучити"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
-msgstr ""
+msgstr "З&авантажити типове"
 
 #: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "Динамічний"
 
 #: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "Сталий"
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -131,7 +134,7 @@ msgstr "Налаштовування"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
-msgstr ""
+msgstr "Зони"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
@@ -139,7 +142,7 @@ msgstr "Служби"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "Набори IP"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -148,51 +151,51 @@ msgstr "Перегляд"
 
 #: manafirewall/dialog.py:251 manafirewall/dialog.py:263
 msgid "Ports"
-msgstr ""
+msgstr "Порти"
 
 #: manafirewall/dialog.py:252 manafirewall/dialog.py:264
 msgid "Protocols"
-msgstr ""
+msgstr "Протоколи"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
-msgstr ""
+msgstr "Порти походження"
 
 #: manafirewall/dialog.py:254
 msgid "Masquerading"
-msgstr ""
+msgstr "Маскування"
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "Переспрямовування портів"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
-msgstr ""
+msgstr "Фільтр ICMP"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "Докладні правила"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr ""
+msgstr "Інтерфейси"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
-msgstr ""
+msgstr "Походження"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "Модулі"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr ""
+msgstr "Сторінки"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
-msgstr ""
+msgstr "Записи"
 
 #: manafirewall/dialog.py:273
 msgid "Configure"
@@ -201,26 +204,26 @@ msgstr "Налаштувати"
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "Типова зона: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "Вносити до журналу заборонені: {}"
 
 #: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
 #: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "Режим паніки: {}"
 
 #: manafirewall/dialog.py:294 manafirewall/dialog.py:2209
 #: manafirewall/dialog.py:2227
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "Автоматичні допоміжні засоби: {}"
 
 #: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
 #: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "Блокування: {}"
 
 #: manafirewall/dialog.py:370
 msgid "A&dd"
@@ -228,11 +231,11 @@ msgstr "&Додати"
 
 #: manafirewall/dialog.py:397
 msgid "Selected are accepted"
-msgstr ""
+msgstr "Позначені приймаються"
 
 #: manafirewall/dialog.py:465
 msgid "Masquerade zone"
-msgstr ""
+msgstr "Зона маскування"
 
 #: manafirewall/dialog.py:497 manafirewall/dialog.py:559
 #: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
@@ -251,50 +254,50 @@ msgstr "Служба"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
-msgstr ""
+msgstr "Адреса призначення"
 
 #: manafirewall/dialog.py:693
 msgid "To Port"
-msgstr ""
+msgstr "До порту"
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "Потрібні відомості"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
-"Forwarding to another system is only useful if the interface is "
-"masqueraded.<br>Do you want to masquerade this zone ?"
+"Forwarding to another system is only useful if the interface is masqueraded."
+"<br>Do you want to masquerade this zone?"
 msgstr ""
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr ""
+msgstr "Подяки щодо {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} — графічний інструмент налаштовування для firewalld."
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
-msgstr ""
+msgstr "Редагувати служби"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr ""
+msgstr "Редагувати ipsets"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
-msgstr "Джерело"
+msgstr "Походження"
 
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "Порт або діапазон портів"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "Призначення"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -314,36 +317,36 @@ msgstr "&Гаразд"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "Порт походження є обов'язковим"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "Скористайтеся номером порту або діапазоном (10000 або 12000-12002)"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "Вказана IP-адреса не є чинною."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "Помилкова IP-адреса"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "Помилковий діапазон to_port"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "Вказано помилковий порт"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
-msgstr ""
+msgstr "<b>локальне переспрямовування</b><br>port і to_port мають бути різними"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "Немає потрібних даних"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -352,35 +355,43 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"Коректні налаштування:<br>        <b>локальне переспрямовування</b> — "
+"вкажіть port і to_port, зауважте, що ці порти мають бути різними<br>         "
+"<b>переспрямовування на адресу</b> — вкажіть port і to_address<br>         "
+"<b>переспрямовування на віддалений порт</b> — вкажіть port, to_address і "
+"to_port"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr ""
+msgstr "Панель зон"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr ""
+msgstr "Панель служб"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr ""
+msgstr "Панель наборів IP"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Перейти до покажчика"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
 "Permanent mode allows to configure things that are not active immediately. "
-"If you want to have changes also in the runtime environment, then either add"
-" the changes there also or reload firewalld."
+"If you want to have changes also in the runtime environment, then either add "
+"the changes there also or reload firewalld."
 msgstr ""
+"Сталий режим надає змогу налаштувати речі, які не одразу стають активними. "
+"Якщо ви хочете внести зміни у поточне середовище, або змініть і ці "
+"параметри, або перезавантажте firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
 "Runtime mode allows to configure things at runtime. Things changed at "
-"runtime will not present at next start up or relading firewalld, if you want"
-" that you need to add those changes in permanent mode also. "
+"runtime will not present at next start up or reloading firewalld, if you "
+"want that you need to add those changes in permanent mode also. "
 msgstr ""
 
 #: manafirewall/helpinfo.py:38
@@ -390,25 +401,31 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"Зона є набором служб, які можна застосувати до прив'язки. Для різних рівні "
+"довіри передбачено збірку зон. Якщо ви виберете «Остаточні» налаштування, ви "
+"також змоеже додавати, змінювати або вилучати власні зони і визначати, якими "
+"службами можна буде користуватися у вашій зоні. "
 
 #: manafirewall/helpinfo.py:39
 msgid ""
 "For a zone, available fields are name, version, short as more descriptive "
-"name, and description. A check box allows to active default target or to "
+"name, and description. A check box allows to activate default target or to "
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
 
 #: manafirewall/helpinfo.py:40
 msgid ""
-"Predefined zones are: block - dmz - drop - external - home - home - internal"
-" - public - trusted - work"
+"Predefined zones are: block - dmz - drop - external - home - home - internal "
+"- public - trusted - work"
 msgstr ""
+"Попередньо визначені зони: block - dmz - drop - external - home - home - "
+"internal - public - trusted - work"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
-"said zone. There is some parameters for each zone:"
+"said zone. There are some parameters for each zone:"
 msgstr ""
 
 #: manafirewall/helpinfo.py:42
@@ -417,68 +434,68 @@ msgid ""
 "list of services that are predefined. According to the zone, some services "
 "are already selected. If you tick or untick a checkbox in regard to a "
 "service, the according rules will applying to allow said service on "
-"interafces having the zone. In permanent mode, the configuration is "
+"interfaces having the zone. In permanent mode, the configuration is "
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:43
 msgid ""
-"<li><b>Ports</b>: this configure option allows to specify a rule with "
-"\"Add\" button with a port number or range and a protocol selected in the "
-"list tcp, udp, sctp and dccp. The list view displays the already defined "
-"rules. A range is defined with a hyphen between two numbers, for example "
-"with 80-88. The effect will be that these ports will be open.</li>"
+"<li><b>Ports</b>: this configure option allows to specify a rule with \"Add"
+"\" button with a port number or range and a protocol selected in the list "
+"tcp, udp, sctp and dccp. The list view displays the already defined rules. A "
+"range is defined with a hyphen between two numbers, for example with 80-88. "
+"The effect will be that these ports will be open.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:44
 msgid ""
 "<li><b>Protocols</b>Here, you can add a protocol among a list of supported "
 "protocols by firewalld or to add a specific one that you can name. (to "
-"complete with what is the effect of this addition</li>"
+"complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:45
 msgid ""
-"<li><b>Source Ports</b>: this configure option allows to specify a rule with"
-" \"Add\" button with a port number or range and a protocol selected in the "
+"<li><b>Source Ports</b>: this configure option allows to specify a rule with "
+"\"Add\" button with a port number or range and a protocol selected in the "
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:46
 msgid ""
-"<li><b>Masquerading</b>: this option allows to tick or untick a \"Masquerade"
-" zone\". Thus this zone is used for masquerading (only for IPv4).(to "
+"<li><b>Masquerading</b>: this option allows to tick or untick a \"Masquerade "
+"zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:47
 msgid ""
-"<li><b>Port Forwarding</b>:  port forwarding is an application of network "
+"<li><b>Port Forwarding</b>: port forwarding is an application of network "
 "address translation (NAT) that redirects a communication request from one "
 "address and port number combination to another while the packets are "
-"traversing the firewall in IPv4 technology. Adding a rule needs to specify a"
-" port or port range of incoming requests and its protocol (source) and "
-"either a port or range for the destination for local forwarding or address "
-"of the destination and optionnaly port or range if port is changed.</li>"
+"traversing the firewall in IPv4 technology. Adding a rule needs to specify a "
+"port or port range of incoming requests and its protocol (source) and either "
+"a port or range for the destination for local forwarding or address of the "
+"destination and optionally port or range if port is changed.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Фільтр ICMP</b>: ще не реалізовано</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Докладні правила</b>: ще не реалізовано</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Інтерфейси</b>: ще не реалізовано</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Походження</b>: ще не реалізовано</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -490,50 +507,58 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:54
 msgid ""
-"In view \"Services\", next combobox allow to choice a service. Then "
-"\"Configure\" Selecting one update the table with a list of couples Port-"
-"Protocol "
+"In view \"Services\", the \"Configure\" button next to the combobox allows "
+"to choose a service. Selecting one updates the table with a list of couples "
+"Port-Protocol "
 msgstr ""
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "Для кожної служби ви можете визначити:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
 "<ul><li><b>Ports</b>: when selected, the list view contains the ports "
-"already defined. Each port is defined by a number or a range, and a "
-"protocol.</li>"
+"already defined. Each port is defined by a number or a range, and a protocol."
+"</li>"
 msgstr ""
+"<ul><li><b>Порти</b>: якщо позначено, у списку буде показано вже визначені "
+"порти. Кожен порт визначається номером або діапазоном номерів та протоколом."
+"</li>"
 
 #: manafirewall/helpinfo.py:57
-msgid "<li><b>Protocols</b>:not yet implemented</li>"
+msgid "<li><b>Protocols</b>: not yet implemented</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:58
-msgid "<li><b>Source Ports</b>:not yet implemented</li>"
+msgid "<li><b>Source Ports</b>: not yet implemented</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Модулі</b>: ще не реалізовано</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Призначення</b>: ще не реалізовано</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall — засіб налаштовування із графічним інтерфейсом для можливостей "
+"брандмауера (захисного екрана), які надаються firewalld."
 
 #: manafirewall/helpinfo.py:65
 msgid ""
-"firewalld provides a dynamically managed firewall with support for "
-"network/firewall “zones” to assign a level of trust to a network and its "
-"associated connections, interfaces or sources."
+"firewalld provides a dynamically managed firewall with support for network/"
+"firewall “zones” to assign a level of trust to a network and its associated "
+"connections, interfaces or sources."
 msgstr ""
+"firewalld забезпечує роботу динамічно керованого захисного екрана "
+"(брандмауера) із підтримкою мережевих «зон» для призначення рівня довіри до "
+"мережі і пов'язаних із нею з'єднань, інтерфейсів або джерел."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -541,11 +566,13 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"Передбачено підтримку містків IPv4, IPv6, Ethernet, а також параметрів "
+"захисних екранів IPSet. Динамічні і сталі параметри налаштувань розділено."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
-"work using Gtk, Qt or ncureses, e.g. graphical or textual user interfaces."
+"work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."
 msgstr ""
 
 #: manafirewall/helpinfo.py:68
@@ -554,56 +581,61 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"Праворуч розташовано панель огляду активних прив'язок. Це зони, до яких "
+"прив'язано або додано з'єднання, інтерфейс або походження. За допомогою цієї "
+"панелі просто змінити зону цих прив'язок."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"Праворуч розташовано спадні списки для вибору перегляду або налаштування "
+"параметрів, зокрема зон, служб тощо."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Тривалість"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Налаштувати зону"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Налаштувати служби"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "Панель наборів IP"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Порт і протокол"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "Помилковий діапазон портів"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Інший протокол"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "Будь ласка, вставте коректний протокол (див. /etc/protocols)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "Протокол є обов'язковим"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "Помилковий запис протоколу"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "Параметри служби"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -615,7 +647,7 @@ msgstr "Версія"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Коротко"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -623,19 +655,19 @@ msgstr "Опис"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "Не вистачає значення"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "Назва є обов'язковою"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "Параметри зони"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Типове призначення"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
@@ -643,8 +675,67 @@ msgstr "Прийняти"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Відкинути"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Відмовити"
+
+#~ msgid ""
+#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
+#~ "can work using Gtk, Qt or ncureses, e.g. graphical or textual user "
+#~ "interfaces."
+#~ msgstr ""
+#~ "ManaFirewall є частиною комплекту manatools. Програму засновано на "
+#~ "libyui, отже вона може працювати із використанням Gtk, Qt або ncurses, "
+#~ "тобто одночасно графічного та текстового інтерфейсів."
+
+#~ msgid "<li><b>Source Ports</b>:not yet implemented</li>"
+#~ msgstr "<li><b>Порти походження</b>: ще не реалізовано</li>"
+
+#~ msgid "<li><b>Protocols</b>:not yet implemented</li>"
+#~ msgstr "<li><b>Протоколи</b>: ще не реалізовано</li>"
+
+#~ msgid ""
+#~ "In view \"Services\", next combobox allow to choice a service. Then "
+#~ "\"Configure\" Selecting one update the table with a list of couples Port-"
+#~ "Protocol "
+#~ msgstr ""
+#~ "На панелі «Служби» кнопка «Налаштувати» поряд зі спадним списком надає "
+#~ "змогу вибрати службу. Вибір служби оновлює таблиці зі списком пар порт-"
+#~ "протокол. "
+
+#~ msgid ""
+#~ "After selecting \"Zones\" for view and one of the Zones, you can "
+#~ "configure said zone. There is some parameters for each zone:"
+#~ msgstr ""
+#~ "Після вибору режиму перегляду «Зони» і вибору однієї з зон, ви зможете її "
+#~ "налаштувати. Для кожної зони передбачено декілька параметрів:"
+
+#~ msgid ""
+#~ "For a zone, available fields are name, version, short as more descriptive "
+#~ "name, and description. A check box allows to active default target or to "
+#~ "select the default behaviour for packets that don't match any rule. "
+#~ "Targets are DROP, REJECT or ACCEPT. "
+#~ msgstr ""
+#~ "Для зони доступними полями є назва, версія, скорочена описова назва та "
+#~ "опис. За допомогою поля для позначки можна активувати типове призначення "
+#~ "або вибрати типову поведінку для пакунків, які не відповідають жодному "
+#~ "правилу. Призначеннями є DROP, REJECT або ACCEPT. "
+
+#~ msgid ""
+#~ "Runtime mode allows to configure things at runtime. Things changed at "
+#~ "runtime will not present at next start up or relading firewalld, if you "
+#~ "want that you need to add those changes in permanent mode also. "
+#~ msgstr ""
+#~ "Динамічний режим надає змогу налаштувати поточні параметри роботи. "
+#~ "Змінені у динамічному режимі параметри не буде відтворено під час "
+#~ "наступного запуску або перезавантаження firewalld. Якщо ви хочете зробити "
+#~ "їх сталими, вам слід внести зміни і у остаточному режимі."
+
+#~ msgid ""
+#~ "Forwarding to another system is only useful if the interface is "
+#~ "masqueraded.<br>Do you want to masquerade this zone ?"
+#~ msgstr ""
+#~ "Переспрямовування до іншої системи є корисним, лише якщо інтерфейс "
+#~ "замасковано.<br>Хочете замаскувати цю зону?"

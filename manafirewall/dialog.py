@@ -1092,7 +1092,7 @@ class ManaWallDialog(basedialog.BaseDialog):
                                        oldPortForwardingInfo['to_port'], oldPortForwardingInfo['to_address'])
           if add and newPortForwardingInfo['to_address'] and not self.fw.queryMasquerade(selected_zone):
             if common.askYesOrNo({'title': _("Information needed"),
-                                  'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone ?"),
+                                  'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone?"),
                                   'richtext': True, 'default_button': 1}):
               self.fw.addMasquerade(selected_zone)
       else:
@@ -1106,7 +1106,7 @@ class ManaWallDialog(basedialog.BaseDialog):
                                 newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address'])
             if add and newPortForwardingInfo['to_address'] and not zone.getMasquerade():
               if common.askYesOrNo({'title': _("Information needed"),
-                                    'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone ?"),
+                                    'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone?"),
                                     'richtext': True, 'default_button': 1}):
                 zone.setMasquerade(True)
 

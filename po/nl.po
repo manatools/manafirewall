@@ -2,26 +2,26 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the manafirewall package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # dragnadh, 2020
 # Yves Brungard, 2020
 # Geiger David <david.david@mageialinux-online.org>, 2020
-# 
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-21 18:42+0300\n"
+"POT-Creation-Date: 2020-07-21 21:15+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: Geiger David <david.david@mageialinux-online.org>, 2020\n"
 "Language-Team: Dutch (https://www.transifex.com/MageiaLinux/teams/9361/nl/)\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: manafirewall/dialog.py:83
@@ -266,8 +266,8 @@ msgstr ""
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
-"Forwarding to another system is only useful if the interface is "
-"masqueraded.<br>Do you want to masquerade this zone ?"
+"Forwarding to another system is only useful if the interface is masqueraded."
+"<br>Do you want to masquerade this zone?"
 msgstr ""
 
 #: manafirewall/dialog.py:1726
@@ -375,15 +375,15 @@ msgstr ""
 #: manafirewall/helpinfo.py:36
 msgid ""
 "Permanent mode allows to configure things that are not active immediately. "
-"If you want to have changes also in the runtime environment, then either add"
-" the changes there also or reload firewalld."
+"If you want to have changes also in the runtime environment, then either add "
+"the changes there also or reload firewalld."
 msgstr ""
 
 #: manafirewall/helpinfo.py:37
 msgid ""
 "Runtime mode allows to configure things at runtime. Things changed at "
-"runtime will not present at next start up or relading firewalld, if you want"
-" that you need to add those changes in permanent mode also. "
+"runtime will not present at next start up or reloading firewalld, if you "
+"want that you need to add those changes in permanent mode also. "
 msgstr ""
 
 #: manafirewall/helpinfo.py:38
@@ -397,21 +397,21 @@ msgstr ""
 #: manafirewall/helpinfo.py:39
 msgid ""
 "For a zone, available fields are name, version, short as more descriptive "
-"name, and description. A check box allows to active default target or to "
+"name, and description. A check box allows to activate default target or to "
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
 
 #: manafirewall/helpinfo.py:40
 msgid ""
-"Predefined zones are: block - dmz - drop - external - home - home - internal"
-" - public - trusted - work"
+"Predefined zones are: block - dmz - drop - external - home - home - internal "
+"- public - trusted - work"
 msgstr ""
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
-"said zone. There is some parameters for each zone:"
+"said zone. There are some parameters for each zone:"
 msgstr ""
 
 #: manafirewall/helpinfo.py:42
@@ -420,51 +420,51 @@ msgid ""
 "list of services that are predefined. According to the zone, some services "
 "are already selected. If you tick or untick a checkbox in regard to a "
 "service, the according rules will applying to allow said service on "
-"interafces having the zone. In permanent mode, the configuration is "
+"interfaces having the zone. In permanent mode, the configuration is "
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:43
 msgid ""
-"<li><b>Ports</b>: this configure option allows to specify a rule with "
-"\"Add\" button with a port number or range and a protocol selected in the "
-"list tcp, udp, sctp and dccp. The list view displays the already defined "
-"rules. A range is defined with a hyphen between two numbers, for example "
-"with 80-88. The effect will be that these ports will be open.</li>"
+"<li><b>Ports</b>: this configure option allows to specify a rule with \"Add"
+"\" button with a port number or range and a protocol selected in the list "
+"tcp, udp, sctp and dccp. The list view displays the already defined rules. A "
+"range is defined with a hyphen between two numbers, for example with 80-88. "
+"The effect will be that these ports will be open.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:44
 msgid ""
 "<li><b>Protocols</b>Here, you can add a protocol among a list of supported "
 "protocols by firewalld or to add a specific one that you can name. (to "
-"complete with what is the effect of this addition</li>"
+"complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:45
 msgid ""
-"<li><b>Source Ports</b>: this configure option allows to specify a rule with"
-" \"Add\" button with a port number or range and a protocol selected in the "
+"<li><b>Source Ports</b>: this configure option allows to specify a rule with "
+"\"Add\" button with a port number or range and a protocol selected in the "
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:46
 msgid ""
-"<li><b>Masquerading</b>: this option allows to tick or untick a \"Masquerade"
-" zone\". Thus this zone is used for masquerading (only for IPv4).(to "
+"<li><b>Masquerading</b>: this option allows to tick or untick a \"Masquerade "
+"zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:47
 msgid ""
-"<li><b>Port Forwarding</b>:  port forwarding is an application of network "
+"<li><b>Port Forwarding</b>: port forwarding is an application of network "
 "address translation (NAT) that redirects a communication request from one "
 "address and port number combination to another while the packets are "
-"traversing the firewall in IPv4 technology. Adding a rule needs to specify a"
-" port or port range of incoming requests and its protocol (source) and "
-"either a port or range for the destination for local forwarding or address "
-"of the destination and optionnaly port or range if port is changed.</li>"
+"traversing the firewall in IPv4 technology. Adding a rule needs to specify a "
+"port or port range of incoming requests and its protocol (source) and either "
+"a port or range for the destination for local forwarding or address of the "
+"destination and optionally port or range if port is changed.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:48
@@ -493,9 +493,9 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:54
 msgid ""
-"In view \"Services\", next combobox allow to choice a service. Then "
-"\"Configure\" Selecting one update the table with a list of couples Port-"
-"Protocol "
+"In view \"Services\", the \"Configure\" button next to the combobox allows "
+"to choose a service. Selecting one updates the table with a list of couples "
+"Port-Protocol "
 msgstr ""
 
 #: manafirewall/helpinfo.py:55
@@ -505,16 +505,16 @@ msgstr ""
 #: manafirewall/helpinfo.py:56
 msgid ""
 "<ul><li><b>Ports</b>: when selected, the list view contains the ports "
-"already defined. Each port is defined by a number or a range, and a "
-"protocol.</li>"
+"already defined. Each port is defined by a number or a range, and a protocol."
+"</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:57
-msgid "<li><b>Protocols</b>:not yet implemented</li>"
+msgid "<li><b>Protocols</b>: not yet implemented</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:58
-msgid "<li><b>Source Ports</b>:not yet implemented</li>"
+msgid "<li><b>Source Ports</b>: not yet implemented</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:59
@@ -533,9 +533,9 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:65
 msgid ""
-"firewalld provides a dynamically managed firewall with support for "
-"network/firewall “zones” to assign a level of trust to a network and its "
-"associated connections, interfaces or sources."
+"firewalld provides a dynamically managed firewall with support for network/"
+"firewall “zones” to assign a level of trust to a network and its associated "
+"connections, interfaces or sources."
 msgstr ""
 
 #: manafirewall/helpinfo.py:66
@@ -548,7 +548,7 @@ msgstr ""
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
-"work using Gtk, Qt or ncureses, e.g. graphical or textual user interfaces."
+"work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."
 msgstr ""
 
 #: manafirewall/helpinfo.py:68
