@@ -14,7 +14,7 @@ update_mo(){
 	echo $1
 	language="$(basename "$1")"
 	language="${language%.po}"
-	target="$PWD/share/locale/$language/LC_MESSAGES/dnfdragora.mo"
+	target="$PWD/share/locale/$language/LC_MESSAGES/manafirewall.mo"
 	echo $target
 	/bin/mkdir --parents "$(dirname "$target")"
 	/usr/bin/msgfmt \
