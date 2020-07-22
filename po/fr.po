@@ -147,7 +147,7 @@ msgstr "Services"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "Groupe d'adresses IP"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -291,7 +291,7 @@ msgstr "Modifier les services"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr "Modifier les ipsets"
+msgstr "Modifier les groupes d'adresses IP"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -380,7 +380,7 @@ msgstr "Vue des Services"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr "Vue des IP Sets"
+msgstr "Vue des groupes d'adresses IP"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
@@ -627,9 +627,9 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
-"Il prend en charge les adresses IPv4, IPv6, les ponts Ethernet et également "
-"les paramètres de pare-feu IPSet. Il y a séparation entre les options "
-"d'exécution et de configuration permanente."
+"Il prend en charge les adresses IPv4, IPv6, les ponts Ethernet et groupes "
+"d'adresses IP pour la configuration du pare-feu. Il y a séparation entre les "
+"réglages permanents et ceux valables seulement en cours d'utilisation."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
@@ -672,7 +672,7 @@ msgstr "Configurer les services"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr "Vue des IP Sets"
+msgstr "Vue des groupes d'adresses IP"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
