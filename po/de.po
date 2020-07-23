@@ -6,8 +6,8 @@
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Ettore Atalan <atalanttore@googlemail.com>, 2020
-# psyca, 2020
 # Peter Grun, 2020
+# psyca, 2020
 #
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 21:15+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Peter Grun, 2020\n"
+"Last-Translator: psyca, 2020\n"
 "Language-Team: German (https://www.transifex.com/MageiaLinux/teams/9361/"
 "de/)\n"
 "Language: de\n"
@@ -39,7 +39,7 @@ msgstr "Verbindung zur Firewall hergestellt."
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr "Verbindungsversuch zur Firewall, warte..."
+msgstr "Verbindungsversuch zur firewalld, warte..."
 
 #: manafirewall/dialog.py:91
 msgid ""
@@ -56,7 +56,7 @@ msgstr "Änderungen übernommen."
 #: manafirewall/dialog.py:94
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr "Wird von der Netzwerkverbindung verwendet '%s'"
+msgstr "Wird von der Netzwerkverbindung  '%s' verwendet"
 
 #: manafirewall/dialog.py:95
 #, python-format
@@ -109,7 +109,7 @@ msgstr "Bereiche bearbeiten"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
-msgstr "&Hinuzfügen"
+msgstr "&Hinzufügen"
 
 #: manafirewall/dialog.py:175 manafirewall/dialog.py:371
 msgid "&Edit"
@@ -162,7 +162,7 @@ msgstr "Protokolle"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
-msgstr "Source Ports"
+msgstr "Quellports"
 
 #: manafirewall/dialog.py:254
 msgid "Masquerading"
@@ -170,7 +170,7 @@ msgstr "Maskierung"
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr "Port Weiterleitung"
+msgstr "Portweiterleitung"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
@@ -182,7 +182,7 @@ msgstr "Regeln"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr "Schnitstellen"
+msgstr "Schnittstellen"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
@@ -211,7 +211,7 @@ msgstr "Standard Bereich: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
-msgstr "Log erforderlich: {}"
+msgstr "Log abgelehnt: {}"
 
 #: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
 #: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
@@ -281,10 +281,7 @@ msgstr "Credits {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
-"{} ist ein graphisches \n"
-"Konfigurationswerkzeug\n"
-"für firewalld."
+msgstr "{} ist ein grafisches Konfigurationswerkzeug für firewalld."
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
@@ -364,11 +361,11 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
-"Gültige Konfigurationen sind:<br>        <b>lokake Weiterleitung</b> Füllen "
-"Sie Port und to_port. Beachten Sie, dass diese Ports unterschiedlich sein "
-"müssen<br>         <b>Weiterleitung zu Adresse</b> Ausfüllen Port und zu "
-"Adresse<br>         <b>Weiterleitung nach einem entfernten Port </b> "
-"Ausfüllen Port, zu_Adresse und zu Port"
+"Gültige Konfigurationen sind:<br>        <b>lokake Weiterleitung</b> Geben "
+"Sie Port und to_port an. Beachten Sie, dass diese Ports unterschiedlich sein "
+"müssen<br>         <b>Weiterleitung zu Adresse</b> Geben SIe Port und zu "
+"Adresse an<br>         <b>Weiterleitung zu einem entfernten Port </b> Geben "
+"Sie Port, to_address und  to_port an"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
@@ -395,7 +392,7 @@ msgstr ""
 "Im permanenten Modus können Dinge konfiguriert werden, die nicht sofort "
 "aktiv sind. Wenn Sie Änderungen auch in der Laufzeitumgebung vornehmen "
 "möchten, fügen Sie die Änderungen entweder auch dort hinzu oder laden Sie "
-"die firewalld neu."
+"firewalld neu."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -404,9 +401,10 @@ msgid ""
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
 "Im Laufzeitmodus können Dinge zur Laufzeit konfiguriert werden. Änderungen, "
-"die zur Laufzeit geändert wurden, werden beim nächsten Start oder beim "
-"erneuten Laden von firewalld nicht angezeigt. Wenn Sie möchten, können dass "
-"Sie diese Änderungen auch im permanenten Modus hinzufügen."
+"die während der Laufzeit gemacht wurden, werden beim nächsten Start oder "
+"beim erneuten Laden von firewalld nicht mehr verwendet. Wenn Sie die "
+"Änderungen dauerhaft haben möchten, können Sie diese auch im permanenten "
+"Modus konfigurieren."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -515,9 +513,9 @@ msgid ""
 "complete with what is the effect of this addition)</li>"
 msgstr ""
 "<li><b>Maskierung</b>: Diese Option ermöglicht das Aktivieren oder "
-"Deaktivieren einer \"Maskierten-Zone\". Daher wird diese Zone zum Maskieren "
-"verwendet (nur für IPv4). (um zu vervollständigen, wie sich dieser Zusatz "
-"auswirkt)</li>"
+"Deaktivieren des \"Maskierter Bereich\". Dadurch wird dieser Bereich zum "
+"Maskieren verwendet (nur für IPv4). (um zu vervollständigen, wie sich dieser "
+"Zusatz auswirkt)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -529,7 +527,7 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
-"<li><b>Port Weiterleitung</b>: Port Weiterleitung ist eine Anwendung der "
+"<li><b>Portweiterleitung</b>: Portweiterleitung ist eine Anwendung der "
 "Network Address Translation (NAT), die eine Kommunikationsanforderung von "
 "einer Kombination aus Adresse und Portnummer zu einer anderen umleitet, "
 "während die Pakete die Firewall in IPv4-Technologie durchlaufen. Das "
@@ -541,7 +539,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr "<li><b>ICMP Filter</b>: noch nicht umgesetzt! </li>"
+msgstr "<li><b>ICMP Filter</b>: noch nicht umgesetzt!</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
@@ -563,10 +561,10 @@ msgid ""
 "can add your own for an application which is not provided."
 msgstr ""
 "Ein Dienst ist eine Sammlung von Regeln, die zusammen in Bezug auf eine "
-"Anwendung angewendet werden. Dieses Konzept hilft bei der Anwendung der "
-"Anforderungen für eine Anwendung, indem  ein Kontrollkästchen aktiviert "
-"wird. Viele Dienste sind bereits definiert, aber Sie können Ihre eigenen für "
-"eine Anwendung hinzufügen, die noch nicht bereitgestellt sind."
+"Anwendung angewendet werden. Dieses Konzept hilft bei der Anwendung von "
+"Anforderungen für eine Anwendung, indem ein Kontrollkästchen aktiviert wird. "
+"Viele Dienste sind bereits definiert, aber Sie können Ihre eigenen für eine "
+"Anwendung hinzufügen, die noch nicht bereitgestellt sind."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -574,9 +572,9 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
-"In der Ansicht \"Service\", die Konfigurationstaste neben der Combobox "
-"erlaubt einen Dienst zu wählen. Wenn Sie einen auswählen, wird die Tabelle "
-"mit einer Liste der Port-Protokolle aktualisiert"
+"In der Ansicht \"Dienste\", erlaubt die \"Konfigurieren\" Schaltfläche neben "
+"der Combobox einen Dienst zu wählen. Wenn Sie einen auswählen, wird die "
+"Tabelle mit einer Liste der Port-Protokolle aktualisiert"
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -642,8 +640,8 @@ msgid ""
 "work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."
 msgstr ""
 "ManaFirewall ist Teil von Manatools und basiert auf libyui, sodass es mit "
-"Gtk, Qt oder ncurses, z. grafische oder textuelle Benutzeroberflächen "
-"zusammen arbeitet."
+"GTK, Qt oder ncurses, z. B. grafische oder textuelle Benutzeroberflächen "
+"zusammenarbeitet."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -651,7 +649,7 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
-"links sehen Sie die Übersicht der aktiven Bindungen. Dies sind die Zonen, an "
+"Links sehen Sie die Übersicht der aktiven Bindungen. Dies sind die Zonen, an "
 "die eine Verbindung, Schnittstelle oder Quelle gebunden oder hinzugefügt "
 "ist. Hier ist es möglich, die Zone dieser Bindungen leicht zu ändern."
 
@@ -670,11 +668,11 @@ msgstr "Dauer"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr "Konfigurations Bereich"
+msgstr "Konfigurationsbereich"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr "Konfigurations Dienst"
+msgstr "Dienste konfigurieren"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
@@ -702,11 +700,11 @@ msgstr "Protokoll ist obligatorisch"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr "Falscher Protokoll Eintrag"
+msgstr "Falscher Protokolleintrag"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr "Service Einstellungen"
+msgstr "Dienst Einstellungen"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -734,7 +732,7 @@ msgstr "Name ist obligatorisch"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr "Einstellungs Bereich"
+msgstr "Einstellungsbereich"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
