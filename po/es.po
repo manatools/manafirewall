@@ -7,8 +7,9 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
 # Jose Manuel López <joselp@disroot.org>, 2020
-# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
 # Miguel, 2020
+# Adolfo Jayme-Barrientos, 2020
+# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -17,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 21:15+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Miguel, 2020\n"
+"Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/MageiaLinux/teams/9361/"
 "es/)\n"
 "Language: es\n"
@@ -412,10 +413,10 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
-"Una zona es un conjunto de servicios que se pueden aplicar. Una colección de "
-"zonas está predefinida para diferentes niveles de confianza. Si selecciona "
-"la configuración \"Permanente\", también puede agregar, editar o eliminar su "
-"propia zona y definir qué servicios se permitirán en su zona."
+"Una zona es un conjunto de servicios que se pueden aplicar a un enlace. Una "
+"colección de zonas está predefinida para diferentes niveles de confianza. Si "
+"selecciona la configuración \"Permanente\", también puede agregar, editar o "
+"eliminar su propia zona y definir qué servicios se permitirán en su zona."
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -428,23 +429,24 @@ msgstr ""
 "nombre más descriptivo y descripción. Una casilla de verificación permite "
 "activar el destino predeterminado o seleccionar el comportamiento "
 "predeterminado para los paquetes que no coinciden con ninguna regla. Las "
-"opciones son DROP (ignorar), RECHAZAR o ACEPTAR."
+"opciones son DROP (desechar), RECHAZAR o ACEPTAR."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
-"Las zonas predefinidas son: bloque - zona desmilitarizada - drop (olvidar) - "
-"externo - hogar - hogar - interno - público - confiable - trabajo"
+"Las zonas predefinidas son: bloquear - zona desmilitarizada - drop "
+"(desechar) - externo - hogar - hogar - interno - público - confiable - "
+"trabajo"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
-"Tras seleccionar ver \"Zonas\" y una de ellas, se puede configurar. Hay "
-"algunos parámetros para cada zona:"
+"Tras seleccionar una zona en  ver \"Zonas\", se puede configurar dicha zona. "
+"Hay algunos parámetros para cada zona:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -462,7 +464,7 @@ msgstr ""
 "respecto a un servicio, se aplicarán las reglas correspondientes para "
 "permitir dicho servicio en las interfaces que tienen la zona. En modo "
 "permanente, la configuración se registra directamente, pero no se aplica. Se "
-"aplicará después de una recarga del Firewalld.</li>"
+"aplicará después de recargar Firewalld.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -496,7 +498,7 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
-"<li><b>Puertos Fuente</b>: Esta opción de configuración permite especificar "
+"<li><b>Puertos Origen</b>: Esta opción de configuración permite especificar "
 "una regla con el botón \"Agregar\" con un número de puerto o rango y un "
 "protocolo seleccionado en la lista tcp, udp, sctp y dccp. La vista de lista "
 "muestra las reglas ya definidas (para completar cuál es el efecto de esta "
@@ -508,10 +510,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
-"<li><b>Enmascaramiento</b>: Esta opción permite marcar o desmarcar una "
-"\"Zona de enmascaramiento\". Por lo tanto, esta zona se utiliza para "
-"enmascarar (solo para IPv4) (para completar cuál es el efecto de esta "
-"adición)</li>"
+"<li><b>Enmascarar</b>: Esta opción permite marcar o desmarcar una \"Zona de "
+"enmascaramiento\". Por lo tanto, esta zona se utiliza para enmascarar (solo "
+"para IPv4) (para completar cuál es el efecto de esta adición)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -523,22 +524,30 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Redirección de puertos</b>: la redirección de puertos es una "
+"aplicación de traslado de direcciones de red (Network Address Translation) "
+"que redirige una petición dirigida a una combinación de puerto y dirección "
+"hacia otra mientras los paquetes viajan por un cortafuegos de tecnología "
+"IPv4. Añadiendo la regla necesaria para especificar peticiones de entrada a "
+"un puerto ó rango de puertos y su protocolo(origen) y un puerto o rango de "
+"puertos para un redireccionamiento local ó una dirección destino y "
+"opcionalmente un puerto y rango de puertos si se cambia de puerto.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Filtro ICMP</b>:  no esta implementado</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Reglas Amplias</b>: no esta implementado</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Interfaces</b>: no esta implementado</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Origenes</b>: no esta implementado</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -547,6 +556,11 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Un servicio es una colección de reglas que se aplican juntas en relación con "
+"una aplicación. Este concepto ayuda a aplicar lo necesario para una "
+"aplicación tan solo activando una casilla. Un montón de servicios ya están "
+"definidos, pero puede añadir uno propio para una aplicación que no se "
+"incluya."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -554,10 +568,13 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"En ver \"Servicios\", el botón \"Configurar\" junto al cuadro combinado "
+"permite elegir un servicio. Seleccionar uno, actualiza la tabla con una "
+"lista de parejas Puerto-Protocolo "
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "Para cada servicio puede definir:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -565,28 +582,33 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>Puertos</b>: cuando se selecciona, la lista ver contiene los "
+"puertos ya definidos. Cada puerto esta definido por un numero o rango, y un "
+"protocolo.</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Protocolos</b>: no esta implementado</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Puertos Origen</b>: no esta implementado</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Modulos</b>: no esta implementado</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Destino</b>: no esta implementado</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall es una herramienta gráfica para configurar un cortafuegos "
+"mediante las características proporcionadas por firewalld."
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -594,6 +616,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld proporciona un cortafuegos administrado dinamicamente con soporte "
+"para \"zonas\" asignando un nivel de confianza a una red, sus conexiones "
+"asociadas, sus interfaces u orígenes."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -601,12 +626,17 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"Tiene soporte para IPv4, IPv6, puentes Ethernet y tambien configuraciones "
+"del cortafuegos  IPSet . Hay una separación entre las configuraciones \"En "
+"Ejecución\" y las permanentes."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall es parte de manatools y se basa en libyui,  por lo que puede "
+"utilizar Gtk, Qt o ncurses para la interfaz de usuario."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -614,56 +644,61 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"A la izquierda esta un panorama de los enlaces activos. Esto es, las zonas "
+"que tienen una conexión, interface u origen  enlazados ó añadidos. Aquí es "
+"posible cambiar fácilmente las zonas de estos enlaces."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"A la derecha esta los cuadros de combinación para seleccionar que ver o "
+"configurar, como zonas, servicios, etc."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Duración"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Configurar la zona"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Configurar los servicios"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "Vista IP Sets"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Puerto y protocolo"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "Rango de puertos incorrecto"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Otro protocolo"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "Por favor inserte un protocolo válido (vea /etc/protocols)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "El protocolo es obligatorio"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "Protocolo erróneo proporcionado"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "Configuración de servicio"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -675,7 +710,7 @@ msgstr "Versión"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Corto"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -683,19 +718,19 @@ msgstr "Descripción"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "Falta el valor"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "El nombre es obligatorio"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "Configuración de la zona"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Destino Predeterminado"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
@@ -703,8 +738,8 @@ msgstr "Aceptar"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Desechar"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Rechazar"
