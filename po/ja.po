@@ -26,39 +26,41 @@ msgstr ""
 
 #: manafirewall/dialog.py:83
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - firewalld 設定ツール"
 
 #: manafirewall/dialog.py:84
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - ManaTools firewalld 設定ツール"
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "firewalld への接続が確立されました。"
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "firewalld への接続を試行しています、お待ちください..."
 
 #: manafirewall/dialog.py:91
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"firewalld への接続に失敗しました。このサービスが正しく開始したことを確認して"
+"再試行してください。"
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
-msgstr ""
+msgstr "変更が適用されました。"
 
 #: manafirewall/dialog.py:94
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "ネットワーク接続 '%s' によって使用されています"
 
 #: manafirewall/dialog.py:95
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr ""
+msgstr "ネットワーク接続 '%s' によって使用される既定のゾーン"
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
@@ -82,7 +84,7 @@ msgstr "設定(&O)"
 
 #: manafirewall/dialog.py:139
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "Firewalld の再読み込み(&R)"
 
 #: manafirewall/dialog.py:146 manafirewall/dialog.py:147
 msgid "&Help"
@@ -94,19 +96,19 @@ msgstr "情報(&A)"
 
 #: manafirewall/dialog.py:164
 msgid "Active bindings"
-msgstr ""
+msgstr "アクティブなバインディング"
 
 #: manafirewall/dialog.py:166
 msgid "&Change binding"
-msgstr ""
+msgstr "バインディングを変更(&C)"
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr ""
+msgstr "ゾーンを編集"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
-msgstr ""
+msgstr "追加(&A)"
 
 #: manafirewall/dialog.py:175 manafirewall/dialog.py:371
 msgid "&Edit"
@@ -118,15 +120,15 @@ msgstr "削除(&R)"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
-msgstr ""
+msgstr "既定値を読み込む(&L)"
 
 #: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "実行時"
 
 #: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "永久"
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -134,7 +136,7 @@ msgstr "設定"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
-msgstr ""
+msgstr "ゾーン"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
@@ -142,7 +144,7 @@ msgstr "サービス"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "IP セット"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -151,51 +153,51 @@ msgstr "表示"
 
 #: manafirewall/dialog.py:251 manafirewall/dialog.py:263
 msgid "Ports"
-msgstr ""
+msgstr "ポート"
 
 #: manafirewall/dialog.py:252 manafirewall/dialog.py:264
 msgid "Protocols"
-msgstr ""
+msgstr "プロトコル"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
-msgstr ""
+msgstr "送信元ポート"
 
 #: manafirewall/dialog.py:254
 msgid "Masquerading"
-msgstr ""
+msgstr "マスカレード"
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "ポート フォワーディング"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
-msgstr ""
+msgstr "ICMP フィルタ"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "リッチ ルール"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr ""
+msgstr "インターフェース"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
-msgstr ""
+msgstr "送信元"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "モジュール"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr ""
+msgstr "宛先"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
-msgstr ""
+msgstr "エントリ"
 
 #: manafirewall/dialog.py:273
 msgid "Configure"
@@ -204,26 +206,26 @@ msgstr "設定"
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "既定のゾーン: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "拒否のログ: {}"
 
 #: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
 #: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "パニック モード: {}"
 
 #: manafirewall/dialog.py:294 manafirewall/dialog.py:2209
 #: manafirewall/dialog.py:2227
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "自動ヘルパ: {}"
 
 #: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
 #: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "ロックダウン: {}"
 
 #: manafirewall/dialog.py:370
 msgid "A&dd"
@@ -231,11 +233,11 @@ msgstr "追加(&D)"
 
 #: manafirewall/dialog.py:397
 msgid "Selected are accepted"
-msgstr ""
+msgstr "選択したものが許可されます"
 
 #: manafirewall/dialog.py:465
 msgid "Masquerade zone"
-msgstr ""
+msgstr "マスカレード ゾーン"
 
 #: manafirewall/dialog.py:497 manafirewall/dialog.py:559
 #: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
@@ -254,50 +256,52 @@ msgstr "サービス"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
-msgstr ""
+msgstr "宛先アドレス"
 
 #: manafirewall/dialog.py:693
 msgid "To Port"
-msgstr ""
+msgstr "宛先ポート"
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "情報が必要です"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
+"別のシステムへのフォワーディングはインターフェースがマスカレードされている場"
+"合にのみ有用です。<br>このゾーンをマスカレードしますか?"
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr ""
+msgstr "クレジット {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} は firewalld のグラフィカルな設定ツールです。"
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
-msgstr ""
+msgstr "サービスを編集"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr ""
+msgstr "IP セットを編集"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
-msgstr "ソース"
+msgstr "送信元"
 
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "ポート / ポート範囲"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "宛先"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -317,36 +321,38 @@ msgstr "OK(&O)"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "送信元のポートは必須です"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "ポートの番号または範囲 (10000 や 12000-12002) を使用してください"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "指定された IP アドレスは無効です。"
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "IP アドレスが正しくありません"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "宛先ポートの範囲が正しくありません"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "指定されたポートが正しくありません"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
 msgstr ""
+"<b>ローカル フォワーディング</b><br>ポートと宛先ポートは異なるものでなければ"
+"なりません"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "データがありません"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -355,22 +361,26 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"有効な設定:<br>        <b>ローカル フォワーディング</b> ポートと宛先ポートを"
+"入力し、それらは異なるものでなければなりません<br>         <b>フォワード先ア"
+"ドレス</b> ポートと宛先アドレスを入力します<br>         <b>リモート ポートに"
+"フォワード</b> ポート, 宛先アドレス, 宛先ポートを入力しま"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr ""
+msgstr "ゾーン表示"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr ""
+msgstr "サービス表示"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr ""
+msgstr "IP セット表示"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "インデックスに移動"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
