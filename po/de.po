@@ -35,7 +35,7 @@ msgstr "{} - Manatools firewalld Konfigurator"
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
-msgstr "Verbindung zur Firewall hergestellt."
+msgstr "Verbindung zu firewalld hergestellt."
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
@@ -61,7 +61,7 @@ msgstr "Wird von der Netzwerkverbindung  '%s' verwendet"
 #: manafirewall/dialog.py:95
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr "Standardbereich, der von der Netzwerkverbindung verwendet wird '%s'"
+msgstr "Standardzone, die von der Netzwerkverbindung verwendet wird '%s'"
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
@@ -105,7 +105,7 @@ msgstr "&Wechsle Bindung"
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr "Bereiche bearbeiten"
+msgstr "Zonen bearbeiten"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
@@ -207,7 +207,7 @@ msgstr "Einrichten"
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr "Standard Bereich: {}"
+msgstr "Standard Zone: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
@@ -238,7 +238,7 @@ msgstr "Ausgewählte werden akzeptiert"
 
 #: manafirewall/dialog.py:465
 msgid "Masquerade zone"
-msgstr "Maskierter Bereich"
+msgstr "Maskiere Zone"
 
 #: manafirewall/dialog.py:497 manafirewall/dialog.py:559
 #: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
@@ -273,7 +273,7 @@ msgid ""
 "<br>Do you want to masquerade this zone?"
 msgstr ""
 "Die Weiterleitung an ein anderes System ist nur dann sinnvoll, wenn die "
-"Schnittstelle maskiert ist.<br>Möchten Sie diesen Bereich maskieren?"
+"Schnittstelle maskiert ist.<br>Möchten Sie diese Zone maskieren?"
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
@@ -363,17 +363,17 @@ msgid ""
 msgstr ""
 "Gültige Konfigurationen sind:<br>        <b>lokake Weiterleitung</b> Geben "
 "Sie Port und to_port an. Beachten Sie, dass diese Ports unterschiedlich sein "
-"müssen<br>         <b>Weiterleitung zu Adresse</b> Geben SIe Port und zu "
+"müssen<br>         <b>Weiterleitung zu Adresse</b> Geben Sie Port und zu "
 "Adresse an<br>         <b>Weiterleitung zu einem entfernten Port </b> Geben "
 "Sie Port, to_address und  to_port an"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr "Sichtbarer Bereich"
+msgstr "Zonen Ansicht"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr "Service Bereich"
+msgstr "Dienste Ansicht"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
@@ -413,11 +413,11 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
-"Ein Bereich ist eine Reihe von Diensten, die auf eine Bindung angewendet "
-"werden können. Eine Sammlung von Bereichen ist für verschiedene "
+"Eine Zone ist eine Reihe von Diensten, die auf eine Bindung angewendet "
+"werden können. Eine Sammlung von Zone ist für verschiedene "
 "Berechtigungsstufen vordefiniert. Wenn Sie die Konfiguration \"Permanent\" "
-"auswählen, können Sie auch Ihren eigene Bereich hinzufügen, bearbeiten oder "
-"löschen und festlegen, welche Dienste in Ihrem Bereich zulässig sind."
+"auswählen, können Sie auch Ihren eigen Zone hinzufügen, bearbeiten oder "
+"löschen und festlegen, welche Dienste in Ihrer Zone zulässig sind."
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -426,10 +426,10 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
-"Für einen Bereich sind die verfügbaren Felder Name, Version, "
-"Kurzbeschreibung und Beschreibung. Ein Kontrollkästchen ermöglicht das "
-"Aktivieren des Standardziels oder das Auswählen des Standardverhaltens für "
-"Pakete, die keiner Regel entsprechen. Ziele sind DROP, REJECT oder ACCEPT."
+"Für eine Zone sind die Felder Name, Version, Kurzbeschreibung und "
+"Beschreibung verfügbar. Ein Kontrollkästchen ermöglicht das Aktivieren des "
+"Standardziels oder das Auswählen des Standardverhaltens für Pakete, die "
+"keiner Regel entsprechen. Ziele sind DROP, REJECT oder ACCEPT."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
@@ -444,9 +444,8 @@ msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
-"Nachdem Sie \"Bereiche\" für die Ansicht und einen der Bereiche ausgewählt "
-"haben, können Sie diesen Bereich konfigurieren. Für jeden Bereich gibt es "
-"einige Parameter"
+"Nachdem Sie \"Zonen\" für die Ansicht und eine der Zonen ausgewählt haben, "
+"können Sie diese Zone konfigurieren. Für jede Zone gibt es einige Parameter:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -513,9 +512,9 @@ msgid ""
 "complete with what is the effect of this addition)</li>"
 msgstr ""
 "<li><b>Maskierung</b>: Diese Option ermöglicht das Aktivieren oder "
-"Deaktivieren des \"Maskierter Bereich\". Dadurch wird dieser Bereich zum "
-"Maskieren verwendet (nur für IPv4). (um zu vervollständigen, wie sich dieser "
-"Zusatz auswirkt)</li>"
+"Deaktivieren von \"Maskiere Zone\". Dadurch wird diese Zone zum Maskieren "
+"verwendet (nur für IPv4). (noch zu vervollständigen, wie sich dieser Zusatz "
+"auswirkt)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -621,7 +620,7 @@ msgid ""
 "connections, interfaces or sources."
 msgstr ""
 "firewalld bietet eine dynamisch verwaltete Firewall mit Unterstützung für "
-"Netzwerk- / Firewall-Zonen, um einem Netzwerk und den zugehörigen "
+"Netzwerk- / Firewall-\"Zonen\", um einem Netzwerk und den zugehörigen "
 "Verbindungen, Schnittstellen oder Quellen eine Vertrauensstufe zuzuweisen."
 
 #: manafirewall/helpinfo.py:66
@@ -668,7 +667,7 @@ msgstr "Dauer"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr "Konfigurationsbereich"
+msgstr "Konfiguriere Zone"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
@@ -732,7 +731,7 @@ msgstr "Name ist obligatorisch"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr "Einstellungsbereich"
+msgstr "Zonen-Einstellungen"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
