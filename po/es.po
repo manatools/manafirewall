@@ -7,9 +7,9 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
 # Jose Manuel López <joselp@disroot.org>, 2020
-# Miguel, 2020
 # Adolfo Jayme-Barrientos, 2020
 # José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
+# Miguel, 2020
 #
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 21:15+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020\n"
+"Last-Translator: Miguel, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/MageiaLinux/teams/9361/"
 "es/)\n"
 "Language: es\n"
@@ -626,7 +626,7 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
-"Tiene soporte para IPv4, IPv6, puentes Ethernet y tambien configuraciones "
+"Tiene soporte para IPv4, IPv6, puentes Ethernet y también configuraciones "
 "del cortafuegos  IPSet . Hay una separación entre las configuraciones \"En "
 "Ejecución\" y las permanentes."
 
