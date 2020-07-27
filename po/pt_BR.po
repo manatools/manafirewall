@@ -6,8 +6,8 @@
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2020
+# 3f37d448649cd548fa5a733e33387c2a_dee4ccf, 2020
 # Michael Martins <michaelfm21@gmail.com>, 2020
-# Marcio Andre Padula <padula1000@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-21 21:15+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Marcio Andre Padula <padula1000@gmail.com>, 2020\n"
+"Last-Translator: Michael Martins <michaelfm21@gmail.com>, 2020\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/MageiaLinux/"
 "teams/9361/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -63,11 +63,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
-msgstr "habilitado"
+msgstr "ativado"
 
 #: manafirewall/dialog.py:98
 msgid "disabled"
-msgstr "Desativado"
+msgstr "desativado"
 
 #: manafirewall/dialog.py:131
 msgid "&File"
@@ -643,7 +643,7 @@ msgstr ""
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
-msgstr "Aceito"
+msgstr "Aceitar"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
