@@ -186,15 +186,15 @@ msgstr ""
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "Módulos"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr ""
+msgstr "Destinos"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
-msgstr ""
+msgstr "Entraes"
 
 #: manafirewall/dialog.py:273
 msgid "Configure"
