@@ -338,7 +338,7 @@ msgstr "Adreça IP incorrecta"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "Gamma de to_port incorrecte"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
@@ -347,6 +347,7 @@ msgstr "Port proporcionat incorrecte"
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
 msgstr ""
+"<b>reenviaent local</b><br>els valors de port i to_port han de ser diferents"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
@@ -359,6 +360,10 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"Configuració vàlida:<br>        <b>reenviament local</b> completeu el port i "
+"to_port, tingueu en compte que han de ser diferents<br>         "
+"<b>reenviament a adreça</b> completeu el port i to_address<br>         "
+"<b>reenviament a un port remot</b> completeu el port, to_address i to_port"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
@@ -449,6 +454,13 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>Serveis</b>: quan seleccioneu l'opció Configura, veureu una "
+"llista de serveis predefinits. Segons la zona, alguns serveis ja estan "
+"seleccionats. Si marqueu o desmarqueu una casella per a un servei, "
+"s'aplicaran les regles adequades per permetre el servei a les interfícies "
+"que tinguin la zona. En mode permanent, la configuració es registra "
+"directament, però no s'aplica. S’aplicarà després d’una recàrrega de "
+"firewalld.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -458,6 +470,11 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>Ports</b>: aquesta opció de configuració permet especificar una regla "
+"amb el botó Afegir amb un número o gamma de port i un protocol seleccionat a "
+"la llista tcp, udp, sctp i dccp. La vista de llista mostra les regles ja "
+"definides. Una gamma es defineix amb un guionet entre dos números, per "
+"exemple amb 80-88. L’efecte serà que aquests ports estaran oberts.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -465,6 +482,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protocols</b>Aquí, podeu afegir un protocol entre una llista de "
+"protocols compatibles amb firewalld o afegir-ne un d'específic que podeu "
+"anomenar. (Per completar amb quin és l'efecte d'aquesta addició) </li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -473,6 +493,11 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Ports d'origen</b>: aquesta opció de configuració permet especificar "
+"una regla amb el botó Afegir amb un número o gamma de port i un protocol "
+"seleccionat a la llista tcp, udp, sctp i dccp. A la vista de llista es "
+"mostren les regles ja definides. (Per completar amb quins són els efectes "
+"d'aquesta addició) </li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -480,6 +505,10 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Emmascarament</b>: aquesta opció permet marcar o desmarcar una zona "
+"d'emmascarament. D'aquesta manera, aquesta zona s'usa per a l'emmascarament "
+"(només per a IPv4). (Per completar amb quin és l'efecte d'aquesta addició)</"
+"li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -491,22 +520,30 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Reenviament de port</b>: el reenviament de port és una aplicació de "
+"traducció d’adreces de xarxa (NAT) que redirigeix una sol·licitud de "
+"comunicació d’una combinació d’adreces i números de port a una altra mentre "
+"els paquets recorren el tallafoc en la tecnologia IPv4. En afegir una regla "
+"cal especificar un port o una gamma de ports de les sol·licituds entrants i "
+"el seu protocol (origen) i un port o una gamma de ports de destinació per a "
+"l'enviament local o l'adreça de la destinació i, opcionalment, un port o una "
+"gamma si es canvia el port.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Filtre ICMP</b>: encara no implementat</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Regles riques</b>: encara no implementat</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Interfícies</b>: encara no implementat</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Orígens</b>: encara no implementat</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -515,6 +552,11 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Un servei és una col·lecció de regles que s'apliquen juntament en relació "
+"amb una aplicació. Aquest concepte ajuda a aplicar el que es necessita per a "
+"una aplicació només marcant una casella. Hi ha molts serveis ja definits, "
+"però podeu afegir-ne els vostres per a una aplicació que no estigui "
+"proporcionada."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -522,6 +564,9 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"A la vista de serveis, el botó Configura, situat al costat del menú "
+"desplegable, permet triar un servei. Seleccionar-ne una actualitza la taula "
+"amb una llista de parelles de port i protocol."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -533,22 +578,25 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>Ports</b>: quan se selecciona, la vista de llista conté els ports "
+"ja definits. Cada port està definit per un número o una gamma i un protocol."
+"</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Protocols</b>: encara no implementat</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Ports d'origen</b>: encara no implementat</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Mòduls</b>: encara no implementat</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Destinació</b>: encara no implementat</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
