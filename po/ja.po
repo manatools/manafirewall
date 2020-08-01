@@ -388,6 +388,9 @@ msgid ""
 "If you want to have changes also in the runtime environment, then either add "
 "the changes there also or reload firewalld."
 msgstr ""
+"永久モードではすぐにアクティブにはならない事柄を設定できます。実行時の環境に"
+"も変更を反映させたい場合、そこでも変更を追加するか firewalld を再読み込みして"
+"ください。"
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -395,6 +398,9 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
+"実行時モードでは実行時の事柄を設定できます。実行時に変更されたものは、永久"
+"モードでも追加する必要がある場合であっても次回の開始時や firewalld の再読み込"
+"み時にはなくなってしまいます。"
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -403,6 +409,10 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"ゾーンとはバインディングに適用可能な一連のサービスです。異なる信頼レベル用に"
+"幾つかのゾーンがあらかじめ定義されています。\"永久\" の設定を選択した場合、あ"
+"なたのゾーンの追加, 編集, 削除やあなたのゾーンで許可されるサービスの定義もで"
+"きます。"
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -411,18 +421,26 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
+"ゾーンについて、利用可能なフィールドは名前, バージョン, 短く説明的な名前, 説"
+"明文です。チェック ボックスでは既定のターゲットを有効にしたりいずれのルールに"
+"も合致しないパケットに対する既定の動作を選択したりできます。ターゲットは "
+"DROP, REJECT, ACCEPT です。"
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
+"定義済みのゾーン: block - dmz - drop - external - home - home - internal - "
+"public - trusted - work"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
+"ビューの \"ゾーン\" とそのゾーン群の一つを選択した後、ゾーンの設定が可能で"
+"す。各ゾーンには幾つかのパラメータがあります:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -608,15 +626,15 @@ msgstr ""
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "プロトコルは必須です"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "プロトコルのエントリが不正です"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "サービス設定"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -628,7 +646,7 @@ msgstr "バージョン"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "短い説明"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -636,28 +654,28 @@ msgstr "説明"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "値なし"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "名前は必須です"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "ゾーン設定"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "既定のターゲット"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
-msgstr "承諾する"
+msgstr "許可"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "破棄"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "拒否"
