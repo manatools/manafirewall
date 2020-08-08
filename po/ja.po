@@ -452,6 +452,12 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>サービス</b>: \"設定\" で選択すると、定義済みのサービス一覧が表示"
+"されます。ゾーンに従って、幾つかのサービスは既に選択されています。サービスに"
+"ついてのチェックボックスをチェックまたはチェック解除すると、対応したルールが"
+"そのゾーンを持つインターフェース上のサービスに適用されます。永久モードでは、"
+"設定は直接登録されますが、適用はされません。これは firewalld の再起動後に適用"
+"されます。</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -461,6 +467,11 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>ポート</b>: この設定項目はポート番号またはその範囲および tcp, udp, "
+"sctp, dccp の一覧から選択するプロトコルを伴う \"追加\" ボタンを用いてルールを"
+"指定できます。一覧ビューは定義済みのルールを表示します。範囲は二つの数字にハ"
+"イフンを挟んで定義され、例えば 80-88 となります。その効果はこれらのポートを開"
+"くことです。</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -598,31 +609,31 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "ゾーンを設定"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "サービスを設定"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "IP セット表示"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "ポートとプロトコル"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "ポートの範囲が不正です"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "他のプロトコル"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "有効なプロトコルを入力してください (/etc/protocols を参照)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
