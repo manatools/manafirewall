@@ -237,7 +237,7 @@ msgstr "選択したものが許可されます"
 
 #: manafirewall/dialog.py:465
 msgid "Masquerade zone"
-msgstr "マスカレード ゾーン"
+msgstr "ゾーンをマスカレード"
 
 #: manafirewall/dialog.py:497 manafirewall/dialog.py:559
 #: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
@@ -467,7 +467,7 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
-"<li><b>ポート</b>: この設定項目はポート番号またはその範囲および tcp, udp, "
+"<li><b>ポート</b>: この設定項目はポートの番号または範囲および tcp, udp, "
 "sctp, dccp の一覧から選択するプロトコルを伴う \"追加\" ボタンを用いてルールを"
 "指定できます。一覧ビューは定義済みのルールを表示します。範囲は二つの数字にハ"
 "イフンを挟んで定義され、例えば 80-88 となります。その効果はこれらのポートを開"
@@ -479,6 +479,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>プロトコル</b>: ここで、firewalld によってサポートされている一覧からプ"
+"ロトコルを追加したり、自分で名前を付けて追加することができます。 (この追加に"
+"よる効果が備わるようにするため)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -487,6 +490,10 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>送信元ポート</b>: この設定項目はポートの番号または範囲および tcp, "
+"udp, sctp, dccp の一覧から選択するプロトコルを伴う \"追加\" ボタンを用いて"
+"ルールを指定できます。一覧ビューは定義済みのルールを表示します。 (この追加に"
+"よる効果が備わるようにするため)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -494,6 +501,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>マスカレード</b>: この項目は \"ゾーンをマスカレード\" をチェックまたは"
+"チェック解除できます。そのため、このゾーンはマスカレード用に使用されます "
+"(IPv4専用)。 (この追加による効果が備わるようにするため)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -505,22 +515,29 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>ポート フォワーディング</b>: ポート フォワーディングはネットワーク ア"
+"ドレス変換 (NAT) の処理で、コミュニケーション要求をあるアドレスとポート番号の"
+"組み合わせから別の組み合わせにリダイレクトし、パケットは IPv4 技術でファイア"
+"ウォールを通過します。ルールを追加するには外部からのリクエスト用のポートか"
+"ポート範囲とそのプロトコル (送信元) に加えローカル フォワーディングのための宛"
+"先のポートか範囲あるいは宛先のアドレスのいずれか、そして任意でポート変更時の"
+"追加のポートまたは範囲の指定が必要です。</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>ICMP フィルタ</b>: 未実装です</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>リッチ ルール</b>: 未実装です</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>インターフェース</b>: 未実装です</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>送信元</b>: 未実装です</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -596,16 +613,21 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"左側には、アクティブなバインディングの概要があります。これらは接続, インター"
+"フェース, 関連付けられた送信元を持ったゾーンです。ここではこれらのバインディ"
+"ングのゾーンを容易に変更できます。"
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"右側には、見るものを選択したり設定をしたりするための、ゾーンやサービスなどの"
+"コンボボックスがあります。"
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "期間"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
