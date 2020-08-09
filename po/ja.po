@@ -546,6 +546,10 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"サービスはアプリケーションとの間において同時に適用されるルールの集まりです。"
+"このコンセプトはチェックボックスのチェックのみによってアプリケーションに必要"
+"なものの適用を手助けします。多くのサービスが既に定義されていますが、提供され"
+"ていないアプリケーションのために自分で追加することもできます。"
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -553,10 +557,13 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"ビュー \"サービス\" において、コンボボックスの隣にある \"設定\" ボタンはサー"
+"ビスの選択ができます。いずれかを選択するとテーブルがポート-プロトコルの組の一"
+"覧で更新されます"
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "それぞれのサービスで、以下を定義できます:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -564,28 +571,32 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>ポート</b>: 選択時、リスト ビューは定義済みのポートを表示します。"
+"各ポートは番号または範囲とプロトコルで定義されます。</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>プロトコル</b>: 未実装です</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>送信元ポート</b>: 未実装です</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>モジュール</b>: 未実装です</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>宛先</b>: 未実装です</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall は firewalld によって提供されるファイアウォール機能に対するグラ"
+"フィカルな設定ツールです。"
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -593,6 +604,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld は動的に管理されたファイアウォールで、信頼レベルをネットワークとそ"
+"の関連付けられた接続, インターフェース, 送信元に割り当てるためにネットワーク/"
+"ファイアウォールの “ゾーン” をサポートしています。"
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -600,12 +614,17 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"これは IPv4, IPv6, イーサネット ブリッジそして IPSet のファイアウォール設定も"
+"サポートしています。設定項目は実行時と永久という区分に分かれています。"
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall は manatools の一部で、Gtk, Qt, ncurses つまりグラフィカル形式ま"
+"たはテキスト形式のユーザ インターフェースを用いて動作できるように libyui に基"
+"づいています。"
 
 #: manafirewall/helpinfo.py:68
 msgid ""
