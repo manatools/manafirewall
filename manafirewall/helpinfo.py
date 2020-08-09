@@ -64,7 +64,7 @@ class ManaFirewallHelpInfo(helpdata.HelpInfoBase):
         _("ManaFirewall is a graphical configuration tool for firewall features provided by firewalld."),
         _("firewalld provides a dynamically managed firewall with support for network/firewall “zones” to assign a level of trust to a network and its associated connections, interfaces or sources."),
         _("It has support for IPv4, IPv6, Ethernet bridges and also for IPSet firewall settings. There is a separation of the runtime and permanent configuration options."),
-        _("ManaFirewall is part of manatools and it is based on libyui so that it can work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."),
+        _("ManaFirewall is part of manatools and it is based on libyui so that it can work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."),
         _("On the left there is the overview of the active bindings. These are the zones, that have a connection, interface or source bound or added to it. Here it is possible to easily change the\
           zone of these bindings."),
         _("On the right there are comboboxes to select what to look or configure such as zones, services etc."),
