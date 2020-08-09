@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-08-08 15:27+0300\n"
+"POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: Geraldine Aquino <g.aquino36@yahoo.com>, 2020\n"
 "Language-Team: Tagalog (https://www.transifex.com/MageiaLinux/teams/9361/"
@@ -547,7 +547,7 @@ msgstr ""
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
-"work using Gtk, Qt or ncurses, e.g. graphical or textual user interfaces."
+"work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
 
 #: manafirewall/helpinfo.py:68
