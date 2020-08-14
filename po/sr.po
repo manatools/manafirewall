@@ -470,9 +470,8 @@ msgstr ""
 "<li><b>Портови</b>: ова опција омогућава да се одреди правило са тастером  "
 "\"Додај\" са бројем порта или распоном и изабраним протоколом изаабраног из "
 "листе tcp, udp, sctp и dccp. Листа приказује већ дефинисана правила. Распон "
-"је дефинисан са  The list view displays the already defined rules. A range "
-"is defined with a цртицом између два броја, на пример 80-88. Ефекат је тај "
-"да ће ови портови бити отворени.</li>"
+"је дефинисан са цртицом између два броја, на пример 80-88. Ефекат је тај да "
+"ће ови портови бити отворени.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -491,6 +490,10 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Изворни портови</b>: ова опција омогућава да се одреди правило са "
+"тастером  \"Додај\" са бројем порта или распоном и изабраним протоколом "
+"изаабраног из листе tcp, udp, sctp и dccp. Листа приказује већ дефинисана "
+"правила. (да би завршили ас оним што је ефекат овог додатка)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -498,6 +501,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Маскирање</b>: ова опција омогућава укључивање и искључивање \"Зоне "
+"маскирања\". Стога се ова зона користи за маскирање (само за IPv4). (да би "
+"завршили са оним што је ефекат овог додатка)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -509,22 +515,30 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Прослеђивање порта</b>: прослеђивање порта је апликација за превођење "
+"мрежних адреса (NAT) које редиректују захтеве за комуникацијом са једне "
+"адресе и комбинације бројева порта на другу док се пакети прелазе кроз "
+"заштитни зид у IPv4 технологији.\n"
+"Додавање правила захтева порт или распон портова долазећег захтева и његов "
+"протокол (извор) и или распон портова за дестинацију за локално прослеђивање "
+"или адресу дестинације и опциони порт или распон уколико је порт промењен.</"
+"li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>ICMP Филтер</b>: још увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Rich правила</b>: јоп увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Интерфејси</b>: још увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Извори</b>: јоп увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -533,6 +547,10 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Сервис је колекција правила која се примењују заједно у односу на апликцију. "
+"Овај концепт помаже да се примени оно што је потребно за апликацију "
+"једноставним означавањем поља за избор. Пуно сервиса је већ дефинисано, али "
+"ви можете додати сопствени за апликацију који не постоји."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -540,6 +558,9 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"У приказу \"Сервиси\", тастер \"Подеси\" који се налази до поља за избор "
+"омогућава избор сервиса. Бирањем једног ажурира табелу са листом парова Порт-"
+"Протокол"
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -557,25 +578,27 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Протоколи</b>: још увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Изворни портови</b>: још увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Модули</b>: јоп увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Дестинација</b>: јоп увек није имплементирано</li>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall је графички алат за подешавање опција заштитног зида које "
+"омогућава firewalld."
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -583,6 +606,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld омогућава динамички управљани заштитни зид са подршком за мрежне/"
+"заштитни зид \"зоне\" ради додељивања ниво поузданости мрежи и њеним "
+"придруженим конекцијама, интерфејсима и изворима."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -590,12 +616,17 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"ПОседује подршку за  IPv4, IPv6, мрежне мостове а такође и за подешавање "
+"IPSet firewall-а. Постоји одвајање рада и опције сталне конфигурације."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall је део manatools-а и базиран је на libyui тако да може да ради "
+"користећи Gtk, Qt или ncurses, односно оба графичка и текстуално корисничко "
+"окружење."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -603,12 +634,16 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"Са леве стране се налази преглед активних веза. Ово су зоне, које имају "
+"конекцију, интерфејс или извор везан или додан у њега. "
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"Са десне стране се налазе комбо кутије за одабир онога што треба погледати "
+"или подесити, као што су зоне, сервиси итд."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
