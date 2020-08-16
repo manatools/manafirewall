@@ -638,6 +638,9 @@ msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall ist Teil der manatools und basiert auf libyui, sodass es mit "
+"GTK, Qt oder ncurses, z. B. grafische oder textuelle Benutzeroberflächen, "
+"zusammenarbeitet."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -745,12 +748,3 @@ msgstr "Verwerfen"
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
 msgstr "Ablehnen"
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncurses, e.g. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall ist Teil von Manatools und basiert auf libyui, sodass es mit "
-#~ "GTK, Qt oder ncurses, z. B. grafische oder textuelle Benutzeroberflächen "
-#~ "zusammenarbeitet."
