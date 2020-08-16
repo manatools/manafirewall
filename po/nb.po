@@ -625,6 +625,9 @@ msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall er en del av manatools og det er basert på libyui slik at det "
+"kan fungere ved å bruke Gtk, Qt eller ncurses, dvs. grafiske eller tekst "
+"brukergrensesnitt."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
