@@ -176,7 +176,7 @@ msgstr "ICMP filter"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "Täiendreeglid"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
@@ -192,7 +192,7 @@ msgstr "Moodulid"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr "Sihtmärgid"
+msgstr "Sihtkohad"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
@@ -467,6 +467,11 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>Pordid</b>: see võimaldab nupule \"Lisa \"klõpsates määrata reegli "
+"ühes pordinumbri või -vahemikuga ning loendist - tcp, udp, sctp või dccp - "
+"valitava protokolliga. Loendivaates näeb valmisreegleid. Vahemiku "
+"määramiseks tuleb kasutada sidekriipsu, näiteks 80-88. The Määramise korral "
+"pordid avatakse.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -474,6 +479,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protokollid</b>: siin saab lisada protokolli juba firewalld "
+"toetatavate protokollide loendisse või lisada spetsiifilise protokolli, "
+"millele ise nimi anda (millega tegelikult see lisataksegi)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -482,6 +490,9 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Lähtepordid</b>: see võimaldab nupule \"Lisa\" klõpsates määrata "
+"reegli ühes pordinumbri või -vahemikuga ning loendist - tcp, udp, sctp või "
+"dccp - valitava protokolliga. Loendivaates näeb valmisreegleid..</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -503,6 +514,13 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Pordiedastus</b>: pordiedastus kujutab endast võrguaadressi "
+"teisendamise (NAT) rakendamist, millega sidepäring suunatakse ühelt aadressi "
+"ja pordinumbri kombinatssioonilt teisele, mis lubab pakettidel IPv4 "
+"tehnoloogiat kasutades läbida tulemüüri. Reegli lisamisel tulrb määrata "
+"saabuvate päringute port või pordivahemik ja protokoll (lähtekoht) ning kas "
+"kohaliku edastamise või sihtmärgi aadressi  port või pordivahemik, samuti "
+"soovi korral port või pordivahemik juhuks, kui port peaks muutuma.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -510,7 +528,7 @@ msgstr "<li><b>ICMP Filter</b>: pole veel teostatud</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Täiendreeglid</b>: pole veel teostatud</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
@@ -518,7 +536,7 @@ msgstr "<li><b>Liidesed</b>: pole veel teostatud</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Lähtekohad</b>: pole veel teostatud</li>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -527,6 +545,10 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Teenus kujutab endast reegleid, mida saab korraga rakendusele rakendada. "
+"Selleks tuleb siin lihtsalt märkekasti märge teha. Hulk teenuseid on juba "
+"valmis seatud, aga alati saab lisada oma teenuse rakendusele, mida "
+"pakkumises pole."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -534,6 +556,8 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"Teenustevaates võimaldab nupp \"Seadista\" liitkasti kõrval valida teenuse. "
+"Teenuse valimisel uuendatakse pordi-protokolli paaridega loendi tabelit."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -562,7 +586,7 @@ msgstr "<li><b>Moodulid</b>: pole veel teostatud</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Sihtkoht</b>: pole veel teostatud</li>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
@@ -578,6 +602,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld pakub dünaamiliselt hallatavat tulemüüri võrgu/tulemüüri \"tsoonide"
+"\" toetusega omistamaks võrgule ja sellega seotud ühendustele, liidestele "
+"või lähtekohtadele usaldusväärsuse taseme."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -585,6 +612,8 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"See toetab IPv4, IPv6, Ethernet sildu ja IPSet'i tulemüüri seadistusi. "
+"Käitusaja ja püsiseadistusi saab eraldi paika panna."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
@@ -601,28 +630,33 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"Vasakul näeb ülevaadet aktiivsetest seostest. Seal on tsoonid, millega on "
+"seotud või millele on lisatud ühendus, liides või lähtekoht. See lubab "
+"hõlpsasti muuta seoste tsooni."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"Paremal on liitkastid, kus saab valida, mida vaadata või seadistaa, näiteks "
+"tsoone, teenuseid jne."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Kestus"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Seadista tsooni"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Seadista teenuseid"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "IP-vahemike vaade"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -634,11 +668,11 @@ msgstr "Vale pordivahemik"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Muu protokoll"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "Palun sisesta kehtiv protokoll (vt /etc/protocols)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
@@ -662,7 +696,7 @@ msgstr "Versioon"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Short"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -682,16 +716,16 @@ msgstr "Tsooni seadistused"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Vaikimisi sihtkoht"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
-msgstr "Nõustun"
+msgstr "Nõustu"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Hülga"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Lükka tagasi"
