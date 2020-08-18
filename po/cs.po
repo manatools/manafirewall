@@ -25,7 +25,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:83
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "ManaTools - nastavení firewallu"
 
 #: manafirewall/dialog.py:84
 msgid "{} - ManaTools firewalld configurator"
@@ -47,7 +47,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
-msgstr ""
+msgstr "Změny použity."
 
 #: manafirewall/dialog.py:94
 #, python-format
@@ -105,7 +105,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
-msgstr ""
+msgstr "&Přidat"
 
 #: manafirewall/dialog.py:175 manafirewall/dialog.py:371
 msgid "&Edit"
@@ -117,15 +117,15 @@ msgstr "&Odstranit"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
-msgstr ""
+msgstr "&Nahrát výchozí"
 
 #: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "Doba běhu"
 
 #: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "Trvale"
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -133,7 +133,7 @@ msgstr "Nastavení"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
-msgstr ""
+msgstr "Pásma"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
@@ -141,7 +141,7 @@ msgstr "Služby"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "Sady IP"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -150,11 +150,11 @@ msgstr "Pohled"
 
 #: manafirewall/dialog.py:251 manafirewall/dialog.py:263
 msgid "Ports"
-msgstr ""
+msgstr "Porty (přípojky)"
 
 #: manafirewall/dialog.py:252 manafirewall/dialog.py:264
 msgid "Protocols"
-msgstr ""
+msgstr "Protokoly"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
@@ -170,7 +170,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
-msgstr ""
+msgstr "Filtr ICMP"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
@@ -178,23 +178,23 @@ msgstr ""
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr ""
+msgstr "Rozhraní"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
-msgstr ""
+msgstr "Zdroje"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "Moduly"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr ""
+msgstr "Cíle"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
-msgstr ""
+msgstr "Záznamy"
 
 #: manafirewall/dialog.py:273
 msgid "Configure"
@@ -203,7 +203,7 @@ msgstr "Nastavit"
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "Výchozí pásmo: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
@@ -253,15 +253,15 @@ msgstr "Služba"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
-msgstr ""
+msgstr "K adrese"
 
 #: manafirewall/dialog.py:693
 msgid "To Port"
-msgstr ""
+msgstr "K portu"
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "Je potřeba informace"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
