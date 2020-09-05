@@ -24,7 +24,7 @@ from firewall import config
 from firewall import client
 from firewall import functions
 from firewall.core.base import DEFAULT_ZONE_TARGET, REJECT_TYPES, \
-                               ZONE_SOURCE_IPSET_TYPES
+                               SOURCE_IPSET_TYPES
 from firewall.core.ipset import IPSET_MAXNAMELEN
 from firewall.core.helper import HELPER_MAXNAMELEN
 from firewall.core.io.zone import Zone

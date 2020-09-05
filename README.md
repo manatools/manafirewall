@@ -8,7 +8,7 @@
 ## REQUIREMENTS
 python-manatools
 
-python3-firewall
+python3-firewall >= 0.9.0
 
 ## INSTALLATION
 python setup.py install
