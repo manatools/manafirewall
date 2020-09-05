@@ -74,7 +74,7 @@ msgstr "&File"
 
 #: manafirewall/dialog.py:132 manafirewall/dialog.py:302
 msgid "&Quit"
-msgstr "Termina"
+msgstr "&Termina"
 
 #: manafirewall/dialog.py:138
 msgid "&Options"
@@ -86,11 +86,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:146 manafirewall/dialog.py:147
 msgid "&Help"
-msgstr ""
+msgstr "&Aiuto"
 
 #: manafirewall/dialog.py:149 manafirewall/dialog.py:300
 msgid "&About"
-msgstr ""
+msgstr "&Informazioni su"
 
 #: manafirewall/dialog.py:164
 msgid "Active bindings"

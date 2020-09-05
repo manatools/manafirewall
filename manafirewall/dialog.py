@@ -79,7 +79,7 @@ class ManaWallDialog(basedialog.BaseDialog):
   manafirewall main dialog
   '''
   def __init__(self):
-    gettext.install('manafirewall', localedir='/usr/share/locale', names=('ngettext',))
+    #gettext.install('manafirewall', localedir='/usr/share/locale', names=('ngettext',))
     basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "", basedialog.DialogType.POPUP, 80, 20)
     self._application_name = _("{} - ManaTools firewalld configurator").format(PROJECT)
 

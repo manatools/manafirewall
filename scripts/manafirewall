@@ -2,8 +2,42 @@
 # vim: set et ts=2 sw=2:
 #  manafirewall
 # -*- coding: utf-8 -*-
+
 import manafirewall.dialog
+import manatools.args as args
+import gettext
+import yui
+
+
+from manafirewall.version import __version__ as VERSION
+from manafirewall.version import __project_name__ as PROJECT
+
+# We need to call this as early as possible because
+# command-line help strings are translated
+gettext.install('manafirewall', localedir='/usr/share/locale', names=('ngettext',))
+
+class ParseCLI(args.AppArgs):
+  def __init__(self, command):
+    super().__init__(command)
+    #self.parser.add_argument('--test', help=_('test'), action='store_true')
+
+# Suppress YUI log from console (mga#26681)
+yui.YUILog.setLogFileName("/dev/null")
+
 
 if __name__ == '__main__':
-  mfw = manafirewall.dialog.ManaWallDialog()
-  mfw.run()
+  parser = ParseCLI(PROJECT)
+  if parser.args.version:
+
+    print (_("%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"%
+                 {'prog'   : PROJECT,
+                  'version': VERSION,
+                  'site'   : "https://github.com/manatools/manafirewall",
+                  'NL'     : "\n"}))
+  else:
+    # Change localedir if "--locales-dir" option is specified
+    if parser.args.locales_dir:
+        gettext.install('manafirewall', localedir=parser.args.locales_dir, names=('ngettext',))
+
+    mfw = manafirewall.dialog.ManaWallDialog()
+    mfw.run()
