@@ -4,7 +4,7 @@
 '''
 HelpInfo contains text for help menu
 
-License: LGPLv2+
+License: GPLv2+
 
 Author:  Angelo Naselli <anaselli@linux.it>
 

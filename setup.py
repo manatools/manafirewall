@@ -19,7 +19,7 @@ setup(
   author_email='anaselli@linux.it',
   packages=["manafirewall"],
   scripts=['scripts/manafirewall'],
-  license='LGPLv2+',
+  license='GPLv2+',
   description='ManaTools firewalld configuration tool.',
   long_description=open('README.md').read(),
   #data_files=[('conf/manatools', ['XXX.yy',]), ],

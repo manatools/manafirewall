@@ -4,7 +4,7 @@
 '''
 port forwarding dialog is a dialog to manage port forwarding configuration
 
-License: LGPLv2+
+License: GPLv2+
 
 Author:  Angelo Naselli <anaselli@linux.it>
 

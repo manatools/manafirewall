@@ -4,7 +4,7 @@
 '''
 protocol dialog is a dialog to manage protocol
 
-License: LGPLv2+
+License: GPLv2+
 
 Author:  Angelo Naselli <anaselli@linux.it>
 
