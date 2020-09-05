@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=manafirewall
+Name[it]=manafirewall
+GenericName=Frontend to firewalld for firewall configuration
+GenericName[it]=Interfaccia a firewalld per configurare il firewall
+Comment=A graphical front end to firewalld for firewall configuration
+Comment[it]=Interfaccia grafica a firewalld per configurare il firewall
+# Translators: These are searchable keywords for the firewall configuration tool
+Keywords=firewall;network;security;iptables;netfilter;
+Keywords[it]=firewall;rete;sicurezza;iptables;netfilter;
+Icon=manafirewall
+Exec=manafirewall
+Terminal=false
+Type=Application
+Categories=System;Settings;Security;
+StartupNotify=true
+

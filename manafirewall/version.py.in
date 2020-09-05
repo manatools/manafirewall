@@ -1,0 +1,17 @@
+'''
+manafirewall is a graphical frontend to firewalld based on libyui python bindings.
+manafirewall is part of manatools.
+
+License: GPLv2+
+
+Author:  Angelo Naselli <anaselli@linux.it>
+
+@package manafirewall
+
+'''
+
+''' project name '''
+__project_name__ = "@PROJECT_NAME@"
+
+''' manafirewall version '''
+__version__ = "@PROJECT_VERSION@"

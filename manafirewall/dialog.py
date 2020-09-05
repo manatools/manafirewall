@@ -44,7 +44,7 @@ import threading
 #we need a glib.MainLoop in TUI :(
 from gi.repository import GLib
 
-from manafirewall.version import __project_version__ as VERSION
+from manafirewall.version import __version__ as VERSION
 from manafirewall.version import __project_name__ as PROJECT
 
 from queue import SimpleQueue, Empty
@@ -1723,7 +1723,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           'name' : self._application_name,
           'dialog_mode' : common.AboutDialogMode.TABBED,
           'version' : VERSION,
-          'credits' : _("Credits {}").format("2019 Angelo Naselli"),
+          'credits' : _("Credits {}").format("2019-2020 Angelo Naselli"),
           'license' : 'GPLv2+',
           'authors' : 'Angelo Naselli &lt;anaselli@linux.it&gt;',
           'description' : _("{}  is a graphical configuration tool for firewalld.").format(PROJECT),
