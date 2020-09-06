@@ -43,6 +43,7 @@ import time
 import threading
 #we need a glib.MainLoop in TUI :(
 from gi.repository import GLib
+from inspect import ismethod
 
 from manafirewall.version import __version__ as VERSION
 from manafirewall.version import __project_name__ as PROJECT
@@ -126,31 +127,77 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     align = self.factory.createLeft(layout)
 
-    # Menu widget
     menu_line = self.factory.createHBox(align)
-    self.file_menu = self.factory.createMenuButton(menu_line, _("&File"))
-    qm = yui.YMenuItem(_("&Quit"))
-    self.file_menu.addItem(qm)
-    self.file_menu.rebuildMenuTree()
-    sendObjOnEvent=True
-    self.eventManager.addMenuEvent(qm, self.onQuitEvent, sendObjOnEvent)
+    ### BEGIN Menus #########################
+    if (hasattr(self.mgaFactory, 'createMenuBar') and ismethod(getattr(self.mgaFactory, 'createMenuBar'))):
+      self.menubar = self.mgaFactory.createMenuBar(menu_line)
 
-    self.option_menu = self.factory.createMenuButton(menu_line, _("&Options"))
-    rfwm = yui.YMenuItem(_("&Reload Firewalld"))
-    self.option_menu.addItem(rfwm)
-    self.option_menu.rebuildMenuTree()
-    self.eventManager.addMenuEvent(rfwm, self.onReloadFirewalld)
+      # building File menu
+      mItem = yui.YMGAMenuItem(_("&File"))
+      self.fileMenu = {
+          'menu_name' : mItem,
+          'quit'      : yui.YMGAMenuItem(mItem, _("&Quit"), "application-exit"),
+      }
+      #Items must be "disowned"
+      for k in self.fileMenu.keys():
+          self.fileMenu[k].this.own(False)
+      self.menubar.addItem(self.fileMenu['menu_name'])
+      sendObjOnEvent=True
+      self.eventManager.addMenuEvent(self.fileMenu['quit'], self.onQuitEvent, sendObjOnEvent)
 
-    # Help menu is the last on the right
-    align = self.factory.createRight(menu_line)
-    self.help_menu = self.factory.createMenuButton(align, _("&Help"))
-    hm = yui.YMenuItem(_("&Help"))
-    self.help_menu.addItem(hm)
-    am = yui.YMenuItem(_("&About"))
-    self.help_menu.addItem(am)
-    self.help_menu.rebuildMenuTree()
-    self.eventManager.addMenuEvent(hm, self.onHelp)
-    self.eventManager.addMenuEvent(am, self.onAbout)
+      # building Options menu
+      mItem = yui.YMGAMenuItem(_("&Options"))
+      self.optionsMenu = {
+          'menu_name'  : mItem,
+          'reload' : yui.YMGAMenuItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
+      }
+      #Items must be "disowned"
+      for k in self.optionsMenu.keys():
+          self.optionsMenu[k].this.own(False)
+      self.menubar.addItem(self.optionsMenu['menu_name'])
+      self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
+
+      # building Help menu
+      mItem = yui.YMGAMenuItem(_("&Help"))
+      self.helpMenu = {
+          'menu_name': mItem,
+          'help'     : yui.YMGAMenuItem(mItem, _("&Manual")),
+          'sep0'     : yui.YMenuSeparator(mItem),
+          'about'    : yui.YMGAMenuItem(mItem, _("&About"), 'manafirewall'),
+      }
+      #Items must be "disowned"
+      for k in self.helpMenu.keys():
+          self.helpMenu[k].this.own(False)
+      self.menubar.addItem(self.helpMenu['menu_name'])
+      self.eventManager.addMenuEvent(self.helpMenu['help'], self.onHelp)
+      self.eventManager.addMenuEvent(self.helpMenu['about'], self.onAbout)
+    else:
+      # Legacy support to YMenuButton widgets
+      # Menu widget
+      self.file_menu = self.factory.createMenuButton(menu_line, _("&File"))
+      qm = yui.YMenuItem(_("&Quit"))
+      self.file_menu.addItem(qm)
+      self.file_menu.rebuildMenuTree()
+      sendObjOnEvent=True
+      self.eventManager.addMenuEvent(qm, self.onQuitEvent, sendObjOnEvent)
+
+      self.option_menu = self.factory.createMenuButton(menu_line, _("&Options"))
+      rfwm = yui.YMenuItem(_("&Reload Firewalld"))
+      self.option_menu.addItem(rfwm)
+      self.option_menu.rebuildMenuTree()
+      self.eventManager.addMenuEvent(rfwm, self.onReloadFirewalld)
+
+      # Help menu is the last on the right
+      align = self.factory.createRight(menu_line)
+      self.help_menu = self.factory.createMenuButton(align, _("&Help"))
+      hm = yui.YMenuItem(_("&Manual"))
+      self.help_menu.addItem(hm)
+      am = yui.YMenuItem(_("&About"))
+      self.help_menu.addItem(am)
+      self.help_menu.rebuildMenuTree()
+      self.eventManager.addMenuEvent(hm, self.onHelp)
+      self.eventManager.addMenuEvent(am, self.onAbout)
+    ### END Menus #########################
 
 
     # _______
