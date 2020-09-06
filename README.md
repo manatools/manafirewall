@@ -100,6 +100,7 @@ and that to have imeediate feedbacks and ideas. The Freenode IRC channel is **#m
 
 If you have any issues or ideas add or comment an [issue](https://github.com/manatools/manafirewall/issues).
 
+Check also into our [TODO](TODO.md) file.
 
 ## LICENSE AND COPYRIGHT
 
