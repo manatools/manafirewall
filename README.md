@@ -78,9 +78,8 @@ Example with ncurses:
     * python3-devel >= 3.4.0
     * python3-virtualenv
     * optional: gettext        (for locales)
-    * optional: python3-sphinx (for manpages)
 * Setup your virtual environment
-    * cd $MANAFIREWALL_PROJ_DIR                 # MANAFIREWALL_PROJ_DIR is the manafirewall project directory
+    * cd $MANAFIREWALL_PROJ_DIR               # MANAFIREWALL_PROJ_DIR is the manafirewall project directory
     * virtualenv --system-site-packages venv  # create virtual environment under venv directory
     * . venv/bin/activate                     # activate virtual environment
 * Configure: `mkdir build && cd build && cmake -D... .. && make install`
