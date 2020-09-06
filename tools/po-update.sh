@@ -25,11 +25,12 @@ POT_FILE="$POT_DIR/$DOMAIN.pot"
 	--no-escape --add-location --sort-by-file \
 	--add-comments=I18N \
 	--output="$POT_FILE" \
+	scripts/manafirewall \
 	`find manafirewall -name '*.py'`
-#/usr/bin/xgettext \
-#	-j \
-#	--output="$POT_FILE" \
-#	share/metainfo/org.mageia.manafirewall.appdata.xml
+/usr/bin/xgettext \
+	-j \
+	--output="$POT_FILE" \
+	share/metainfo/org.mageia.manafirewall.appdata.xml
 /bin/sed --in-place --expression="s/charset=CHARSET/charset=UTF-8/" "$POT_FILE"
 
 update_po() {
