@@ -5,6 +5,7 @@
 
 import manafirewall.dialog
 import manatools.args as args
+from manatools.ui.common import destroyUI
 import gettext
 import yui
 
@@ -41,3 +42,4 @@ if __name__ == '__main__':
 
     mfw = manafirewall.dialog.ManaWallDialog()
     mfw.run()
+    destroyUI()
