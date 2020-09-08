@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=manafirewall
 Name[it]=manafirewall
+Name[uk]=manafirewall
 GenericName=Frontend to firewalld for firewall configuration
 GenericName[it]=Interfaccia a firewalld per configurare il firewall
+GenericName[uk]=Оболонка до firewalld для налаштовування брандмауера
 Comment=A graphical front end to firewalld for firewall configuration
 Comment[it]=Interfaccia grafica a firewalld per configurare il firewall
 # Translators: These are searchable keywords for the firewall configuration tool
