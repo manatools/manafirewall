@@ -1,44 +1,50 @@
+# Translators:
+# Luděk Janča <joelp@email.cz>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-08 22:20+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2020-09-08 20:43+0300\n"
+"PO-Revision-Date: 2020-09-08 14:57+0000\n"
+"Last-Translator: Luděk Janča <joelp@email.cz>, 2020\n"
+"Language-Team: Czech (https://www.transifex.com/MageiaLinux/teams/9361/cs/)\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n >= 2 && n <= 4 && n % 1 == 0) ? 1: (n % 1 != 0 ) ? 2 : 3;\n"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Name"
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "GenericName"
 msgid "Frontend to firewalld for firewall configuration"
-msgstr ""
+msgstr "Grafické prostředí pro nastavení firewallu firewalld"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
-msgstr ""
+msgstr "Grafické prostředí pro nastavení firewallu firewalld"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: tmp.appdata.xml:8
 msgid "A frontend to firewalld using libyui UI abstraction library"
-msgstr ""
+msgstr "Grafické prostředí pro firewalld používající knihovnu libyui"
 
 #: tmp.appdata.xml:10
 msgid ""
 "manafirewall is a firewalld frontend, inspired by firewall-config from "
 "firewalld project."
 msgstr ""
+"manafirewall je grafické prostředí pro firewalld inspirovaný firewall-config"
+" z projektu firewalld"
 
 #: tmp.appdata.xml:13
 msgid ""
