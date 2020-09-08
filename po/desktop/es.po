@@ -1,44 +1,50 @@
+# Translators:
+# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-08 20:31+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2020-09-08 17:52+0300\n"
+"PO-Revision-Date: 2020-09-08 14:57+0000\n"
+"Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020\n"
+"Language-Team: Spanish (https://www.transifex.com/MageiaLinux/teams/9361/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Name"
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "GenericName"
 msgid "Frontend to firewalld for firewall configuration"
-msgstr ""
+msgstr "Interfaz gráfica para configurar cortafuegos basado en firewalld"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
-msgstr ""
+msgstr "Interfaz gráfica para configurar cortafuegos basado en firewalld"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: tmp.appdata.xml:8
 msgid "A frontend to firewalld using libyui UI abstraction library"
-msgstr ""
+msgstr "Interfaz para firewalld que utiliza la biblioteca libyui"
 
 #: tmp.appdata.xml:10
 msgid ""
 "manafirewall is a firewalld frontend, inspired by firewall-config from "
 "firewalld project."
 msgstr ""
+"manafirewall es una interfaz para firewalld inspirada por firewall-config "
+"del provecto firewalld"
 
 #: tmp.appdata.xml:13
 msgid ""
@@ -47,3 +53,8 @@ msgid ""
 "ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
 "manager that can be used in any kind of system environment."
 msgstr ""
+"manafirewall esta escrita en Python 3 y utiliza libYui, la biblioteca de "
+"abstracción de widget escrita por SUSE, con la que se pueden crear "
+"interfaces Qt 5, GTK+ 3, o ncurses . Proporciona una interfaz para el gestor"
+" de cortafuegos firewalld mediante dbus, puede ser utilizada en cualquier "
+"tipo de entorno de sistemas."
