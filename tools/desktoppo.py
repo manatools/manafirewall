@@ -81,7 +81,20 @@ for langfile in files:
         pot.append(potentry)
       except ValueError:
         print('The entry already exists')
-pot.save('./po/desktop/manafirewall_desktop.pot')
+
+# Extract from AppData
+os.system('grep -v "xml:lang" share/metainfo/org.mageia.manafirewall.appdata.xml > tmp.appdata.xml')
+os.system('xgettext -o %s/tmp_manafirewall_appdata.pot tmp.appdata.xml' %podir)
+
+# Merge AppData catalog into our POT
+appdata_pot = polib.pofile(podir + '/tmp_manafirewall_appdata.pot')
+for appdata_pot_entry in appdata_pot:
+    try:
+        pot.append(appdata_pot_entry)
+    except ValueError:
+        print('The entry already exists')
+pot.save(podir + '/manafirewall_desktop.pot')
+os.remove(podir + '/tmp_manafirewall_appdata.pot')
 
 # Merge translations
 for pofile in glob.glob(podir + '/*.po'):
@@ -106,11 +119,15 @@ for langfile in files:
     pofilename = pofile
     po = polib.pofile(pofilename)
     for entry in po.translated_entries():
-      if entry.msgid in text:
+      if entry.msgctxt and entry.msgid in text:
         origmessage = '\n' + entry.msgctxt + '=' + entry.msgid + '\n'
         origandtranslated = '\n' + entry.msgctxt + '=' + entry.msgid + '\n' + entry.msgctxt + '[' + lang + ']=' + entry.msgstr + '\n'
         text = text.replace(origmessage, origandtranslated)
 
   deskfile.write(text)
   deskfile.close()
+
+# Merge with AppData file
+os.system('msgfmt --xml --template=tmp.appdata.xml -d po/desktop -o share/metainfo/org.mageia.manafirewall.appdata.xml')
+os.remove('tmp.appdata.xml')
 
