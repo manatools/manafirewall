@@ -1,5 +1,6 @@
 # Translators:
 # Klaus Christian Harke <k.c.harke@gmx.net>, 2020
+# psyca, 2020
 #
 msgid ""
 msgstr ""
@@ -7,7 +8,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
 "POT-Creation-Date: 2020-09-08 20:43+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
-"Last-Translator: Klaus Christian Harke <k.c.harke@gmx.net>, 2020\n"
+"Last-Translator: psyca, 2020\n"
 "Language-Team: German (https://www.transifex.com/MageiaLinux/teams/9361/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +19,7 @@ msgstr ""
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Name"
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "GenericName"
@@ -35,7 +36,7 @@ msgstr ""
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: tmp.appdata.xml:8
 msgid "A frontend to firewalld using libyui UI abstraction library"
