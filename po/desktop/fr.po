@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-09 09:05+0300\n"
+"POT-Creation-Date: 2020-09-09 20:53+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
 "Last-Translator: Aurelien <aoudelet@outlook.com>, 2020\n"
 "Language-Team: French (https://www.transifex.com/MageiaLinux/teams/9361/fr/)\n"
@@ -29,6 +29,11 @@ msgstr "Interface graphique de configuration du pare-feu firewalld"
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
 msgstr "Une interface graphique de configuration du pare-feu firewalld"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "pare-feu;réseau;sécurité;iptables;netfilter;"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
@@ -60,8 +65,3 @@ msgstr ""
 " utilisant Qt 5, GTK+3 ou ncurses. Cette interface graphique au Gestionnaire"
 " de pare-feu firewalld via dbus peut être utilisée dans tout type "
 "d'environnement système."
-
-#: ./share/applications/org.mageia.manafirewall.desktop
-msgctxt "Keywords"
-msgid "firewall;network;security;iptables;netfilter;"
-msgstr ""
