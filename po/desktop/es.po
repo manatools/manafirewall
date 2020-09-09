@@ -1,14 +1,14 @@
 # Translators:
-# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
 # Miguel, 2020
+# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-09 09:05+0300\n"
+"POT-Creation-Date: 2020-09-09 20:53+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
-"Last-Translator: Miguel, 2020\n"
+"Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/MageiaLinux/teams/9361/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -30,6 +30,12 @@ msgstr "Interfaz gráfica para configurar cortafuegos basado en firewalld"
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
 msgstr "Interfaz gráfica para configurar cortafuegos basado en firewalld"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""
+"firewall;network;security;iptables;netfilter;cortafuegos;red;seguridad;"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
@@ -59,8 +65,3 @@ msgstr ""
 "interfaces Qt 5, GTK+ 3, o ncurses. Proporciona una interfaz para el gestor "
 "de cortafuegos firewalld mediante dbus, puede ser utilizada en cualquier "
 "tipo de entorno de sistemas."
-
-#: ./share/applications/org.mageia.manafirewall.desktop
-msgctxt "Keywords"
-msgid "firewall;network;security;iptables;netfilter;"
-msgstr ""

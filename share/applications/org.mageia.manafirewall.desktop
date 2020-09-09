@@ -40,6 +40,7 @@ Comment[sr]=Графичкo сучеље за firewalld ради подешав�
 Comment[uk]=Графічна оболонка до firewalld для налаштовування брандмауера
 # Translators: These are searchable keywords for the firewall configuration tool
 Keywords=firewall;network;security;iptables;netfilter;
+Keywords[es]=firewall;network;security;iptables;netfilter;cortafuegos;red;seguridad;
 Keywords[it]=firewall;rete;sicurezza;iptables;netfilter;
 Keywords[uk]=firewall;network;security;iptables;netfilter;брандмауер;мережа;безпека;мережевий фільтр;екран;
 Icon=manafirewall
