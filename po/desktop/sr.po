@@ -1,0 +1,60 @@
+# Translators:
+# tomaja <toma.jankovic@gmail.com>, 2020
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: manafirewall desktop files translation\n"
+"Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
+"POT-Creation-Date: 2020-09-09 09:05+0300\n"
+"PO-Revision-Date: 2020-09-08 14:57+0000\n"
+"Last-Translator: tomaja <toma.jankovic@gmail.com>, 2020\n"
+"Language-Team: Serbian (https://www.transifex.com/MageiaLinux/teams/9361/sr/)\n"
+"Language: sr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Name"
+msgid "manafirewall"
+msgstr "manafirewall"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "GenericName"
+msgid "Frontend to firewalld for firewall configuration"
+msgstr "Сучеље за firewalld ради подешавања заштитног зида"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Comment"
+msgid "A graphical front end to firewalld for firewall configuration"
+msgstr "Графичкo сучеље за firewalld ради подешавања заштитног зида"
+
+#: tmp.appdata.xml:7
+msgid "manafirewall"
+msgstr "manafirewall"
+
+#: tmp.appdata.xml:8
+msgid "A frontend to firewalld using libyui UI abstraction library"
+msgstr "Сучеље за firewalld коришћењем libyui UI библиотеке за абстракцију"
+
+#: tmp.appdata.xml:10
+msgid ""
+"manafirewall is a firewalld frontend, inspired by firewall-config from "
+"firewalld project."
+msgstr ""
+"manafirewall је сучеље за firewalld, инспирисано firewall-config-опм за "
+"firewalld пројекат."
+
+#: tmp.appdata.xml:13
+msgid ""
+"manafirewall is written in Python 3 and uses libYui, the widget abstraction "
+"library written by SUSE, so that it can be run using Qt 5, GTK+ 3, or "
+"ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
+"manager that can be used in any kind of system environment."
+msgstr ""
+"manafirewall је написан у Python 3 програмском језику коришћењем libYui, "
+"библиотеком за одвајање додатака коју је написао SUSE, тако да може да се "
+"покрене коришћењем Qt 5, GTK+ 3, или ncurses интерфејса. Омогућава сучеље за"
+" firewalld dbus менаџер заштитног зида које се може користити у било ком "
+"системском окружењу."
