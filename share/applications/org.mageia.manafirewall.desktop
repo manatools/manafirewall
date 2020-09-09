@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=manafirewall
+Name[ca]=manafirewall
 Name[cs]=manafirewall
 Name[de]=manafirewall
 Name[es]=manafirewall
@@ -9,6 +10,7 @@ Name[nb]=manafirewall
 Name[sl]=manafirewall
 Name[uk]=manafirewall
 GenericName=Frontend to firewalld for firewall configuration
+GenericName[ca]=Frontal per a firewalld per a la configuració del tallafoc
 GenericName[cs]=Grafické prostředí pro nastavení firewallu firewalld
 GenericName[de]=Frontend zur Konfiguration der Firewall bzw. des Firewall-Dienstes firewalld
 GenericName[es]=Interfaz gráfica para configurar cortafuegos basado en firewalld
@@ -18,6 +20,7 @@ GenericName[nb]=Frontend til firewalld for konfigurering av brannmur
 GenericName[sl]=Začelje za firewalld za nastavitve požarnega zidu
 GenericName[uk]=Оболонка до firewalld для налаштовування брандмауера
 Comment=A graphical front end to firewalld for firewall configuration
+Comment[ca]=Una interfície gràfica per a firewalld per a la configuració del tallafoc
 Comment[cs]=Grafické prostředí pro nastavení firewallu firewalld
 Comment[de]=Grafische Bedienoberfläche zur Konfiguration der Firewall bzw. des Firewall-Dienstes firewalld
 Comment[es]=Interfaz gráfica para configurar cortafuegos basado en firewalld
