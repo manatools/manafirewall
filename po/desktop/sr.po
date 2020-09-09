@@ -58,3 +58,8 @@ msgstr ""
 "покрене коришћењем Qt 5, GTK+ 3, или ncurses интерфејса. Омогућава сучеље за"
 " firewalld dbus менаџер заштитног зида које се може користити у било ком "
 "системском окружењу."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

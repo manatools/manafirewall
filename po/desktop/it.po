@@ -47,3 +47,8 @@ msgid ""
 "ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
 "manager that can be used in any kind of system environment."
 msgstr ""
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "firewall;rete;sicurezza;iptables;netfilter;"

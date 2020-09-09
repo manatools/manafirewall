@@ -64,3 +64,8 @@ msgstr ""
 " ncurses-Bedienoberfläche. Es bietet ein Frontend für firewalld, den dbus-"
 "Firewall-Manager, und kann in jeder Art von Systemumgebung eingesetzt "
 "werden."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

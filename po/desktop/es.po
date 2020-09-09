@@ -59,3 +59,8 @@ msgstr ""
 "interfaces Qt 5, GTK+ 3, o ncurses. Proporciona una interfaz para el gestor "
 "de cortafuegos firewalld mediante dbus, puede ser utilizada en cualquier "
 "tipo de entorno de sistemas."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

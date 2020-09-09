@@ -60,3 +60,8 @@ msgstr ""
 " utilisant Qt 5, GTK+3 ou ncurses. Cette interface graphique au Gestionnaire"
 " de pare-feu firewalld via dbus peut être utilisée dans tout type "
 "d'environnement système."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

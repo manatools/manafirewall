@@ -56,3 +56,8 @@ msgstr ""
 "manafirewall は Python 3 で書かれ、Qt 5, GTK+ 3, ncurses インターフェースを用いて動作できるように、SUSE"
 " によって書かれた libYui ウィジェット抽象化ライブラリを使用しています。これはどのような種類のシステム環境でも使用可能な firewalld "
 "dbus ファイアウォール マネージャに対するフロントエンドを提供します。"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

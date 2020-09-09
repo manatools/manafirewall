@@ -66,3 +66,8 @@ msgstr ""
 "ncurses. Вона забезпечує роботу оболонки програми для керування брандмауером"
 " за допомогою D-Bus, firewalld,, якою можна скористатися у будь-якому типі "
 "системного середовища."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

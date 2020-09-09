@@ -61,3 +61,8 @@ msgstr ""
 "usant les interfícies Qt 5, GTK+ 3 o ncurses. Proporciona una interfície "
 "gràfica per al gestor del tallafoc dbus de firewalld que es pot usar en "
 "qualsevol tipus d'entorn de sistema."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-09 20:40+0300\n"
+"POT-Creation-Date: 2020-09-09 20:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,6 +24,11 @@ msgstr ""
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
+msgstr ""
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
 msgstr ""
 
 #: tmp.appdata.xml:7

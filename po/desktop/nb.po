@@ -59,3 +59,8 @@ msgstr ""
 "hjelp av grensesnittene Qt 5, GTK + 3 eller ncurses. Det gir en frontend for"
 " firewallld dbus brannmurbehandling som kan brukes i alle slags "
 "systemmiljøer."
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""
