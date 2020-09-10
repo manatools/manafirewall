@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-09 09:05+0300\n"
+"POT-Creation-Date: 2020-09-10 09:11+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
 "Last-Translator: Masanori Kakura <kakurasan@gmail.com>, 2020\n"
 "Language-Team: Japanese (https://www.transifex.com/MageiaLinux/teams/9361/ja/)\n"
@@ -29,6 +29,11 @@ msgstr "ファイアウォール設定のための firewalld のフロントエ�
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
 msgstr "ファイアウォール設定のための firewalld のグラフィカルなフロントエンド"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "firewall;network;security;iptables;netfilter;ファイアウォール;ネットワーク;セキュリティ;"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
@@ -56,8 +61,3 @@ msgstr ""
 "manafirewall は Python 3 で書かれ、Qt 5, GTK+ 3, ncurses インターフェースを用いて動作できるように、SUSE"
 " によって書かれた libYui ウィジェット抽象化ライブラリを使用しています。これはどのような種類のシステム環境でも使用可能な firewalld "
 "dbus ファイアウォール マネージャに対するフロントエンドを提供します。"
-
-#: ./share/applications/org.mageia.manafirewall.desktop
-msgctxt "Keywords"
-msgid "firewall;network;security;iptables;netfilter;"
-msgstr ""
