@@ -33,7 +33,7 @@ msgstr "En grafisk frontend til firewalld for brannmurkonfigurasjon"
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Keywords"
 msgid "firewall;network;security;iptables;netfilter;"
-msgstr "brannmur, nettver, sikkerhet, iptabeller, nettfilter"
+msgstr "brannmur;nettver;sikkerhet;iptabeller;nettfilter;"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
