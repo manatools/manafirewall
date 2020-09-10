@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-08 20:43+0300\n"
+"POT-Creation-Date: 2020-09-10 09:11+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
 "Last-Translator: Filip Komar <filip.komar@guest.arnes.si>, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/MageiaLinux/teams/9361/sl/)\n"
@@ -29,6 +29,13 @@ msgstr "Začelje za firewalld za nastavitve požarnega zidu"
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
 msgstr "Grafično začelje za firewalld za nastavitve požarnega zidu"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr ""
+"požarni zid;firewall;omrežna varnost;network;security;tabele "
+"IP;iptables;omrežni filter;netfilter;"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
@@ -60,8 +67,3 @@ msgstr ""
 "v vmesnikih Qt 5, GTK+ 3 ali ncurses. Ponuja začelje za upravljalnik "
 "požarnega zidu firewalld dbus, ki ga je možno uporabiti v raznovrstnih "
 "sistemskih okoljih."
-
-#: ./share/applications/org.mageia.manafirewall.desktop
-msgctxt "Keywords"
-msgid "firewall;network;security;iptables;netfilter;"
-msgstr ""

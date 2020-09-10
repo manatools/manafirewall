@@ -47,6 +47,7 @@ Keywords[et]=tulemüür;turvalisus;turve;iptables;netfilter;
 Keywords[fr]=pare-feu;réseau;sécurité;iptables;netfilter;
 Keywords[it]=firewall;rete;sicurezza;iptables;netfilter;
 Keywords[ja]=firewall;network;security;iptables;netfilter;ファイアウォール;ネットワーク;セキュリティ;
+Keywords[sl]=požarni zid;firewall;omrežna varnost;network;security;tabele IP;iptables;omrežni filter;netfilter;
 Keywords[uk]=firewall;network;security;iptables;netfilter;брандмауер;мережа;безпека;мережевий фільтр;екран;
 Icon=manafirewall
 Exec=manafirewall
