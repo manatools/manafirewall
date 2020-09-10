@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-09 09:05+0300\n"
+"POT-Creation-Date: 2020-09-10 09:11+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
 "Last-Translator: Karl Morten Ramberg <karl.m.ramberg@gmail.com>, 2020\n"
 "Language-Team: Norwegian Bokmål (https://www.transifex.com/MageiaLinux/teams/9361/nb/)\n"
@@ -29,6 +29,11 @@ msgstr "Frontend til firewalld for konfigurering av brannmur"
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
 msgstr "En grafisk frontend til firewalld for brannmurkonfigurasjon"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "brannmur, nettver, sikkerhet, iptabeller, nettfilter"
 
 #: tmp.appdata.xml:7
 msgid "manafirewall"
@@ -59,8 +64,3 @@ msgstr ""
 "hjelp av grensesnittene Qt 5, GTK + 3 eller ncurses. Det gir en frontend for"
 " firewallld dbus brannmurbehandling som kan brukes i alle slags "
 "systemmiljøer."
-
-#: ./share/applications/org.mageia.manafirewall.desktop
-msgctxt "Keywords"
-msgid "firewall;network;security;iptables;netfilter;"
-msgstr ""
