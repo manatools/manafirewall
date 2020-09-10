@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2020-09-08 20:43+0300\n"
+"POT-Creation-Date: 2020-09-10 09:11+0300\n"
 "PO-Revision-Date: 2020-09-08 14:57+0000\n"
 "Last-Translator: Luděk Janča <joelp@email.cz>, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/MageiaLinux/teams/9361/cs/)\n"
@@ -30,6 +30,11 @@ msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
 msgstr "Grafické prostředí pro nastavení firewallu firewalld"
 
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "firewall;network;security;iptables;netfilter;"
+
 #: tmp.appdata.xml:7
 msgid "manafirewall"
 msgstr "manafirewall"
@@ -52,9 +57,4 @@ msgid ""
 "library written by SUSE, so that it can be run using Qt 5, GTK+ 3, or "
 "ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
 "manager that can be used in any kind of system environment."
-msgstr ""
-
-#: ./share/applications/org.mageia.manafirewall.desktop
-msgctxt "Keywords"
-msgid "firewall;network;security;iptables;netfilter;"
 msgstr ""
