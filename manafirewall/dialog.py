@@ -81,7 +81,10 @@ class ManaWallDialog(basedialog.BaseDialog):
   '''
   def __init__(self):
     #gettext.install('manafirewall', localedir='/usr/share/locale', names=('ngettext',))
-    basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "", basedialog.DialogType.POPUP, 80, 20)
+    # set icon (if missing into python-manatools)
+    yui.YUI.app().setApplicationIcon("manafirewall")
+
+    basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.POPUP, 80, 20)
     self._application_name = _("{} - ManaTools firewalld configurator").format(PROJECT)
 
     # most used text
