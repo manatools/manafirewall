@@ -54,8 +54,6 @@ file(GLOB_RECURSE PY_SRC LIST_DIRECTORIES false RELATIVE ${CMAKE_SOURCE_DIR} man
 install(FILES ${PY_SRC} ${CMAKE_BINARY_DIR}/manafirewall/version.py DESTINATION ${PYTHON_INSTALL_DIR}/manafirewall)
 
 # Installing data files
-install(FILES ${CMAKE_BINARY_DIR}/share/metainfo/org.mageia.manafirewall.appdata.xml DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/appdata)
-
 install(FILES ${CMAKE_SOURCE_DIR}/share/applications/org.mageia.manafirewall.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
 
 install(FILES ${CMAKE_SOURCE_DIR}/share/images/256x256/manafirewall.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps RENAME manafirewall.png)
