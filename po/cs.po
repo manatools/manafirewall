@@ -34,17 +34,19 @@ msgstr ""
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "Spojení s firewalld bylo navázáno."
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "Pokoušení o připojení k firewalld, čekejte, prosím..."
 
 #: manafirewall/dialog.py:91
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"Připojení k firewalld se nezdařilo. Ujistěte se, že služba v pořádku "
+"nastartovala a zkuste to znovu."
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
@@ -102,7 +104,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr ""
+msgstr "Upravit zóny"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
@@ -159,7 +161,7 @@ msgstr "Protokoly"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
-msgstr ""
+msgstr "Zdrojové porty"
 
 #: manafirewall/dialog.py:254
 msgid "Masquerading"
@@ -167,7 +169,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "Přesměrování portu"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
@@ -284,7 +286,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr ""
+msgstr "Upravit ipsety"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -293,11 +295,11 @@ msgstr "Zdroj"
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "Port / Rozsah portů"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "Cíl"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -317,7 +319,7 @@ msgstr "&OK"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "Zdrojový port je povinný"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
@@ -469,7 +471,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Filtr ICMP</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
@@ -477,11 +479,11 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Rozhraní</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Zdroj</b>: prozatím neimplementováno</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -500,7 +502,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "Pro každou službu můžete definovat:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -511,7 +513,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Protokoly</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
@@ -582,11 +584,11 @@ msgstr ""
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Port a protokol"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "Špatný rozsah portů"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
@@ -646,8 +648,8 @@ msgstr "Přijmout"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Zahodit"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Odmítnout"
