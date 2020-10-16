@@ -282,7 +282,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
-msgstr ""
+msgstr "Upravit služby"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
@@ -324,15 +324,15 @@ msgstr "Zdrojový port je povinný"
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "Použijte číslo portu, nebo rozsah portů (10000 nebo 12000-12002)"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "Zvolená IP adresa není validní."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "Špatná IP adresa"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "Zvolený špatný port "
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
@@ -576,7 +576,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Nastavit služby"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
