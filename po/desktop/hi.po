@@ -1,0 +1,66 @@
+# Translators:
+# Panwar108 <caspian7pena@gmail.com>, 2020
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: manafirewall desktop files translation\n"
+"Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
+"POT-Creation-Date: 2020-10-20 11:30+0300\n"
+"PO-Revision-Date: 2020-09-08 14:57+0000\n"
+"Last-Translator: Panwar108 <caspian7pena@gmail.com>, 2020\n"
+"Language-Team: Hindi (https://www.transifex.com/MageiaLinux/teams/9361/hi/)\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Name"
+msgid "manafirewall"
+msgstr "manafirewall"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "GenericName"
+msgid "Frontend to firewalld for firewall configuration"
+msgstr "फ़ायरवॉल विन्यास हेतु firewalld का फ्रंट-एंड"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Comment"
+msgid "A graphical front end to firewalld for firewall configuration"
+msgstr "फ़ायरवॉल विन्यास हेतु firewalld का चित्रात्मक फ्रंट-एंड"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "फ़ायरवॉल;नेटवर्क;सुरक्षा;आईपी तालिका;नेट निस्पंदन;"
+
+#: tmp.appdata.xml:7
+msgid "manafirewall"
+msgstr "manafirewall"
+
+#: tmp.appdata.xml:8
+msgid "A frontend to firewalld using libyui UI abstraction library"
+msgstr ""
+"उपयोक्ता अंतरफलक सारांश लाइब्रेरी libyui प्रयुक्त कर firewalld का फ्रंट-एंड"
+
+#: tmp.appdata.xml:10
+msgid ""
+"manafirewall is a firewalld frontend, inspired by firewall-config from "
+"firewalld project."
+msgstr ""
+"firewalld परियोजना के firewall-config से प्रेरित, firewalld का फ्रंट-एंड "
+"manafirewall है।"
+
+#: tmp.appdata.xml:13
+msgid ""
+"manafirewall is written in Python 3 and uses libYui, the widget abstraction "
+"library written by SUSE, so that it can be run using Qt 5, GTK+ 3, or "
+"ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
+"manager that can be used in any kind of system environment."
+msgstr ""
+"manafirewall पाइथन 3 में लिखित है व SUSE द्वारा रचित libYUI, विजेट सारांश "
+"लाइब्रेरी प्रयुक्त करने के कारणवश इसे क्यूटी 5, जीटीके+ 3 या ncurses "
+"अंतरफलकों में कार्यरत करना संभव है। यह firewalld dbus फ़ायरवॉल प्रबंधक हेतु "
+"फ्रंट-एंड प्रदान करता है जिसे किसी भी प्रकार के सिस्टम वातावरण में उपयोग कर "
+"सकते हैं।"
