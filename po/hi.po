@@ -5,6 +5,7 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
+# Panwar108 <caspian7pena@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
+"Last-Translator: Panwar108 <caspian7pena@gmail.com>, 2020\n"
 "Language-Team: Hindi (https://www.transifex.com/MageiaLinux/teams/9361/hi/)\n"
 "Language: hi\n"
 "MIME-Version: 1.0\n"
@@ -23,39 +24,41 @@ msgstr ""
 
 #: manafirewall/dialog.py:83
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - firewalld विन्यास साधन"
 
 #: manafirewall/dialog.py:84
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - ManaTools firewalld विन्यास साधन"
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "firewalld हेतु कनेक्शन स्थापित।"
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "firewalld हेतु कनेक्शन प्रयास जारी, प्रतीक्षा करें..."
 
 #: manafirewall/dialog.py:91
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"firewalld हेतु कनेक्शन विफल। सुनिश्चित करें कि सेवा उचित रूप से आरंभ की गई व पुनः प्रयास "
+"करें।"
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
-msgstr ""
+msgstr "परिवर्तन लागू किए गए।"
 
 #: manafirewall/dialog.py:94
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "नेटवर्क कनेक्शन '%s' द्वारा प्रयुक्त"
 
 #: manafirewall/dialog.py:95
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr ""
+msgstr "नेटवर्क कनेक्शन '%s' द्वारा प्रयुक्त डिफ़ॉल्ट क्षेत्र"
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
@@ -67,172 +70,172 @@ msgstr "निष्क्रिय"
 
 #: manafirewall/dialog.py:131
 msgid "&File"
-msgstr ""
+msgstr "फाइल (&F)"
 
 #: manafirewall/dialog.py:132 manafirewall/dialog.py:302
 msgid "&Quit"
-msgstr ""
+msgstr "बंद करें (&Q)"
 
 #: manafirewall/dialog.py:138
 msgid "&Options"
-msgstr ""
+msgstr "विकल्प (&O)"
 
 #: manafirewall/dialog.py:139
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "Firewalld पुनः लोड करें (&R)"
 
 #: manafirewall/dialog.py:146 manafirewall/dialog.py:147
 msgid "&Help"
-msgstr ""
+msgstr "सहायता (&H)"
 
 #: manafirewall/dialog.py:149 manafirewall/dialog.py:300
 msgid "&About"
-msgstr ""
+msgstr "बारे में (&A)"
 
 #: manafirewall/dialog.py:164
 msgid "Active bindings"
-msgstr ""
+msgstr "सक्रिय समूह"
 
 #: manafirewall/dialog.py:166
 msgid "&Change binding"
-msgstr ""
+msgstr "समूह बदलें (&C)"
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr ""
+msgstr "क्षेत्र संपादन"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
-msgstr ""
+msgstr "जोड़ें (&A)"
 
 #: manafirewall/dialog.py:175 manafirewall/dialog.py:371
 msgid "&Edit"
-msgstr ""
+msgstr "संपादन (&E)"
 
 #: manafirewall/dialog.py:177 manafirewall/dialog.py:372
 msgid "&Remove"
-msgstr ""
+msgstr "हटाएँ (&R)"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
-msgstr ""
+msgstr "डिफ़ॉल्ट लोड करें (&L)"
 
 #: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "कार्यरत"
 
 #: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "स्थायी"
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
-msgstr "संरचना"
+msgstr "विन्यास"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
-msgstr ""
+msgstr "क्षेत्र"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
-msgstr "सेवायें"
+msgstr "सेवाएँ"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "आईपी समूह"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
 msgid "View"
-msgstr "वीडीओ"
+msgstr "दृश्य"
 
 #: manafirewall/dialog.py:251 manafirewall/dialog.py:263
 msgid "Ports"
-msgstr ""
+msgstr "पोर्ट"
 
 #: manafirewall/dialog.py:252 manafirewall/dialog.py:264
 msgid "Protocols"
-msgstr ""
+msgstr "प्रोटोकॉल"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
-msgstr ""
+msgstr "स्रोत पोर्ट"
 
 #: manafirewall/dialog.py:254
 msgid "Masquerading"
-msgstr ""
+msgstr "आवरण"
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "पोर्ट अग्रसारित"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
-msgstr ""
+msgstr "आईसीएमपी निस्पंदन"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "उन्नत नियम"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr ""
+msgstr "अंतरफलक"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
-msgstr ""
+msgstr "स्रोत"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "मापांक"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr ""
+msgstr "लक्षित स्थान"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
-msgstr ""
+msgstr "प्रविष्टियाँ"
 
 #: manafirewall/dialog.py:273
 msgid "Configure"
-msgstr "संरचना"
+msgstr "विन्यास करें"
 
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "डिफ़ॉल्ट क्षेत्र : {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "लॉग फाइल अस्वीकृत : {}"
 
 #: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
 #: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "चेतावनी मोड : {}"
 
 #: manafirewall/dialog.py:294 manafirewall/dialog.py:2209
 #: manafirewall/dialog.py:2227
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "स्वतः सहायक : {}"
 
 #: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
 #: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "लॉकडाउन : {}"
 
 #: manafirewall/dialog.py:370
 msgid "A&dd"
-msgstr ""
+msgstr "जोड़ें (&d)"
 
 #: manafirewall/dialog.py:397
 msgid "Selected are accepted"
-msgstr ""
+msgstr "चयन स्वीकृत"
 
 #: manafirewall/dialog.py:465
 msgid "Masquerade zone"
-msgstr ""
+msgstr "आवरण क्षेत्र"
 
 #: manafirewall/dialog.py:497 manafirewall/dialog.py:559
 #: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
@@ -251,37 +254,39 @@ msgstr "सेवा"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
-msgstr ""
+msgstr "पते हेतु"
 
 #: manafirewall/dialog.py:693
 msgid "To Port"
-msgstr ""
+msgstr "पोर्ट हेतु"
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "सूचना आवश्यक"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
+"अंतरफलक आवरण युक्त होने पर ही अन्य सिस्टम पर अग्रसारित करना उपयोगी होता है।<br>क्या "
+"आप इस क्षेत्र पर आवरण के इच्छुक हैं?"
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr ""
+msgstr "आभार {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} - firewalld हेतु चित्रात्मक विन्यास साधन है।"
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
-msgstr ""
+msgstr "सेवा संपादन"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr ""
+msgstr "आईपी समूह संपादन"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -290,11 +295,11 @@ msgstr "स्रोत"
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "पोर्ट/पोर्ट सीमा"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "लक्षित स्थान"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -304,46 +309,46 @@ msgstr "आईपी पता"
 #: manafirewall/protocolDialog.py:80 manafirewall/serviceBaseDialog.py:64
 #: manafirewall/zoneBaseDialog.py:99
 msgid "&Cancel"
-msgstr ""
+msgstr "रद्द करें (&C)"
 
 #: manafirewall/forwardDialog.py:86 manafirewall/portDialog.py:69
 #: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:67
 #: manafirewall/zoneBaseDialog.py:102
 msgid "&Ok"
-msgstr ""
+msgstr "ठीक है (&O)"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "स्रोत पोर्ट अनिवार्य है"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "पोर्ट संख्या या सीमा (10000 या 12000-12002) उपयोग करें"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "निर्दिष्ट आईपी पता अमान्य है।"
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "अनुचित आईपी पता"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "अनुचित अग्रसारित पोर्ट सीमा"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "अनुचित पोर्ट निर्दिष्ट"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
-msgstr ""
+msgstr "<b>लोकल अग्रसारित</b><br> पोर्ट व अग्रसारित पोर्ट विभिन्न होना आवश्यक है"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "डेटा अनुपलब्ध"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -352,22 +357,26 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"मान्य विन्यास :<br>        <b>लोकल अग्रसारित</b> पोर्ट व अग्रसारित पोर्ट दर्ज करें, "
+"इनका एक दूसरे से भिन्न होना आवश्यक है<br>         <b>पते हेतु अग्रसारित</b> पोर्ट व "
+"अग्रसारित पता दर्ज करें<br>         <b>दूरस्थ पोर्ट हेतु अग्रसारित</b> पोर्ट, अग्रसारित "
+"पता व अग्रसारित पोर्ट दर्ज करें"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr ""
+msgstr "क्षेत्र दृश्य"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr ""
+msgstr "सेवा दृश्य"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr ""
+msgstr "आईपी समूह दृश्य"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "सूची पर जाएँ"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -375,6 +384,8 @@ msgid ""
 "If you want to have changes also in the runtime environment, then either add "
 "the changes there also or reload firewalld."
 msgstr ""
+"स्थायी मोड द्वारा आप वर्तमान में निष्क्रिय वस्तुएँ विन्यस्त कर सकते हैं। कार्यरत वातावरण में "
+"परिवर्तन हेतु वहाँ भी परिवर्तन करें या firewalld पुनः लोड करें।"
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -382,6 +393,9 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
+"कार्यरत मोड द्वारा आप कार्यरत वस्तुएँ विन्यस्त कर सकते हैं। कार्यरत वातावरण के परिवर्तन "
+"अगले सिस्टम आरंभ या पुनः लोड उपरांत मौजूद नहीं होंगे, यदि आप ये परिवर्तन स्थायी रूप से "
+"चाहते हैं तो इन्हें स्थायी मोड में करें।"
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -390,6 +404,9 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"क्षेत्र - निर्दिष्ट समूह पर लागू सेवाएँ हैं। ये समूह संग्रह विभिन्न विश्वसनीयता स्तर अनुरूप "
+"परिभाषित होते हैं। \"स्थायी\" विन्यास चयन उपरांत आप क्षेत्र जोड़, संपादित या हटा सकते हैं "
+"व क्षेत्र हेतु स्वीकृत सेवाएँ परिभाषित भी।"
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -398,18 +415,25 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
+"क्षेत्र हेतु नाम, संस्करण, संक्षिप्त व विस्तृत नाम, एवं विवरण उपलब्ध हैं। चिन्हित कर आप "
+"डिफ़ॉल्ट लक्ष्य सक्रिय या नियम से असंगत डेटा पैकेट हेतु डिफ़ॉल्ट व्यवहार चुन सकते हैं। लक्ष्य हैं "
+"निरस्त, अस्वीकृत या स्वीकृत।"
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
+"पूर्व परिभाषित क्षेत्र हैं : निरुद्ध - परिधि - निरस्त - बाह्य - होम - होम - आंतरिक - "
+"सार्वजनिक - विश्वसनीय - कार्य"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
+"\"क्षेत्र\" दृश्य चयन उपरांत आप निर्दिष्ट क्षेत्र विन्यस्त कर सकते हैं। प्रत्येक क्षेत्र हेतु कुछ "
+"मापदंड हैं :"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -421,6 +445,10 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>सेवाएँ</b>: \"विन्यास\" विकल्प चयन उपरांत पूर्व परिभाषित सेवाएँ प्रदर्शित "
+"होंगी। क्षेत्र अनुसार कुछ सेवाएँ पहले से चयनित भी हो सकती हैं। सेवा संबंधित विकल्प चिन्हित या "
+"अचिन्हित करने पर वे नियम उस क्षेत्र के सभी अंतरफलकों पर लागू होंगे। स्थायी मोड में विन्यास "
+"लागू नहीं होगी केवल दर्ज होगी। यह firewalld के पुनः आरंभ उपरांत ही लागू होगी।"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -430,6 +458,10 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>पोर्ट</b>: इस विन्यास विकल्प द्वारा आप पोर्ट संख्या या सीमा व टीसीपी, यूडीपी, "
+"एससीटीपी और डीसीसीपी सूची से चयनित प्रोटोकॉल युक्त नियम को \"जोड़ें \" बटन से निर्दिष्ट "
+"कर सकते हैं। सूची दृश्य द्वारा पूर्व परिभाषित नियम प्रदर्शित होंगे। संख्याओं को हायफ़न से पृथक "
+"कर सीमा निर्धारित करें, उदाहरण 80-88। इससे ये पोर्ट सक्रिय होंगे।</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -437,6 +469,8 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>प्रोटोकॉल</b>: यहाँ आप द्वारा समर्थित प्रोटोकॉल सूची या स्वयं निर्दिष्ट कर "
+"प्रोटोकॉल जोड़ सकते हैं। (जोड़ने के फलस्वरूप पूर्ण प्रभाव हेतु)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -445,6 +479,10 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>स्रोत पोर्ट</b>: इस विन्यास विकल्प द्वारा आप पोर्ट संख्या या सीमा व टीसीपी, "
+"यूडीपी, एससीटीपी और डीसीसीपी सूची से चयनित प्रोटोकॉल युक्त नियम को \"जोड़ें \" बटन से "
+"निर्दिष्ट कर सकते हैं। सूची दृश्य द्वारा पूर्व परिभाषित नियम प्रदर्शित होंगे। (जोड़ने के "
+"फलस्वरूप पूर्ण प्रभाव हेतु)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -452,6 +490,8 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>आवरण</b>: इस विकल्प द्वारा आप आवरण क्षेत्र चिन्हित या अचिन्हित कर सकते हैं। अतः "
+"यह क्षेत्र आवरण के लिए है (केवल आईपी4 हेतु)। (जोड़ने के फलस्वरूप पूर्ण प्रभाव हेतु)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -463,22 +503,27 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>अग्रसारित पोर्ट</b>: पोर्ट अग्रसारित प्रक्रिया में नेटवर्क पते अनुवाद (NAT) उपयोग "
+"कर फ़ायरवॉल से अंतरित डेटा पैकेट आईपी4 तकनीक में एक पते एवं पोर्ट संख्या संयोजन द्वारा संचार "
+"अनुरोध को किसी अन्य की ओर अग्रसर करते हैं। नियम जोड़ने हेतु आवक अनुरोध व प्रोटोकॉल "
+"(स्रोत) का पोर्ट या पोर्ट सीमा और लोकल अग्रसारित हेतु लक्षित स्थान का पोर्ट या सीमा "
+"या फिर पोर्ट परिवर्तित होने पर लक्षित स्थान का पता व पोर्ट या सीमा निर्दिष्ट करें।</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>आईसीएमपी निस्पंदन</b>: अभी लागू नहीं है</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>उन्नत नियम</b>: अभी लागू नहीं है</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>अंतरफलक</b>: अभी लागू नहीं है</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>स्रोत</b>: अभी लागू नहीं है</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -487,6 +532,9 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"सेवा - अनुप्रयोग हेतु लागू नियमों का संग्रह। इस द्वारा अनुप्रयोग हेतु आवश्यक वस्तुएँ चिन्हित कर "
+"लागू करें। अधिकतर सेवाएँ पहले से परिभाषित हैं, किसी अनुप्रयोग हेतु अनुपलब्ध होने पर आप स्वयं "
+"भी जोड़ सकते हैं।"
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -494,10 +542,12 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"\"सेवा\" दृश्य में, एकाधिक विकल्प चयन के साथ दिए \"विन्यास\" बटन द्वारा सेवा चुनें। चयन "
+"उपरांत तालिका पोर्ट-प्रोटोकॉल संयोजन सूची अपडेट होगी।"
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "प्रत्येक सेवा हेतु आप परिभाषित कर सकते हैं :"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -505,28 +555,31 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>पोर्ट</b>: चयन होने पर, सूची दृश्य में परिभाषित पोर्ट सम्मिलित होते हैं। "
+"प्रत्येक पोर्ट एक संख्या या सीमा व प्रोटोकॉल से परिभाषित होता है।</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>प्रोटोकॉल</b>: अभी लागू नहीं है</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>स्रोत पोर्ट</b>: अभी लागू नहीं है</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>मापांक</b>: अभी लागू नहीं है</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>लक्षित स्थान</b>: अभी लागू नहीं है</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall - firewalld द्वारा उपलब्ध फ़ायरवॉल विशेषताओं हेतु चित्रात्मक विन्यास साधन।"
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -534,6 +587,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"Firewalld एक सतत रूप से प्रबंधित फ़ायरवॉल प्रदान करती है जिसके द्वारा आप नेटवर्क/"
+"फ़ायरवॉल \"क्षेत्र\" उपयोग कर नेटवर्क व उससे संबंधित कनेक्शन, अंतरफलक या स्रोतों का "
+"विश्वसनीयता स्तर नियुक्त कर सकते हैं।"
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -541,12 +597,16 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"यह आईपी4, आईपी6, ईथरनेट ब्रिज के साथ ही आईपी समूह फ़ायरवॉल सेटिंग्स का समर्थन करती है। "
+"कार्यरत व स्थायी विन्यास विकल्प भी एक दूसरे से पृथक हैं।"
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall - manatools का भाग है व libyui आधारित होने के कारण इसे जीटीके, क्यूटी "
+"या ncurses यानि चित्रात्मक या लेख युक्त उपयोक्ता अंतरफलकों में कार्यरत करना संभव है।"
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -554,56 +614,58 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"बायीं ओर सक्रिय समूह का अवलोकन प्रदर्शित है। ये कनेक्शन, अंतरफलक या स्रोत हेतु या जोड़ें गए "
+"युक्त क्षेत्र हैं। यहाँ आप सरलता से इन समूहों का क्षेत्र बदल सकते हैं।"
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
-msgstr ""
+msgstr "दायीं ओर दी गई पंक्तियाँ चिन्हित कर क्षेत्र, सेवाएँ देखें या विन्यस्त करें।"
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "अवधि"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "क्षेत्र विन्यास"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "सेवा विन्यास"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "आईपी समूह दृश्य"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "पोर्ट व प्रोटोकॉल"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "अनुचित पोर्ट सीमा"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "अन्य प्रोटोकॉल"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "कृपया मान्य प्रोटोकॉल दर्ज करें (/etc/protocols देखें)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "प्रोटोकॉल अनिवार्य है"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "अनुचित प्रोटोकॉल प्रविष्टि"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "सेवा सेटिंग्स"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -611,11 +673,11 @@ msgstr "नाम"
 
 #: manafirewall/serviceBaseDialog.py:44 manafirewall/zoneBaseDialog.py:46
 msgid "Version"
-msgstr ""
+msgstr "संस्करण"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "संक्षिप्त"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -623,28 +685,28 @@ msgstr "विवरण"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "अनुपलब्ध मान"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "नाम अनिवार्य है"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "क्षेत्र सेटिंग्स"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "डिफ़ॉल्ट लक्ष्य"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
-msgstr "स्वीकार"
+msgstr "स्वीकृत"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "निरस्त"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "अस्वीकृत"
