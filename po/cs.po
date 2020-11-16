@@ -5,8 +5,8 @@
 #
 # Translators:
 # Jiří Vírava <appukonrad@gmail.com>, 2020
-# fri, 2020
 # Luděk Janča <joelp@email.cz>, 2020
+# fri, 2020
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Luděk Janča <joelp@email.cz>, 2020\n"
+"Last-Translator: fri, 2020\n"
 "Language-Team: Czech (https://www.transifex.com/MageiaLinux/teams/9361/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "ManaTools - nastavení firewallu"
 
 #: manafirewall/dialog.py:84
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - Nastavení firewallu ManaTools"
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
@@ -38,15 +38,15 @@ msgstr "Spojení s firewalld bylo navázáno."
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr "Pokoušení o připojení k firewalld, čekejte, prosím..."
+msgstr "Pokus o připojení se k firewalld, čekejte, prosím..."
 
 #: manafirewall/dialog.py:91
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
-"Připojení k firewalld se nezdařilo. Ujistěte se, že služba v pořádku "
-"nastartovala a zkuste to znovu."
+"Připojení k firewalld se nezdařilo. Ujistěte se, že se služba v pořádku "
+"spustila a zkuste to znovu."
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
