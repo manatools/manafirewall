@@ -6,6 +6,7 @@
 # Translators:
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2020
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
+# Omeritzics Games <omeritzicschwartz@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
+"Last-Translator: Omeritzics Games <omeritzicschwartz@gmail.com>, 2020\n"
 "Language-Team: Hebrew (https://www.transifex.com/MageiaLinux/teams/9361/"
 "he/)\n"
 "Language: he\n"
@@ -70,7 +71,7 @@ msgstr "מנותק"
 
 #: manafirewall/dialog.py:131
 msgid "&File"
-msgstr ""
+msgstr "&קובץ"
 
 #: manafirewall/dialog.py:132 manafirewall/dialog.py:302
 msgid "&Quit"
@@ -78,7 +79,7 @@ msgstr "י&ציאה"
 
 #: manafirewall/dialog.py:138
 msgid "&Options"
-msgstr ""
+msgstr "אפ&שרויות"
 
 #: manafirewall/dialog.py:139
 msgid "&Reload Firewalld"
@@ -86,7 +87,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:146 manafirewall/dialog.py:147
 msgid "&Help"
-msgstr ""
+msgstr "ע&זרה"
 
 #: manafirewall/dialog.py:149 manafirewall/dialog.py:300
 msgid "&About"
@@ -138,7 +139,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
-msgstr "שרותים"
+msgstr "שירותים"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
@@ -183,7 +184,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
-msgstr ""
+msgstr "מקורות"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
@@ -227,7 +228,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:370
 msgid "A&dd"
-msgstr ""
+msgstr "הוס&פה"
 
 #: manafirewall/dialog.py:397
 msgid "Selected are accepted"
@@ -250,7 +251,7 @@ msgstr "יציאה"
 
 #: manafirewall/dialog.py:628
 msgid "Service"
-msgstr "שרות"
+msgstr "שירות"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
@@ -272,7 +273,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr ""
+msgstr "שבחים {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
@@ -307,13 +308,13 @@ msgstr "כתובת IP"
 #: manafirewall/protocolDialog.py:80 manafirewall/serviceBaseDialog.py:64
 #: manafirewall/zoneBaseDialog.py:99
 msgid "&Cancel"
-msgstr ""
+msgstr "&ביטול"
 
 #: manafirewall/forwardDialog.py:86 manafirewall/portDialog.py:69
 #: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:67
 #: manafirewall/zoneBaseDialog.py:102
 msgid "&Ok"
-msgstr ""
+msgstr "&אישור"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
