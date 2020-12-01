@@ -255,7 +255,7 @@ msgstr "שירות"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
-msgstr ""
+msgstr "לכתובת"
 
 #: manafirewall/dialog.py:693
 msgid "To Port"
@@ -263,7 +263,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "יש צורך במידע"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
