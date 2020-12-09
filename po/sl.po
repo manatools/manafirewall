@@ -6,6 +6,7 @@
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Filip Komar <filip.komar@guest.arnes.si>, 2020
+# Arnold Marko <arnold.marko@gmail.com>, 2020
 #
 #, fuzzy
 msgid ""
@@ -14,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Filip Komar <filip.komar@guest.arnes.si>, 2020\n"
+"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2020\n"
 "Language-Team: Slovenian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sl/)\n"
 "Language: sl\n"
@@ -60,7 +61,7 @@ msgstr "Uporablja omrežna povezava '%s'"
 #: manafirewall/dialog.py:95
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr "Privzeto cono uporablja omrežna povezava '%s'"
+msgstr "Privzeto območje uporablja omrežna povezava '%s'"
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
@@ -96,15 +97,15 @@ msgstr "O &programu"
 
 #: manafirewall/dialog.py:164
 msgid "Active bindings"
-msgstr ""
+msgstr "Aktivne vezave"
 
 #: manafirewall/dialog.py:166
 msgid "&Change binding"
-msgstr ""
+msgstr "&Sprememba vezave"
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr "Uredi cone"
+msgstr "Uredi območja"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
@@ -120,15 +121,15 @@ msgstr "&Odstrani"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
-msgstr ""
+msgstr "&Naloži privzeto"
 
 #: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "Izvajalni čas"
 
 #: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "Trajno"
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -136,7 +137,7 @@ msgstr "Nastavitev"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
-msgstr "Cone"
+msgstr "Območje"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
@@ -144,7 +145,7 @@ msgstr "Storitve"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "Niz IP"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -173,11 +174,11 @@ msgstr "Preusmerjanje vrat"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
-msgstr ""
+msgstr "Filter ICMP"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "Razširjena pravila"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
@@ -206,7 +207,7 @@ msgstr "Nastavi"
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr "Privzeta cona: {}"
+msgstr "Privzeto območje: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
@@ -220,7 +221,7 @@ msgstr "Panični način: {}"
 #: manafirewall/dialog.py:294 manafirewall/dialog.py:2209
 #: manafirewall/dialog.py:2227
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "Samodejna pomagala: {}"
 
 #: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
 #: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
@@ -233,11 +234,11 @@ msgstr "&Dodaj"
 
 #: manafirewall/dialog.py:397
 msgid "Selected are accepted"
-msgstr ""
+msgstr "Izbrano je sprejeto"
 
 #: manafirewall/dialog.py:465
 msgid "Masquerade zone"
-msgstr "Maskirna cona"
+msgstr "Maskirano območje"
 
 #: manafirewall/dialog.py:497 manafirewall/dialog.py:559
 #: manafirewall/dialog.py:693 manafirewall/forwardDialog.py:46
@@ -264,13 +265,15 @@ msgstr "Do vrat"
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "Zahtevani so podatki"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
+"Posredovanje na drug sistem je uporabno le, če je vmesnik maskiran. <br>Ali "
+"želite maskirati to območje?"
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
@@ -278,7 +281,7 @@ msgstr "Zasluge {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{}  je grafično nastavitveno orodje za program firewalld."
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
@@ -286,7 +289,7 @@ msgstr "Urejanje storitev"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr ""
+msgstr "Uredi nize IP"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -324,11 +327,11 @@ msgstr "Izvorna vrata so obvezna"
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "Uporabi števila vrat ali območje (10000 ali 12000-12002)"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "Podan naslov IP ni veljaven."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
@@ -336,7 +339,7 @@ msgstr "Napačen naslov IP"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "Napačen obseg vrat"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
@@ -345,6 +348,7 @@ msgstr "Podana napačna vrata"
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
 msgstr ""
+"<b>krajevno preusmerjanje</b><br>začetna in ciljna vrata morata biti različna"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
@@ -357,10 +361,15 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"Veljavne nastavitve so:<br>        <b>krajevno preusmerjanje</b> vnos "
+"začetnih in ciljnih vrat, ki morajo biti različna<br>         "
+"<b>preusmerjanje na naslov</b> vnos začetnih in ciljnih vrat<br>         "
+"<b>preusmerjanje na oddaljena vrata</b> vnos začetnih vrat in ciljnega "
+"naslova in vrat"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr "Ogled con"
+msgstr "Prikaz območji"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
@@ -368,11 +377,11 @@ msgstr "Ogled storitev"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr ""
+msgstr "Pogled nizov IP"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Skok na kazalo"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -380,6 +389,9 @@ msgid ""
 "If you want to have changes also in the runtime environment, then either add "
 "the changes there also or reload firewalld."
 msgstr ""
+"Trajni način omogoča nastavitve, ki niso aktivne takoj. Če želite spremembe "
+"tudi v izvajalnem času, jih dodajte tule ali ponovno naložite opravilo "
+"firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -395,6 +407,10 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"Območje je nabor storitev, ki jih je mogoče določiti vezavi. Vnaprej so "
+"določena območja za različne stopnje zaupanja. Če izberete \"Stalno\" "
+"konfiguracijo, lahko dodate, uredite ali izbrišete tudi lastno območje in "
+"določite, katere storitve so dovoljene na vašem območju.  "
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -403,18 +419,26 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Za območje so na voljo polja ime, različica, kratko - bolj opisno ime in "
+"opis. Potrditveno polje omogoča aktivacijo privzetega cilja ali izbiro "
+"privzetega obnašanja za pakete, ki ne ustreza nobenemu pravilu. Cilji so "
+"DROP, REJECT ali ACCEPT."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
+"Pred-določena območja so: block - dmz - drop - external - home - home - "
+"internal - public - trusted - work"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
+"Po izboru \"območja\" za prikaz in enega od območji, lahko nastavite "
+"območje. Za vsako območje je na voljo nekaj parametrov:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -426,6 +450,13 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>Storitve</b>: ko so izbrane v možnosti \"Konfiguriraj\", vidite "
+"seznam vnaprej določenih storitev. Glede na območje so nekatere storitve že "
+"izbrane. Če izberete ali opustite izbirno polje, se bodo, glede na storitev, "
+"določila ustrezna pravila, ki bodo imenovanim storitvam vmesnika dovolila, "
+"da si lastijo območje. V stalnem načinu je konfiguracija registrirana "
+"neposredno, vendar ni aktivirana. Aktivirana bo po tem, ko se bo požarni zid "
+"ponovno naložil.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -457,6 +488,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Maskiranje</b>: ta možnost omogoča izbiro ali opustitev \"maskiranega "
+"območja\". S tem je to območje uporabljeno za maskiranje (le za IPv4). (da "
+"se zaključi s tem, kar je učinek tega dodajanja)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -471,19 +505,19 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Filter ICMP</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Bogata pravila</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Vmesniki</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Izvori</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -502,7 +536,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "Za vsako storitev lahko določite:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -510,28 +544,32 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>Vrata</b>: ob izbiri seznam vsebuje že določena vrata. Vsaka "
+"vrata so določena s številko ali območjem in protokolom.</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Protokoli</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Izvorna vrata</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Moduli</b>: še ni podprto</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Cilj</b>: še ni podprto</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall je grafično nastavitveno orodje za lastnosti požarnega zidu "
+"programa firewalld."
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -559,20 +597,25 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"Na levi je pregled aktivnih vezav. To so območja, ki imajo dodano povezavo, "
+"vmesnik ali vezavo na vir. Tukaj je mogoče preprosto spremeniti območje teh "
+"vezav."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"Na desni so spustna polja za izbiro ogleda ali nastavljanja, kot so območja, "
+"storitve itd."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Trajanje"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr "Nastavitev cone"
+msgstr "Nastavitev območja"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
@@ -580,7 +623,7 @@ msgstr "Nastavite storitve"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "Pogled nizov IP"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -596,7 +639,7 @@ msgstr "Drug protokol"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "Vnesite veljaven protokol (glej datoteko /etc/protocols)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
@@ -636,11 +679,11 @@ msgstr "Ime je obvezno"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr "Nastavitve con"
+msgstr "Nastavitve območja"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Privzet cilj"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
@@ -648,8 +691,8 @@ msgstr "Sprejmem"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Opusti"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Zavrni"
