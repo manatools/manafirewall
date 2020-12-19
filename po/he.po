@@ -156,7 +156,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:252 manafirewall/dialog.py:264
 msgid "Protocols"
-msgstr ""
+msgstr "פרוטוקולים"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
@@ -188,7 +188,7 @@ msgstr "מקורות"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "מודולים"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
@@ -567,7 +567,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "משך זמן"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
@@ -591,7 +591,7 @@ msgstr ""
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "פרוטוקול אחר"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
@@ -607,7 +607,7 @@ msgstr ""
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "הגדרות שירות"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
