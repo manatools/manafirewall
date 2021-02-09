@@ -5,8 +5,8 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Filip Komar <filip.komar@guest.arnes.si>, 2020
 # Arnold Marko <arnold.marko@gmail.com>, 2020
+# Filip Komar <filip.komar@guest.arnes.si>, 2021
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Arnold Marko <arnold.marko@gmail.com>, 2020\n"
+"Last-Translator: Filip Komar <filip.komar@guest.arnes.si>, 2021\n"
 "Language-Team: Slovenian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sl/)\n"
 "Language: sl\n"
@@ -399,6 +399,9 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
+"Način izvajalnega časa dovoljuje nastavljanje med izvajanjem. A te spremembe "
+"ob naslednjem zagonu ne bodo več prisotne. Te spremembe morate vpisati v "
+"trajen način, če jih želite ohraniti."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -466,6 +469,11 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>Vrata</b>: ta možnost nastavitev omogoča določitev pravila preko "
+"gumba \"Dodaj\" s številko vrat ali razponom in protokolom, ki ga lahko "
+"izberete iz seznama tcp, udp, sctp in dccp. Prikaz seznama vsebuje že "
+"določena pravila. Razpon je določen pomočjo pomišljaja med dvema številkama, "
+"npr. 80-88. Posledica tega je, da bodo ta vrata odprta.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -473,6 +481,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protokoli</b>: Tukaj lahko dodate enega od protokolov, ki jih podpira "
+"firewalld ali dodate specifičnega, ki ga znate poimenovati (da zaključite s "
+"tem, kar je učinek tega dodajanja)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -481,6 +492,11 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Izvorna vrata</b>: ta možnost nastavitev omogoča določitev pravila "
+"preko gumba \"Dodaj\" s številko vrat ali razponom in protokolom, ki ga "
+"lahko izberete iz seznama tcp, udp, sctp in dccp. Prikaz seznama vsebuje že "
+"določena pravila. Razpon je določen pomočjo pomišljaja med dvema številkama, "
+"npr. 80-88. Posledica tega je, da bodo ta vrata odprta.</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -502,6 +518,13 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Preusmeritev vrat</b>: preusmeritev vrat je program prevajanja "
+"omrežnih naslovov (NAT), ki preusmerja komunikacijske zahteve iz določene "
+"številke vrat enega naslova na drugega medtem ko paketi prečkajo požarni zid "
+"v tehnologiji IPV4. Dodano pravilo mora vsebovati številko ali območje vrat "
+"dohodne zahteve ter njen protokol in bodisi številko ali območje vrat cilja "
+"krajevnega preusmerjanja bodisi naslov cilja ter izbirno ob spremembi še "
+"številko ali območje vrat.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -526,6 +549,10 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Storitev je zbirka pravil, ki se skupaj uporabljajo za neko aplikacijo. Ta "
+"koncept pomaga, da lahko to, kar neka aplikacija potrebuje, preprosto "
+"označimo. Mnogo storitev je že definiranih, vendar lahko dodate tudi svojo, "
+"za aplikacijo, ki ni podana."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -533,6 +560,8 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"V pogledu »Storitve« gumb »Nastavitve« poleg spustnega polja dovoljuje "
+"izbiro storitve. Izbira ene posodobi seznam s pari Vrata-Protokol."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -577,6 +606,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"Program firewalld ponuja dinamično upravljanje požarnega zidu s podporo za "
+"cone omrežja/požarnega zidu za določanje nivoja zaupanja omrežju in "
+"pripadajočim povezavam, vmesnikom in virom."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -584,12 +616,18 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"Ima podporo za IPv4, IPv6, mostove Ethernet in nastavitve za požarni zid "
+"IPSet. Možna je različna nastavitev med začasnimi in nastavitvami, ki "
+"obstanejo prek ponovnega zagona."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"Orodje ManaFirewall je del manatoolsin bazira na knjižnici libyui, ki "
+"omogoča grafične in tekstovne uporabniške vmesnike kot so Gtk, Qt ali "
+"ncurses."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
