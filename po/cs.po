@@ -521,7 +521,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Moduly</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
@@ -574,7 +574,7 @@ msgstr "Trvání"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Nastavit zónu"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
