@@ -177,7 +177,7 @@ msgstr "Filtr ICMP"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "Bohatá pravidla"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
@@ -475,7 +475,7 @@ msgstr "<li><b>Filtr ICMP</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Bohatá pravidla</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
@@ -517,7 +517,7 @@ msgstr "<li><b>Protokoly</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Zdrojové porty</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
@@ -525,7 +525,7 @@ msgstr "<li><b>Moduly</b>: prozatím neimplementováno</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Cíl</b>: prozatím neimplementováno</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
