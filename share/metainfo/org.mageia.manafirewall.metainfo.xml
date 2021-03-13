@@ -3,7 +3,7 @@
 <component type="desktop">
   <id>org.mageia.manafirewall.desktop</id>
   <metadata_license>CC-BY-SA-4.0</metadata_license>
-  <project_license>GPL-2.1</project_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <name>manafirewall</name>
   <name xml:lang="uk">manafirewall</name>
   <name xml:lang="sv">manafirewall</name>
