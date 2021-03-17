@@ -82,8 +82,8 @@ for langfile in files:
         print('The entry already exists')
 
 # Extract from AppData
-os.system('grep -v "xml:lang" share/metainfo/org.mageia.manafirewall.appdata.xml > tmp.appdata.xml')
-os.system('xgettext -o %s/tmp_manafirewall_appdata.pot tmp.appdata.xml' %podir)
+os.system('grep -v "xml:lang" share/metainfo/org.mageia.manafirewall.metainfo.xml > tmp.metainfo.xml')
+os.system('xgettext -o %s/tmp_manafirewall_appdata.pot tmp.metainfo.xml' %podir)
 
 # Merge AppData catalog into our POT
 appdata_pot = polib.pofile(podir + '/tmp_manafirewall_appdata.pot')
@@ -127,6 +127,6 @@ for langfile in files:
   deskfile.close()
 
 # Merge with AppData file
-os.system('msgfmt --xml --template=tmp.appdata.xml -d po/desktop -o share/metainfo/org.mageia.manafirewall.appdata.xml')
-os.remove('tmp.appdata.xml')
+os.system('msgfmt --xml --template=tmp.metainfo.xml -d po/desktop -o share/metainfo/org.mageia.manafirewall.metainfo.xml')
+os.remove('tmp.metainfo.xml')
 

@@ -35,16 +35,16 @@ msgctxt "Keywords"
 msgid "firewall;network;security;iptables;netfilter;"
 msgstr "brannmur;nettver;sikkerhet;iptabeller;nettfilter;"
 
-#: tmp.appdata.xml:7
+#: tmp.metainfo.xml:7
 msgid "manafirewall"
 msgstr "manafirewall"
 
-#: tmp.appdata.xml:8
+#: tmp.metainfo.xml:8
 msgid "A frontend to firewalld using libyui UI abstraction library"
 msgstr ""
 "En frontend til firewalld ved hjelp av libyui UI-abstraksjonsbibliotek"
 
-#: tmp.appdata.xml:10
+#: tmp.metainfo.xml:10
 msgid ""
 "manafirewall is a firewalld frontend, inspired by firewall-config from "
 "firewalld project."
@@ -52,7 +52,7 @@ msgstr ""
 "manafirewall er en firewallld frontend, inspirert av firewall-config fra "
 "firewalld-prosjektet."
 
-#: tmp.appdata.xml:13
+#: tmp.metainfo.xml:13
 msgid ""
 "manafirewall is written in Python 3 and uses libYui, the widget abstraction "
 "library written by SUSE, so that it can be run using Qt 5, GTK+ 3, or "
