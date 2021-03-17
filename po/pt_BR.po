@@ -7,9 +7,9 @@
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatica@protonmail.com>, 2020
 # 3f37d448649cd548fa5a733e33387c2a_dee4ccf, 2020
-# Michael Martins <michaelfm21@gmail.com>, 2020
 # lrampazzo <lrampazzo@gmail.com>, 2020
 # Celio Alves <dreamcelio@gmail.com>, 2021
+# Michael Martins <michaelfm21@gmail.com>, 2021
 #
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Celio Alves <dreamcelio@gmail.com>, 2021\n"
+"Last-Translator: Michael Martins <michaelfm21@gmail.com>, 2021\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/MageiaLinux/"
 "teams/9361/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr "Encaminhamento de porta"
+msgstr "Encaminhamento de Porta"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
