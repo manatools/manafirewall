@@ -6,7 +6,7 @@
 # Translators:
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2020
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Omer I.S. <omeritzicschwartz@gmail.com>, 2020
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2020\n"
+"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 "Language-Team: Hebrew (https://www.transifex.com/MageiaLinux/teams/9361/"
 "he/)\n"
 "Language: he\n"
@@ -39,7 +39,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr "כעת בניסיון התחברות אל firewalld, כעת בהמתנה..."
+msgstr "כעת בניסיון התחברות אל firewalld, בהמתנה..."
 
 #: manafirewall/dialog.py:91
 msgid ""
@@ -115,7 +115,7 @@ msgstr "הו&ספה"
 
 #: manafirewall/dialog.py:177 manafirewall/dialog.py:372
 msgid "&Remove"
-msgstr ""
+msgstr "הס&רה"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
@@ -131,7 +131,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
-msgstr "הגדרות"
+msgstr "הגדרה"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
@@ -180,7 +180,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr ""
+msgstr "ממשקים"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
@@ -273,7 +273,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr "שבחים {}"
+msgstr "תודות {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
@@ -331,7 +331,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "כתובת IP שגויה"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
