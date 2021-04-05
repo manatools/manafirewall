@@ -1,0 +1,67 @@
+# Translators:
+# Ardit Dani <ardit.dani@gmail.com>, 2021
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: manafirewall desktop files translation\n"
+"Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
+"POT-Creation-Date: 2021-03-17 10:20+0200\n"
+"PO-Revision-Date: 2020-09-08 14:57+0000\n"
+"Last-Translator: Ardit Dani <ardit.dani@gmail.com>, 2021\n"
+"Language-Team: Albanian (https://www.transifex.com/MageiaLinux/teams/9361/sq/)\n"
+"Language: sq\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Name"
+msgid "manafirewall"
+msgstr "manafirewall"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "GenericName"
+msgid "Frontend to firewalld for firewall configuration"
+msgstr "Frontend tek firewalld për firewall konfigurimi"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Comment"
+msgid "A graphical front end to firewalld for firewall configuration"
+msgstr "Një grafike front end e firewalld për konfigurimin e firewall-it"
+
+#: ./share/applications/org.mageia.manafirewall.desktop
+msgctxt "Keywords"
+msgid "firewall;network;security;iptables;netfilter;"
+msgstr "firewall;rrjeti;siguri;iptabelë;netfilter;"
+
+#: tmp.metainfo.xml:7
+msgid "manafirewall"
+msgstr "manafirewall"
+
+#: tmp.metainfo.xml:8
+msgid "A frontend to firewalld using libyui UI abstraction library"
+msgstr ""
+"Një frontend të firewalld duke përdorur libyui UI biblioteka e "
+"abstraksioneve"
+
+#: tmp.metainfo.xml:10
+msgid ""
+"manafirewall is a firewalld frontend, inspired by firewall-config from "
+"firewalld project."
+msgstr ""
+"manafirewall ështl njl firewalld frontend, frymëzuar nga firewall-config nga"
+" projekti firewalld."
+
+#: tmp.metainfo.xml:13
+msgid ""
+"manafirewall is written in Python 3 and uses libYui, the widget abstraction "
+"library written by SUSE, so that it can be run using Qt 5, GTK+ 3, or "
+"ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
+"manager that can be used in any kind of system environment."
+msgstr ""
+"manafirewall është shkruar në Python 3 dhe përdor libYui, biblioteka e "
+"abstraksionit të widgeteve e shkruar nga SUSE, në mënyrë që të mund të "
+"ekzekutohet duke përdorur Qt 5, GTK+ 3, ose ndërfaqen ncurses. Siguron një "
+"frontend për menaxherin e firewallld dbus firewalld që mund të përdoret në "
+"çdo lloj mjedisi të sistemit."
