@@ -11,6 +11,7 @@
   <name xml:lang="sq">manafirewall</name>
   <name xml:lang="sl">manafirewall</name>
   <name xml:lang="pt_BR">manafirewall</name>
+  <name xml:lang="nl">manafirewall</name>
   <name xml:lang="nb">manafirewall</name>
   <name xml:lang="ja">manafirewall</name>
   <name xml:lang="hi">manafirewall</name>
@@ -27,6 +28,7 @@
   <summary xml:lang="sq">Një frontend të firewalld duke përdorur libyui UI biblioteka e abstraksioneve</summary>
   <summary xml:lang="sl">Začelje za firewalld uporablja knjižnico libyui za upodabljanje uporabniškega vmesnika</summary>
   <summary xml:lang="pt_BR">Uma interface para o firewalld usando a biblioteca de abstração UI libyui</summary>
+  <summary xml:lang="nl">Een frontend voor firewalld die de libyui abstractiebibliotheek gebruikt voor de interface</summary>
   <summary xml:lang="nb">En frontend til firewalld ved hjelp av libyui UI-abstraksjonsbibliotek</summary>
   <summary xml:lang="ja">libyui UI 抽象化ライブラリを用いた firewalld のフロントエンド</summary>
   <summary xml:lang="hi">उपयोक्ता अंतरफलक सारांश लाइब्रेरी libyui प्रयुक्त कर firewalld का फ्रंट-एंड</summary>
@@ -45,6 +47,7 @@
     <p xml:lang="sq">manafirewall ështl njl firewalld frontend, frymëzuar nga firewall-config nga projekti firewalld.</p>
     <p xml:lang="sl">manafirewall je začelje za firewalld, z navdihom iz firewall-config iz projekta firewalld.</p>
     <p xml:lang="pt_BR">manafirewall é uma interface do firewalld, inspirada pela firewall-config proveniente do projeto firewalld.</p>
+    <p xml:lang="nl">manafirewall is een frontend voor firewalld, geïnspireerd op firewall-config van het firewalld-project.</p>
     <p xml:lang="nb">manafirewall er en firewallld frontend, inspirert av firewall-config fra firewalld-prosjektet.</p>
     <p xml:lang="ja">manafirewall は firewalld のフロントエンドで、firewalld プロジェクトの firewall-config から発想を得たものです。</p>
     <p xml:lang="hi">firewalld परियोजना के firewall-config से प्रेरित, firewalld का फ्रंट-एंड manafirewall है।</p>
@@ -64,6 +67,7 @@
     <p xml:lang="sq">manafirewall është shkruar në Python 3 dhe përdor libYui, biblioteka e abstraksionit të widgeteve e shkruar nga SUSE, në mënyrë që të mund të ekzekutohet duke përdorur Qt 5, GTK+ 3, ose ndërfaqen ncurses. Siguron një frontend për menaxherin e firewallld dbus firewalld që mund të përdoret në çdo lloj mjedisi të sistemit.</p>
     <p xml:lang="sl">manafirewall je napisa v jeziku Python 3 in uporablja libYui, gradnik za upodabljanje uporabniškega vmesnika, ki ga je napisal SUSE. Zato lahko teče v vmesnikih Qt 5, GTK+ 3 ali ncurses. Ponuja začelje za upravljalnik požarnega zidu firewalld dbus, ki ga je možno uporabiti v raznovrstnih sistemskih okoljih.</p>
     <p xml:lang="pt_BR">manafirewall é escrito em Python 3 e usa libYui, a biblioteca de abstração de widgets escrita pela SUSE, para que possa ser executada usando as interfaces Qt 5, GTK+ 3, ou ncurses. Ele fornece uma interface para o gerenciador de firewall firewalld dbus que pode ser usado em qualquer tipo de ambiente do sistema.</p>
+    <p xml:lang="nl">manafirewall is geschreven in Python 3 en gebruikt libYui, de widget-abstractiebibliotheek van SUSE, zodat het gebruikt kan worden met Qt 5, GTK+ 3 of ncurses interfaces. Het biedt een frontend voor de firewalld dbus firewall-beheerder die in elke systeemomgeving gebruikt kan worden.</p>
     <p xml:lang="nb">manafirewall er skrevet i Python 3 og bruker libYui, widgetabstraksjonsbiblioteket skrevet av SUSE, slik at det kan kjøres ved hjelp av grensesnittene Qt 5, GTK + 3 eller ncurses. Det gir en frontend for firewallld dbus brannmurbehandling som kan brukes i alle slags systemmiljøer.</p>
     <p xml:lang="ja">manafirewall は Python 3 で書かれ、Qt 5, GTK+ 3, ncurses インターフェースを用いて動作できるように、SUSE によって書かれた libYui ウィジェット抽象化ライブラリを使用しています。これはどのような種類のシステム環境でも使用可能な firewalld dbus ファイアウォール マネージャに対するフロントエンドを提供します。</p>
     <p xml:lang="hi">manafirewall पाइथन 3 में लिखित है व SUSE द्वारा रचित libYUI, विजेट सारांश लाइब्रेरी प्रयुक्त करने के कारणवश इसे क्यूटी 5, जीटीके+ 3 या ncurses अंतरफलकों में कार्यरत करना संभव है। यह firewalld dbus फ़ायरवॉल प्रबंधक हेतु फ्रंट-एंड प्रदान करता है जिसे किसी भी प्रकार के सिस्टम वातावरण में उपयोग कर सकते हैं।</p>
