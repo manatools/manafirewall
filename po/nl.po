@@ -9,6 +9,7 @@
 # Yves Brungard, 2020
 # Geiger David <david.david@mageialinux-online.org>, 2020
 # Dennis Holierhoek <dennis.hh@hotmail.com>, 2020
+# Marcel Pol <marcel@timelord.nl>, 2021
 #
 #, fuzzy
 msgid ""
@@ -17,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Dennis Holierhoek <dennis.hh@hotmail.com>, 2020\n"
+"Last-Translator: Marcel Pol <marcel@timelord.nl>, 2021\n"
 "Language-Team: Dutch (https://www.transifex.com/MageiaLinux/teams/9361/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -273,7 +274,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr ""
+msgstr "Met dank aan {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
