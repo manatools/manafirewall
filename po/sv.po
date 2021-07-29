@@ -5,8 +5,8 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Kristoffer Grundström <lovaren@gmail.com>, 2020
 # Michael Eklund <willard@null.net>, 2020
+# Kristoffer Grundström <lovaren@gmail.com>, 2021
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-08-09 10:46+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Michael Eklund <willard@null.net>, 2020\n"
+"Last-Translator: Kristoffer Grundström <lovaren@gmail.com>, 2021\n"
 "Language-Team: Swedish (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sv/)\n"
 "Language: sv\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:83
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - konfigurerare för firewalld"
 
 #: manafirewall/dialog.py:84
 msgid "{} - ManaTools firewalld configurator"
@@ -34,31 +34,33 @@ msgstr ""
 
 #: manafirewall/dialog.py:87
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "Anslutning till firewalld etablerades."
 
 #: manafirewall/dialog.py:89
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "Försöker ansluta till firewalld, väntar..."
 
 #: manafirewall/dialog.py:91
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"Anslutningen till firewalld misslyckades. Vänligen se till att tjänsten har "
+"startats korrekt och försök igen."
 
 #: manafirewall/dialog.py:93
 msgid "Changes applied."
-msgstr ""
+msgstr "Ändringarna tillämpades."
 
 #: manafirewall/dialog.py:94
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "Används av nätverksanslutningen '%s'"
 
 #: manafirewall/dialog.py:95
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr ""
+msgstr "Standardzon som används av nätverksanslutningen '%s'"
 
 #: manafirewall/dialog.py:97
 msgid "enabled"
@@ -82,7 +84,7 @@ msgstr "&Alternativ"
 
 #: manafirewall/dialog.py:139
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "&Ladda om Firewalld"
 
 #: manafirewall/dialog.py:146 manafirewall/dialog.py:147
 msgid "&Help"
@@ -94,19 +96,19 @@ msgstr "&Om"
 
 #: manafirewall/dialog.py:164
 msgid "Active bindings"
-msgstr ""
+msgstr "Aktiva bindningar"
 
 #: manafirewall/dialog.py:166
 msgid "&Change binding"
-msgstr ""
+msgstr "&Ändra bindning"
 
 #: manafirewall/dialog.py:169 manafirewall/dialog.py:2054
 msgid "Edit zones"
-msgstr ""
+msgstr "Redigera zoner"
 
 #: manafirewall/dialog.py:173
 msgid "&Add"
-msgstr ""
+msgstr "&Lägg till"
 
 #: manafirewall/dialog.py:175 manafirewall/dialog.py:371
 msgid "&Edit"
@@ -118,15 +120,15 @@ msgstr "&Ta bort"
 
 #: manafirewall/dialog.py:179
 msgid "&Load default"
-msgstr ""
+msgstr "&Ladda standard"
 
 #: manafirewall/dialog.py:190 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "Körtid"
 
 #: manafirewall/dialog.py:191 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "Permanent"
 
 #: manafirewall/dialog.py:195 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -134,7 +136,7 @@ msgstr "Inställningar"
 
 #: manafirewall/dialog.py:215
 msgid "Zones"
-msgstr ""
+msgstr "Zoner"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:250
 msgid "Services"
@@ -142,7 +144,7 @@ msgstr "Tjänster"
 
 #: manafirewall/dialog.py:217
 msgid "IP Sets"
-msgstr ""
+msgstr "IP-uppsättningar"
 
 #: manafirewall/dialog.py:220 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -151,7 +153,7 @@ msgstr "Visa"
 
 #: manafirewall/dialog.py:251 manafirewall/dialog.py:263
 msgid "Ports"
-msgstr ""
+msgstr "Portar"
 
 #: manafirewall/dialog.py:252 manafirewall/dialog.py:264
 msgid "Protocols"
@@ -167,35 +169,35 @@ msgstr ""
 
 #: manafirewall/dialog.py:255 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "Vidarebefordring av port"
 
 #: manafirewall/dialog.py:256 manafirewall/dialog.py:390
 msgid "ICMP Filter"
-msgstr ""
+msgstr "ICMP-filter"
 
 #: manafirewall/dialog.py:257
 msgid "Rich Rules"
-msgstr ""
+msgstr "Rika regler"
 
 #: manafirewall/dialog.py:258
 msgid "Interfaces"
-msgstr ""
+msgstr "Gränssnitt"
 
 #: manafirewall/dialog.py:259
 msgid "Sources"
-msgstr ""
+msgstr "Källor"
 
 #: manafirewall/dialog.py:266
 msgid "Modules"
-msgstr ""
+msgstr "Moduler"
 
 #: manafirewall/dialog.py:267
 msgid "Destinations"
-msgstr ""
+msgstr "Destinationer"
 
 #: manafirewall/dialog.py:271
 msgid "Entries"
-msgstr ""
+msgstr "Inlägg"
 
 #: manafirewall/dialog.py:273
 msgid "Configure"
@@ -204,7 +206,7 @@ msgstr "Konfigurera"
 #: manafirewall/dialog.py:291 manafirewall/dialog.py:2205
 #: manafirewall/dialog.py:2225 manafirewall/dialog.py:2241
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "Standardzon: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
@@ -213,12 +215,12 @@ msgstr ""
 #: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
 #: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "Panik-läge: {}"
 
 #: manafirewall/dialog.py:294 manafirewall/dialog.py:2209
 #: manafirewall/dialog.py:2227
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "Automatiska hjälpare: {}"
 
 #: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
 #: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
@@ -254,15 +256,15 @@ msgstr "Tjänst"
 
 #: manafirewall/dialog.py:693
 msgid "To Address"
-msgstr ""
+msgstr "Till adress"
 
 #: manafirewall/dialog.py:693
 msgid "To Port"
-msgstr ""
+msgstr "Till port"
 
 #: manafirewall/dialog.py:1094 manafirewall/dialog.py:1108
 msgid "Information needed"
-msgstr ""
+msgstr "Information behövs"
 
 #: manafirewall/dialog.py:1095 manafirewall/dialog.py:1109
 msgid ""
@@ -272,19 +274,19 @@ msgstr ""
 
 #: manafirewall/dialog.py:1726
 msgid "Credits {}"
-msgstr ""
+msgstr "Medverkande {}"
 
 #: manafirewall/dialog.py:1729
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} är ett grafiskt konfigurationsverktyg för firewalld. "
 
 #: manafirewall/dialog.py:2064
 msgid "Edit services"
-msgstr ""
+msgstr "Redigera tjänster"
 
 #: manafirewall/dialog.py:2074
 msgid "Edit ipsets"
-msgstr ""
+msgstr "Redigera IP-uppsättningar"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -297,7 +299,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "Destination"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -326,11 +328,11 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "Den angivna IP-adressen är inte giltig."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "Fel IP-adress"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
@@ -346,7 +348,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "Data saknas"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -370,7 +372,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Gå till index"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -500,7 +502,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "För varje tjänst så kan du definiera:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -566,15 +568,15 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Varaktighet"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Ställ in zon"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Ställ in tjänster"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
@@ -582,7 +584,7 @@ msgstr ""
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Port och protokoll"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
@@ -590,7 +592,7 @@ msgstr ""
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Andra protokoll"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
@@ -598,7 +600,7 @@ msgstr ""
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "Protokoll är obligatoriskt"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
@@ -618,7 +620,7 @@ msgstr "Version"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Kort"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -626,11 +628,11 @@ msgstr "Beskrivning"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "Värde saknas"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "Namn är obligatoriskt"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
@@ -638,7 +640,7 @@ msgstr ""
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Standardmål"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
@@ -646,8 +648,8 @@ msgstr "Accepterar"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Släpp"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Neka"
