@@ -1,49 +1,53 @@
+# Translators:
+# Dmitry <dmitrydmitry761@gmail.com>, 2021
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall desktop files translation\n"
 "Report-Msgid-Bugs-To: i18n-discuss@ml.mageia.org\n"
-"POT-Creation-Date: 2021-08-22 22:02+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2021-06-07 16:33+0300\n"
+"PO-Revision-Date: 2020-09-08 14:57+0000\n"
+"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2021\n"
+"Language-Team: Chinese (China) (https://www.transifex.com/MageiaLinux/teams/9361/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Name"
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "GenericName"
 msgid "Frontend to firewalld for firewall configuration"
-msgstr ""
+msgstr "前端到 firewalld 进行防火墙配置"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Comment"
 msgid "A graphical front end to firewalld for firewall configuration"
-msgstr ""
+msgstr "用于防火墙配置的 firewalld 图形前端"
 
 #: ./share/applications/org.mageia.manafirewall.desktop
 msgctxt "Keywords"
 msgid "firewall;network;security;iptables;netfilter;"
-msgstr ""
+msgstr "防火墙； 网络； 安全； iptables; 网络过滤器；"
 
 #: tmp.metainfo.xml:7
 msgid "manafirewall"
-msgstr ""
+msgstr "manafirewall"
 
 #: tmp.metainfo.xml:8
 msgid "A frontend to firewalld using libyui UI abstraction library"
-msgstr ""
+msgstr "使用 libyui UI 抽象库的 firewalld 前端"
 
 #: tmp.metainfo.xml:10
 msgid ""
 "manafirewall is a firewalld frontend, inspired by firewall-config from "
 "firewalld project."
-msgstr ""
+msgstr "manafirewall 是一个 firewalld 前端，灵感来自 firewalld 项目的 firewall-config。"
 
 #: tmp.metainfo.xml:13
 msgid ""
@@ -52,3 +56,5 @@ msgid ""
 "ncurses interfaces. It provides a frontend for the firewalld dbus firewall "
 "manager that can be used in any kind of system environment."
 msgstr ""
+"manafirewall 是用 Python 3 编写的，并使用 SUSE 编写的小部件抽象库 libYui，因此它可以使用 Qt 5、GTK+ 3 或"
+" ncurses 接口运行。 它为 firewalld dbus 防火墙管理器提供了一个前端，可以在任何类型的系统环境中使用。 "
