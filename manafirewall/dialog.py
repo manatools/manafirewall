@@ -128,52 +128,50 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     # TEST self.eventManager.addTimeOutEvent(self.onTimeOutEvent)
 
-    align = self.factory.createLeft(layout)
-
-    menu_line = self.factory.createHBox(align)
+    sendObjOnEvent=True
+    menu_line = self.factory.createHBox(layout)
     ### BEGIN Menus #########################
-    if (hasattr(self.mgaFactory, 'createMenuBar') and ismethod(getattr(self.mgaFactory, 'createMenuBar'))):
-      self.menubar = self.mgaFactory.createMenuBar(menu_line)
+    if (hasattr(self.factory, 'createMenuBar') and ismethod(getattr(self.factory, 'createMenuBar'))):
+      self.menubar = self.factory.createMenuBar(menu_line)
 
       # building File menu
-      mItem = yui.YMGAMenuItem(_("&File"))
+      mItem = self.menubar.addMenu(_("&File"))
       self.fileMenu = {
           'menu_name' : mItem,
-          'quit'      : yui.YMGAMenuItem(mItem, _("&Quit"), "application-exit"),
+          'quit'      : yui.YMenuItem(mItem, _("&Quit"), "application-exit"),
       }
       #Items must be "disowned"
       for k in self.fileMenu.keys():
           self.fileMenu[k].this.own(False)
-      self.menubar.addItem(self.fileMenu['menu_name'])
-      sendObjOnEvent=True
       self.eventManager.addMenuEvent(self.fileMenu['quit'], self.onQuitEvent, sendObjOnEvent)
 
       # building Options menu
-      mItem = yui.YMGAMenuItem(_("&Options"))
+      mItem = self.menubar.addMenu(_("&Options"))
       self.optionsMenu = {
           'menu_name'  : mItem,
-          'reload' : yui.YMGAMenuItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
+          'reload' : yui.YMenuItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
       }
       #Items must be "disowned"
       for k in self.optionsMenu.keys():
           self.optionsMenu[k].this.own(False)
-      self.menubar.addItem(self.optionsMenu['menu_name'])
       self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
 
       # building Help menu
-      mItem = yui.YMGAMenuItem(_("&Help"))
+      mItem = self.menubar.addMenu(_("&Help"))
       self.helpMenu = {
           'menu_name': mItem,
-          'help'     : yui.YMGAMenuItem(mItem, _("&Manual")),
-          'sep0'     : yui.YMenuSeparator(mItem),
-          'about'    : yui.YMGAMenuItem(mItem, _("&About"), 'manafirewall'),
+          'help'     : yui.YMenuItem(mItem, _("&Manual")),
+          'sep0'     : mItem.addSeparator(),
+          'about'    : yui.YMenuItem(mItem, _("&About"), 'manafirewall'),
       }
       #Items must be "disowned"
       for k in self.helpMenu.keys():
           self.helpMenu[k].this.own(False)
-      self.menubar.addItem(self.helpMenu['menu_name'])
       self.eventManager.addMenuEvent(self.helpMenu['help'], self.onHelp)
       self.eventManager.addMenuEvent(self.helpMenu['about'], self.onAbout)
+
+      self.menubar.resolveShortcutConflicts()
+      self.menubar.rebuildMenuTree()
     else:
       # Legacy support to YMenuButton widgets
       # Menu widget
@@ -181,7 +179,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       qm = yui.YMenuItem(_("&Quit"))
       self.file_menu.addItem(qm)
       self.file_menu.rebuildMenuTree()
-      sendObjOnEvent=True
       self.eventManager.addMenuEvent(qm, self.onQuitEvent, sendObjOnEvent)
 
       self.option_menu = self.factory.createMenuButton(menu_line, _("&Options"))
@@ -422,6 +419,21 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
     return buttons
 
+  def _createSingleCBItem(self, checked, strValue):
+    '''
+    create a YCBTableItem with given data and return it
+    Note that it also disowns either cells or item itself
+    '''
+    cells =  list([
+                    yui.YCBTableCell( checked ),
+                    yui.YCBTableCell( strValue ),
+                    ])
+    for cell in cells:
+        cell.this.own(False)
+    item = yui.YCBTableItem( *cells )
+    item.this.own(False)
+    return item
+
   def _replacePointICMP(self):
     '''
     draw icmp filter frame
@@ -436,14 +448,15 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     hbox = self.factory.createHBox(self.replacePoint)
 
-    table_header = yui.YTableHeader()
+    table_header = yui.YCBTableHeader()
     columns = [ _('ICMP Filter') ]
 
-    table_header.addColumn("")
+    checkboxed = True
+    table_header.addColumn("", checkboxed)
     for col in (columns):
-        table_header.addColumn(col)
+        table_header.addColumn(col, not checkboxed)
 
-    self.icmpFilterList = self.mgaFactory.createCBTable(hbox, table_header, yui.YCBTableCheckBoxOnFirstColumn)
+    self.icmpFilterList = self.mgaFactory.createCBTable(hbox, table_header)
     self.icmpFilterInversionCheck   = self.factory.createCheckBox(hbox, _("Selected are accepted"), False)
     self.icmpFilterInversionCheck.setNotify(True)
 
@@ -478,10 +491,8 @@ class ManaWallDialog(basedialog.BaseDialog):
       current_icmp = current.cell(0).label() if current else ""
       v = []
       for icmp in icmp_types:
-        item = yui.YCBTableItem(icmp)
-        item.check(icmp in configured_icmp)
+        item = self._createSingleCBItem(icmp in configured_icmp, icmp)
         item.setSelected(icmp == current_icmp)
-        item.this.own(False)
         v.append(item)
 
       #NOTE workaround to get YItemCollection working in python
@@ -674,14 +685,15 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     vbox = self.factory.createVBox(self.replacePoint)
 
-    services_header = yui.YTableHeader()
+    services_header = yui.YCBTableHeader()
     columns = [ _('Service') ]
 
-    services_header.addColumn("")
+    checkboxed = True
+    services_header.addColumn("", checkboxed)
     for col in (columns):
-        services_header.addColumn(col)
+        services_header.addColumn(col, not checkboxed)
 
-    self.serviceList = self.mgaFactory.createCBTable(vbox, services_header, yui.YCBTableCheckBoxOnFirstColumn)
+    self.serviceList = self.mgaFactory.createCBTable(vbox, services_header)
 
     self._fillRPServices()
     self.serviceList.setImmediateMode(True)
@@ -710,10 +722,8 @@ class ManaWallDialog(basedialog.BaseDialog):
       current_service = current.cell(0).label() if current else ""
       v = []
       for service in services:
-        item = yui.YCBTableItem(service)
-        item.check(service in configured_services)
+        item = self._createSingleCBItem(service in configured_services, service)
         item.setSelected(service == current_service)
-        item.this.own(False)
         v.append(item)
 
       #NOTE workaround to get YItemCollection working in python
@@ -1773,7 +1783,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           'name' : self._application_name,
           'dialog_mode' : common.AboutDialogMode.TABBED,
           'version' : VERSION,
-          'credits' : _("Credits {}").format("2019-2020 Angelo Naselli"),
+          'credits' : _("Credits {}").format("2019-2021 Angelo Naselli"),
           'license' : 'GPLv2+',
           'authors' : 'Angelo Naselli &lt;anaselli@linux.it&gt;',
           'description' : _("{}  is a graphical configuration tool for firewalld.").format(PROJECT),
