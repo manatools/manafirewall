@@ -21,7 +21,7 @@ if(CHECK_RUNTIME_DEPENDENCIES)
 	include(FindPythonModule)
 
 	# Find the dnfdaemon module
-	find_python_module(dnfdaemon REQUIRED)
+	find_python_module(firewall REQUIRED)
 
 	# Find yui module
 	find_python_module(yui REQUIRED)
