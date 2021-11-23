@@ -161,7 +161,7 @@ msgstr "Protokoll"
 
 #: manafirewall/dialog.py:253 manafirewall/dialog.py:265
 msgid "Source Ports"
-msgstr ""
+msgstr "Portar för källa"
 
 #: manafirewall/dialog.py:254
 msgid "Masquerading"
@@ -210,7 +210,7 @@ msgstr "Standardzon: {}"
 
 #: manafirewall/dialog.py:292
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "Loggen nekades: {}"
 
 #: manafirewall/dialog.py:293 manafirewall/dialog.py:2216
 #: manafirewall/dialog.py:2229 manafirewall/dialog.py:2237
@@ -225,7 +225,7 @@ msgstr "Automatiska hjälpare: {}"
 #: manafirewall/dialog.py:295 manafirewall/dialog.py:2213
 #: manafirewall/dialog.py:2228 manafirewall/dialog.py:2233
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "Nedlåsning: {}"
 
 #: manafirewall/dialog.py:370
 msgid "A&dd"
@@ -340,7 +340,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "Fel port angiven"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
