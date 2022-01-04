@@ -20,22 +20,22 @@ Example with ncurses:
 ### python3-firewall >= 0.9.0
 * https://github.com/firewalld/firewalld
 
-### SUSE libyui
+### SUSE libyui >= 4.2.14
 * https://github.com/libyui/libyui
 * Consider to check some not yet approved changes here https://github.com/anaselli/libyui
 
-### libyui-mga > 1.1.0 - our widget extension
+### libyui-mga > 1.2.1 - our widget extension
 * https://github.com/manatools/libyui-mga
 
-### SUSE libyui-bindings
+### SUSE libyui-bindings (included into libyui)
 * https://github.com/libyui/libyui-bindings
   At the moment add patch from anaselli branch to manage new libyui-mga 1.1.0 at
   https://github.com/libyui/libyui-bindings/pull/35
 
 ### at least one of the SUSE libyui plugins
 * libyui-gtk     - https://github.com/libyui/libyui-gtk
-* libyui-ncurses - https://github.com/libyui/libyui-ncurses
-* libyui-qt      - https://github.com/libyui/libyui-qt
+* libyui-ncurses - https://github.com/libyui/libyui
+* libyui-qt      - https://github.com/libyui/libyui
 * Consider here also to check some not yet approved changes at
   https://github.com/anaselli/libyui-XXX forks (where XXX is
   gtk, qt or ncurses)

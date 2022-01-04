@@ -1,3 +1,8 @@
+2022-01-04 v. 0.0.3
+---------------------
+- moved to new libyui menubar
+- moved to new libyui-mga checkbox table
+
 2021-03-13 v. 0.0.2
 ---------------------
 - fix licensing information
