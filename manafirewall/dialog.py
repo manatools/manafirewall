@@ -11,11 +11,15 @@ Author:  Angelo Naselli <anaselli@linux.it>
 @package manafirewall
 '''
 
+import logging
+import logging.handlers
+import os.path
 
 import manatools.ui.common as common
 import manatools.ui.basedialog as basedialog
 import manatools.services as mnservices
 import manatools.ui.helpdialog as helpdialog
+import manatools.config as configuration
 import yui
 
 from dbus.exceptions import DBusException
@@ -57,16 +61,20 @@ import manafirewall.forwardDialog as forwardDialog
 import manafirewall.protocolDialog as protocolDialog
 import manafirewall.helpinfo as helpinfo
 
+logger = logging.getLogger('manafirewall.dialog')
+
 def TimeFunction(func):
     """
     This decorator prints execution time
     """
     def newFunc(*args, **kwargs):
-        t_start = time.time()
+        t_start = time.monotonic()
         rc = func(*args, **kwargs)
-        t_end = time.time()
+        t_end = time.monotonic()
         name = func.__name__
-        print("%d: %s took %.2f sec"%(t_start, name, t_end - t_start))
+        t_diff = t_end - t_start
+        if t_diff >= 0.001:
+          logger.debug("%s took %.3f sec", name, t_diff)
         return rc
 
     newFunc.__name__ = func.__name__
@@ -82,6 +90,11 @@ class ManaWallDialog(basedialog.BaseDialog):
   def __init__(self):
     #gettext.install('manafirewall', localedir='/usr/share/locale', names=('ngettext',))
     # set icon (if missing into python-manatools)
+    self.__name = "manafirewall"
+    self.log_enabled = False
+    self.log_directory = None
+    self.level_debug = False
+
     yui.YUI.app().setApplicationIcon("manafirewall")
 
     basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.POPUP, 80, 20)
@@ -107,12 +120,76 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.runtime_view = True
     self.replacePointWidgetsAndCallbacks = []
     self._reloaded = False
+
+    self.config = configuration.AppConfig(self.__name)
+
+    # settings from configuration file first
+    self._configFileRead()
+
+    if self.log_enabled:
+      if self.log_directory:
+        log_filename = os.path.join(self.log_directory, "manafirewall.log")
+        if self.level_debug:
+          self._logger_setup(log_filename, loglvl=logging.DEBUG)
+        else:
+          self._logger_setup(log_filename)
+        print("Logging into %s, debug mode is %s"%(self.log_directory, ("enabled" if self.level_debug else "disabled")))
+        logger.info("%s started"%(self.__name))
+    else:
+      print("Logging disabled")
+
     self.fwEventQueue = SimpleQueue()
 
     if yui.YUI.app().isTextMode():
       self.glib_loop = GLib.MainLoop()
       self.glib_thread = threading.Thread(target=self.glib_mainloop, args=(self.glib_loop,))
       self.glib_thread.start()
+
+
+  def _logger_setup(self,
+                    file_name='manafirewall.log',
+                    logroot='manafirewall',
+                    logfmt='%(asctime)s: %(message)s',
+                    loglvl=logging.INFO):
+    """Setup Python logging."""
+    maxbytes=10*1024*1024
+    handler = logging.handlers.RotatingFileHandler(
+              file_name, maxBytes=maxbytes, backupCount=5)
+    logging.basicConfig(filename=file_name, format='%(asctime)s [%(name)s]{%(filename)s:%(lineno)d}(%(levelname)s) %(message)s', level=loglvl)
+    logger.addHandler(handler)
+
+
+  def _configFileRead(self) :
+    '''
+    reads the configuration file and sets application data
+    '''
+
+    # System settings
+    if self.config.systemSettings :
+      pass
+
+    # User preferences overriding
+    user_settings = {}
+    if self.config.userPreferences:
+      if 'settings' in self.config.userPreferences.keys() :
+        if self.config.userPreferences['settings'] is None:
+            self.config.userPreferences['settings'] = {}
+        user_settings = self.config.userPreferences['settings']
+
+        #### Logging
+        if 'log' in user_settings.keys():
+          log = user_settings['log']
+          if 'enabled' in log.keys() :
+            self.log_enabled = log['enabled']
+          if self.log_enabled:
+            if 'directory' in log.keys() :
+                self.log_directory = log['directory']
+            if 'level_debug' in log.keys() :
+                self.level_debug = log['level_debug']
+
+    # metadata settings is needed adding it to update old configuration files
+    if not 'settings' in self.config.userPreferences.keys() :
+      self.config.userPreferences['settings'] = {}
 
 
   def glib_mainloop(self, loop):
@@ -439,11 +516,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     draw icmp filter frame
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
-      print ("Error there are still widget events for ReplacePoint") #TODO log
+      logger.error("Error there are still widget events for ReplacePoint")
       return
 
     if self.replacePoint.hasChildren():
-      print ("Error there are still widgets into ReplacePoint") #TODO log
+      logger.error("Error there are still widgets into ReplacePoint")
       return
 
     hbox = self.factory.createHBox(self.replacePoint)
@@ -514,11 +591,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     draw Port frame
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
-      print ("Error there are still widget events for ReplacePoint") #TODO log
+      logger.error("Error there are still widget events for ReplacePoint")
       return
 
     if self.replacePoint.hasChildren():
-      print ("Error there are still widgets into ReplacePoint") #TODO log
+      logger.error("Error there are still widgets into ReplacePoint")
       return
 
     vbox = self.factory.createVBox(self.replacePoint)
@@ -545,11 +622,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     draw Port frame
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
-      print ("Error there are still widget events for ReplacePoint") #TODO log
+      logger.error("Error there are still widget events for ReplacePoint")
       return
 
     if self.replacePoint.hasChildren():
-      print ("Error there are still widgets into ReplacePoint") #TODO log
+      logger.error("Error there are still widgets into ReplacePoint")
       return
 
     vbox = self.factory.createVBox(self.replacePoint)
@@ -607,11 +684,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     draw Port frame
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
-      print ("Error there are still widget events for ReplacePoint") #TODO log
+      logger.error("Error there are still widget events for ReplacePoint")
       return
 
     if self.replacePoint.hasChildren():
-      print ("Error there are still widgets into ReplacePoint") #TODO log
+      logger.error("Error there are still widgets into ReplacePoint")
       return
 
     vbox = self.factory.createVBox(self.replacePoint)
@@ -676,11 +753,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     draw services frame
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
-      print ("Error there are still widget events for ReplacePoint") #TODO log
+      logger.error("Error there are still widget events for ReplacePoint")
       return
 
     if self.replacePoint.hasChildren():
-      print ("Error there are still widgets into ReplacePoint") #TODO log
+      logger.error("Error there are still widgets into ReplacePoint")
       return
 
     vbox = self.factory.createVBox(self.replacePoint)
@@ -740,11 +817,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     draw Port frame
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
-      print ("Error there are still widget events for ReplacePoint") #TODO log
+      logger.error("Error there are still widget events for ReplacePoint")
       return
 
     if self.replacePoint.hasChildren():
-      print ("Error there are still widgets into ReplacePoint") #TODO log
+      logger.error("Error there are still widgets into ReplacePoint")
       return
 
     vbox = self.factory.createVBox(self.replacePoint)
@@ -1275,7 +1352,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     if isinstance(button, yui.YPushButton):
       if button == self.buttons['add']:
-        print('Add')
+        logger.debug('Add')
         if isZones:
           if isZonePort:
             self._add_edit_port(True)
@@ -1293,7 +1370,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isServiceProtocol:
             self._service_conf_add_edit_protocol(True)
       elif button == self.buttons['edit']:
-        print('Edit')
+        logger.debug('Edit')
         if isZones:
           if isZonePort:
             self._add_edit_port(False)
@@ -1311,7 +1388,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isServiceProtocol:
             self._service_conf_add_edit_protocol(False)
       elif button == self.buttons['remove']:
-        print('Remove')
+        logger.debug('Remove')
         if isZones:
           if isZonePort:
             self._del_edit_port()
@@ -1329,7 +1406,7 @@ class ManaWallDialog(basedialog.BaseDialog):
           elif isServiceProtocol:
             self._service_conf_del_edit_protocol()
       else:
-        print('Why here?')
+        logger.debug('Why here?')
 
 
   def _zoneConfigurationViewCollection(self):
@@ -1548,10 +1625,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     if self.fw.connected:
       self.fwEventQueue.put({'event': "connection-changed", 'value': True})
-      print("connected")
+      logger.info("Firewalld connected")
     else:
       self.fwEventQueue.put({'event': "connection-changed", 'value': False})
-      print("disc")
+      logger.info("Firewalld disconnected")
 
   def lockdown_enabled_cb(self):
     '''
@@ -1729,7 +1806,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
 
   def zone_of_interface_changed_cb(self, zone, interface):
-    print("zone_of_interface_changed_cb", zone, interface)
+    logger.debug("zone_of_interface_changed_cb %s - %s", zone, interface)
 
   def reload_cb(self):
     '''
@@ -1744,16 +1821,16 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     Exit by using cancel event
     '''
-    print ("Got a cancel event")
+    logger.info("Got a cancel event")
 
   def onQuitEvent(self, obj) :
     '''
     Exit by using quit button or menu
     '''
     if isinstance(obj, yui.YItem):
-      print ("Quit menu pressed")
+      logger.info("Quit menu pressed")
     else:
-      print ("Quit button pressed")
+      logger.info("Quit button pressed")
     if yui.YUI.app().isTextMode():
       self.glib_loop.quit()
     # BaseDialog needs to force to exit the handle event loop
@@ -1773,7 +1850,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     manages changeBindingsButton button pressed
     '''
-    print ("TODO: Change binding pressed")
+    logger.debug ("TODO: Change binding pressed")
 
   def onAbout(self) :
     '''
@@ -2234,7 +2311,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.dialog.doneMultipleChanges()
 
   def onTimeOutEvent(self):
-    print ("Timeout occurred")
+    logger.debug ("Timeout occurred")
 
   def doSomethingIntoLoop(self):
     '''
@@ -2251,7 +2328,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       while counter < count_max:
         counter = counter + 1
         item = self.fwEventQueue.get_nowait()
-        print(item['event'], item['value']) #TODO remove
+        logger.debug("%s %s", item['event'], item['value']) #TODO remove
 
         # managing deferred firewall events
         if item['event'] == 'connection-changed':
