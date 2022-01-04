@@ -873,18 +873,20 @@ class ManaWallDialog(basedialog.BaseDialog):
     if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
       item = self.icmpFilterList.changedItem()
       if item:
+        cb_column = 0
+        label_column = 1
         selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
         if selected_zoneitem:
           selected_zone = selected_zoneitem.label()
-          name = item.cell(0).label()
+          name = item.cell(label_column).label()
           if self.runtime_view:
-            if item.checked():
+            if item.checked(cb_column):
               self.fw.addIcmpBlock(selected_zone, name)
             else:
               self.fw.removeIcmpBlock(selected_zone, name)
           else:
             zone = self.fw.config().getZoneByName(selected_zone)
-            if item.checked():
+            if item.checked(cb_column):
               zone.addIcmpBlock(name)
             else:
               zone.removeIcmpBlock(name)
@@ -914,18 +916,20 @@ class ManaWallDialog(basedialog.BaseDialog):
     if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
       item = self.serviceList.changedItem()
       if item:
+        cb_column = 0
+        label_column = 1
         selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
         if selected_zoneitem:
           selected_zone = selected_zoneitem.label()
-          service_name = item.cell(0).label()
+          service_name = item.cell(label_column).label()
           if self.runtime_view:
-            if item.checked():
+            if item.checked(cb_column):
               self.fw.addService(selected_zone, service_name)
             else:
               self.fw.removeService(selected_zone, service_name)
           else:
             zone = self.fw.config().getZoneByName(selected_zone)
-            if item.checked():
+            if item.checked(cb_column):
               zone.addService(service_name)
             else:
               zone.removeService(service_name)
