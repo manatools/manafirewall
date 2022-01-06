@@ -227,11 +227,14 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.optionsMenu = {
           'menu_name'  : mItem,
           'reload' : yui.YMenuItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
+          'sep0'     : mItem.addSeparator(),
+          'runtime_to_permanent': yui.YMenuItem(mItem, _("Runtime To Permanent")),
       }
       #Items must be "disowned"
       for k in self.optionsMenu.keys():
           self.optionsMenu[k].this.own(False)
       self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
+      self.eventManager.addMenuEvent(self.optionsMenu['runtime_to_permanent'], self.onRuntimeToPermanent)
 
       # building Help menu
       mItem = self.menubar.addMenu(_("&Help"))
@@ -1849,6 +1852,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     self._reloaded = True
     self.dialog.setEnabled(False)
     self.fw.reload()
+
+  def onRuntimeToPermanent(self):
+    '''
+    Make runtime configuration permanent
+    '''
+    self.fw.runtimeToPermanent()
 
   def onChangeBinding(self, obj):
     '''
