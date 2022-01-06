@@ -1,5 +1,6 @@
 2022-XX-YY v. 0.0.4
 --------------------
+- Added option to make runtime configuration permanent
 - Fixed Services and ICMP Filter management (using right columns)
 - Added configuration file (manafirewall.yaml)
 - Added logging (to be enabled by user settings/configuration file)
