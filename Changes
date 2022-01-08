@@ -1,5 +1,9 @@
 2022-XX-YY v. 0.0.4
 --------------------
+- Added Default Zone Change
+- Added Lockdown enabling/disabling
+- Added Panic Mode enabling/disabling
+- New option dialog to manage settings, such as logging or firewall configuration
 - Added option to make runtime configuration permanent
 - Fixed Services and ICMP Filter management (using right columns)
 - Added configuration file (manafirewall.yaml)

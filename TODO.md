@@ -5,7 +5,7 @@ as soon as possible.
 - all the [issues](https://github.com/manatools/manafirewall/issues) of course
 
 ## Important
-- [ ] Provides configuration management
-- [ ] Provides logging
+- [ ] Provides configuration management (In progress)
+- [X] Provides logging
 - [ ] Improves firewalld interactions and code porting from firewall-config (must be splitted in tasks)
 
