@@ -59,6 +59,7 @@ import manafirewall.serviceBaseDialog as serviceBaseDialog
 import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
 import manafirewall.protocolDialog as protocolDialog
+import manafirewall.optionDialog as optionDialog
 import manafirewall.helpinfo as helpinfo
 
 logger = logging.getLogger('manafirewall.dialog')
@@ -97,7 +98,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     yui.YUI.app().setApplicationIcon("manafirewall")
 
-    basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.POPUP, 80, 20)
+    basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.MAIN, 80, 20)
     self._application_name = _("{} - ManaTools firewalld configurator").format(PROJECT)
 
     # most used text
@@ -226,21 +227,23 @@ class ManaWallDialog(basedialog.BaseDialog):
       mItem = self.menubar.addMenu(_("&Options"))
       self.optionsMenu = {
           'menu_name'  : mItem,
+          'runtime_to_permanent': yui.YMenuItem(mItem, _("Runtime To Permanent"), 'document-save'),
           'reload' : yui.YMenuItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
           'sep0'     : mItem.addSeparator(),
-          'runtime_to_permanent': yui.YMenuItem(mItem, _("Runtime To Permanent")),
+          'settings' : yui.YMenuItem(mItem, _("&Settings"), 'preferences-system'),
       }
       #Items must be "disowned"
       for k in self.optionsMenu.keys():
           self.optionsMenu[k].this.own(False)
-      self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
       self.eventManager.addMenuEvent(self.optionsMenu['runtime_to_permanent'], self.onRuntimeToPermanent)
+      self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
+      self.eventManager.addMenuEvent(self.optionsMenu['settings'], self.onOptionSettings)
 
       # building Help menu
       mItem = self.menubar.addMenu(_("&Help"))
       self.helpMenu = {
           'menu_name': mItem,
-          'help'     : yui.YMenuItem(mItem, _("&Manual")),
+          'help'     : yui.YMenuItem(mItem, _("&Manual"), 'help-contents'),
           'sep0'     : mItem.addSeparator(),
           'about'    : yui.YMenuItem(mItem, _("&About"), 'manafirewall'),
       }
@@ -1821,6 +1824,13 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fwEventQueue.put({'event': "reloaded", 'value': True})
 
+  def saveUserPreference(self):
+    '''
+    Save user preferences on exit and view layout if needed
+    '''
+
+    self.config.saveUserPreferences()
+
 
 #### GUI events
 
@@ -1829,6 +1839,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     Exit by using cancel event
     '''
     logger.info("Got a cancel event")
+    self.saveUserPreference()
 
   def onQuitEvent(self, obj) :
     '''
@@ -1838,12 +1849,21 @@ class ManaWallDialog(basedialog.BaseDialog):
       logger.info("Quit menu pressed")
     else:
       logger.info("Quit button pressed")
+    self.saveUserPreference()
+
     if yui.YUI.app().isTextMode():
       self.glib_loop.quit()
     # BaseDialog needs to force to exit the handle event loop
     self.ExitLoop()
     if yui.YUI.app().isTextMode():
       self.glib_thread.join()
+
+  def onOptionSettings(self):
+    '''
+    Show optionDialog for extended settings
+    '''
+    up = optionDialog.OptionDialog(self)
+    up.run()
 
   def onReloadFirewalld(self):
     '''
