@@ -130,14 +130,13 @@ class OptionDialog(basedialog.BaseDialog):
     hbox = self.factory.createHBox(self.config_tab)
     self.factory.createHSpacing(hbox)
     vbox = self.factory.createVBox(hbox)
-    self.factory.createHSpacing(hbox)
 
     # Title
     heading = self.factory.createHeading( vbox, _("firewalld options") )
     self.factory.createVSpacing(vbox, 0.3)
     heading.setAutoWrap()
 
-    hbox = self.factory.createHBox(vbox)
+    hbox = self.factory.createHBox(self.factory.createLeft(vbox))
     defaultZoneCombo = self.factory.createComboBox( hbox, _("Default Zone") )
     defaultZoneCombo.setNotify(True)
     self.eventManager.addWidgetEvent(defaultZoneCombo, self.onDefaultZoneChange, True)
@@ -170,6 +169,23 @@ class OptionDialog(basedialog.BaseDialog):
       item.this.own(False)
     logDeniedCombo.addItems(itemColl)
 
+    autoHelperAssignCombo = self.factory.createComboBox( hbox, _("Automatic Helper Assigment") )
+    autoHelperAssignCombo.setNotify(True)
+    self.eventManager.addWidgetEvent(autoHelperAssignCombo, self.onAutoHelperAssignChange, True)
+    self.widget_callbacks.append( { 'widget': autoHelperAssignCombo, 'handler': self.onAutoHelperAssignChange} )
+    # fill log denied values
+    values = config.AUTOMATIC_HELPERS_VALUES
+    selected_value = self.parent.fw.getAutomaticHelpers()
+    itemColl = yui.YItemCollection()
+    for val in values:
+      item = yui.YItem(val, False)
+      if val == selected_value:
+        item.setSelected(True)
+      itemColl.push_back(item)
+      item.this.own(False)
+    autoHelperAssignCombo.addItems(itemColl)
+
+    self.factory.createVSpacing(vbox)
     pmButton = self.factory.createCheckBox(self.factory.createLeft(vbox), _("Panic Mode"), self.parent.fw.queryPanicMode() )
     pmButton.setNotify(True)
     self.eventManager.addWidgetEvent(pmButton, self.onPanicModeChange, True)
@@ -407,9 +423,22 @@ class OptionDialog(basedialog.BaseDialog):
     if isinstance(obj, yui.YComboBox):
       new_ldValue = obj.value()
       old_ldValue = self.parent.fw.getLogDenied()
-      logger.debug("New default zone %s", new_ldValue)
+      logger.debug("New Log Denied %s", new_ldValue)
       if new_ldValue != old_ldValue:
         self.parent.fw.setLogDenied(new_ldValue)
+    else:
+      logger.error("Invalid object passed %s", obj.widgetClass())
+
+  def onAutoHelperAssignChange(self, obj):
+    '''
+    Manage Automatic Helper Assigment Change
+    '''
+    if isinstance(obj, yui.YComboBox):
+      new_ldValue = obj.value()
+      old_ldValue = self.parent.fw.getAutomaticHelpers()
+      logger.debug("New Helper Assigment %s", new_ldValue)
+      if new_ldValue != old_ldValue:
+        self.parent.fw.setAutomaticHelpers(new_ldValue)
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
 
