@@ -40,30 +40,24 @@ class OptionDialog(basedialog.BaseDialog):
 
     itemVect = []
     self.option_items = {
-      "system" : None,
+      "firewalld" : None,
       "layout" : None,
-      "search" : None,
       "logging" : None,
       }
     self.selected_option = None
     ### Options items
     #YTreeItem self, std::string const & label, std::string const & iconName, bool isOpen=False)
     # TODO add icons
-    item = yui.YTreeItem(_("System"))
+    item = yui.YTreeItem(_("firewalld"))
     item.this.own(False)
     itemVect.append(item)
     item.setSelected()
-    self.option_items ["system"] = item
+    self.option_items ["firewalld"] = item
 
     item = yui.YTreeItem(_("Layout"))
     item.this.own(False)
     itemVect.append(item)
     self.option_items ["layout"] = item
-
-    item = yui.YTreeItem(_("Search"))
-    item.this.own(False)
-    itemVect.append(item)
-    self.option_items ["search"] = item
 
     item = yui.YTreeItem(_("Logging"))
     item.this.own(False)
@@ -105,12 +99,10 @@ class OptionDialog(basedialog.BaseDialog):
             self.log_vbox = None
             logger.debug('Config tab changed to %s', k)
             self._cleanCallbacks()
-            if k == "system":
+            if k == "firewalld":
               self._openSystemOptions()
             elif  k == "layout":
               self._openLayoutOptions()
-            elif k == "search":
-              self._openSearchOptions()
             elif k == "logging":
               self._openLoggingOptions()
 
@@ -237,42 +229,6 @@ class OptionDialog(basedialog.BaseDialog):
     self.config_tab.showChild()
     self.dialog.recalcLayout()
 
-  def _openSearchOptions(self):
-    '''
-    show search configuration options
-    '''
-    if self.config_tab.hasChildren():
-      self.config_tab.deleteChildren()
-
-    self.RestoreButton.setDisabled()
-
-    hbox = self.factory.createHBox(self.config_tab)
-    self.factory.createHSpacing(hbox)
-    vbox = self.factory.createVBox(hbox)
-    self.factory.createHSpacing(hbox)
-
-    # Title
-    heading=self.factory.createHeading( vbox, _("Search options") )
-    self.factory.createVSpacing(vbox, 0.3)
-    heading.setAutoWrap()
-
-    ### TODO match_all = self.parent.match_all
-    ### TODO newest_only = self.parent.newest_only
-    ### TODO
-    ### TODO self.newest_only = self.factory.createCheckBox(self.factory.createLeft(vbox) , _("Show newest packages only"), newest_only )
-    ### TODO self.newest_only.setNotify(True)
-    ### TODO self.eventManager.addWidgetEvent(self.newest_only, self.onNewestOnly, True)
-    ### TODO self.widget_callbacks.append( { 'widget': self.newest_only, 'handler': self.onNewestOnly} )
-    ### TODO
-    ### TODO self.match_all   = self.factory.createCheckBox(self.factory.createLeft(vbox) , _("Match all words"), match_all )
-    ### TODO self.match_all.setNotify(True)
-    ### TODO self.eventManager.addWidgetEvent(self.match_all, self.onMatchAll, True)
-    ### TODO self.widget_callbacks.append( { 'widget': self.match_all, 'handler': self.onMatchAll} )
-
-    self.factory.createVStretch(vbox)
-    self.config_tab.showChild()
-    self.dialog.recalcLayout()
-
   def _openLoggingOptions(self):
     '''
     show logging configuration options
@@ -387,32 +343,6 @@ class OptionDialog(basedialog.BaseDialog):
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
 
-  def onMatchAll(self, obj):
-    '''
-    Newest Only Changing
-    '''
-    if isinstance(obj, yui.YCheckBox):
-      try:
-        self.parent.config.userPreferences['settings']['search']['match_all'] = obj.isChecked()
-      except:
-        self.parent.config.userPreferences['settings']['search'] = { 'match_all' : obj.isChecked() }
-      self.parent.match_all = obj.isChecked()
-    else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
-
-  def onNewestOnly(self, obj):
-    '''
-    Newest Only Changing
-    '''
-    if isinstance(obj, yui.YCheckBox):
-      try:
-        self.parent.config.userPreferences['settings']['search']['newest_only'] = obj.isChecked()
-      except:
-        self.parent.config.userPreferences['settings']['search'] = { 'newest_only' : obj.isChecked() }
-      self.parent.newest_only = obj.isChecked()
-    else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
-
   def onLevelDebugChange(self, obj):
     '''
     Debug level Changing
@@ -486,7 +416,7 @@ class OptionDialog(basedialog.BaseDialog):
   def onRestoreButton(self) :
     logger.debug('Restore pressed')
     k = self.selected_option
-    if k == "system":
+    if k == "firewalld":
       self.parent.config.userPreferences['settings']['always_yes'] = False
       self.parent.always_yes = False
       self.parent.config.userPreferences['settings']['interval for checking updates'] = 180
@@ -499,14 +429,6 @@ class OptionDialog(basedialog.BaseDialog):
       self.parent.config.userPreferences['settings']['show updates at startup'] = False
       self.parent.config.userPreferences['settings']['do not show groups at startup'] = False
       self._openLayoutOptions()
-    elif k == "search":
-      self.parent.config.userPreferences['settings']['search'] = {
-        'match_all': True,
-        'newest_only': False,
-      }
-      self.parent.match_all = True
-      self.parent.newest_only = False
-      self._openSearchOptions()
     elif k == "logging":
       self.parent.config.userPreferences['settings']['log'] = {
         'enabled': False,
