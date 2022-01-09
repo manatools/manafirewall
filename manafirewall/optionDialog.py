@@ -12,6 +12,7 @@ import yui
 import sys
 import os
 
+from firewall import config
 import manatools.ui.basedialog as basedialog
 import gettext
 import logging
@@ -140,11 +141,12 @@ class OptionDialog(basedialog.BaseDialog):
     self.factory.createHSpacing(hbox)
 
     # Title
-    heading = self.factory.createHeading( vbox, _("System options") )
+    heading = self.factory.createHeading( vbox, _("firewalld options") )
     self.factory.createVSpacing(vbox, 0.3)
     heading.setAutoWrap()
 
-    defaultZoneCombo = self.factory.createComboBox( vbox, _("Default Zone") )
+    hbox = self.factory.createHBox(vbox)
+    defaultZoneCombo = self.factory.createComboBox( hbox, _("Default Zone") )
     defaultZoneCombo.setNotify(True)
     self.eventManager.addWidgetEvent(defaultZoneCombo, self.onDefaultZoneChange, True)
     self.widget_callbacks.append( { 'widget': defaultZoneCombo, 'handler': self.onDefaultZoneChange} )
@@ -159,6 +161,22 @@ class OptionDialog(basedialog.BaseDialog):
       itemColl.push_back(item)
       item.this.own(False)
     defaultZoneCombo.addItems(itemColl)
+
+    logDeniedCombo = self.factory.createComboBox( hbox, _("Log Denied") )
+    logDeniedCombo.setNotify(True)
+    self.eventManager.addWidgetEvent(logDeniedCombo, self.onLogDeniedChange, True)
+    self.widget_callbacks.append( { 'widget': logDeniedCombo, 'handler': self.onLogDeniedChange} )
+    # fill log denied values
+    ldValues = config.LOG_DENIED_VALUES
+    selected_ld = self.parent.fw.getLogDenied()
+    itemColl = yui.YItemCollection()
+    for ldValue in ldValues:
+      item = yui.YItem(ldValue, False)
+      if ldValue == selected_ld:
+        item.setSelected(True)
+      itemColl.push_back(item)
+      item.this.own(False)
+    logDeniedCombo.addItems(itemColl)
 
     pmButton = self.factory.createCheckBox(self.factory.createLeft(vbox), _("Panic Mode"), self.parent.fw.queryPanicMode() )
     pmButton.setNotify(True)
@@ -449,6 +467,19 @@ class OptionDialog(basedialog.BaseDialog):
       logger.debug("New default zone %s", new_default_zone)
       if new_default_zone != default_zone:
         self.parent.fw.setDefaultZone(new_default_zone)
+    else:
+      logger.error("Invalid object passed %s", obj.widgetClass())
+
+  def onLogDeniedChange(self, obj):
+    '''
+    Manage log denied changing
+    '''
+    if isinstance(obj, yui.YComboBox):
+      new_ldValue = obj.value()
+      old_ldValue = self.parent.fw.getLogDenied()
+      logger.debug("New default zone %s", new_ldValue)
+      if new_ldValue != old_ldValue:
+        self.parent.fw.setLogDenied(new_ldValue)
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
 
