@@ -6,7 +6,7 @@
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Arnold Marko <arnold.marko@gmail.com>, 2020
-# Filip Komar <filip.komar@guest.arnes.si>, 2021
+# Filip Komar <filip.komar@guest.arnes.si>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Filip Komar <filip.komar@guest.arnes.si>, 2021\n"
+"Last-Translator: Filip Komar <filip.komar@guest.arnes.si>, 2022\n"
 "Language-Team: Slovenian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sl/)\n"
 "Language: sl\n"
@@ -94,7 +94,7 @@ msgstr "&Ponovno naloži opravilo firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Nastavitve"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -102,7 +102,7 @@ msgstr "&Pomoč"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Ročno"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -679,23 +679,23 @@ msgstr "Pogled nizov IP"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Razpored"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Zapis dnevnika"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Obnovi &privzeto"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Zapri"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -703,11 +703,11 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Privzeto območje"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Dnevnik zavrnjen"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assigment"
@@ -715,35 +715,35 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Panični način"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Karantena"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Možnosti razporeditve tipk (aktivno ob naslednjem zagonu)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Možnosti dnevnika (aktivno ob naslednjem zagonu)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Omogoči zapis dnevnika"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Spremeni &mapo"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Stopnja podrobnosti razhroščevanja"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Izberi ciljno mapo dnevnika"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -820,4 +820,4 @@ msgstr "Zavrni"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sverzija: %(version)s%(NL)sspletna stran: %(site)s"
