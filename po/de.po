@@ -4,10 +4,10 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Ettore Atalan <atalanttore@googlemail.com>, 2020
 # Peter Grun, 2020
-# psyca, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Ettore Atalan <atalanttore@googlemail.com>, 2022
+# psyca, 2022
 #
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: psyca, 2020\n"
+"Last-Translator: psyca, 2022\n"
 "Language-Team: German (https://www.transifex.com/MageiaLinux/teams/9361/"
 "de/)\n"
 "Language: de\n"
@@ -94,7 +94,7 @@ msgstr "&Firewalld erneut laden"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "Ein&stellungen"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -102,7 +102,7 @@ msgstr "&Hilfe"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "H&andbuch"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -225,7 +225,7 @@ msgstr "Standard Zone: {}"
 
 #: manafirewall/dialog.py:422
 msgid "Log Denied: {}"
-msgstr "Log abgelehnt: {}"
+msgstr "Log verweigert: {}"
 
 #: manafirewall/dialog.py:423 manafirewall/dialog.py:2386
 #: manafirewall/dialog.py:2399 manafirewall/dialog.py:2407
@@ -693,27 +693,27 @@ msgstr "IP Sets Ansicht"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Protokollierung"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Standard wie&derherstellen"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "S&chließen"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "firewalld Optionen"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
@@ -721,7 +721,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Log verweigert"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assigment"
@@ -729,7 +729,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Panic Modus"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
@@ -737,27 +737,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Layout Optionen (beim nächsten Start aktiv) "
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Protokollieroptionen (beim nächsten Start aktiv)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Protokollierung aktivieren"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "&Verzeichnis wechseln"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Debug-Ebene"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Zielverzeichnis für das Protokoll auswählen"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -834,4 +834,4 @@ msgstr "Ablehnen"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sVersion: %(version)s%(NL)sSeite: %(site)s"
