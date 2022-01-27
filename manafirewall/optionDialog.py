@@ -169,7 +169,7 @@ class OptionDialog(basedialog.BaseDialog):
       item.this.own(False)
     logDeniedCombo.addItems(itemColl)
 
-    autoHelperAssignCombo = self.factory.createComboBox( hbox, _("Automatic Helper Assigment") )
+    autoHelperAssignCombo = self.factory.createComboBox( hbox, _("Automatic Helper Assignment") )
     autoHelperAssignCombo.setNotify(True)
     self.eventManager.addWidgetEvent(autoHelperAssignCombo, self.onAutoHelperAssignChange, True)
     self.widget_callbacks.append( { 'widget': autoHelperAssignCombo, 'handler': self.onAutoHelperAssignChange} )
@@ -431,12 +431,12 @@ class OptionDialog(basedialog.BaseDialog):
 
   def onAutoHelperAssignChange(self, obj):
     '''
-    Manage Automatic Helper Assigment Change
+    Manage Automatic Helper Assignment Change
     '''
     if isinstance(obj, yui.YComboBox):
       new_ldValue = obj.value()
       old_ldValue = self.parent.fw.getAutomaticHelpers()
-      logger.debug("New Helper Assigment %s", new_ldValue)
+      logger.debug("New Helper Assignment %s", new_ldValue)
       if new_ldValue != old_ldValue:
         self.parent.fw.setAutomaticHelpers(new_ldValue)
     else:

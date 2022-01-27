@@ -715,7 +715,7 @@ msgid "Log Denied"
 msgstr "Registre denegat"
 
 #: manafirewall/optionDialog.py:172
-msgid "Automatic Helper Assigment"
+msgid "Automatic Helper Assignment"
 msgstr "Assignació automàtica d'assistents"
 
 #: manafirewall/optionDialog.py:189

@@ -710,7 +710,7 @@ msgid "Log Denied"
 msgstr "Dnevnik zavrnjen"
 
 #: manafirewall/optionDialog.py:172
-msgid "Automatic Helper Assigment"
+msgid "Automatic Helper Assignment"
 msgstr ""
 
 #: manafirewall/optionDialog.py:189

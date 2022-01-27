@@ -715,7 +715,7 @@ msgstr ""
 "Вносити до журналу заборонені"
 
 #: manafirewall/optionDialog.py:172
-msgid "Automatic Helper Assigment"
+msgid "Automatic Helper Assignment"
 msgstr ""
 "Автоматичне призначення допоміжного засобу"
 
