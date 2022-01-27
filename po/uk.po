@@ -3,24 +3,21 @@
 #
 # Translators:
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
-"PO-Revision-Date: 2020-08-09 10:47+0300\n"
+"PO-Revision-Date: 2022-01-27 19:25+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
-"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
-"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
-"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Lokalize 20.07.70\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"X-Generator: Lokalize 20.12.0\n"
 
 #: manafirewall/dialog.py:101
 msgid "Manatools - firewalld configurator"
@@ -84,6 +81,7 @@ msgstr "П&араметри"
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
 msgstr ""
+"Динамічні у постійні"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -92,6 +90,7 @@ msgstr "П&ерезавантажити Firewalld"
 #: manafirewall/dialog.py:233
 msgid "&Settings"
 msgstr ""
+"П&араметри"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -100,6 +99,7 @@ msgstr "&Довідка"
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
 msgstr ""
+"&Підручник"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -677,70 +677,87 @@ msgstr "Панель наборів IP"
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
 msgstr ""
+"firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
 msgstr ""
+"Компонування"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
 msgstr ""
+"Журналювання"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
 msgstr ""
+"Відновити &типове"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
 msgstr ""
+"За&крити"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
 msgstr ""
+"Параметри firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
 msgstr ""
+"Типова зона"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
 msgstr ""
+"Вносити до журналу заборонені"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assigment"
 msgstr ""
+"Автоматичне призначення допоміжного засобу"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
 msgstr ""
+"Режим паніки"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
 msgstr ""
+"Блокування"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
 msgstr ""
+"Параметри компонування (буде задіяно під час наступного запуску)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
 msgstr ""
+"Параметри журналу (буде задіяно під час наступного запуску)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
 msgstr ""
+"Увімкнути журнал"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
 msgstr ""
+"Змінити &каталог"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
 msgstr ""
+"Рівень діагностики"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
 msgstr ""
+"Вибрати каталог призначення для журналу"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -818,6 +835,7 @@ msgstr "Відмовити"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr ""
+"%(prog)s %(NL)sверсія: %(version)s%(NL)sсайт: %(site)s"
 
 #~ msgid "<li><b>Protocols</b>:not yet implemented</li>"
 #~ msgstr "<li><b>Протоколи</b>: ще не реалізовано</li>"
