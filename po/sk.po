@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Milan Baša <minkob@mail.t-com.sk>, 2020
-# retepsk <rvrao@centrum.cz>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# retepsk <rvrao@centrum.cz>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: retepsk <rvrao@centrum.cz>, 2020\n"
+"Last-Translator: retepsk <rvrao@centrum.cz>, 2022\n"
 "Language-Team: Slovak (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sk/)\n"
 "Language: sk\n"
@@ -385,7 +385,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Prejsť na obsah"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -601,19 +601,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Usporiadanie"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Záznam"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Obnoviť predvolené"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Zavrieť"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -641,27 +641,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Možnosti vzhľadu (aktívna pri ďalšom spustení)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Možnosti protokolovania (aktívne pri ďalšom štarte)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Povoliť protokolovanie"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Zmena &adresára"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Úroveň ladenia"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Vyberte cieľový adresár na zápis /Log/"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -738,4 +738,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sverzia: %(version)s%(NL)ssite: %(site)s"

@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # ふうせん Fu-sen. | BALLOON a.k.a. Fu-sen., 2020
-# Masanori Kakura <kakurasan@gmail.com>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Masanori Kakura <kakurasan@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Masanori Kakura <kakurasan@gmail.com>, 2020\n"
+"Last-Translator: Masanori Kakura <kakurasan@gmail.com>, 2022\n"
 "Language-Team: Japanese (https://www.transifex.com/MageiaLinux/teams/9361/"
 "ja/)\n"
 "Language: ja\n"
@@ -680,19 +680,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "レイアウト"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "ログの出力"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "既定値に戻す(&D)"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "閉じる(&C)"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -720,27 +720,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "レイアウト設定 (次回起動時から有効)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "ログ出力設定 (次回起動時から有効)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "ログ出力を有効にする"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "ディレクトリを変更(&D)"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "デバッグ レベル"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "ログの保存先を選択"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -817,4 +817,4 @@ msgstr "拒否"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sバージョン: %(version)s%(NL)sサイト: %(site)s"

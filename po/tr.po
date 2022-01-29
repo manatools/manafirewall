@@ -4,9 +4,12 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# tarakbumba <tarakbumba@gmail.com>, 2020
 # Fırat Kutlu <firatkutlu@yandex.com>, 2020
 # mahmut özcan <faradundamarti@yandex.com>, 2020
+# Serdar Sağlam <teknomobil@msn.com>, 2020
+# tarakbumba <tarakbumba@gmail.com>, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Muha Aliss <muhaaliss@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: mahmut özcan <faradundamarti@yandex.com>, 2020\n"
+"Last-Translator: Muha Aliss <muhaaliss@gmail.com>, 2022\n"
 "Language-Team: Turkish (https://www.transifex.com/MageiaLinux/teams/9361/"
 "tr/)\n"
 "Language: tr\n"
@@ -120,7 +123,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:303
 msgid "&Add"
-msgstr ""
+msgstr "&Ekle"
 
 #: manafirewall/dialog.py:305 manafirewall/dialog.py:501
 msgid "&Edit"
@@ -600,19 +603,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Düzen"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Günlük Tutma"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "&Varsayılana döndür"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Kapat"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -640,27 +643,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Düzen seçenekleri (sonraki açılışta geçerli olur)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Günlük seçenekleri (sonraki açılışta geçerli olur)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Günlük kaydı tutmayı etkinleştir"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "&Dizini değiştir"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Hata ayıklama seviyesi"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Günlük kayıtları için hedef dizin seçin"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -737,4 +740,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)ssürüm: %(version)s%(NL)ssite: %(site)s"

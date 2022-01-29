@@ -1,23 +1,29 @@
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the manafirewall package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
-# Yuri Chornoivan <yurchor@ukr.net>, 2020, 2022.
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
-"PO-Revision-Date: 2022-01-27 19:25+0200\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
-"Language-Team: Ukrainian <kde-i18n-uk@kde.org>\n"
+"PO-Revision-Date: 2020-07-21 15:45+0000\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
+"Language-Team: Ukrainian (https://www.transifex.com/MageiaLinux/teams/9361/"
+"uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
-"X-Generator: Lokalize 20.12.0\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
 #: manafirewall/dialog.py:101
 msgid "Manatools - firewalld configurator"
@@ -80,8 +86,7 @@ msgstr "П&араметри"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
-"Динамічні у постійні"
+msgstr "Динамічні у постійні"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -89,8 +94,7 @@ msgstr "П&ерезавантажити Firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
-"П&араметри"
+msgstr "П&араметри"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -98,8 +102,7 @@ msgstr "&Довідка"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
-"&Підручник"
+msgstr "&Підручник"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -676,88 +679,71 @@ msgstr "Панель наборів IP"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
-"firewalld"
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
-"Компонування"
+msgstr "Компонування"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
-"Журналювання"
+msgstr "Журналювання"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
-"Відновити &типове"
+msgstr "Відновити &типове"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
-"За&крити"
+msgstr "За&крити"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
-"Параметри firewalld"
+msgstr "Параметри firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
-"Типова зона"
+msgstr "Типова зона"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
-"Вносити до журналу заборонені"
+msgstr "Вносити до журналу заборонені"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
-"Автоматичне призначення допоміжного засобу"
+msgstr "Автоматичне призначення допоміжного засобу"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
-"Режим паніки"
+msgstr "Режим паніки"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
-"Блокування"
+msgstr "Блокування"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
-"Параметри компонування (буде задіяно під час наступного запуску)"
+msgstr "Параметри компонування (буде задіяно під час наступного запуску)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
-"Параметри журналу (буде задіяно під час наступного запуску)"
+msgstr "Параметри журналу (буде задіяно під час наступного запуску)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
-"Увімкнути журнал"
+msgstr "Увімкнути журнал"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
-"Змінити &каталог"
+msgstr "Змінити &каталог"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
-"Рівень діагностики"
+msgstr "Рівень діагностики"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
-"Вибрати каталог призначення для журналу"
+msgstr "Вибрати каталог призначення для журналу"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -834,82 +820,4 @@ msgstr "Відмовити"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
-"%(prog)s %(NL)sверсія: %(version)s%(NL)sсайт: %(site)s"
-
-#~ msgid "<li><b>Protocols</b>:not yet implemented</li>"
-#~ msgstr "<li><b>Протоколи</b>: ще не реалізовано</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>Here, you can add a protocol among a list of "
-#~ "supported protocols by firewalld or to add a specific one that you can "
-#~ "name. (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Протоколи</b>: тут ви можете додати протокол до списку "
-#~ "підтримуваних firewalld протоколів або додати специфічний протокол із "
-#~ "назвою. (слід вказати, яким буде результат цього додавання)</li>"
-
-#~ msgid "<li><b>Source Ports</b>:not yet implemented</li>"
-#~ msgstr "<li><b>Порти походження</b>: ще не реалізовано</li>"
-
-#~ msgid ""
-#~ "After selecting \"Zones\" for view and one of the Zones, you can "
-#~ "configure said zone. There is some parameters for each zone:"
-#~ msgstr ""
-#~ "Після вибору режиму перегляду «Зони» і вибору однієї з зон, ви зможете її "
-#~ "налаштувати. Для кожної зони передбачено декілька параметрів:"
-
-#~ msgid ""
-#~ "For a zone, available fields are name, version, short as more descriptive "
-#~ "name, and description. A check box allows to active default target or to "
-#~ "select the default behaviour for packets that don't match any rule. "
-#~ "Targets are DROP, REJECT or ACCEPT. "
-#~ msgstr ""
-#~ "Для зони доступними полями є назва, версія, скорочена описова назва та "
-#~ "опис. За допомогою поля для позначки можна активувати типове призначення "
-#~ "або вибрати типову поведінку для пакунків, які не відповідають жодному "
-#~ "правилу. Призначеннями є DROP, REJECT або ACCEPT. "
-
-#~ msgid ""
-#~ "Forwarding to another system is only useful if the interface is "
-#~ "masqueraded.<br>Do you want to masquerade this zone ?"
-#~ msgstr ""
-#~ "Переспрямовування до іншої системи є корисним, лише якщо інтерфейс "
-#~ "замасковано.<br>Хочете замаскувати цю зону?"
-
-#~ msgid ""
-#~ "In view \"Services\", next combobox allow to choice a service. Then "
-#~ "\"Configure\" Selecting one update the table with a list of couples Port-"
-#~ "Protocol "
-#~ msgstr ""
-#~ "На панелі «Служби» кнопка «Налаштувати» поряд зі спадним списком надає "
-#~ "змогу вибрати службу. Вибір служби оновлює таблиці зі списком пар порт-"
-#~ "протокол. "
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncureses, e.g. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall є частиною комплекту manatools. Програму засновано на "
-#~ "libyui, отже вона може працювати із використанням Gtk, Qt або ncurses, "
-#~ "тобто одночасно графічного та текстового інтерфейсів."
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncurses, e.g. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall є частиною комплекту manatools. Програму засновано на "
-#~ "libyui, отже вона може працювати із використанням Gtk, Qt або ncurses, "
-#~ "тобто одночасно графічного та текстового інтерфейсів."
-
-#~ msgid ""
-#~ "Runtime mode allows to configure things at runtime. Things changed at "
-#~ "runtime will not present at next start up or relading firewalld, if you "
-#~ "want that you need to add those changes in permanent mode also. "
-#~ msgstr ""
-#~ "Динамічний режим надає змогу налаштувати поточні параметри роботи. "
-#~ "Змінені у динамічному режимі параметри не буде відтворено під час "
-#~ "наступного запуску або перезавантаження firewalld. Якщо ви хочете зробити "
-#~ "їх сталими, вам слід внести зміни і у остаточному режимі."
+msgstr "%(prog)s %(NL)sверсія: %(version)s%(NL)sсайт: %(site)s"

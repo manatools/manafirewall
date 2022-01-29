@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Валентин Сайков <saikov.vb@gmail.com>, 2020
-# AlexL <loginov.alex.valer@gmail.com>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# AlexL <loginov.alex.valer@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: AlexL <loginov.alex.valer@gmail.com>, 2020\n"
+"Last-Translator: AlexL <loginov.alex.valer@gmail.com>, 2022\n"
 "Language-Team: Russian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "ru/)\n"
 "Language: ru\n"
@@ -602,11 +602,11 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Раскладка"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Журналирование"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
@@ -614,7 +614,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Закрыть"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -642,7 +642,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Параметры компоновки (будет задействовано при следующем запуске)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
@@ -654,15 +654,15 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Изменить &каталог"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Уровень диагностики:"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Выбрать каталог назначения для журнала"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -739,4 +739,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sверсия: %(version)s%(NL)sсайт: %(site)s"

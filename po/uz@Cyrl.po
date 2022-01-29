@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
 #, fuzzy
 msgid ""
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
 "Language-Team: Uzbek (Cyrillic) (https://www.transifex.com/MageiaLinux/"
 "teams/9361/uz@Cyrl/)\n"
 "Language: uz@Cyrl\n"
@@ -60,11 +60,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:115
 msgid "enabled"
-msgstr ""
+msgstr "yoqilgan"
 
 #: manafirewall/dialog.py:116
 msgid "disabled"
-msgstr ""
+msgstr "o'chirilgan"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:261
 msgid "&File"
@@ -142,7 +142,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:325 manafirewall/helpinfo.py:26
 msgid "Configuration"
-msgstr ""
+msgstr "Moslash"
 
 #: manafirewall/dialog.py:345
 msgid "Zones"
@@ -159,7 +159,7 @@ msgstr ""
 #: manafirewall/dialog.py:350 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
 msgid "View"
-msgstr ""
+msgstr "Koʻrinish"
 
 #: manafirewall/dialog.py:381 manafirewall/dialog.py:393
 msgid "Ports"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:403
 msgid "Configure"
-msgstr ""
+msgstr "Moslash"
 
 #: manafirewall/dialog.py:421 manafirewall/dialog.py:2375
 #: manafirewall/dialog.py:2395 manafirewall/dialog.py:2411
@@ -254,7 +254,7 @@ msgstr ""
 #: manafirewall/portDialog.py:45 manafirewall/protocolDialog.py:29
 #: manafirewall/protocolDialog.py:41
 msgid "Protocol"
-msgstr ""
+msgstr "Protokol"
 
 #: manafirewall/dialog.py:703 manafirewall/dialog.py:836
 msgid "Port"
@@ -262,7 +262,7 @@ msgstr "Порт"
 
 #: manafirewall/dialog.py:772
 msgid "Service"
-msgstr ""
+msgstr "Xizmat"
 
 #: manafirewall/dialog.py:836
 msgid "To Address"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
-msgstr ""
+msgstr "Manba"
 
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
@@ -694,7 +694,7 @@ msgstr "Номи"
 
 #: manafirewall/serviceBaseDialog.py:44 manafirewall/zoneBaseDialog.py:46
 msgid "Version"
-msgstr ""
+msgstr "Версия"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
@@ -722,7 +722,7 @@ msgstr ""
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
-msgstr ""
+msgstr "Qabul qilish"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"

@@ -4,9 +4,10 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # killer1987 <marcello.anni@alice.it>, 2020
 # Guybrush88 <erpizzo@alice.it>, 2020
+# _pmat_ <matteo.pasotti@gmail.com>, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Guybrush88 <erpizzo@alice.it>, 2020\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
 "Language-Team: Italian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "it/)\n"
 "Language: it\n"
@@ -79,7 +80,7 @@ msgstr "&Termina"
 
 #: manafirewall/dialog.py:227 manafirewall/dialog.py:267
 msgid "&Options"
-msgstr ""
+msgstr "&Opzioni"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
@@ -321,13 +322,13 @@ msgstr "Indirizzo IP"
 #: manafirewall/protocolDialog.py:80 manafirewall/serviceBaseDialog.py:64
 #: manafirewall/zoneBaseDialog.py:99
 msgid "&Cancel"
-msgstr ""
+msgstr "&Annulla"
 
 #: manafirewall/forwardDialog.py:86 manafirewall/portDialog.py:69
 #: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:67
 #: manafirewall/zoneBaseDialog.py:102
 msgid "&Ok"
-msgstr ""
+msgstr "&Ok"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
@@ -384,7 +385,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Vai all'indice"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -600,19 +601,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Scrivendo nel log"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Ripristina i valori di &default"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Chiudi"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -640,27 +641,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Opzioni di layout (attivo dopo il riavvio dell'applicazione)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Opzioni di Log (attive dopo il riavvio dell'applicazione)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Abilita il log"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Cambia la &directory"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Livello di debug"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Scegli la cartella di destinazione del log"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -737,4 +738,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sversione: %(version)s%(NL)ssito: %(site)s"

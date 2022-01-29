@@ -4,12 +4,12 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
-# Jose Manuel López <joselp@disroot.org>, 2020
 # Adolfo Jayme-Barrientos, 2020
-# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2020
-# Miguel, 2020
+# Miguel, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2022
+# Jose Manuel López <joselpddj@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Miguel, 2020\n"
+"Last-Translator: Jose Manuel López <joselpddj@gmail.com>, 2022\n"
 "Language-Team: Spanish (https://www.transifex.com/MageiaLinux/teams/9361/"
 "es/)\n"
 "Language: es\n"
@@ -693,19 +693,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Diseño"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Escribiendo registros"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Restaurar pre&determinado"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Cerrar"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -733,27 +733,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Opciones de disposición (activo en el próximo inicio)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Opciones de registro (activo en el próximo inicio)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Habilitar Registros"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Cambiar &directorio"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Nivel de depuración"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Escoger el directorio para grabar los ficheros log"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -830,4 +830,4 @@ msgstr "Rechazar"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sversión: %(version)s%(NL)ssitio: %(site)s"

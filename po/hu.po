@@ -4,13 +4,13 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Ferenc Teknős <teknos.ferenc@gmail.com>, 2020
-# c5c74d5c0e928622070863d16011fda8_265b1fe, 2020
 # István Norbert Péter <peter.norbert.istvan@gmail.com>, 2020
 # 47e04c63cfc3299a8ad30deacf2f0e31_fe1c110, 2020
-# Csaba Mészáros <pingvin@y2k.hu>, 2020
-# Miklos <szubotaj@gmail.com>, 2020
+# c5c74d5c0e928622070863d16011fda8_265b1fe, 2022
+# 0f91827f785e2dd1095e46c64aa20577_4846911 <3cccced9430ed5472110b543e2902d3c_405455>, 2022
+# Miklos <szubotaj@gmail.com>, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
 #, fuzzy
 msgid ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Miklos <szubotaj@gmail.com>, 2020\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
 "Language-Team: Hungarian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "hu/)\n"
 "Language: hu\n"
@@ -604,19 +604,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Elrendezés"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Naplózás"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Alapértelmezés"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "Bezárás"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -644,27 +644,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Elrendezési beállítások (újraindításkor lép életbe)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Naplózási beállítások (újraindításkor lép életbe)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Naplózás bekapcsolása"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Mappa választása"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Hibakeresési szint"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Válasszon naplózási célkönyvtárat"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -741,4 +741,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sverzió: %(version)s%(NL)soldal: %(site)s"

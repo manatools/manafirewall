@@ -5,7 +5,7 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Egoitz Rodriguez <egoitzro@gmail.com>, 2020
+# Egoitz Rodriguez <egoitzro@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Egoitz Rodriguez <egoitzro@gmail.com>, 2020\n"
+"Last-Translator: Egoitz Rodriguez <egoitzro@gmail.com>, 2022\n"
 "Language-Team: Basque (https://www.transifex.com/MageiaLinux/teams/9361/"
 "eu/)\n"
 "Language: eu\n"
@@ -599,11 +599,11 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Diseinua"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Logeatze"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
@@ -611,7 +611,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Itxi"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -736,4 +736,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sbertsioa: %(version)s%(NL)sgunea: %(site)s"

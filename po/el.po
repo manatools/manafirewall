@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Dimitrios Glentadakis <dglent@free.fr>, 2020
 # Geiger David <david.david@mageialinux-online.org>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Geiger David <david.david@mageialinux-online.org>, 2020\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
 "Language-Team: Greek (https://www.transifex.com/MageiaLinux/teams/9361/el/)\n"
 "Language: el\n"
 "MIME-Version: 1.0\n"
@@ -603,7 +603,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Καταγραφές"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
@@ -611,7 +611,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Κλείσιμο"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"

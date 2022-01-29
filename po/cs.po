@@ -5,8 +5,9 @@
 #
 # Translators:
 # Jiří Vírava <appukonrad@gmail.com>, 2020
-# fri, 2020
-# Luděk Janča <joelp@email.cz>, 2021
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Luděk Janča <joelp@email.cz>, 2022
+# fri, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Luděk Janča <joelp@email.cz>, 2021\n"
+"Last-Translator: fri, 2022\n"
 "Language-Team: Czech (https://www.transifex.com/MageiaLinux/teams/9361/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -604,19 +605,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Rozvržení"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Protokolování"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Obnovit &výchozí"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Zavřít"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -644,27 +645,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Volby rozvržení (činné při příštím spuštění)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Možnosti protokolování (aktivní při příštím spuštění)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Povolit protokolování"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Změnit &adresář"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Úroveň ladění"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Vyberte adresář pro logy"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -741,4 +742,4 @@ msgstr "Odmítnout"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sverze: %(version)s%(NL)ssite: %(site)s"

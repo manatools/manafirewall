@@ -103,7 +103,7 @@ msgstr ""
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
 msgid "&About"
-msgstr ""
+msgstr "&Tocante a"
 
 #: manafirewall/dialog.py:294
 msgid "Active bindings"
@@ -160,7 +160,7 @@ msgstr ""
 #: manafirewall/dialog.py:350 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
 msgid "View"
-msgstr ""
+msgstr "Vista"
 
 #: manafirewall/dialog.py:381 manafirewall/dialog.py:393
 msgid "Ports"
@@ -326,7 +326,7 @@ msgstr "E&ncaboxar"
 #: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:67
 #: manafirewall/zoneBaseDialog.py:102
 msgid "&Ok"
-msgstr ""
+msgstr "&Aceutar"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
@@ -723,7 +723,7 @@ msgstr ""
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
-msgstr ""
+msgstr "Aceutar"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"

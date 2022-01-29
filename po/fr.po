@@ -4,12 +4,14 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # Rémi Verschelde <akien@mageia.org>, 2020
-# Yves Brungard, 2020
 # Charles Monzat <c.monzat@laposte.net>, 2020
-# Kévin R., 2020
-# Aurelien <aoudelet@outlook.com>, 2020
+# K. R., 2020
+# stroibe974 <sebsweb@gmail.com>, 2022
+# Aurelien <aoudelet@outlook.com>, 2022
+# Eric Barbero <dune06@free.fr>, 2022
+# Yves Brungard, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
 #, fuzzy
 msgid ""
@@ -18,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Aurelien <aoudelet@outlook.com>, 2020\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
 "Language-Team: French (https://www.transifex.com/MageiaLinux/teams/9361/"
 "fr/)\n"
 "Language: fr\n"
@@ -88,7 +90,7 @@ msgstr "&Options"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "De temporaire à permanent"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -96,7 +98,7 @@ msgstr "&Recharger firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "Paramètre&s"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -104,7 +106,7 @@ msgstr "&Aide"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Manuel"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -691,35 +693,35 @@ msgstr "Vue des groupes d'adresses IP"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Canevas"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Journalisation"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Restaurer les valeurs par &défaut"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Fermer"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "Options de firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Zone par défaut"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Journalise les refus"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
@@ -727,35 +729,35 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Mode de panique"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Confinement"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Options de mise en page (actives au prochain démarrage)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Options de Journalisation (Nécessite un redémarrage)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Activer la journalisation"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Changer de &dossier"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Au niveau débogage"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Choisir le répertoire destinataire de journalisation"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -832,4 +834,4 @@ msgstr "Reject"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sversion : %(version)s%(NL)ssite : %(site)s"

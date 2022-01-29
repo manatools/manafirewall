@@ -5,8 +5,8 @@
 #
 # Translators:
 # Yaron Shahrabani <sh.yaron@gmail.com>, 2020
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Omer I.S. <omeritzicschwartz@gmail.com>, 2021
+# Omer I.S. <omeritzicschwartz@gmail.com>, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
 "Language-Team: Hebrew (https://www.transifex.com/MageiaLinux/teams/9361/"
 "he/)\n"
 "Language: he\n"
@@ -27,15 +27,15 @@ msgstr ""
 
 #: manafirewall/dialog.py:101
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - הגדרת firewalld"
 
 #: manafirewall/dialog.py:102
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - הכלי של ManaTools להגדרת firewalld"
 
 #: manafirewall/dialog.py:105
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "נוצר חיבור אל firewalld."
 
 #: manafirewall/dialog.py:107
 msgid "Trying to connect to firewalld, waiting..."
@@ -45,16 +45,16 @@ msgstr "כעת בניסיון התחברות אל firewalld, בהמתנה..."
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
-msgstr ""
+msgstr "כשל בהתחברות אל firewalld. נא לוודא שהשירות הופעל כהלכה ולנסות שוב."
 
 #: manafirewall/dialog.py:111
 msgid "Changes applied."
-msgstr ""
+msgstr "השינויים חלו."
 
 #: manafirewall/dialog.py:112
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "בשימוש לפי חיבור רשת \"%s\""
 
 #: manafirewall/dialog.py:113
 #, python-format
@@ -117,11 +117,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:299 manafirewall/dialog.py:2224
 msgid "Edit zones"
-msgstr ""
+msgstr "עריכת אזורים"
 
 #: manafirewall/dialog.py:303
 msgid "&Add"
-msgstr ""
+msgstr "הו&ספה"
 
 #: manafirewall/dialog.py:305 manafirewall/dialog.py:501
 msgid "&Edit"
@@ -149,7 +149,7 @@ msgstr "הגדרה"
 
 #: manafirewall/dialog.py:345
 msgid "Zones"
-msgstr ""
+msgstr "אזורים"
 
 #: manafirewall/dialog.py:346 manafirewall/dialog.py:380
 msgid "Services"
@@ -157,7 +157,7 @@ msgstr "שירותים"
 
 #: manafirewall/dialog.py:347
 msgid "IP Sets"
-msgstr ""
+msgstr "מערכי IP"
 
 #: manafirewall/dialog.py:350 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -166,7 +166,7 @@ msgstr "תצוגה"
 
 #: manafirewall/dialog.py:381 manafirewall/dialog.py:393
 msgid "Ports"
-msgstr ""
+msgstr "פִּתחות"
 
 #: manafirewall/dialog.py:382 manafirewall/dialog.py:394
 msgid "Protocols"
@@ -206,11 +206,11 @@ msgstr "מודולים"
 
 #: manafirewall/dialog.py:397
 msgid "Destinations"
-msgstr ""
+msgstr "יעדים"
 
 #: manafirewall/dialog.py:401
 msgid "Entries"
-msgstr ""
+msgstr "ערכים"
 
 #: manafirewall/dialog.py:403
 msgid "Configure"
@@ -219,7 +219,7 @@ msgstr "הגדרות"
 #: manafirewall/dialog.py:421 manafirewall/dialog.py:2375
 #: manafirewall/dialog.py:2395 manafirewall/dialog.py:2411
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "אזור ברירת מחדל: {}"
 
 #: manafirewall/dialog.py:422
 msgid "Log Denied: {}"
@@ -228,7 +228,7 @@ msgstr ""
 #: manafirewall/dialog.py:423 manafirewall/dialog.py:2386
 #: manafirewall/dialog.py:2399 manafirewall/dialog.py:2407
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "מצב בהלה: {}"
 
 #: manafirewall/dialog.py:424 manafirewall/dialog.py:2379
 #: manafirewall/dialog.py:2397
@@ -238,7 +238,7 @@ msgstr ""
 #: manafirewall/dialog.py:425 manafirewall/dialog.py:2383
 #: manafirewall/dialog.py:2398 manafirewall/dialog.py:2403
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "סגר: {}"
 
 #: manafirewall/dialog.py:500
 msgid "A&dd"
@@ -273,7 +273,7 @@ msgstr "לכתובת"
 
 #: manafirewall/dialog.py:836
 msgid "To Port"
-msgstr ""
+msgstr "לפִתחה"
 
 #: manafirewall/dialog.py:1241 manafirewall/dialog.py:1255
 msgid "Information needed"
@@ -295,11 +295,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:2234
 msgid "Edit services"
-msgstr ""
+msgstr "עריכת שירותים"
 
 #: manafirewall/dialog.py:2244
 msgid "Edit ipsets"
-msgstr ""
+msgstr "עריכת Ipsets"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -308,11 +308,11 @@ msgstr "מקור"
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "טווח פִּתחה / פִּתחה"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "יעד"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -341,7 +341,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "כתובת ה־IP הנתונה אינה תקנית."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
@@ -361,7 +361,7 @@ msgstr ""
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "נתונים חסרים"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -377,7 +377,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr ""
+msgstr "תצוגת שירותים"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
@@ -385,7 +385,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "מעבר לאינדקס"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -585,11 +585,11 @@ msgstr "משך זמן"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "הגדרת האזור"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "הגדרת שירותים"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
@@ -601,7 +601,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "פריסה"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
@@ -609,11 +609,11 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "שחזור לברירת המח&דל"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "ס&גירה"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -657,7 +657,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "רמת ניפוי תקלות"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
@@ -665,11 +665,11 @@ msgstr ""
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "פִּתחה ופרוטוקול"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "טווח פִּתחות שגוי"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
@@ -717,7 +717,7 @@ msgstr ""
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "הגדרות אזור"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
@@ -733,7 +733,7 @@ msgstr ""
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "דחייה"
 
 #: scripts/manafirewall:33
 #, python-format

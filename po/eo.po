@@ -25,34 +25,36 @@ msgstr ""
 
 #: manafirewall/dialog.py:101
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - firewalld-agordilo"
 
 #: manafirewall/dialog.py:102
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - Manatools - firewalld-agordilo"
 
 #: manafirewall/dialog.py:105
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "Ligo al firewalld establita."
 
 #: manafirewall/dialog.py:107
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "Provante konekti al firewalld, atendante ..."
 
 #: manafirewall/dialog.py:109
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"Malsukcesis konektiĝi al firewalld. Bonvolu certigi, ke la servo komenciĝis "
+"ĝuste kaj provu denove."
 
 #: manafirewall/dialog.py:111
 msgid "Changes applied."
-msgstr ""
+msgstr "Ŝanĝoj aplikitaj."
 
 #: manafirewall/dialog.py:112
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "Uzita per retkonekto '%s'"
 
 #: manafirewall/dialog.py:113
 #, python-format
@@ -69,16 +71,16 @@ msgstr "malebligita"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:261
 msgid "&File"
-msgstr ""
+msgstr "&Dosiero"
 
 #: manafirewall/dialog.py:219 manafirewall/dialog.py:262
 #: manafirewall/dialog.py:432
 msgid "&Quit"
-msgstr ""
+msgstr "&Forlasi"
 
 #: manafirewall/dialog.py:227 manafirewall/dialog.py:267
 msgid "&Options"
-msgstr ""
+msgstr "&Opcioj"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
@@ -86,7 +88,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "&Reŝarĝi Fajroŝirmilon"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
@@ -94,7 +96,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
-msgstr ""
+msgstr "&Helpo"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
@@ -103,7 +105,7 @@ msgstr ""
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
 msgid "&About"
-msgstr ""
+msgstr "&Pri"
 
 #: manafirewall/dialog.py:294
 msgid "Active bindings"
@@ -115,15 +117,15 @@ msgstr ""
 
 #: manafirewall/dialog.py:299 manafirewall/dialog.py:2224
 msgid "Edit zones"
-msgstr ""
+msgstr "Redakti zonojn"
 
 #: manafirewall/dialog.py:303
 msgid "&Add"
-msgstr ""
+msgstr "&Aldoni"
 
 #: manafirewall/dialog.py:305 manafirewall/dialog.py:501
 msgid "&Edit"
-msgstr ""
+msgstr "&Redakti"
 
 #: manafirewall/dialog.py:307 manafirewall/dialog.py:502
 msgid "&Remove"
@@ -579,7 +581,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Daŭro"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
@@ -587,7 +589,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Agordi servojn"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
@@ -663,7 +665,7 @@ msgstr ""
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Haveno kaj Protokolo"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
@@ -671,7 +673,7 @@ msgstr ""
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Alia Protokolo"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
@@ -683,11 +685,11 @@ msgstr ""
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "Malĝusta protokola eniro"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "Servaj Agordoj"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -699,7 +701,7 @@ msgstr "Versio"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Mallonga"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -707,7 +709,7 @@ msgstr "Priskribo"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "Mankas valoro"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"

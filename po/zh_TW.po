@@ -4,8 +4,10 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
 # You-Cheng Hsieh <yochenhsieh@gmail.com>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Dmitry <dmitrydmitry761@gmail.com>, 2022
+# zwpwjwtz <zwpwjwtz@126.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -14,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: You-Cheng Hsieh <yochenhsieh@gmail.com>, 2020\n"
+"Last-Translator: zwpwjwtz <zwpwjwtz@126.com>, 2022\n"
 "Language-Team: Chinese (Taiwan) (https://www.transifex.com/MageiaLinux/"
 "teams/9361/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -123,11 +125,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:305 manafirewall/dialog.py:501
 msgid "&Edit"
-msgstr ""
+msgstr "编辑(&E)"
 
 #: manafirewall/dialog.py:307 manafirewall/dialog.py:502
 msgid "&Remove"
-msgstr ""
+msgstr "移除(&R)"
 
 #: manafirewall/dialog.py:309
 msgid "&Load default"
@@ -240,7 +242,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:500
 msgid "A&dd"
-msgstr ""
+msgstr "添加(&d)"
 
 #: manafirewall/dialog.py:543
 msgid "Selected are accepted"
@@ -383,7 +385,7 @@ msgstr ""
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "轉到索引"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -599,19 +601,19 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "佈局"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "日誌記錄"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "恢復默認"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "關閉(&C)"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -639,27 +641,27 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "佈局選項（下次啟動時激活）"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "日誌選項（下次啟動時激活）"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "啟用日誌記錄"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "更改目錄"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "調試級別"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "選擇日誌目標目錄"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -736,4 +738,4 @@ msgstr ""
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s%(NL)s 版本：%(version)s%(NL)s 位置： %(site)s"

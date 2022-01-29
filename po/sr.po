@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2020
-# tomaja <toma.jankovic@gmail.com>, 2020
+# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# tomaja <toma.jankovic@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -14,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: tomaja <toma.jankovic@gmail.com>, 2020\n"
+"Last-Translator: tomaja <toma.jankovic@gmail.com>, 2022\n"
 "Language-Team: Serbian (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sr/)\n"
 "Language: sr\n"
@@ -85,7 +85,7 @@ msgstr "&Опције"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Runtime за Перманентно"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -93,7 +93,7 @@ msgstr "&Поново учитај Firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Подешавања"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -101,7 +101,7 @@ msgstr "&Помоћ"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Упуство"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -677,71 +677,71 @@ msgstr "Преглед IP сетова"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Распоред"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Логовање"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Обнови &default"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Затвори"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "firewalld опције"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Поразумевана зона"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Пријава одбијена"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Аутоматска додела Помоћи"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Панични мод"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Закључавање"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Опције изгледа (активирање при следећем покретању)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Опције логовања (активне при следећем покретању)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Омогући логовање"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Промени &директоријум"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Ниво дебаговања"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Изабери дестинациони директоријум за логовање"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -818,4 +818,4 @@ msgstr "Одбиј"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sверзија: %(version)s%(NL)sсајт: %(site)s"
