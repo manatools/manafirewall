@@ -5,8 +5,8 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
-# Michael Eklund <willard@null.net>, 2020
-# Kristoffer Grundström <lovaren@gmail.com>, 2021
+# Michael Eklund <willard@null.net>, 2022
+# Kristoffer Grundström <lovaren@gmail.com>, 2022
 #
 #, fuzzy
 msgid ""
@@ -15,7 +15,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Kristoffer Grundström <lovaren@gmail.com>, 2021\n"
+"Last-Translator: Kristoffer Grundström <lovaren@gmail.com>, 2022\n"
 "Language-Team: Swedish (https://www.transifex.com/MageiaLinux/teams/9361/"
 "sv/)\n"
 "Language: sv\n"
@@ -30,7 +30,7 @@ msgstr "Manatools - konfigurerare för firewalld"
 
 #: manafirewall/dialog.py:102
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - ManaTools firewalld-konfigurerare"
 
 #: manafirewall/dialog.py:105
 msgid "Connection to firewalld established."
@@ -85,7 +85,7 @@ msgstr "&Alternativ"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Körtid till permanent"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -93,7 +93,7 @@ msgstr "&Ladda om Firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Inställningar"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -101,7 +101,7 @@ msgstr "&Hjälp"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Manuell"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -247,11 +247,11 @@ msgstr "A&dd"
 
 #: manafirewall/dialog.py:543
 msgid "Selected are accepted"
-msgstr ""
+msgstr "Valda accepteras"
 
 #: manafirewall/dialog.py:609
 msgid "Masquerade zone"
-msgstr ""
+msgstr "Maskerad zon"
 
 #: manafirewall/dialog.py:641 manafirewall/dialog.py:703
 #: manafirewall/dialog.py:836 manafirewall/forwardDialog.py:46
@@ -309,7 +309,7 @@ msgstr "Källa"
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "Port / Portens räckvidd"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
@@ -333,12 +333,12 @@ msgstr "&Ok"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "Källans port är obligatorisk"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "Använd portnummer eller räckvidd (10000 eller 12000-12002)"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
@@ -350,7 +350,7 @@ msgstr "Fel IP-adress"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "Fel räckvidd till_port"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
@@ -359,6 +359,7 @@ msgstr "Fel port angiven"
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
 msgstr ""
+"<b>lokal vidarebefordring</b><br>port och till_port måste vara annorlunda"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
@@ -602,11 +603,11 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Layout"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Loggning"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
@@ -614,7 +615,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Stäng"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
@@ -650,15 +651,15 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Aktivera loggning"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Ändra &katalog"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Avlusningsnivå"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
@@ -739,4 +740,4 @@ msgstr "Neka"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)s version: %(version)s %(NL)s sida: %(site)s"
