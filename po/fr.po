@@ -10,8 +10,8 @@
 # stroibe974 <sebsweb@gmail.com>, 2022
 # Aurelien <aoudelet@outlook.com>, 2022
 # Eric Barbero <dune06@free.fr>, 2022
-# Yves Brungard, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Yves Brungard, 2022
 #
 #, fuzzy
 msgid ""
@@ -20,7 +20,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
+"Last-Translator: Yves Brungard, 2022\n"
 "Language-Team: French (https://www.transifex.com/MageiaLinux/teams/9361/"
 "fr/)\n"
 "Language: fr\n"
@@ -725,7 +725,7 @@ msgstr "Journalise les refus"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Attribution d'assistant automatique"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
