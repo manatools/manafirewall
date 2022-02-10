@@ -10,7 +10,7 @@
 # Adolfo Jayme-Barrientos, 2022
 # Miguel, 2022
 # José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2022
-# Jose Manuel López <joselpddj@gmail.com>, 2022
+# Jose Manuel López <joselp@e.email>, 2022
 #
 #, fuzzy
 msgid ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Jose Manuel López <joselpddj@gmail.com>, 2022\n"
+"Last-Translator: Jose Manuel López <joselp@e.email>, 2022\n"
 "Language-Team: Spanish (Latin America) (https://www.transifex.com/"
 "MageiaLinux/teams/9361/es_419/)\n"
 "Language: es_419\n"
@@ -89,7 +89,7 @@ msgstr " &Opciones"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Tiempo de ejecución a permanente"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -97,7 +97,7 @@ msgstr "&Recargar Firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Ajustes"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -105,7 +105,7 @@ msgstr "A&yuda"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Manual"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -690,7 +690,7 @@ msgstr "Vista Conjunto de IP"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
@@ -710,27 +710,27 @@ msgstr "&Cerrar"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "Opciones de firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Zona por defecto"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Registro denegado"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Asignación automática de ayuda"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Modo pánico"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Bloqueo"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
