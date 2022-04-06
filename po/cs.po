@@ -86,15 +86,15 @@ msgstr "&Volby"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Běhový čas na trvalý"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "&Nahrát znovu Firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Nastavení"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -102,7 +102,7 @@ msgstr "&Nápověda"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Ruční"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -111,11 +111,11 @@ msgstr "O programu"
 
 #: manafirewall/dialog.py:294
 msgid "Active bindings"
-msgstr ""
+msgstr "Činné vazby"
 
 #: manafirewall/dialog.py:296
 msgid "&Change binding"
-msgstr ""
+msgstr "&Změnit vazbu"
 
 #: manafirewall/dialog.py:299 manafirewall/dialog.py:2224
 msgid "Edit zones"
@@ -225,17 +225,17 @@ msgstr "Výchozí zóna: {}"
 
 #: manafirewall/dialog.py:422
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "Záznam (log) odepřen: {}"
 
 #: manafirewall/dialog.py:423 manafirewall/dialog.py:2386
 #: manafirewall/dialog.py:2399 manafirewall/dialog.py:2407
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "Režim nouzového zastavení: {}"
 
 #: manafirewall/dialog.py:424 manafirewall/dialog.py:2379
 #: manafirewall/dialog.py:2397
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "Automatičtí pomocníci: {}"
 
 #: manafirewall/dialog.py:425 manafirewall/dialog.py:2383
 #: manafirewall/dialog.py:2398 manafirewall/dialog.py:2403
@@ -289,7 +289,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1896
 msgid "Credits {}"
-msgstr ""
+msgstr "Zásluhy {}"
 
 #: manafirewall/dialog.py:1899
 msgid "{}  is a graphical configuration tool for firewalld."
@@ -597,15 +597,15 @@ msgstr "Nastavit služby"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "Zobrazení IP setů"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr "Rozvržení"
+msgstr "Rozložení"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
@@ -621,27 +621,27 @@ msgstr "&Zavřít"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "Volby pro firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Výchozí zóna"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Záznam (log) odepřen"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Automatické přiřazení pomocníka"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Režim nouzového zastavení"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Uzamknutí"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
@@ -665,7 +665,7 @@ msgstr "Úroveň ladění"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr "Vyberte adresář pro logy"
+msgstr "Vyberte adresář pro záznamy (logy)"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
@@ -742,4 +742,4 @@ msgstr "Odmítnout"
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr "%(prog)s %(NL)sverze: %(version)s%(NL)ssite: %(site)s"
+msgstr "%(prog)s %(NL)sverze: %(version)s%(NL)sstránka: %(site)s"
