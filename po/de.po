@@ -86,7 +86,7 @@ msgstr "&Optionen"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Laufzeit auf permanent"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -717,7 +717,7 @@ msgstr "firewalld Optionen"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Standardzone"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
@@ -733,7 +733,7 @@ msgstr "Panic Modus"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Sperrung"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
