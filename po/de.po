@@ -725,7 +725,7 @@ msgstr "Log verweigert"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Automatische Assistentenzuweisung"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
