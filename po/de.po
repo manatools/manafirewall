@@ -39,7 +39,7 @@ msgstr "Verbindung zu firewalld hergestellt."
 
 #: manafirewall/dialog.py:107
 msgid "Trying to connect to firewalld, waiting..."
-msgstr "Verbindungsversuch zur firewalld, warte..."
+msgstr "Verbindungsversuch zur firewalld, warte ..."
 
 #: manafirewall/dialog.py:109
 msgid ""
