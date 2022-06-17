@@ -86,7 +86,7 @@ msgstr "&Možnosti"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Iz izvajalnega časa v trajni način"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -699,7 +699,7 @@ msgstr "&Zapri"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "možnosti za firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
@@ -711,7 +711,7 @@ msgstr "Dnevnik zavrnjen"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Samodejna pomagala za določanje"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
