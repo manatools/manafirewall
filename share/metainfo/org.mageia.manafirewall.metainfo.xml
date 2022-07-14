@@ -20,6 +20,7 @@
   <name xml:lang="fr">manafirewall</name>
   <name xml:lang="et">manafirewall</name>
   <name xml:lang="es">manafirewall</name>
+  <name xml:lang="eo">manafirewall</name>
   <name xml:lang="de">manafirewall</name>
   <name xml:lang="cs">manafirewall</name>
   <name xml:lang="ca">manafirewall</name>
@@ -39,6 +40,7 @@
   <summary xml:lang="fr">Interface pour firewalld utilisant la bibliothèque d'abstraction graphique libyui.</summary>
   <summary xml:lang="et">firewalld kasutajaliides libyui kasutajaliidese abstraheerimise teegi põhjal</summary>
   <summary xml:lang="es">Interfaz para firewalld que utiliza la biblioteca libyui</summary>
+  <summary xml:lang="eo">Interfaco al fajroŝirmilo uzante libyui UI-abstraktan bibliotekon</summary>
   <summary xml:lang="de">Ein frontend für firewalld, das die Benutzerschnittstellen-Abstraktionsbibliothek libyui nutzt</summary>
   <summary xml:lang="cs">Grafické prostředí pro firewalld používající knihovnu libyui</summary>
   <summary xml:lang="ca">Un frontal per a firewalld que usa la biblioteca d'abstracció de la IU libyui</summary>
@@ -60,6 +62,7 @@
     <p xml:lang="fr">manafirewall est une application pour firewalld, inspirée de firewall-config du projet firewalld.</p>
     <p xml:lang="et">manafirewall on firewalld kasutajaliides, mis on võtnud eeskuju firewalld projekti komponendist firewall-config.</p>
     <p xml:lang="es">manafirewall es una interfaz para firewalld inspirada por firewall-config del provecto firewalld</p>
+    <p xml:lang="eo">manafirewall estas firewalld fasado, inspirita de firewall-config de firewalld-projekto.</p>
     <p xml:lang="de">manafirewall ist ein Frontend für firewalld nach dem Vorbild des Programms firewall-config des firewalld-Projektes.</p>
     <p xml:lang="cs">manafirewall je grafické prostředí pro firewalld inspirovaný firewall-config z projektu firewalld</p>
     <p xml:lang="ca">manafirewall és un frontal per a firewalld, inspirat per firewall-config del projecte firewalld.</p>
@@ -82,6 +85,7 @@
     <p xml:lang="fr">manafirewall est écrit en Python 3 et utilise libYui, une bibliothèque d'abstraction d'objet graphique écrite par SUSE, qui permet une interface en utilisant Qt 5, GTK+3 ou ncurses. Cette interface graphique au Gestionnaire de pare-feu firewalld via dbus peut être utilisée dans tout type d'environnement système.</p>
     <p xml:lang="et">manafirewall on kirjutatud Python 3 keeles ja see kasutab SUSE loodud vidinate abstraheerimise teeki libYui, mis tähendab, et see võib töötada Qt 5, GTK+ 3 või ncurses'i liidesega. See tekitab firewalld dbus'i tulemüürihalduri kasutajaliidese, mida on võimalik tarvitada kõikvõimalikes töökeskkondades.</p>
     <p xml:lang="es">manafirewall esta escrita en Python 3 y utiliza libYui, la biblioteca de abstracción de widget escrita por SUSE, con la que se pueden crear interfaces Qt 5, GTK+ 3, o ncurses. Proporciona una interfaz para el gestor de cortafuegos firewalld mediante dbus, puede ser utilizada en cualquier tipo de entorno de sistemas.</p>
+    <p xml:lang="eo">manafirewall estas skribita en Python 3 kaj uzas libYui, la widget-abstraktadbibliotekon skribitan de SUSE, tiel ke ĝi povas esti rulita uzante Qt 5, GTK+ 3, aŭ ncurses-interfacojn. Ĝi provizas fasadon por la firewalld dbus firewall-manaĝero, kiu povas esti uzata en iu ajn sistema medio.</p>
     <p xml:lang="de">manafirewall ist in Python 3 programmiert und nutzt libYui, eine Widget-Abstraktionsbibliothek von SUSE. Daher läuft es mit einer Qt5-, GTK+ 3- oder ncurses-Bedienoberfläche. Es bietet ein Frontend für firewalld, den dbus-Firewall-Manager, und kann in jeder Art von Systemumgebung eingesetzt werden.</p>
     <p xml:lang="cs">manafirewall je napsán v Pythonu 3 a používá libYui, knihovnu abstrakce widgetů napsanou SUSE, takže ji lze spustit pomocí Qt 5, GTK + 3 nebo ncurses. Poskytuje rozhraní pro firewalld dbus, které lze použít v jakémkoli prostředí systému.</p>
     <p xml:lang="ca">manafirewall està escrit amb Python 3 i usa libYui, la biblioteca d'abstracció d'estris escrita per SUSE, de manera que es pugui executar usant les interfícies Qt 5, GTK+ 3 o ncurses. Proporciona una interfície gràfica per al gestor del tallafoc dbus de firewalld que es pot usar en qualsevol tipus d'entorn de sistema.</p>
