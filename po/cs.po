@@ -252,7 +252,7 @@ msgstr "Vybrané jsou přijaty"
 
 #: manafirewall/dialog.py:609
 msgid "Masquerade zone"
-msgstr ""
+msgstr "Zóna maškarády"
 
 #: manafirewall/dialog.py:641 manafirewall/dialog.py:703
 #: manafirewall/dialog.py:836 manafirewall/forwardDialog.py:46
