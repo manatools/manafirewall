@@ -96,7 +96,7 @@ msgstr "&Firewalld herladen"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Instellingen"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -104,7 +104,7 @@ msgstr "&Hulp"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Handleiding"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -725,7 +725,7 @@ msgstr ""
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Vergrendeling"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
