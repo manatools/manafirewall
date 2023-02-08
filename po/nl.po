@@ -6,11 +6,11 @@
 # Translators:
 # Yves Brungard, 2020
 # Geiger David <david.david@mageialinux-online.org>, 2020
-# Marja van Waes, 2021
 # Marcel Pol <marcel@timelord.nl>, 2022
 # Dennis Holierhoek <dennis.hh@hotmail.com>, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
 # dragnadh, 2022
+# Marja van Waes, 2023
 #
 #, fuzzy
 msgid ""
@@ -19,7 +19,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: dragnadh, 2022\n"
+"Last-Translator: Marja van Waes, 2023\n"
 "Language-Team: Dutch (https://www.transifex.com/MageiaLinux/teams/9361/nl/)\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -88,7 +88,7 @@ msgstr "&Opties"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Runtime naar permanent"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -685,7 +685,7 @@ msgstr "IP-sets-weergave"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
@@ -705,23 +705,23 @@ msgstr "S&luiten"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "firewalld-opties"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Standaardzone"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Loggen geweigerd"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Automatische helpertoewijzing"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Paniekmodus"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
