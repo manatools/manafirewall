@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[mageia.manafirewall]
+[o:MageiaLinux:p:mageia:r:manafirewall]
 file_filter = <lang>.po
 source_file = manafirewall.pot
 source_lang = en
