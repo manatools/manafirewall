@@ -18,6 +18,7 @@
   <name xml:lang="ja">manafirewall</name>
   <name xml:lang="hi">manafirewall</name>
   <name xml:lang="fr">manafirewall</name>
+  <name xml:lang="fi">manafirewall</name>
   <name xml:lang="et">manafirewall</name>
   <name xml:lang="es">manafirewall</name>
   <name xml:lang="eo">manafirewall</name>
@@ -38,6 +39,7 @@
   <summary xml:lang="ja">libyui UI 抽象化ライブラリを用いた firewalld のフロントエンド</summary>
   <summary xml:lang="hi">उपयोक्ता अंतरफलक सारांश लाइब्रेरी libyui प्रयुक्त कर firewalld का फ्रंट-एंड</summary>
   <summary xml:lang="fr">Interface pour firewalld utilisant la bibliothèque d'abstraction graphique libyui.</summary>
+  <summary xml:lang="fi">Käyttöliittymä firewalld:lle ja käyttää libyui UI abstraction kirjastoa</summary>
   <summary xml:lang="et">firewalld kasutajaliides libyui kasutajaliidese abstraheerimise teegi põhjal</summary>
   <summary xml:lang="es">Interfaz para firewalld que utiliza la biblioteca libyui</summary>
   <summary xml:lang="eo">Interfaco al fajroŝirmilo uzante libyui UI-abstraktan bibliotekon</summary>
@@ -60,6 +62,7 @@
     <p xml:lang="ja">manafirewall は firewalld のフロントエンドで、firewalld プロジェクトの firewall-config から発想を得たものです。</p>
     <p xml:lang="hi">firewalld परियोजना के firewall-config से प्रेरित, firewalld का फ्रंट-एंड manafirewall है।</p>
     <p xml:lang="fr">manafirewall est une application pour firewalld, inspirée de firewall-config du projet firewalld.</p>
+    <p xml:lang="fi">manafirewall on käyttöliittymä firewalld:lle, joka on saanut inspiraationsa firewall-config projektista.</p>
     <p xml:lang="et">manafirewall on firewalld kasutajaliides, mis on võtnud eeskuju firewalld projekti komponendist firewall-config.</p>
     <p xml:lang="es">manafirewall es una interfaz para firewalld inspirada por firewall-config del provecto firewalld</p>
     <p xml:lang="eo">manafirewall estas firewalld fasado, inspirita de firewall-config de firewalld-projekto.</p>
@@ -83,6 +86,7 @@
     <p xml:lang="ja">manafirewall は Python 3 で書かれ、Qt 5, GTK+ 3, ncurses インターフェースを用いて動作できるように、SUSE によって書かれた libYui ウィジェット抽象化ライブラリを使用しています。これはどのような種類のシステム環境でも使用可能な firewalld dbus ファイアウォール マネージャに対するフロントエンドを提供します。</p>
     <p xml:lang="hi">manafirewall पाइथन 3 में लिखित है व SUSE द्वारा रचित libYUI, विजेट सारांश लाइब्रेरी प्रयुक्त करने के कारणवश इसे क्यूटी 5, जीटीके+ 3 या ncurses अंतरफलकों में कार्यरत करना संभव है। यह firewalld dbus फ़ायरवॉल प्रबंधक हेतु फ्रंट-एंड प्रदान करता है जिसे किसी भी प्रकार के सिस्टम वातावरण में उपयोग कर सकते हैं।</p>
     <p xml:lang="fr">manafirewall est écrit en Python 3 et utilise libYui, une bibliothèque d'abstraction d'objet graphique écrite par SUSE, qui permet une interface en utilisant Qt 5, GTK+3 ou ncurses. Cette interface graphique au Gestionnaire de pare-feu firewalld via dbus peut être utilisée dans tout type d'environnement système.</p>
+    <p xml:lang="fi">manafirewall on tehty Python 3:lla ja käyttää libYui joka on SUSE widget abstraction kirjastoa ja sitä voidaan käyttää Qt5, GTK+3 tai ncurses liitännöillä. Se tarjoaa firewalld dbus palomuurin käyttöliittymän, jota voidaan käyttää missä tahansa ympäristössä.</p>
     <p xml:lang="et">manafirewall on kirjutatud Python 3 keeles ja see kasutab SUSE loodud vidinate abstraheerimise teeki libYui, mis tähendab, et see võib töötada Qt 5, GTK+ 3 või ncurses'i liidesega. See tekitab firewalld dbus'i tulemüürihalduri kasutajaliidese, mida on võimalik tarvitada kõikvõimalikes töökeskkondades.</p>
     <p xml:lang="es">manafirewall esta escrita en Python 3 y utiliza libYui, la biblioteca de abstracción de widget escrita por SUSE, con la que se pueden crear interfaces Qt 5, GTK+ 3, o ncurses. Proporciona una interfaz para el gestor de cortafuegos firewalld mediante dbus, puede ser utilizada en cualquier tipo de entorno de sistemas.</p>
     <p xml:lang="eo">manafirewall estas skribita en Python 3 kaj uzas libYui, la widget-abstraktadbibliotekon skribitan de SUSE, tiel ke ĝi povas esti rulita uzante Qt 5, GTK+ 3, aŭ ncurses-interfacojn. Ĝi provizas fasadon por la firewalld dbus firewall-manaĝero, kiu povas esti uzata en iu ajn sistema medio.</p>
