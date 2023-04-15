@@ -5,6 +5,7 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2020
+# Kimmo Kujansuu <mrkujansuu@gmail.com>, 2023
 #
 #, fuzzy
 msgid ""
@@ -13,8 +14,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
-"Language-Team: Finnish (https://www.transifex.com/MageiaLinux/teams/9361/"
+"Last-Translator: Kimmo Kujansuu <mrkujansuu@gmail.com>, 2023\n"
+"Language-Team: Finnish (https://app.transifex.com/MageiaLinux/teams/9361/"
 "fi/)\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
@@ -24,39 +25,41 @@ msgstr ""
 
 #: manafirewall/dialog.py:101
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - firewalld konfiguraattori"
 
 #: manafirewall/dialog.py:102
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - ManaTools firewalld konfiguraattori"
 
 #: manafirewall/dialog.py:105
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "Yhteys palomuuriin muodostettu."
 
 #: manafirewall/dialog.py:107
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "Muodostetaan yhteyttä palomuuriin, odottaa..."
 
 #: manafirewall/dialog.py:109
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"Yhteyden palomuuriin epäonnistui. Varmista, että palvelu on käynnistetty ja "
+"yritä uudelleen."
 
 #: manafirewall/dialog.py:111
 msgid "Changes applied."
-msgstr ""
+msgstr "Tehdyt muutokset"
 
 #: manafirewall/dialog.py:112
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "Verkkoyhteyden \"%s\" käytössä"
 
 #: manafirewall/dialog.py:113
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr ""
+msgstr "Verkkoyhteyden \"%s\" käyttämä oletusvyöhyke"
 
 #: manafirewall/dialog.py:115
 msgid "enabled"
@@ -68,77 +71,77 @@ msgstr "ei käytössä"
 
 #: manafirewall/dialog.py:216 manafirewall/dialog.py:261
 msgid "&File"
-msgstr ""
+msgstr "&Tiedosto"
 
 #: manafirewall/dialog.py:219 manafirewall/dialog.py:262
 #: manafirewall/dialog.py:432
 msgid "&Quit"
-msgstr ""
+msgstr "&Lopeta"
 
 #: manafirewall/dialog.py:227 manafirewall/dialog.py:267
 msgid "&Options"
-msgstr ""
+msgstr "&Asetukset"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Kesto pysyväksi"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "&Lataa palomuuri uudelleen"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Asetukset"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
-msgstr ""
+msgstr "&Ohje"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Ohjekirja"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
 msgid "&About"
-msgstr ""
+msgstr "&Tietoja"
 
 #: manafirewall/dialog.py:294
 msgid "Active bindings"
-msgstr ""
+msgstr "Aktiiviset sidokset"
 
 #: manafirewall/dialog.py:296
 msgid "&Change binding"
-msgstr ""
+msgstr "&Muuta sidontaa"
 
 #: manafirewall/dialog.py:299 manafirewall/dialog.py:2224
 msgid "Edit zones"
-msgstr ""
+msgstr "Muokkaa vyöhykkeitä"
 
 #: manafirewall/dialog.py:303
 msgid "&Add"
-msgstr ""
+msgstr "&Lisää"
 
 #: manafirewall/dialog.py:305 manafirewall/dialog.py:501
 msgid "&Edit"
-msgstr ""
+msgstr "&Muokkaa"
 
 #: manafirewall/dialog.py:307 manafirewall/dialog.py:502
 msgid "&Remove"
-msgstr ""
+msgstr "&Poista"
 
 #: manafirewall/dialog.py:309
 msgid "&Load default"
-msgstr ""
+msgstr "&Palauta oletukset"
 
 #: manafirewall/dialog.py:320 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "Kesto"
 
 #: manafirewall/dialog.py:321 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "Pysyvä"
 
 #: manafirewall/dialog.py:325 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -146,7 +149,7 @@ msgstr "Asetukset"
 
 #: manafirewall/dialog.py:345
 msgid "Zones"
-msgstr ""
+msgstr "Vyöhykkeet"
 
 #: manafirewall/dialog.py:346 manafirewall/dialog.py:380
 msgid "Services"
@@ -154,7 +157,7 @@ msgstr "Palvelut"
 
 #: manafirewall/dialog.py:347
 msgid "IP Sets"
-msgstr ""
+msgstr "IP:t"
 
 #: manafirewall/dialog.py:350 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -163,51 +166,51 @@ msgstr "Näytä"
 
 #: manafirewall/dialog.py:381 manafirewall/dialog.py:393
 msgid "Ports"
-msgstr ""
+msgstr "Portit"
 
 #: manafirewall/dialog.py:382 manafirewall/dialog.py:394
 msgid "Protocols"
-msgstr ""
+msgstr "Protokollat"
 
 #: manafirewall/dialog.py:383 manafirewall/dialog.py:395
 msgid "Source Ports"
-msgstr ""
+msgstr "Lähdeportit"
 
 #: manafirewall/dialog.py:384
 msgid "Masquerading"
-msgstr ""
+msgstr "Naamiointi"
 
 #: manafirewall/dialog.py:385 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "Portin ohjaus"
 
 #: manafirewall/dialog.py:386 manafirewall/dialog.py:535
 msgid "ICMP Filter"
-msgstr ""
+msgstr "ICMP suodatin"
 
 #: manafirewall/dialog.py:387
 msgid "Rich Rules"
-msgstr ""
+msgstr " Aktiivisäännöt"
 
 #: manafirewall/dialog.py:388
 msgid "Interfaces"
-msgstr ""
+msgstr "Liitännät"
 
 #: manafirewall/dialog.py:389
 msgid "Sources"
-msgstr ""
+msgstr "Lähteet"
 
 #: manafirewall/dialog.py:396
 msgid "Modules"
-msgstr ""
+msgstr "Moduulit"
 
 #: manafirewall/dialog.py:397
 msgid "Destinations"
-msgstr ""
+msgstr "Kohteet"
 
 #: manafirewall/dialog.py:401
 msgid "Entries"
-msgstr ""
+msgstr "Kirjaukset"
 
 #: manafirewall/dialog.py:403
 msgid "Configure"
@@ -216,38 +219,38 @@ msgstr "Asetukset"
 #: manafirewall/dialog.py:421 manafirewall/dialog.py:2375
 #: manafirewall/dialog.py:2395 manafirewall/dialog.py:2411
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "Oletusalue: {}"
 
 #: manafirewall/dialog.py:422
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "Loki estetty: {}"
 
 #: manafirewall/dialog.py:423 manafirewall/dialog.py:2386
 #: manafirewall/dialog.py:2399 manafirewall/dialog.py:2407
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "Paniikkitila: {}"
 
 #: manafirewall/dialog.py:424 manafirewall/dialog.py:2379
 #: manafirewall/dialog.py:2397
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "Autom. avustajat: {}"
 
 #: manafirewall/dialog.py:425 manafirewall/dialog.py:2383
 #: manafirewall/dialog.py:2398 manafirewall/dialog.py:2403
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "Lukitus: {}"
 
 #: manafirewall/dialog.py:500
 msgid "A&dd"
-msgstr ""
+msgstr "&Lisää"
 
 #: manafirewall/dialog.py:543
 msgid "Selected are accepted"
-msgstr ""
+msgstr "Valitut hyväksytään"
 
 #: manafirewall/dialog.py:609
 msgid "Masquerade zone"
-msgstr ""
+msgstr "Naamioitu vyöhyke"
 
 #: manafirewall/dialog.py:641 manafirewall/dialog.py:703
 #: manafirewall/dialog.py:836 manafirewall/forwardDialog.py:46
@@ -266,37 +269,39 @@ msgstr "Palvelu"
 
 #: manafirewall/dialog.py:836
 msgid "To Address"
-msgstr ""
+msgstr "Osoitteeseen"
 
 #: manafirewall/dialog.py:836
 msgid "To Port"
-msgstr ""
+msgstr "Porttiin"
 
 #: manafirewall/dialog.py:1241 manafirewall/dialog.py:1255
 msgid "Information needed"
-msgstr ""
+msgstr "Tietoja tarvitaan"
 
 #: manafirewall/dialog.py:1242 manafirewall/dialog.py:1256
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
+"Välittäminen toiseen järjestelmään on hyödyllistä vain, jos liittymä on "
+"naamioitu. <br>Haluatko naamioida tämän vyöhykkeen?"
 
 #: manafirewall/dialog.py:1896
 msgid "Credits {}"
-msgstr ""
+msgstr "Saldo {}"
 
 #: manafirewall/dialog.py:1899
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{}  on graafinen konfigurointityökalu firewalld palomuurille."
 
 #: manafirewall/dialog.py:2234
 msgid "Edit services"
-msgstr ""
+msgstr "Muokkaa palveluita"
 
 #: manafirewall/dialog.py:2244
 msgid "Edit ipsets"
-msgstr ""
+msgstr "Muokkaa IP:t"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -305,11 +310,11 @@ msgstr "Lähde"
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "Portti / Porttialue"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "Kohde"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -319,46 +324,46 @@ msgstr "IP-osoite"
 #: manafirewall/protocolDialog.py:80 manafirewall/serviceBaseDialog.py:64
 #: manafirewall/zoneBaseDialog.py:99
 msgid "&Cancel"
-msgstr ""
+msgstr "&Peruuta"
 
 #: manafirewall/forwardDialog.py:86 manafirewall/portDialog.py:69
 #: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:67
 #: manafirewall/zoneBaseDialog.py:102
 msgid "&Ok"
-msgstr ""
+msgstr "&OK"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "Lähdeportti on pakollinen"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "Käytä portin numeroa tai aluetta (10000 tai 12000-12002)"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "Annettu IP-osoite ei kelpaa."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "Väärä IP-osoite"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "Väärä kohdeportin alue"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "Väärä portti annettu"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
-msgstr ""
+msgstr "<b>paikallisen välityksen</b><br> portti ja kohdeportti on oltava eri"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "Puuttuvat tiedot"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -367,22 +372,27 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"Kelvolliset määritykset ovat:<br>        <b>Paikallinen välitys</b> "
+"suodatusportti ja kohde portti, Huomaa, että porttien on oltava "
+"erilaisia<br>         <b>välittäminen osoitteeseen</b> suodatusportti ja "
+"kohteen osoite<br>         <b>välittäminen ulkoiseen porttiin</b> "
+"suodatusportti, kohteen osoite ja kohteen portti"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr ""
+msgstr "Vyöhykket näkymä"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr ""
+msgstr "Palvelut näkymä"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr ""
+msgstr "IP:t näkymä"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Siirry alkuun"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -390,6 +400,9 @@ msgid ""
 "If you want to have changes also in the runtime environment, then either add "
 "the changes there also or reload firewalld."
 msgstr ""
+"Pysyvä tila sallii sellaisten asioiden määrittämisen, jotka eivät ole heti "
+"aktiivisia. Jos haluat tehdä muutoksia myös ajonaikaiseen ympäristöön, lisää "
+"muutokset ja lataa palomuuri uudelleen."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -397,6 +410,10 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
+"Ajonaikainen tila sallii asioiden määrityksen ajon aikana. Huomaa ajon "
+"aikana muuttuneet asetukset eivät näy seuraavan käynnistyksen tai palomuurin "
+"uudelleenlatauksen yhteydessä. Jos haluat pitää määritykset, sinun on "
+"lisättävä nämä muutokset myös pysyvään tilaan."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -405,6 +422,10 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"Vyöhyke on joukko palveluita, joita voidaan soveltaa sidokseen. Joukko "
+"vyöhykkeitä on ennalta määritetty eri tasoille. Jos valitset \"Pysyvä\" "
+"konfiguraatio, voit myös lisätä, muokata tai poistaa oman vyöhykkeen ja "
+"määrittää, mitkä palvelut sallitaan vyöhykkeelläsi."
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -413,18 +434,26 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Vyöhykkeet alue, saatavilla olevat kentät ovat nimi, versio, lyhyt tai "
+"kuvaavampi nimi ja kuvaus. Valintaruudun avulla voidaan aktivoida "
+"oletuskohde tai valita oletuskäyttäytyminen paketeille, jotka eivät vastaa "
+"mitään sääntöä. Kohteet ovat PUDOTA, HYLKÄÄ tai HYVÄKSY."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
+"Ennalta määritetyt vyöhykkeet ovat: block - dmz - drop - external - home - "
+"internal - public - trusted - work"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
+"Kun olet valinnut \"Vyöhykkeet\" näkymästä ja yhden niin voit määrittää "
+"kyseisen vyöhykkeen. Jokaiselle vyöhykkeelle on joitain parametreja:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -436,6 +465,12 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>Palvelut</b>: Kun valitset \"Määritä\" niin saat listan "
+"palveluista, jotka on määritetty valmiiksi. Vyöhykkeen mukaan osa "
+"palveluista on jo valittuna. Jos valitsemalla jonkin palvelun valinnan, "
+"kyseiset säännöt sallivat kyseisen palvelun rajapinnoilla, joilla on "
+"vyöhyke. Pysyvän tilan konfiguraatio rekisteröidään suoraan, mutta sitä ei "
+"käytetä heti. Sitä käytetään palomuurin uudelleenlatauksen jälkeen.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -445,6 +480,11 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>Portit</b>: Konfiguroinnin avulla voit määrittää säännön \"Lisää\" "
+"painikkeella. Anna portin numero tai alue ja protokolla, joka on valitavissa "
+"listasta tcp, udp, sctp ja dccp. Valmiiksi näkyvät jo määritettyjä sääntöjä. "
+"Alue annetaan yhdysviivalla kahden luvun välissä, esimerkiksi 80-88. "
+"Vaikutus on, että nämä portit ovat auki.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -452,6 +492,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protokollat</b>: Voit lisätä protokollan tuettujen protokollien "
+"joukkoon palomuurin avulla tai lisätä tietyn protokollan, jolle voit antaa "
+"nimen (täydentää palomuuria).</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -460,6 +503,10 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Lähdeportit</b>: Konfiguroinnin avulla voit määrittää säännön \"Lisää"
+"\" painikkeella. Anna on portin numero tai alue ja protokolla, joka on "
+"valittavissa listasta tcp, udp, sctp ja dccp. Valmiiksi näkyvät jo "
+"määritellyt säännöt (täydentää palomuuria).</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -467,6 +514,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Naamiointi</b>: tämä mahdollistaa \"Naamioidun vyöhykkeen\" (valinnan "
+"tai poistamisen). Tätä vyöhykettä käytetään piilottamaan todellinen IP:n "
+"(vain IPv4)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -478,22 +528,29 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Portin ohjaus</b>: Ohjaaminen on verkon osoitteiden muuntamista "
+"(NAT), joka ohjaa uudelleen viestipyynnön osoitteen ja porttinumeron "
+"yhdistelmästä toiseen, kun paketit kulkevat palomuurin läpi IPv4-"
+"tekniikassa. Säännön lisäämisessä on määritettävä saapuvien pyyntöjen portti "
+"tai porttialue ja sen protokolla (lähde). Lisäksi joko portti tai alue "
+"paikallista edelleenlähetystä varten tai kohteen osoite ja valinnaisesti "
+"portti tai alue, jos porttia muutetaan.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>ICMP suodatus</b>: ei vielä toteutettu</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Aktiivisäännöt</b>: ei vielä toteutettu</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Liitännät</b>: ei vielä toteutettu</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Lähteet</b>: ei vielä toteutettu</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -502,6 +559,10 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Palvelu on kokoelma sääntöjä, joita sovelletaan suhteessa sovellukseen. Tämä "
+"soveltaa sitä, mitä sovelluksessa tarvitaan, vain lisäämällä rasti ruutuun. "
+"Monet palvelut on jo määritelty, mutta voit lisätä omia sovelluksia, jota ei "
+"ole tarjolla valmiiksi."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -509,10 +570,12 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"Näkymässä \"Palvelut\" oleva \"Määritä\" painikkeella voit valita palvelun. "
+"Kun valitset yhden, taulukko päivittää listan porttien protokollista"
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "Jokaiselle palvelulle voit määrittää:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -520,28 +583,32 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>Portit</b>: kun valittuna, lista sisältää jo määritetyt portit. "
+"Jokainen portti on määritelty numerolla tai alueella ja protokollalla.</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Protokollat</b>: ei vielä toteutettu</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Lähdeportit</b>: ei vielä toteutettu</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Moduulit</b>: ei vielä toteutettu</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Kohde</b>: ei vielä toteutettu</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall on graafinen työkalu firewalld palomuurin tarjoamien "
+"ominaisuuksien konfigurointiin."
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -549,6 +616,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld palomuuri tarjoaa dynaamisesti hallitun palomuurin, joka tukee "
+"verkko/palomuurin \"vyöhykkeitä\" luottamuksen tason määrittämiseksi "
+"verkolle ja siihen liittyville yhteyksille, rajapinnoille tai lähteille."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -556,12 +626,16 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"Tukee IPv4, IPv6, Ethernet-siltoja ja IPSet-palomuurin asetuksia. "
+"Ajonaikaiset ja pysyvät konfigurointivaihtoehdot on erotettu toisistaan."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall on manatools komponentti ja libyui:n perustuen se voi käyttää "
+"Gtk, Qt, ncurses mallisia graafisia sekä tekstillisiä käyttöliittymiä."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -569,124 +643,129 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"Vasemmalla on yleiskuva aktiivisista sidoksista. Nämä ovat vyöhykkeitä, "
+"joihin on sidottu tai lisätty yhteys, liitäntä tai lähde. Täällä on myös "
+"mahdollista helposti muuttaa          sidosten vyöhykettä."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"Oikealla on laatikoita, joista voit tarkastella ja määrittää, kuten "
+"vyöhykkeet, palvelut jne."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Kesto"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Aseta vyöhyke"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Aseta palvelut"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "IP:t näkymä"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "palomuuri"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Asettelu"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
-msgstr ""
+msgstr "Loki"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Palauta &oletukset"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
-msgstr ""
+msgstr "&Sulje"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "palomuurin asetukset"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Oletusalue"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Loki estetty"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Automattiset avustajat"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Paniikkitila"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Lukitus"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Valitse asettelu (käynnistä uudelleen)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Lokin asetukset (käynnistä uudelleen)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Ota loki käyttöön"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Vaihda &hakemisto"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Korjaustaso"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Valitse lokille hakemisto"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Portti ja protokolla"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "Väärä portin alue"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Muu protokolla"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "Lisää kelvollinen protokolla (katso /etc/protocols)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "Protokolla on pakollinen"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "Väärä protokollan syöttö"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "Palvelujen asetukset"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -698,7 +777,7 @@ msgstr "Versio"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Lyhyt"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -706,19 +785,19 @@ msgstr "Kuvaus"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "Puuttuva arvo"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "Nimi on pakollinen"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "Vyöhykkeen asetukset"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Oletuskohde"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
@@ -726,13 +805,13 @@ msgstr "Hyväksy"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Pudota"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Hylkää"
 
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
