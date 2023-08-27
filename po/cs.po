@@ -4,10 +4,10 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Jiří Vírava <appukonrad@gmail.com>, 2020
+# Appukonrad <appukonrad@gmail.com>, 2020
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# fri, 2022
-# Luděk Janča <joelp@email.cz>, 2022
+# fri, 2023
+# Luděk Janča <joelp@email.cz>, 2023
 #
 #, fuzzy
 msgid ""
@@ -16,8 +16,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Luděk Janča <joelp@email.cz>, 2022\n"
-"Language-Team: Czech (https://www.transifex.com/MageiaLinux/teams/9361/cs/)\n"
+"Last-Translator: Luděk Janča <joelp@email.cz>, 2023\n"
+"Language-Team: Czech (https://app.transifex.com/MageiaLinux/teams/9361/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -286,6 +286,8 @@ msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
+"Přesměrování na jiný systém je užitečné pouze v případě, že je rozhraní "
+"maskované.<br>Chcete tuto zónu zamaskovat?"
 
 #: manafirewall/dialog.py:1896
 msgid "Credits {}"
@@ -359,7 +361,7 @@ msgstr "Zvolený špatný port "
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
-msgstr ""
+msgstr "Port <b>lokálního přesměrování</b><br> a do portu musí být odlišný"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
@@ -372,6 +374,11 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"Platné konfigurace jsou::<br>        <b>místní přesměrování</b> vyplňte port "
+"a do portu, nezapomeňte, že tyto porty musí být různé<br>         "
+"<b>přesměrovat na adresu</b> vyplňte port a vzdálenou adresu<br>         "
+"<b>přesmerovat na vzdálený port</b> vyplňte port, vzdálenou adresu a "
+"vzdálený port"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
@@ -395,6 +402,9 @@ msgid ""
 "If you want to have changes also in the runtime environment, then either add "
 "the changes there also or reload firewalld."
 msgstr ""
+"Trvalý režim umožňuje nastavovat věci, které nejsou zapnuty okamžitě. Pokud "
+"chcete mít změny i v běhovém prostředí, pak je buď přidejte i tam, nebo "
+"firewalld znovu nahrajete."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -402,6 +412,9 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
+"Režim běhového prostředí umožňuje nastavovat věci za běhu. Věci změněné za "
+"běhu se při dalším spuštění nebo načtení firewaldu již neobjeví, pokud to "
+"chcete, musíte tyto změny přidat i v trvalém režimu."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -410,6 +423,10 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"Zóna je sada služeb, které lze použít na vazbu. Pro různé úrovně "
+"důvěryhodnosti je předvymezena sbírka zón. Pokud vyberete nastavení "
+"\"Permanentní\", můžete také přidat, upravit nebo odstranit vlastní zónu a "
+"stanovit, které služby budou v zóně povoleny."
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -418,18 +435,26 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Pro zónu jsou dostupná tato pole: název, verze, zkrácený popisný název a "
+"popis. Zaškrtávací políčko umožňuje zapnout výchozí cíl nebo vybrat výchozí "
+"chování pro pakety, které neodpovídají žádnému pravidlu. Cíle jsou DROP, "
+"REJECT nebo ACCEPT."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
+"Předvymezené zóny jsou: block - dmz - drop - external - home - home - "
+"internal - public - trusted - work."
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
+"Po výběru \"Zóny\" pro zobrazení a jedné ze zón můžete danou zónu "
+"nastavovat. Pro každou zónu je dostupných několik parametrů:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -441,6 +466,12 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>Služby</b>: po výběru možnosti \"Nastavit\" se zobrazí seznam "
+"předvymezených služeb. Podle zóny jsou některé služby již vybrány. Pokud "
+"zaškrtnete nebo zrušíte zaškrtnutí políčka u služby, budou platit příslušná "
+"pravidla pro povolení uvedené služby na rozhraních, která mají danou zónu. V "
+"trvalém režimu je nastavení přímo zaregistrováno, ale není použito. Bude "
+"použito po opětovném nahrání firewaldu..</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -450,6 +481,11 @@ msgid ""
 "range is defined with a hyphen between two numbers, for example with 80-88. "
 "The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>Porty</b>: tato možnost nastavení umožňuje zadat pravidlo pomocí "
+"tlačítka \"Přidat\" s číslem nebo rozsahem portu a protokolem vybraným ze "
+"seznamu tcp, udp, sctp a dccp. V zobrazení seznamu se zobrazí již stanovená "
+"pravidla. Rozsah se stanovuje pomocí spojovníku mezi dvěma čísly, například "
+"pomocí 80-88. Výsledkem bude, že tyto porty budou otevřené.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -457,6 +493,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protokoly</b>: Zde můžete přidat protokol ze seznamu protokolů "
+"podporovaných firewalldem nebo přidat konkrétní protokol, který můžete "
+"pojmenovat. (pro doplnění, jaký je účinek tohoto přidání)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -465,6 +504,10 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Zdrojové porty</b>: tato možnost nastavení umožňuje zadat pravidlo "
+"pomocí tlačítka \"Přidat\" s číslem nebo rozsahem portu a protokolem "
+"vybraným ze seznamu tcp, udp, sctp a dccp. V zobrazení seznamu se zobrazí "
+"již stanovená pravidla (pro doplnění, jaký je účinek tohoto doplnění).</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -472,6 +515,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Maskování</b>: tato možnost umožňuje zaškrtnout nebo zrušit "
+"zaškrtnutí \"Zóna maskování\". Tato zóna se tedy používá pro maskování "
+"(pouze pro IPv4). (pro doplnění, jaký je účinek tohoto doplňku)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -483,6 +529,13 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Přesměrování portu</b>: přesměrování portů je aplikace překladu "
+"síťových adres (NAT), která přesměruje komunikační požadavek z jedné "
+"kombinace adresy a čísla portu na jinou, zatímco pakety procházejí "
+"firewallem v technologii IPv4. Při přidávání pravidla je třeba zadat port "
+"nebo rozsah portů příchozích požadavků a jejich protokol (zdroj) a buď port "
+"nebo rozsah pro cíl pro místní přesměrování, nebo adresu cíle a volitelně "
+"port nebo rozsah, pokud se port mění.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -507,6 +560,10 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Služba je soubor pravidel, která jsou společně použita ve vztahu k aplikaci. "
+"Toto pojetí pomáhá použít to, co je pro aplikaci potřeba, pouhým zaškrtnutím "
+"políčka. Mnoho služeb je již stanoveno, ale můžete přidat vlastní pro "
+"aplikaci, která není dostupná."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -514,6 +571,9 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"V zobrazení \"Služby\" lze pomocí tlačítka \"Nastavit\" vedle rozbalovacího "
+"seznamu vybrat službu. Výběrem jedné z nich se aktualizuje tabulka se "
+"seznamem dvojic Port-Protokol."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -525,6 +585,9 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>Porty</b>: když je vybrán, zobrazení seznamu obsahuje již "
+"stanovené porty. Každý port je stanoven číslem nebo rozsahem a protokolem.</"
+"li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
@@ -556,6 +619,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld poskytuje dynamicky spravovaný firewall s podporou \"zón\" sítě/"
+"firewallu pro přiřazení úrovně důvěryhodnosti síti a přidruženým připojením, "
+"rozhraním nebo zdrojům."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -563,12 +629,17 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"Má podporu pro IPv4, IPv6, ethernetové mosty a také pro nastavení brány "
+"firewall IPSet. Existuje oddělení voleb pro běhové a trvalé nastavení."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall je součástí manatools a je založen na libyui, takže může "
+"pracovat s Gtk, Qt nebo ncurses, tj. s grafickým nebo textovým uživatelským "
+"rozhraním."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -576,12 +647,17 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"Vlevo je přehled aktivních vazeb. Jedná se o zóny, které mají navázané nebo "
+"přidané spojení, rozhraní nebo zdroj. Zde je možné snadno změnit zónu těchto "
+"vazeb."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"Vpravo se nacházejí rozbalovací seznamy pro výběr toho, co se má hledat nebo "
+"nastavovat, například zóny, služby atd."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
