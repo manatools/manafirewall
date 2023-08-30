@@ -7,8 +7,8 @@
 # Валентин Сайков <saikov.vb@gmail.com>, 2020
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
 # algri14 <aliger14@mail.ru>, 2022
-# Victor, 2022
 # AlexL <loginov.alex.valer@gmail.com>, 2023
+# Victor, 2023
 #
 #, fuzzy
 msgid ""
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: AlexL <loginov.alex.valer@gmail.com>, 2023\n"
+"Last-Translator: Victor, 2023\n"
 "Language-Team: Russian (https://app.transifex.com/MageiaLinux/teams/9361/"
 "ru/)\n"
 "Language: ru\n"
@@ -638,8 +638,8 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
-"Предусмотрена поддержка мостов IPv4, IPv6, Ethernet и параметров защитных "
-"экранов IPSet. Динамические и постоянные параметры настроек разделены."
+"Предусмотрена поддержка мостов IPv4, IPv6, Ethernet и настройки брандмауэра "
+"IPSet. Динамические и постоянные параметры разделены."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
