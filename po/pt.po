@@ -6,7 +6,6 @@
 # Translators:
 # Filip Komar <filip.komar@guest.arnes.si>, 2020
 # 425fe09b3064b9f906f637fff94056ae_a00ea56 <0fa3588fa89906bfcb3a354600956e0e_308047>, 2020
-# Manuela Silva <mmsrs@sky.com>, 2022
 # Sérgio Marques <smarquespt@gmail.com>, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
 # lrampazzo <lrampazzo@gmail.com>, 2022
@@ -15,6 +14,7 @@
 # 0ff1bb82b239377c0e501bd7ef909ffe_5dd6a88 <b540bc7f8bba02a4e77b4237091f7f15_537816>, 2022
 # Michael Martins <michaelfm21@gmail.com>, 2022
 # Gilberto F. da Silva, 2022
+# Manuela Silva <mmsrs@sky.com>, 2023
 #
 #, fuzzy
 msgid ""
@@ -23,8 +23,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-01-16 12:46+0100\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Gilberto F. da Silva, 2022\n"
-"Language-Team: Portuguese (https://www.transifex.com/MageiaLinux/teams/9361/"
+"Last-Translator: Manuela Silva <mmsrs@sky.com>, 2023\n"
+"Language-Team: Portuguese (https://app.transifex.com/MageiaLinux/teams/9361/"
 "pt/)\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -545,11 +545,11 @@ msgstr ""
 "<li><b>Encaminhamento de porta</b>: o encaminhamento de porta é uma "
 "aplicação de tradução de endereço de rede (NAT) que redireciona uma "
 "solicitação de comunicação de uma combinação de endereço e número de porta "
-"para outra enquanto os pacotes estão atravessando o firewall na tecnologia "
-"IPv4. Adicionar uma regra precisa especificar uma porta ou intervalo de "
-"portas de solicitações de entrada e seu protocolo (origem) e uma porta ou "
-"intervalo para o destino para encaminhamento local ou endereço do destino e, "
-"opcionalmente, porta ou intervalo se a porta for alterada.</li>"
+"para outra enquanto os pacotes estão atravessando a ''firewall'' na "
+"tecnologia IPv4. Adicionar uma regra precisa especificar uma porta ou "
+"intervalo de portas de solicitações de entrada e seu protocolo (origem) e "
+"uma porta ou intervalo para o destino para encaminhamento local ou endereço "
+"do destino e, opcionalmente, porta ou intervalo se a porta for alterada.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
