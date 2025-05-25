@@ -30,6 +30,7 @@
   <summary xml:lang="zh_CN">使用 libyui UI 抽象库的 firewalld 前端</summary>
   <summary xml:lang="uk">Оболонка до firewalld, створена з використання бібліотеки абстрагування від інтерфейсу користувача libyui</summary>
   <summary xml:lang="tr">libyui UI soyutlama kitaplığını kullanan, firewalld için bir arayüz</summary>
+  <summary xml:lang="sv">Ett frontend till firewalld som använder libyui, ett bibliotek för abstraktion av användargränssnitt.</summary>
   <summary xml:lang="sr">Сучеље за firewalld коришћењем libyui UI библиотеке за абстракцију</summary>
   <summary xml:lang="sq">Një frontend të firewalld duke përdorur libyui UI biblioteka e abstraksioneve</summary>
   <summary xml:lang="sl">Začelje za firewalld uporablja knjižnico libyui za upodabljanje uporabniškega vmesnika</summary>
@@ -53,6 +54,7 @@
     <p xml:lang="zh_CN">manafirewall 是一个 firewalld 前端，灵感来自 firewalld 项目的 firewall-config。</p>
     <p xml:lang="uk">manafirewall — графічна оболонка до firewalld, ідею якої запозичено з firewall-config з проєкту firewalld.</p>
     <p xml:lang="tr">manafirewall, firewalld projesi firewall-config'den ilham alan bir firewalld arayüzüdür.</p>
+    <p xml:lang="sv">manafirewall är ett användargränssnitt för firewalld, inspirerat av firewall-config från firewalld-projektet.</p>
     <p xml:lang="sr">manafirewall је сучеље за firewalld, инспирисано firewall-config-опм за firewalld пројекат.</p>
     <p xml:lang="sq">manafirewall ështl njl firewalld frontend, frymëzuar nga firewall-config nga projekti firewalld.</p>
     <p xml:lang="sl">manafirewall je začelje za firewalld, z navdihom iz firewall-config iz projekta firewalld.</p>
@@ -77,6 +79,7 @@
     <p xml:lang="zh_CN">manafirewall 是用 Python 3 编写的，并使用 SUSE 编写的小部件抽象库 libYui，因此它可以使用 Qt 5、GTK+ 3 或 ncurses 接口运行。 它为 firewalld dbus 防火墙管理器提供了一个前端，可以在任何类型的系统环境中使用。 </p>
     <p xml:lang="uk">manafirewall написано мовою програмування Python 3, для чого використано libYui, бібліотеку абстрагування від віджетів, написану SUSE. Таким чином, програма може працювати з використанням інтерфейсів Qt 5, GTK+ 3 або ncurses. Вона забезпечує роботу оболонки програми для керування брандмауером за допомогою D-Bus, firewalld,, якою можна скористатися у будь-якому типі системного середовища.</p>
     <p xml:lang="tr">manafirewall Python 3'te yazılmıştır ve SUSE tarafından yazılan parçacık soyutlama kitaplığı olan libYui'yi kullanır, böylece Qt 5, GTK + 3 veya ncurses arabirimleri kullanılarak çalıştırılabilir. Her türlü sistem ortamında kullanılabilen firewalld dbus firewall yöneticisi için bir ön uç sağlar.</p>
+    <p xml:lang="sv">manafirewall är skrivet i Python 3 och använder libYui, ett widget-abstraktionsbibliotek utvecklat av SUSE, vilket gör att det kan köras med Qt 5-, GTK+ 3- eller ncurses-gränssnitt. Det tillhandahåller ett frontend för firewalld's dbus-baserade brandväggshanterare som kan användas i alla typer av systemmiljöer.</p>
     <p xml:lang="sr">manafirewall је написан у Python 3 програмском језику коришћењем libYui, библиотеком за одвајање додатака коју је написао SUSE, тако да може да се покрене коришћењем Qt 5, GTK+ 3, или ncurses интерфејса. Омогућава сучеље за firewalld dbus менаџер заштитног зида које се може користити у било ком системском окружењу.</p>
     <p xml:lang="sq">manafirewall është shkruar në Python 3 dhe përdor libYui, biblioteka e abstraksionit të widgeteve e shkruar nga SUSE, në mënyrë që të mund të ekzekutohet duke përdorur Qt 5, GTK+ 3, ose ndërfaqen ncurses. Siguron një frontend për menaxherin e firewallld dbus firewalld që mund të përdoret në çdo lloj mjedisi të sistemit.</p>
     <p xml:lang="sl">manafirewall je napisa v jeziku Python 3 in uporablja libYui, gradnik za upodabljanje uporabniškega vmesnika, ki ga je napisal SUSE. Zato lahko teče v vmesnikih Qt 5, GTK+ 3 ali ncurses. Ponuja začelje za upravljalnik požarnega zidu firewalld dbus, ki ga je možno uporabiti v raznovrstnih sistemskih okoljih.</p>
