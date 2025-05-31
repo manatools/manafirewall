@@ -92,7 +92,7 @@ msgstr "&Opções"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr "Tempo de execução para permanente"
+msgstr "Tempo de execução permanente"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
@@ -254,7 +254,7 @@ msgstr "A&dicionar"
 
 #: manafirewall/dialog.py:543
 msgid "Selected are accepted"
-msgstr "Os selecionados são aceitos"
+msgstr "Selecionados são aceitos"
 
 #: manafirewall/dialog.py:609
 msgid "Masquerade zone"
@@ -293,7 +293,7 @@ msgid ""
 "<br>Do you want to masquerade this zone?"
 msgstr ""
 "O encaminhamento para outro sistema só é útil se a interface estiver "
-"mascarada. <br>Deseja mascarar esta zona?"
+"mascarada. <br>Quer mascarar esta zona?"
 
 #: manafirewall/dialog.py:1896
 msgid "Credits {}"
@@ -359,7 +359,7 @@ msgstr "Endereço de IP errado"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr "Faixa porta de destino incorreta"
+msgstr "Faixa to_port incorreta"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
@@ -367,13 +367,11 @@ msgstr "Porta errada fornecida"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
-msgstr ""
-"A <b>porta de encaminhamento local</b><br> e porta_de_destino devem ser "
-"diferentes"
+msgstr "<b>local forwarding</b><br>e to_port devem ser diferentes"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr "Dados ausentes"
+msgstr "Dados não encontrados"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -382,11 +380,10 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
-"Configurações válidas para regras de encaminhamento:<br>        "
-"<b>encaminhamento local</b> especifique porta e porta de destino (devem ser "
-"diferentes)<br>         <b>encaminhar para endereço</b> especifique porta e "
-"endereço de destino<br>         <b>encaminhara para um porta remota</b> "
-"especifique porta, endereço de destino e porta de destino"
+"As configurações válidas são:<br>        <b>local forwarding</b> fill port e "
+"to_port. Observe que estas portam devem ser diferentes<br>         "
+"<b>forward to address</b> fill port e to_address<br>         <b>forward to a "
+"remote port</b> fill port, to_address e to_port"
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
@@ -398,7 +395,7 @@ msgstr "Visão por serviços"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr "Visão de conjuntos de IP"
+msgstr "Visão por conjuntos de IP"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
@@ -412,7 +409,7 @@ msgid ""
 msgstr ""
 "O modo permanente permite configurar coisas que não ficam ativas "
 "imediatamente. Se quiser que as mudanças também estejam no ambiente de "
-"execução, adicione as alterações lá ou recarregue o firewalld."
+"execução, adicione essas alterações ou recarregue o firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -420,10 +417,10 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
-"O modo de execução permite configurar coisas em tempo de execução. As "
-"alterações feitas em tempo de execução não estarão presentes na próxima "
-"inicialização ou recarregamento do firewalld. Se quiser que essas mudanças "
-"permaneçam, também será necessário adicioná-las no modo permanente. "
+"O modo tempo de execução permite configurar em tempo de execução. As "
+"alterações feitas nesse modo não estarão presentes na próxima inicialização "
+"ou recarregamento do firewalld. Se quiser que essas mudanças permaneçam, "
+"também será necessário adicioná-las no modo permanente. "
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -482,7 +479,7 @@ msgstr ""
 "em relação a um serviço, as regras correspondentes serão aplicadas para "
 "permitir o serviço em interfaces que tenham a zona. No modo permanente, a "
 "configuração é registrada diretamente, mas não aplicada. Ela será aplicada "
-"após uma recarga do firewalld.</li>"
+"após o firewalld ser atualizado.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -588,8 +585,8 @@ msgid ""
 "Port-Protocol "
 msgstr ""
 "Na visão \"Serviços\", o botão \"Configurar\" ao lado da caixa de seleção "
-"permite escolher um serviço. Selecionar um atualiza a tabela com uma lista "
-"de pares porta-protocolo "
+"permite escolher um serviço. Ao selecionar um, a tabela com uma lista de "
+"pares porta-protocolo é a atualizada "
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -601,9 +598,9 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
-"<ul><li><b>Portas</b>: quando selecionada, a visualização de lista contém as "
-"portas já definidas. Cada porta é definida por um número ou um intervalo, e "
-"um protocolo.</li>"
+"<ul><li><b>Portas</b>: quando selecionada, a lista contém as portas já "
+"definidas. Cada porta é definida por um número ou um intervalo, e um "
+"protocolo.</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
@@ -645,7 +642,7 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
-"Ele oferece suporte para IPv4, IPv6, pontes ethernet e também para "
+"Ele oferece suporte para IPv4, IPv6, bridges ethernet e também para "
 "configurações de firewall IPSet. Há uma separação entre as opções de "
 "configuração temporária e permanente."
 
@@ -690,7 +687,7 @@ msgstr "Configurar serviços"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr "Visão de conjuntos de IP"
+msgstr "Visão por conjuntos de IP"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
@@ -714,7 +711,7 @@ msgstr "&Fechar"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr "opções do firewall"
+msgstr "opções do firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
@@ -806,7 +803,7 @@ msgstr "Descrição"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr "Valor ausente"
+msgstr "Valor não encontrado"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
