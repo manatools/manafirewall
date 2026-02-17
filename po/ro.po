@@ -5,6 +5,7 @@
 #
 # Translators:
 # Florin Cătălin RUSSEN <cfrussen@yahoo.co.uk>, 2022
+# Aurelian R, 2026
 #
 #, fuzzy
 msgid ""
@@ -13,7 +14,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-05-25 08:45+0300\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Florin Cătălin RUSSEN <cfrussen@yahoo.co.uk>, 2022\n"
+"Last-Translator: Aurelian R, 2026\n"
 "Language-Team: Romanian (https://app.transifex.com/MageiaLinux/teams/9361/"
 "ro/)\n"
 "Language: ro\n"
@@ -25,39 +26,41 @@ msgstr ""
 
 #: manafirewall/dialog.py:101
 msgid "Manatools - firewalld configurator"
-msgstr ""
+msgstr "Manatools - configurator firewalld"
 
 #: manafirewall/dialog.py:102
 msgid "{} - ManaTools firewalld configurator"
-msgstr ""
+msgstr "{} - Configuratorul firewalld din ManaTools"
 
 #: manafirewall/dialog.py:105
 msgid "Connection to firewalld established."
-msgstr ""
+msgstr "Conexiune la firewalld stabilită."
 
 #: manafirewall/dialog.py:107
 msgid "Trying to connect to firewalld, waiting..."
-msgstr ""
+msgstr "Se încearcă conectarea la firewalld, în așteptare..."
 
 #: manafirewall/dialog.py:109
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
+"Conectarea la firewalld a eșuat. Asigurați-vă că serviciul a fost pornit "
+"corect și încercați din nou."
 
 #: manafirewall/dialog.py:111
 msgid "Changes applied."
-msgstr ""
+msgstr "Modificări aplicate."
 
 #: manafirewall/dialog.py:112
 #, python-format
 msgid "Used by network connection '%s'"
-msgstr ""
+msgstr "Utilizat de conexiunea de rețea '%s'"
 
 #: manafirewall/dialog.py:113
 #, python-format
 msgid "Default zone used by network connection '%s'"
-msgstr ""
+msgstr "Zona implicită este utilizată de conexiunea de rețea '%s'"
 
 #: manafirewall/dialog.py:115
 msgid "enabled"
@@ -82,15 +85,15 @@ msgstr "&Opțiuni"
 
 #: manafirewall/dialog.py:230
 msgid "Runtime To Permanent"
-msgstr ""
+msgstr "Timp de execuție până la permanent"
 
 #: manafirewall/dialog.py:231 manafirewall/dialog.py:268
 msgid "&Reload Firewalld"
-msgstr ""
+msgstr "&Reîncărcați firewalld"
 
 #: manafirewall/dialog.py:233
 msgid "&Settings"
-msgstr ""
+msgstr "&Setări"
 
 #: manafirewall/dialog.py:243 manafirewall/dialog.py:275
 msgid "&Help"
@@ -98,7 +101,7 @@ msgstr "&Ajutor"
 
 #: manafirewall/dialog.py:246 manafirewall/dialog.py:276
 msgid "&Manual"
-msgstr ""
+msgstr "&Manual"
 
 #: manafirewall/dialog.py:248 manafirewall/dialog.py:278
 #: manafirewall/dialog.py:430
@@ -107,19 +110,19 @@ msgstr "&Despre"
 
 #: manafirewall/dialog.py:294
 msgid "Active bindings"
-msgstr ""
+msgstr "Legături active"
 
 #: manafirewall/dialog.py:296
 msgid "&Change binding"
-msgstr ""
+msgstr "&Modificare legătură"
 
 #: manafirewall/dialog.py:299 manafirewall/dialog.py:2224
 msgid "Edit zones"
-msgstr ""
+msgstr "Editați zonele"
 
 #: manafirewall/dialog.py:303
 msgid "&Add"
-msgstr ""
+msgstr "&Adăuga"
 
 #: manafirewall/dialog.py:305 manafirewall/dialog.py:501
 msgid "&Edit"
@@ -131,15 +134,15 @@ msgstr "Înlătu&ră"
 
 #: manafirewall/dialog.py:309
 msgid "&Load default"
-msgstr ""
+msgstr "&Încărcați setările implicite"
 
 #: manafirewall/dialog.py:320 manafirewall/helpinfo.py:73
 msgid "Runtime"
-msgstr ""
+msgstr "Timp de execuție"
 
 #: manafirewall/dialog.py:321 manafirewall/helpinfo.py:73
 msgid "Permanent"
-msgstr ""
+msgstr "Permanent"
 
 #: manafirewall/dialog.py:325 manafirewall/helpinfo.py:26
 msgid "Configuration"
@@ -147,7 +150,7 @@ msgstr "Configurare"
 
 #: manafirewall/dialog.py:345
 msgid "Zones"
-msgstr ""
+msgstr "Zone"
 
 #: manafirewall/dialog.py:346 manafirewall/dialog.py:380
 msgid "Services"
@@ -155,7 +158,7 @@ msgstr "Servicii"
 
 #: manafirewall/dialog.py:347
 msgid "IP Sets"
-msgstr ""
+msgstr "Seturi IP"
 
 #: manafirewall/dialog.py:350 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:75
@@ -164,51 +167,51 @@ msgstr "Vizualizare"
 
 #: manafirewall/dialog.py:381 manafirewall/dialog.py:393
 msgid "Ports"
-msgstr ""
+msgstr "Porturi"
 
 #: manafirewall/dialog.py:382 manafirewall/dialog.py:394
 msgid "Protocols"
-msgstr ""
+msgstr "Protocoale"
 
 #: manafirewall/dialog.py:383 manafirewall/dialog.py:395
 msgid "Source Ports"
-msgstr ""
+msgstr "Porturi sursă"
 
 #: manafirewall/dialog.py:384
 msgid "Masquerading"
-msgstr ""
+msgstr "Mascare"
 
 #: manafirewall/dialog.py:385 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
-msgstr ""
+msgstr "Redirecționarea porturilor"
 
 #: manafirewall/dialog.py:386 manafirewall/dialog.py:535
 msgid "ICMP Filter"
-msgstr ""
+msgstr "Filtru ICMP"
 
 #: manafirewall/dialog.py:387
 msgid "Rich Rules"
-msgstr ""
+msgstr "Reguli Complexe"
 
 #: manafirewall/dialog.py:388
 msgid "Interfaces"
-msgstr ""
+msgstr "Interfețe"
 
 #: manafirewall/dialog.py:389
 msgid "Sources"
-msgstr ""
+msgstr "Surse"
 
 #: manafirewall/dialog.py:396
 msgid "Modules"
-msgstr ""
+msgstr "Module"
 
 #: manafirewall/dialog.py:397
 msgid "Destinations"
-msgstr ""
+msgstr "Destinații"
 
 #: manafirewall/dialog.py:401
 msgid "Entries"
-msgstr ""
+msgstr "Intrări"
 
 #: manafirewall/dialog.py:403
 msgid "Configure"
@@ -217,26 +220,26 @@ msgstr "Configurează"
 #: manafirewall/dialog.py:421 manafirewall/dialog.py:2375
 #: manafirewall/dialog.py:2395 manafirewall/dialog.py:2411
 msgid "Default Zone: {}"
-msgstr ""
+msgstr "Zonă implicită: {}"
 
 #: manafirewall/dialog.py:422
 msgid "Log Denied: {}"
-msgstr ""
+msgstr "Jurnal respins: {}"
 
 #: manafirewall/dialog.py:423 manafirewall/dialog.py:2386
 #: manafirewall/dialog.py:2399 manafirewall/dialog.py:2407
 msgid "Panic Mode: {}"
-msgstr ""
+msgstr "Mod de panică: {}"
 
 #: manafirewall/dialog.py:424 manafirewall/dialog.py:2379
 #: manafirewall/dialog.py:2397
 msgid "Automatic Helpers: {}"
-msgstr ""
+msgstr "Ajutoare automate: {}"
 
 #: manafirewall/dialog.py:425 manafirewall/dialog.py:2383
 #: manafirewall/dialog.py:2398 manafirewall/dialog.py:2403
 msgid "Lockdown: {}"
-msgstr ""
+msgstr "Carantină: {}"
 
 #: manafirewall/dialog.py:500
 msgid "A&dd"
@@ -244,11 +247,11 @@ msgstr "A&daugă"
 
 #: manafirewall/dialog.py:543
 msgid "Selected are accepted"
-msgstr ""
+msgstr "Selecțiile sunt acceptate"
 
 #: manafirewall/dialog.py:609
 msgid "Masquerade zone"
-msgstr ""
+msgstr "Zonă de mascare"
 
 #: manafirewall/dialog.py:641 manafirewall/dialog.py:703
 #: manafirewall/dialog.py:836 manafirewall/forwardDialog.py:46
@@ -267,37 +270,39 @@ msgstr "Serviciu"
 
 #: manafirewall/dialog.py:836
 msgid "To Address"
-msgstr ""
+msgstr "La Adresă"
 
 #: manafirewall/dialog.py:836
 msgid "To Port"
-msgstr ""
+msgstr "La Port"
 
 #: manafirewall/dialog.py:1241 manafirewall/dialog.py:1255
 msgid "Information needed"
-msgstr ""
+msgstr "Informații necesare"
 
 #: manafirewall/dialog.py:1242 manafirewall/dialog.py:1256
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
+"Redirecționarea către un alt sistem este utilă numai dacă interfața este "
+"mascată. <br>Doriți să mascați această zonă?"
 
 #: manafirewall/dialog.py:1896
 msgid "Credits {}"
-msgstr ""
+msgstr "Credite {}"
 
 #: manafirewall/dialog.py:1899
 msgid "{}  is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} este un instrument de configurare grafică pentru firewalld."
 
 #: manafirewall/dialog.py:2234
 msgid "Edit services"
-msgstr ""
+msgstr "Editați serviciile"
 
 #: manafirewall/dialog.py:2244
 msgid "Edit ipsets"
-msgstr ""
+msgstr "Editați seturile ipset"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -306,11 +311,11 @@ msgstr "Sursă"
 #: manafirewall/forwardDialog.py:41 manafirewall/forwardDialog.py:64
 #: manafirewall/portDialog.py:40
 msgid "Port / Port Range"
-msgstr ""
+msgstr "Port / Interval de porturi"
 
 #: manafirewall/forwardDialog.py:59
 msgid "Destination"
-msgstr ""
+msgstr "Destinație"
 
 #: manafirewall/forwardDialog.py:61
 msgid "IP address"
@@ -330,36 +335,37 @@ msgstr "&OK"
 
 #: manafirewall/forwardDialog.py:126
 msgid "Source port is mandatory"
-msgstr ""
+msgstr "Portul sursă este obligatoriu"
 
 #: manafirewall/forwardDialog.py:126 manafirewall/forwardDialog.py:139
 #: manafirewall/portDialog.py:109
 msgid "Use port number or range (10000 or 12000-12002)"
-msgstr ""
+msgstr "Folosește numărul portului sau intervalul (10000 sau 12000-12002)"
 
 #: manafirewall/forwardDialog.py:132
 msgid "The given IP address is not valid."
-msgstr ""
+msgstr "Adresa IP dată nu este validă."
 
 #: manafirewall/forwardDialog.py:132
 msgid "Wrong IP address"
-msgstr ""
+msgstr "Adresă IP greșită"
 
 #: manafirewall/forwardDialog.py:139
 msgid "Wrong to_port range"
-msgstr ""
+msgstr "Interval to_port greșit"
 
 #: manafirewall/forwardDialog.py:146
 msgid "Wrong port given"
-msgstr ""
+msgstr "Port greșit introdus"
 
 #: manafirewall/forwardDialog.py:147
 msgid "<b>local forwarding</b><br>port and to_port must be different"
 msgstr ""
+"portul de <b>redirecționare local</b><br> și to_port trebuie să fie diferite"
 
 #: manafirewall/forwardDialog.py:156
 msgid "Missing data"
-msgstr ""
+msgstr "Date lipsă"
 
 #: manafirewall/forwardDialog.py:156
 msgid ""
@@ -368,22 +374,27 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
+"Configurațiile valide sunt:<br>     <b> ​​redirecționare locală</b>, port de "
+"fill și to_port, rețineți că aceste porturi trebuie să fie diferite pentru "
+"<br><b>redirecționare către adresa</b> fill port și to_address, "
+"<br><b>redirecționare către un port la distanță</b>, fill port, to_address "
+"și to_port."
 
 #: manafirewall/helpinfo.py:28 manafirewall/helpinfo.py:77
 msgid "Zones view"
-msgstr ""
+msgstr "Vizualizare zone"
 
 #: manafirewall/helpinfo.py:29 manafirewall/helpinfo.py:79
 msgid "Services view"
-msgstr ""
+msgstr "Vizualizare servicii"
 
 #: manafirewall/helpinfo.py:30
 msgid "IP sets view"
-msgstr ""
+msgstr "Vizualizare seturi IP"
 
 #: manafirewall/helpinfo.py:31
 msgid "Go to index"
-msgstr ""
+msgstr "Mergi la index"
 
 #: manafirewall/helpinfo.py:36
 msgid ""
@@ -391,6 +402,9 @@ msgid ""
 "If you want to have changes also in the runtime environment, then either add "
 "the changes there also or reload firewalld."
 msgstr ""
+"Modul permanent permite configurarea elementelor care nu sunt active "
+"imediat. Dacă doriți să aveți modificări și în mediul de execuție, fie "
+"adăugați modificările acolo, fie reîncărcați firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -398,6 +412,10 @@ msgid ""
 "runtime will not present at next start up or reloading firewalld, if you "
 "want that you need to add those changes in permanent mode also. "
 msgstr ""
+"Modul de execuție permite configurarea elementelor în timpul execuției. "
+"Modificarile efectuate în timpul execuției nu vor fi afișate la următoarea "
+"pornire sau reîncărcare a firewalld-ului; dacă doriți acest lucru, trebuie "
+"să adăugați aceste modificări și în modul permanent."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -406,6 +424,11 @@ msgid ""
 "\"Permanent\" configuration, you can also add, edit or delete your own zone "
 "and define which services will be allowed in your zone. "
 msgstr ""
+"O zonă este un set de servicii care pot fi aplicate unei legături. O "
+"colecție de zone este predefinită pentru diferite niveluri de încredere. "
+"Dacă selectați configurația „Permanent”, puteți, de asemenea, să adăugați, "
+"să editați sau să ștergeți propria zonă și să definiți ce servicii vor fi "
+"permise în zona dvs."
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -414,18 +437,26 @@ msgid ""
 "select the default behaviour for packets that don't match any rule. Targets "
 "are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Pentru o zonă, câmpurile disponibile sunt nume, versiune, un nume prescurtat "
+"mai descriptiv și descriere. O casetă de selectare permite activarea țintei "
+"implicite sau selectarea comportamentului implicit pentru pachetele care nu "
+"corespund niciunei reguli. Țintele sunt DROP, REJECT sau ACCEPT."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - home - internal "
 "- public - trusted - work"
 msgstr ""
+"Zonele predefinite sunt: ​​bloc - dmz - renunță - extern - acasă - acasă - "
+"intern - public - de încredere - serviciu"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" for view and one of the Zones, you can configure "
 "said zone. There are some parameters for each zone:"
 msgstr ""
+"După ce selectați „Zone” pentru vizualizare și una dintre zone, puteți "
+"configura zona respectivă. Există câțiva parametri pentru fiecare zonă:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -437,6 +468,13 @@ msgid ""
 "registered directly, but not applied. It will be applied after a firewalld "
 "reload.</li>"
 msgstr ""
+"<ul><li><b>Servicii</b>: când este selectată opțiunea „Configurare”, veți "
+"vedea o listă de servicii predefinite. În funcție de zonă, unele servicii "
+"sunt deja selectate. Dacă bifați sau debifați o casetă de selectare "
+"corespunzătoare unui serviciu, se vor aplica regulile corespunzătoare pentru "
+"a permite serviciul respectiv pe interfețele care au zona respectivă. În "
+"modul permanent, configurația este înregistrată direct, dar nu este "
+"aplicată. Aceasta va fi aplicată după o reîncărcare a firewalld-ului.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -446,6 +484,12 @@ msgid ""
 "rules. A range is defined with a hyphen between two numbers, for example "
 "with 80-88. The effect will be that these ports will be open.</li>"
 msgstr ""
+"<li><b>Porturi</b>: această opțiune de configurare permite specificarea unei "
+"reguli cu butonul „Adaugă” cu un număr de port sau un interval și un "
+"protocol selectat din lista tcp, udp, sctp și dccp. Vizualizarea listă "
+"afișează regulile deja definite. Un interval este definit printr-o cratimă "
+"între două numere, de exemplu 80-88. Efectul va fi că aceste porturi vor fi "
+"deschise.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -453,6 +497,9 @@ msgid ""
 "protocols by firewalld or to add a specific one that you can name. (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protocoale</b>: Aici puteți adăuga un protocol dintr-o listă de "
+"protocoale acceptate de firewalld sau puteți adăuga unul specific pe care îl "
+"puteți numi. (pentru a completa cu efectul acestei adăugări)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -461,6 +508,11 @@ msgid ""
 "list tcp, udp, sctp and dccp. The list view displays the already defined "
 "rules.(to complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Porturi sursă</b>: această opțiune de configurare permite "
+"specificarea unei reguli cu butonul „Adaugă” cu un număr de port sau un "
+"interval și un protocol selectat din lista tcp, udp, sctp și dccp. "
+"Vizualizarea listei afișează regulile deja definite (ce vor fi completate de "
+"efectul acestei adăugări)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -468,6 +520,9 @@ msgid ""
 "zone\". Thus this zone is used for masquerading (only for IPv4). (to "
 "complete with what is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Mascare</b>: această opțiune permite bifarea sau debifarea unei „Zone "
+"de mascare”. Astfel, această zonă este utilizată pentru mascare (doar pentru "
+"IPv4). (pentru a completa cu efectul acestei adăugări)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -479,22 +534,30 @@ msgid ""
 "a port or range for the destination for local forwarding or address of the "
 "destination and optionally port or range if port is changed.</li>"
 msgstr ""
+"<li><b>Redirecționarea porturilor</b>: redirecționarea porturilor este o "
+"aplicație a traducerii adreselor de rețea (NAT) care redirecționează o "
+"cerere de comunicare de la o combinație de adresă și număr de port la alta "
+"în timp ce pachetele traversează firewall-ul în tehnologia IPv4. Adăugarea "
+"unei reguli trebuie să specifice un port sau un interval de porturi pentru "
+"cererile primite și protocolul său (sursă) și fie un port sau un interval "
+"pentru destinația pentru redirecționarea locală sau adresa destinației și, "
+"opțional, portul sau intervalul dacă portul este modificat.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Filtru ICMP</b>: încă neimplementat</li>"
 
 #: manafirewall/helpinfo.py:49
 msgid "<li><b>Rich Rules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Reguli complexe</b>: încă neimplementate</li>"
 
 #: manafirewall/helpinfo.py:50
 msgid "<li><b>Interfaces</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Interfețe</b>: încă neimplementate</li>"
 
 #: manafirewall/helpinfo.py:51
 msgid "<li><b>Sources</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Surse</b>: încă nu a fost implementat</li></ul>"
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -503,6 +566,11 @@ msgid ""
 "by just ticking a checkbox. A lot of services are already defined, but you "
 "can add your own for an application which is not provided."
 msgstr ""
+"Un serviciu este o colecție de reguli care sunt aplicate împreună în raport "
+"cu o aplicație. Acest concept ajută la aplicarea a ceea ce este necesar "
+"pentru o aplicație prin simpla bifare a unei casete de selectare. Multe "
+"servicii sunt deja definite, dar puteți adăuga propriile servicii pentru o "
+"aplicație care nu este furnizată."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -510,10 +578,13 @@ msgid ""
 "to choose a service. Selecting one updates the table with a list of couples "
 "Port-Protocol "
 msgstr ""
+"În vizualizarea „Servicii”, butonul „Configurare” de lângă caseta combinată "
+"permite alegerea unui serviciu. Selectarea unuia actualizează tabelul cu o "
+"listă de cupluri Port-Protocol."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
-msgstr ""
+msgstr "Pentru fiecare serviciu, puteți defini:"
 
 #: manafirewall/helpinfo.py:56
 msgid ""
@@ -521,28 +592,33 @@ msgid ""
 "already defined. Each port is defined by a number or a range, and a protocol."
 "</li>"
 msgstr ""
+"<ul><li><b>Porturi</b>: când este selectată, vizualizarea listei conține "
+"porturile deja definite. Fiecare port este definit printr-un număr sau un "
+"interval și un protocol.</li>"
 
 #: manafirewall/helpinfo.py:57
 msgid "<li><b>Protocols</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Protocoale</b>: încă nu au fost implementate</li>"
 
 #: manafirewall/helpinfo.py:58
 msgid "<li><b>Source Ports</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Porturi sursă</b>: încă neimplementate</li>"
 
 #: manafirewall/helpinfo.py:59
 msgid "<li><b>Modules</b>: not yet implemented</li>"
-msgstr ""
+msgstr "<li><b>Module</b>: încă neimplementate</li>"
 
 #: manafirewall/helpinfo.py:60
 msgid "<li><b>Destination</b>: not yet implemented</li></ul>"
-msgstr ""
+msgstr "<li><b>Destinație</b>: încă neimplementată</li></ul>"
 
 #: manafirewall/helpinfo.py:64
 msgid ""
 "ManaFirewall is a graphical configuration tool for firewall features "
 "provided by firewalld."
 msgstr ""
+"ManaFirewall este un instrument de configurare grafică pentru funcțiile "
+"firewall oferite de firewalld."
 
 #: manafirewall/helpinfo.py:65
 msgid ""
@@ -550,6 +626,9 @@ msgid ""
 "firewall “zones” to assign a level of trust to a network and its associated "
 "connections, interfaces or sources."
 msgstr ""
+"firewalld oferă un firewall gestionat dinamic, cu suport pentru „zone” de "
+"rețea/firewall pentru a atribui un nivel de încredere unei rețele și "
+"conexiunilor, interfețelor sau surselor asociate acesteia."
 
 #: manafirewall/helpinfo.py:66
 msgid ""
@@ -557,12 +636,18 @@ msgid ""
 "settings. There is a separation of the runtime and permanent configuration "
 "options."
 msgstr ""
+"Are suport pentru bridge-uri IPv4, IPv6, Ethernet și, de asemenea, pentru "
+"setările firewall-ului IPSet. Există o separare între opțiunile de "
+"configurare runtime și cele permanente."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
 "ManaFirewall is part of manatools and it is based on libyui so that it can "
 "work using Gtk, Qt or ncurses, i.e. graphical or textual user interfaces."
 msgstr ""
+"ManaFirewall face parte din manatools și se bazează pe libyui, astfel încât "
+"poate funcționa folosind Gtk, Qt sau ncurses, adică interfețe grafice sau "
+"textuale."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -570,36 +655,41 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the          zone of these bindings."
 msgstr ""
+"În stânga se află o prezentare generală a legăturilor active. Acestea sunt "
+"zonele la care este legată sau adăugată o conexiune, o interfață sau o "
+"sursă. Aici este posibil să modificați cu ușurință zona acestor legături."
 
 #: manafirewall/helpinfo.py:70
 msgid ""
 "On the right there are comboboxes to select what to look or configure such "
 "as zones, services etc."
 msgstr ""
+"În dreapta există casete combinate pentru a selecta ce să arate sau să "
+"configurați, cum ar fi zone, servicii etc."
 
 #: manafirewall/helpinfo.py:73
 msgid "Duration"
-msgstr ""
+msgstr "Durată"
 
 #: manafirewall/helpinfo.py:77
 msgid "Configure zone"
-msgstr ""
+msgstr "Configurați zona"
 
 #: manafirewall/helpinfo.py:79
 msgid "Configure services"
-msgstr ""
+msgstr "Configurați serviciile"
 
 #: manafirewall/helpinfo.py:81
 msgid "IP Sets view"
-msgstr ""
+msgstr "Vizualizare Seturi IP"
 
 #: manafirewall/optionDialog.py:51
 msgid "firewalld"
-msgstr ""
+msgstr "firewalld"
 
 #: manafirewall/optionDialog.py:57
 msgid "Layout"
-msgstr ""
+msgstr "Aspect"
 
 #: manafirewall/optionDialog.py:62
 msgid "Logging"
@@ -607,7 +697,7 @@ msgstr "Autentificare"
 
 #: manafirewall/optionDialog.py:73
 msgid "Restore &default"
-msgstr ""
+msgstr "Restaurare &implicită"
 
 #: manafirewall/optionDialog.py:80
 msgid "&Close"
@@ -615,79 +705,79 @@ msgstr "În&chide"
 
 #: manafirewall/optionDialog.py:135
 msgid "firewalld options"
-msgstr ""
+msgstr "opțiuni firewalld"
 
 #: manafirewall/optionDialog.py:140
 msgid "Default Zone"
-msgstr ""
+msgstr "Zonă implicită"
 
 #: manafirewall/optionDialog.py:156
 msgid "Log Denied"
-msgstr ""
+msgstr "Jurnal respins"
 
 #: manafirewall/optionDialog.py:172
 msgid "Automatic Helper Assignment"
-msgstr ""
+msgstr "Atribuire de ajutor automat"
 
 #: manafirewall/optionDialog.py:189
 msgid "Panic Mode"
-msgstr ""
+msgstr "Mod de panică"
 
 #: manafirewall/optionDialog.py:194
 msgid "Lockdown"
-msgstr ""
+msgstr "Carantină"
 
 #: manafirewall/optionDialog.py:219
 msgid "Layout options (active at next startup)"
-msgstr ""
+msgstr "Opțiuni de aspect (active la următoarea pornire)"
 
 #: manafirewall/optionDialog.py:263
 msgid "Logging options (active at next startup)"
-msgstr ""
+msgstr "Opțiuni de înregistrare în jurnal (active la următoarea pornire)"
 
 #: manafirewall/optionDialog.py:288
 msgid "Enable logging"
-msgstr ""
+msgstr "Activează înregistrarea în jurnal"
 
 #: manafirewall/optionDialog.py:297
 msgid "Change &directory"
-msgstr ""
+msgstr "Schimbați &directory"
 
 #: manafirewall/optionDialog.py:304
 msgid "Debug level"
-msgstr ""
+msgstr "Nivel de depanare"
 
 #: manafirewall/optionDialog.py:335
 msgid "Choose log destination directory"
-msgstr ""
+msgstr "Alegeți directorul de destinație al jurnalului"
 
 #: manafirewall/portDialog.py:30
 msgid "Port and Protocol"
-msgstr ""
+msgstr "Port și protocol"
 
 #: manafirewall/portDialog.py:109
 msgid "Wrong port range"
-msgstr ""
+msgstr "Interval de porturi greșit"
 
 #: manafirewall/protocolDialog.py:59
 msgid "Other Protocol"
-msgstr ""
+msgstr "Alt protocol"
 
 #: manafirewall/protocolDialog.py:133 manafirewall/protocolDialog.py:136
 msgid "Please insert a valid protocol (see /etc/protocols)"
-msgstr ""
+msgstr "Vă rugăm să introduceți un protocol valid (consultați /etc/protocols)"
 
 #: manafirewall/protocolDialog.py:133
 msgid "Protocol is mandatory"
-msgstr ""
+msgstr "Protocolul este obligatoriu"
 
 #: manafirewall/protocolDialog.py:136
 msgid "Wrong protocol entry"
-msgstr ""
+msgstr "Intrare de protocol greșită"
 
 #: manafirewall/serviceBaseDialog.py:33
 msgid "Service Settings"
-msgstr ""
+msgstr "Setări serviciu"
 
 #: manafirewall/serviceBaseDialog.py:42 manafirewall/zoneBaseDialog.py:44
 msgid "Name"
@@ -699,7 +789,7 @@ msgstr "Versiune"
 
 #: manafirewall/serviceBaseDialog.py:46 manafirewall/zoneBaseDialog.py:48
 msgid "Short"
-msgstr ""
+msgstr "Scurt"
 
 #: manafirewall/serviceBaseDialog.py:48 manafirewall/zoneBaseDialog.py:50
 msgid "Description"
@@ -707,19 +797,19 @@ msgstr "Descriere"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Missing value"
-msgstr ""
+msgstr "Valoare lipsă"
 
 #: manafirewall/serviceBaseDialog.py:117 manafirewall/zoneBaseDialog.py:165
 msgid "Name is mandatory"
-msgstr ""
+msgstr "Numele este obligatoriu"
 
 #: manafirewall/zoneBaseDialog.py:35
 msgid "Zone Settings"
-msgstr ""
+msgstr "Setări zonă"
 
 #: manafirewall/zoneBaseDialog.py:65
 msgid "Default Target"
-msgstr ""
+msgstr "Țintă implicită"
 
 #: manafirewall/zoneBaseDialog.py:69
 msgid "Accept"
@@ -727,13 +817,13 @@ msgstr "Accept"
 
 #: manafirewall/zoneBaseDialog.py:70
 msgid "Drop"
-msgstr ""
+msgstr "Renunța"
 
 #: manafirewall/zoneBaseDialog.py:71
 msgid "Reject"
-msgstr ""
+msgstr "Respinge"
 
 #: scripts/manafirewall:33
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-msgstr ""
+msgstr "%(prog)s %(NL)sversiune: %(version)s%(NL)ssit: %(site)s"
