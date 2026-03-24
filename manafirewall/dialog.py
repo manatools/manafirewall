@@ -20,7 +20,7 @@ import manatools.ui.basedialog as basedialog
 import manatools.services as mnservices
 import manatools.ui.helpdialog as helpdialog
 import manatools.config as configuration
-import yui
+import manatools.aui.yui as MUI
 
 from dbus.exceptions import DBusException
 
@@ -96,9 +96,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.log_directory = None
     self.level_debug = False
 
-    yui.YUI.app().setApplicationIcon("manafirewall")
+    MUI.YUI.app().setApplicationIcon("manafirewall")
 
-    basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.MAIN, 80, 20)
+    basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.MAIN, 640, 480)
     self._application_name = _("{} - ManaTools firewalld configurator").format(PROJECT)
 
     # most used text
@@ -141,7 +141,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     self.fwEventQueue = SimpleQueue()
 
-    if yui.YUI.app().isTextMode():
+    if MUI.YUI.app().isTextMode():
       self.glib_loop = GLib.MainLoop()
       self.glib_thread = threading.Thread(target=self.glib_mainloop, args=(self.glib_loop,))
       self.glib_thread.start()
@@ -216,25 +216,19 @@ class ManaWallDialog(basedialog.BaseDialog):
       mItem = self.menubar.addMenu(_("&File"))
       self.fileMenu = {
           'menu_name' : mItem,
-          'quit'      : yui.YMenuItem(mItem, _("&Quit"), "application-exit"),
+          'quit'      : self.menubar.addItem(mItem, _("&Quit"), "application-exit"),
       }
-      #Items must be "disowned"
-      for k in self.fileMenu.keys():
-          self.fileMenu[k].this.own(False)
       self.eventManager.addMenuEvent(self.fileMenu['quit'], self.onQuitEvent, sendObjOnEvent)
 
       # building Options menu
       mItem = self.menubar.addMenu(_("&Options"))
       self.optionsMenu = {
           'menu_name'  : mItem,
-          'runtime_to_permanent': yui.YMenuItem(mItem, _("Runtime To Permanent"), 'document-save'),
-          'reload' : yui.YMenuItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
+          'runtime_to_permanent': self.menubar.addItem(mItem, _("Runtime To Permanent"), 'document-save'),
+          'reload' : self.menubar.addItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
           'sep0'     : mItem.addSeparator(),
-          'settings' : yui.YMenuItem(mItem, _("&Settings"), 'preferences-system'),
+          'settings' : self.menubar.addItem(mItem, _("&Settings"), 'preferences-system'),
       }
-      #Items must be "disowned"
-      for k in self.optionsMenu.keys():
-          self.optionsMenu[k].this.own(False)
       self.eventManager.addMenuEvent(self.optionsMenu['runtime_to_permanent'], self.onRuntimeToPermanent)
       self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
       self.eventManager.addMenuEvent(self.optionsMenu['settings'], self.onOptionSettings)
@@ -243,43 +237,17 @@ class ManaWallDialog(basedialog.BaseDialog):
       mItem = self.menubar.addMenu(_("&Help"))
       self.helpMenu = {
           'menu_name': mItem,
-          'help'     : yui.YMenuItem(mItem, _("&Manual"), 'help-contents'),
+          'help'     : self.menubar.addItem(mItem, _("&Manual"), 'help-contents'),
           'sep0'     : mItem.addSeparator(),
-          'about'    : yui.YMenuItem(mItem, _("&About"), 'manafirewall'),
+          'about'    : self.menubar.addItem(mItem, _("&About"), 'manafirewall'),
       }
-      #Items must be "disowned"
-      for k in self.helpMenu.keys():
-          self.helpMenu[k].this.own(False)
       self.eventManager.addMenuEvent(self.helpMenu['help'], self.onHelp)
       self.eventManager.addMenuEvent(self.helpMenu['about'], self.onAbout)
 
-      self.menubar.resolveShortcutConflicts()
-      self.menubar.rebuildMenuTree()
+      #self.menubar.resolveShortcutConflicts()
+      self.menubar.rebuildMenus()
     else:
-      # Legacy support to YMenuButton widgets
-      # Menu widget
-      self.file_menu = self.factory.createMenuButton(menu_line, _("&File"))
-      qm = yui.YMenuItem(_("&Quit"))
-      self.file_menu.addItem(qm)
-      self.file_menu.rebuildMenuTree()
-      self.eventManager.addMenuEvent(qm, self.onQuitEvent, sendObjOnEvent)
-
-      self.option_menu = self.factory.createMenuButton(menu_line, _("&Options"))
-      rfwm = yui.YMenuItem(_("&Reload Firewalld"))
-      self.option_menu.addItem(rfwm)
-      self.option_menu.rebuildMenuTree()
-      self.eventManager.addMenuEvent(rfwm, self.onReloadFirewalld)
-
-      # Help menu is the last on the right
-      align = self.factory.createRight(menu_line)
-      self.help_menu = self.factory.createMenuButton(align, _("&Help"))
-      hm = yui.YMenuItem(_("&Manual"))
-      self.help_menu.addItem(hm)
-      am = yui.YMenuItem(_("&About"))
-      self.help_menu.addItem(am)
-      self.help_menu.rebuildMenuTree()
-      self.eventManager.addMenuEvent(hm, self.onHelp)
-      self.eventManager.addMenuEvent(am, self.onAbout)
+     raise Exception("Error: no menu support for this UI backend")
     ### END Menus #########################
 
 
@@ -292,7 +260,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     # Column 1
     self.activeBindingsTree = self.factory.createTree(col1, _("Active bindings"))
-    col1.setWeight(yui.YD_HORIZ, 30)
+    col1.setWeight(MUI.YUIDimension.YD_HORIZ, 30)
     changeBindingsButton = self.factory.createPushButton(col1, _("&Change binding") )
     self.eventManager.addWidgetEvent(changeBindingsButton, self.onChangeBinding, sendObjOnEvent)
     #### editFrameBox contains button to modify zones (add, remove, edit, load defaults)
@@ -314,7 +282,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     align = self.factory.createTop(col2) #self.factory.createLeft(col2)
     align = self.factory.createLeft(align)
     hbox = self.factory.createHBox(align)
-    col2.setWeight(yui.YD_HORIZ, 80)
+    col2.setWeight(MUI.YUIDimension.YD_HORIZ, 80)
 
     self.views = {
             'runtime'   : {'title' : _("Runtime"), 'item' : None},
@@ -323,17 +291,16 @@ class ManaWallDialog(basedialog.BaseDialog):
     ordered_views = [ 'runtime', 'permanent' ]
 
     self.currentViewCombobox = self.factory.createComboBox(hbox,_("Configuration"))
-    itemColl = yui.YItemCollection()
+    itemColl = []
 
     for v in ordered_views:
-      item = yui.YItem(self.views[v]['title'], False)
+      item = MUI.YItem(self.views[v]['title'], False)
       show_item = 'runtime'
       if show_item == v :
           item.setSelected(True)
       # adding item to views to find the item selected
       self.views[v]['item'] = item
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     self.currentViewCombobox.addItems(itemColl)
     self.currentViewCombobox.setNotify(True)
@@ -348,17 +315,16 @@ class ManaWallDialog(basedialog.BaseDialog):
     }
     ordered_configureViews = [ 'zones', 'services', 'ipsets' ]
     self.configureViewCombobox = self.factory.createComboBox(hbox,_("View"))
-    itemColl = yui.YItemCollection()
+    itemColl = []
 
     for v in ordered_configureViews:
-      item = yui.YItem(self.configureViews[v]['title'], False)
+      item = MUI.YItem(self.configureViews[v]['title'], False)
       show_item = 'zones'
       if show_item == v :
           item.setSelected(True)
       # adding item to views to find the item selected
       self.configureViews[v]['item'] = item
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     self.configureViewCombobox.addItems(itemColl)
     self.configureViewCombobox.setNotify(True)
@@ -367,8 +333,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     # selectedConfigurationCombo is filled if requested by selected configuration view (which zones, services ...)
     self.selectedConfigurationCombo = self.factory.createComboBox(hbox,"     ")
     # adding a dummy item to enlarge combobox
-    item = yui.YItem("--------------------", False)
-    item.this.own(False)
+    item = MUI.YItem("--------------------", False)
     self.selectedConfigurationCombo.addItem(item)
     self.selectedConfigurationCombo.setEnabled(False)
     self.selectedConfigurationCombo.setNotify(True)
@@ -410,7 +375,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     #### Replace Point to change configuration view
     self.replacePoint = self.factory.createReplacePoint(col2)
-    self.replacePoint.setWeight(yui.YD_VERT, 80)
+    self.replacePoint.setWeight(MUI.YUIDimension.YD_VERT, 80)
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
@@ -493,7 +458,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     returns a widget dictionary which keys are 'add', 'edit' and 'remove'
     '''
     buttons = None
-    if isinstance(container, yui.YLayoutBox):
+    if container.widgetClass() in ("YHBox", "YVBox"):
       buttons = { 'add' : None, 'edit': None, 'remove': None }
       align = self.factory.createLeft(container)
       hbox = self.factory.createHBox(align)
@@ -504,17 +469,11 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _createSingleCBItem(self, checked, strValue):
     '''
-    create a YCBTableItem with given data and return it
-    Note that it also disowns either cells or item itself
+    create a YTableItem with checkbox state and string value
     '''
-    cells =  list([
-                    yui.YCBTableCell( checked ),
-                    yui.YCBTableCell( strValue ),
-                    ])
-    for cell in cells:
-        cell.this.own(False)
-    item = yui.YCBTableItem( *cells )
-    item.this.own(False)
+    item = MUI.YTableItem()
+    item.addCell(bool(checked))
+    item.addCell(str(strValue))
     return item
 
   def _replacePointICMP(self):
@@ -531,7 +490,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     hbox = self.factory.createHBox(self.replacePoint)
 
-    table_header = yui.YCBTableHeader()
+    table_header = MUI.YTableHeader()
     columns = [ _('ICMP Filter') ]
 
     checkboxed = True
@@ -539,13 +498,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     for col in (columns):
         table_header.addColumn(col, not checkboxed)
 
-    self.icmpFilterList = self.mgaFactory.createCBTable(hbox, table_header)
+    self.icmpFilterList = self.factory.createTable(hbox, table_header)
     self.icmpFilterInversionCheck   = self.factory.createCheckBox(hbox, _("Selected are accepted"), False)
     self.icmpFilterInversionCheck.setNotify(True)
 
-
-    self._fillRPICMPFilter()
-    self.icmpFilterList.setImmediateMode(True)
+    self._fillRPICMPFilter()    
 
     self.eventManager.addWidgetEvent(self.icmpFilterList, self.onRPICMPFilterChecked)
     self.replacePointWidgetsAndCallbacks.append({'widget': self.icmpFilterList, 'action': self.onRPICMPFilterChecked})
@@ -569,8 +526,6 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       current_icmp = ""
       current = self.icmpFilterList.selectedItem()
-      if current:
-        current = yui.toYTableItem(current)
       current_icmp = current.cell(0).label() if current else ""
       v = []
       for icmp in icmp_types:
@@ -578,17 +533,12 @@ class ManaWallDialog(basedialog.BaseDialog):
         item.setSelected(icmp == current_icmp)
         v.append(item)
 
-      #NOTE workaround to get YItemCollection working in python
-      itemCollection = yui.YItemCollection(v)
-      self.icmpFilterList.startMultipleChanges()
-      # cleanup old changed items since we are removing all of them
-      self.icmpFilterList.setChangedItem(None)
+      # cleanup old changed items since we are removing all of them      
       self.icmpFilterList.deleteAllItems()
-      self.icmpFilterList.addItems(itemCollection)
-      self.icmpFilterList.doneMultipleChanges()
+      self.icmpFilterList.addItems(v)
 
       self.icmpFilterInversionCheck.setNotify(False)
-      self.icmpFilterInversionCheck.setValue(yui.YCheckBox_on if icmp_block_inversion else yui.YCheckBox_off)
+      self.icmpFilterInversionCheck.setValue(MUI.YCheckBoxState.YCheckBox_on if icmp_block_inversion else MUI.YCheckBoxState.YCheckBox_off)
       self.icmpFilterInversionCheck.setNotify(True)
 
 
@@ -620,7 +570,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     settings = self._zoneSettings()
     masquerade = settings.getMasquerade()
     self.masquerade.setNotify(False)
-    self.masquerade.setValue(yui.YCheckBox_on if masquerade else yui.YCheckBox_off)
+    self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_on if masquerade else MUI.YCheckBoxState.YCheckBox_off)
     self.masquerade.setNotify(True)
 
   def _replacePointProtocols(self, context):
@@ -637,7 +587,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     vbox = self.factory.createVBox(self.replacePoint)
 
-    port_header = yui.YTableHeader()
+    port_header = MUI.YTableHeader()
     columns = [ _('Protocol') ]
 
     for col in (columns):
@@ -673,17 +623,12 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     v = []
     for protocol in protocols:
-      item = yui.YTableItem(protocol)
+      item = MUI.YTableItem(protocol)
       item.setSelected(protocol == current_protocol)
-      item.this.own(False)
       v.append(item)
 
-    #NOTE workaround to get YItemCollection working in python
-    itemCollection = yui.YItemCollection(v)
-    self.protocolList.startMultipleChanges()
     self.protocolList.deleteAllItems()
-    self.protocolList.addItems(itemCollection)
-    self.protocolList.doneMultipleChanges()
+    self.protocolList.addItems(v)
 
   def _replacePointPort(self, context):
     '''
@@ -699,7 +644,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     vbox = self.factory.createVBox(self.replacePoint)
 
-    port_header = yui.YTableHeader()
+    port_header = MUI.YTableHeader()
     columns = [ _('Port'), _('Protocol') ]
 
     for col in (columns):
@@ -742,17 +687,12 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     v = []
     for port in ports:
-      item = yui.YTableItem(*port)
+      item = MUI.YTableItem(*port)
       #item.setSelected(service == current_service)
-      item.this.own(False)
       v.append(item)
 
-    #NOTE workaround to get YItemCollection working in python
-    itemCollection = yui.YItemCollection(v)
-    self.portList.startMultipleChanges()
     self.portList.deleteAllItems()
-    self.portList.addItems(itemCollection)
-    self.portList.doneMultipleChanges()
+    self.portList.addItems(v)
 
   def _replacePointServices(self):
     '''
@@ -768,7 +708,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     vbox = self.factory.createVBox(self.replacePoint)
 
-    services_header = yui.YCBTableHeader()
+    services_header = MUI.YTableHeader()
     columns = [ _('Service') ]
 
     checkboxed = True
@@ -776,10 +716,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     for col in (columns):
         services_header.addColumn(col, not checkboxed)
 
-    self.serviceList = self.mgaFactory.createCBTable(vbox, services_header)
+    self.serviceList = self.factory.createTable(vbox, services_header)
 
     self._fillRPServices()
-    self.serviceList.setImmediateMode(True)
 
     self.eventManager.addWidgetEvent(self.serviceList, self.onRPServiceChecked)
     self.replacePointWidgetsAndCallbacks.append({'widget': self.serviceList, 'action': self.onRPServiceChecked})
@@ -800,8 +739,6 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       current_service = ""
       current = self.serviceList.selectedItem()
-      if current:
-        current = yui.toYTableItem(current)
       current_service = current.cell(0).label() if current else ""
       v = []
       for service in services:
@@ -809,14 +746,9 @@ class ManaWallDialog(basedialog.BaseDialog):
         item.setSelected(service == current_service)
         v.append(item)
 
-      #NOTE workaround to get YItemCollection working in python
-      itemCollection = yui.YItemCollection(v)
-      self.serviceList.startMultipleChanges()
-      # cleanup old changed items since we are removing all of them
-      self.serviceList.setChangedItem(None)
+      # cleanup old changed items since we are removing all of them      
       self.serviceList.deleteAllItems()
-      self.serviceList.addItems(itemCollection)
-      self.serviceList.doneMultipleChanges()
+      self.serviceList.addItems(v)
 
   def _replacePointForwardPorts(self):
     '''
@@ -832,7 +764,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     vbox = self.factory.createVBox(self.replacePoint)
 
-    port_header = yui.YTableHeader()
+    port_header = MUI.YTableHeader()
     columns = [ _('Port'), _('Protocol'), _("To Port"), _("To Address") ]
 
     for col in (columns):
@@ -860,23 +792,18 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       v = []
       for port in ports:
-        item = yui.YTableItem(*port)
+        item = MUI.YTableItem(*port)
         #item.setSelected(service == current_service)
-        item.this.own(False)
         v.append(item)
 
-      #NOTE workaround to get YItemCollection working in python
-      itemCollection = yui.YItemCollection(v)
-      self.portForwardList.startMultipleChanges()
       self.portForwardList.deleteAllItems()
-      self.portForwardList.addItems(itemCollection)
-      self.portForwardList.doneMultipleChanges()
+      self.portForwardList.addItems(v)
 
   def onRPICMPFilterChecked(self, widgetEvent):
     '''
     works on enabling/disabling icmp filter for zone
     '''
-    if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
+    if (widgetEvent.reason() == MUI.YEventReason.ValueChanged) :
       item = self.icmpFilterList.changedItem()
       if item:
         cb_column = 0
@@ -919,7 +846,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     works on enabling/disabling service for zone
     '''
-    if (widgetEvent.reason() == yui.YEvent.ValueChanged) :
+    if (widgetEvent.reason() == MUI.YEventReason.ValueChanged) :
       item = self.serviceList.changedItem()
       if item:
         cb_column = 0
@@ -947,7 +874,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
     if selected_zoneitem:
       selected_zone = selected_zoneitem.label()
-      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      selected_portitem = self.portList.selectedItem()
       if selected_portitem:
         port_range = selected_portitem.cell(0).label()
         protocol   = selected_portitem.cell(1).label()
@@ -968,7 +895,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldPortInfo = {'port_range': "", 'protocol': ""}
       if not add:
-        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        selected_portitem = self.portList.selectedItem()
         if selected_portitem:
           oldPortInfo['port_range'] = selected_portitem.cell(0).label()
           oldPortInfo['protocol']   = selected_portitem.cell(1).label()
@@ -1003,7 +930,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
     if selected_serviceitem:
       active_service = selected_serviceitem.label()
-      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      selected_portitem = self.portList.selectedItem()
       if selected_portitem:
         port_range = selected_portitem.cell(0).label()
         protocol   = selected_portitem.cell(1).label()
@@ -1021,7 +948,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldPortInfo = {'port_range': "", 'protocol': ""}
       if not add:
-        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        selected_portitem = self.portList.selectedItem()
         if selected_portitem:
           oldPortInfo['port_range'] = selected_portitem.cell(0).label()
           oldPortInfo['protocol']   = selected_portitem.cell(1).label()
@@ -1053,7 +980,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldInfo = {'protocol': ""}
       if not add:
-        selected_protocol = yui.toYTableItem(self.protocolList.selectedItem());
+        selected_protocol = self.protocolList.selectedItem()
         if selected_protocol:
           oldInfo['protocol'] = selected_protocol.cell(0).label()
 
@@ -1086,7 +1013,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
     if selected_zoneitem:
       selected_zone = selected_zoneitem.label()
-      selected_portitem = yui.toYTableItem(self.protocolList.selectedItem());
+      selected_portitem = self.protocolList.selectedItem()
       if selected_portitem:
         protocol   = selected_portitem.cell(0).label()
 
@@ -1106,7 +1033,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldPortInfo = {'port_range': "", 'protocol': ""}
       if not add:
-        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        selected_portitem = self.portList.selectedItem()
         if selected_portitem:
           oldPortInfo['port_range'] = selected_portitem.cell(0).label()
           oldPortInfo['protocol']   = selected_portitem.cell(1).label()
@@ -1141,7 +1068,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
     if selected_zoneitem:
       selected_zone = selected_zoneitem.label()
-      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      selected_portitem = self.portList.selectedItem()
       if selected_portitem:
         port_range = selected_portitem.cell(0).label()
         protocol   = selected_portitem.cell(1).label()
@@ -1159,7 +1086,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
     if selected_serviceitem:
       active_service = selected_serviceitem.label()
-      selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+      selected_portitem = self.portList.selectedItem()
       if selected_portitem:
         port_range = selected_portitem.cell(0).label()
         protocol   = selected_portitem.cell(1).label()
@@ -1177,7 +1104,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldPortInfo = {'port_range': "", 'protocol': ""}
       if not add:
-        selected_portitem = yui.toYTableItem(self.portList.selectedItem());
+        selected_portitem = self.portList.selectedItem()
         if selected_portitem:
           oldPortInfo['port_range'] = selected_portitem.cell(0).label()
           oldPortInfo['protocol']   = selected_portitem.cell(1).label()
@@ -1209,7 +1136,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldPortForwardingInfo = {'port': "", 'protocol': "", 'to_port': "", 'to_address': "" }
       if not add:
-        selected_portitem = yui.toYTableItem(self.portForwardList.selectedItem());
+        selected_portitem = self.portForwardList.selectedItem()
         if selected_portitem:
           oldPortForwardingInfo['port']       = selected_portitem.cell(0).label() if selected_portitem.cell(0) else ""
           oldPortForwardingInfo['protocol']   = selected_portitem.cell(1).label() if selected_portitem.cell(1) else ""
@@ -1264,7 +1191,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_zoneitem = self.selectedConfigurationCombo.selectedItem()
     if selected_zoneitem:
       selected_zone = selected_zoneitem.label()
-      selected_portitem = yui.toYTableItem(self.portForwardList.selectedItem());
+      selected_portitem = self.portForwardList.selectedItem()
       if selected_portitem:
         port       = selected_portitem.cell(0).label() if selected_portitem.cell(0) else ""
         protocol   = selected_portitem.cell(1).label() if selected_portitem.cell(1) else ""
@@ -1288,7 +1215,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       oldInfo = {'protocol': ""}
       if not add:
-        selected_protocol = yui.toYTableItem(self.protocolList.selectedItem());
+        selected_protocol = self.protocolList.selectedItem()
         if selected_protocol:
           oldInfo['protocol'] = selected_protocol.cell(0).label()
 
@@ -1315,7 +1242,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     selected_serviceitem = self.selectedConfigurationCombo.selectedItem()
     if selected_serviceitem:
       active_service = selected_serviceitem.label()
-      selected_portitem = yui.toYTableItem(self.protocolList.selectedItem());
+      selected_portitem = self.protocolList.selectedItem()
       if selected_portitem:
         protocol   = selected_portitem.cell(0).label()
 
@@ -1360,7 +1287,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     isServiceSourcePort = (configure_item == self.serviceConfigurationView['source_ports']['item'])
     isServiceProtocol = (configure_item == self.serviceConfigurationView['protocols']['item'])
 
-    if isinstance(button, yui.YPushButton):
+    if button.widgetClass() == "YPushButton":
       if button == self.buttons['add']:
         logger.debug('Add')
         if isZones:
@@ -1434,16 +1361,15 @@ class ManaWallDialog(basedialog.BaseDialog):
                                'interfaces',
                                'sources'
     ]
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for v in ordered_configureViews:
-      item = yui.YItem(self.zoneConfigurationView[v]['title'], False)
+      item = MUI.YItem(self.zoneConfigurationView[v]['title'], False)
       show_item = 'services'
       if show_item == v :
           item.setSelected(True)
       # adding item to views to find the item selected
       self.zoneConfigurationView[v]['item'] = item
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     return itemColl
 
@@ -1458,16 +1384,15 @@ class ManaWallDialog(basedialog.BaseDialog):
       'modules',
       'destinations'
     ]
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for v in ordered_Views:
-      item = yui.YItem(self.serviceConfigurationView[v]['title'], False)
+      item = MUI.YItem(self.serviceConfigurationView[v]['title'], False)
       show_item = 'ports'
       if show_item == v :
           item.setSelected(True)
       # adding item to views to find the item selected
       self.serviceConfigurationView[v]['item'] = item
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     return itemColl
 
   def _ipsecConfigurationViewCollection(self):
@@ -1477,16 +1402,15 @@ class ManaWallDialog(basedialog.BaseDialog):
     ordered_Views = [
       'entries',
     ]
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for v in ordered_Views:
-      item = yui.YItem(self.ipsecConfigurationView[v]['title'], False)
+      item = MUI.YItem(self.ipsecConfigurationView[v]['title'], False)
       show_item = 'entries'
       if show_item == v :
           item.setSelected(True)
       # adding item to views to find the item selected
       self.ipsecConfigurationView[v]['item'] = item
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     return itemColl
 
@@ -1542,7 +1466,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     load zones into selectedConfigurationCombo
     '''
-    self.selectedConfigurationCombo.startMultipleChanges()
     self.selectedConfigurationCombo.deleteAllItems()
 
     self.selectedConfigurationCombo.setEnabled(True)
@@ -1559,23 +1482,20 @@ class ManaWallDialog(basedialog.BaseDialog):
       selected_zone = self.fw.getDefaultZone()
 
     # zones
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for zone in zones:
-      item = yui.YItem(zone, False)
+      item = MUI.YItem(zone, False)
       if zone == selected_zone:
         item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     self.selectedConfigurationCombo.addItems(itemColl)
-    self.selectedConfigurationCombo.doneMultipleChanges()
 
 
   def load_services(self, service_name = None):
     '''
     load services into selectedConfigurationCombo
     '''
-    self.selectedConfigurationCombo.startMultipleChanges()
     self.selectedConfigurationCombo.deleteAllItems()
 
     self.selectedConfigurationCombo.setEnabled(True)
@@ -1588,23 +1508,20 @@ class ManaWallDialog(basedialog.BaseDialog):
       services = self.fw.config().getServiceNames()
 
     # services
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for service in services:
-      item = yui.YItem(service, False)
+      item = MUI.YItem(service, False)
       if service == service_name:
         item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     self.selectedConfigurationCombo.addItems(itemColl)
-    self.selectedConfigurationCombo.doneMultipleChanges()
 
 
   def load_ipsets(self):
     '''
     load ipsets into selectedConfigurationCombo
     '''
-    self.selectedConfigurationCombo.startMultipleChanges()
     self.selectedConfigurationCombo.deleteAllItems()
 
     self.selectedConfigurationCombo.setEnabled(True)
@@ -1617,14 +1534,12 @@ class ManaWallDialog(basedialog.BaseDialog):
         ipsets = self.fw.config().getIPSetNames()
 
     # ipsets
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for ipset in ipsets:
-      item = yui.YItem(ipset, False)
-      itemColl.push_back(item)
-      item.this.own(False)
+      item = MUI.YItem(ipset, False)
+      itemColl.append(item)
 
     self.selectedConfigurationCombo.addItems(itemColl)
-    self.selectedConfigurationCombo.doneMultipleChanges()
 
 
 #### Firewall events
@@ -1845,17 +1760,17 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     Exit by using quit button or menu
     '''
-    if isinstance(obj, yui.YItem):
+    if isinstance(obj, MUI.YItem):
       logger.info("Quit menu pressed")
     else:
       logger.info("Quit button pressed")
     self.saveUserPreference()
 
-    if yui.YUI.app().isTextMode():
+    if MUI.YUI.app().isTextMode():
       self.glib_loop.quit()
     # BaseDialog needs to force to exit the handle event loop
     self.ExitLoop()
-    if yui.YUI.app().isTextMode():
+    if MUI.YUI.app().isTextMode():
       self.glib_thread.join()
 
   def onOptionSettings(self):
@@ -2215,45 +2130,45 @@ class ManaWallDialog(basedialog.BaseDialog):
     if item == self.configureViews['zones']['item']:
       #Zones selected
       self.load_zones()
-      self.configureCombobox.startMultipleChanges()
+      #self.configureCombobox.startMultipleChanges()
       self.configureCombobox.deleteAllItems()
       itemColl = self._zoneConfigurationViewCollection()
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
-      self.configureCombobox.doneMultipleChanges()
+      #self.configureCombobox.doneMultipleChanges()
       self.editFrameBox.setLabel(_("Edit zones"))
     elif item == self.configureViews['services']['item']:
       #Services selected
       self.load_services()
-      self.configureCombobox.startMultipleChanges()
+      #self.configureCombobox.startMultipleChanges()
       self.configureCombobox.deleteAllItems()
       itemColl = self._serviceConfigurationViewCollection()
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
-      self.configureCombobox.doneMultipleChanges()
+      #self.configureCombobox.doneMultipleChanges()
       self.editFrameBox.setLabel(_("Edit services"))
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       self.load_ipsets()
-      self.configureCombobox.startMultipleChanges()
+      #self.configureCombobox.startMultipleChanges()
       self.configureCombobox.deleteAllItems()
       itemColl = self._ipsecConfigurationViewCollection()
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
-      self.configureCombobox.doneMultipleChanges()
+      #self.configureCombobox.doneMultipleChanges()
       self.editFrameBox.setLabel(_("Edit ipsets"))
     else:
       # disabling info combo
-      self.selectedConfigurationCombo.startMultipleChanges()
+      #self.selectedConfigurationCombo.startMultipleChanges()
       self.selectedConfigurationCombo.deleteAllItems()
       self.selectedConfigurationCombo.setLabel("     ")
       self.selectedConfigurationCombo.setEnabled(False)
-      self.selectedConfigurationCombo.doneMultipleChanges()
+      #self.selectedConfigurationCombo.doneMultipleChanges()
       #disabling configure view
-      self.configureCombobox.startMultipleChanges()
+      #self.configureCombobox.startMultipleChanges()
       self.configureCombobox.deleteAllItems()
       self.configureCombobox.setEnabled(False)
-      self.configureCombobox.doneMultipleChanges()
+      #self.configureCombobox.doneMultipleChanges()
       self.editFrameBox.setLabel("")
     self.onSelectedConfigurationComboChanged()
 
@@ -2262,10 +2177,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     manages configureCombobox changes
     '''
-    if (widgetEvent is None or (widgetEvent is not None and widgetEvent.reason() == yui.YEvent.ValueChanged)) :
+    if (widgetEvent is None or (widgetEvent is not None and widgetEvent.reason() == MUI.YEventReason.ValueChanged)) :
       config_item = self.configureCombobox.selectedItem()
       # cleanup replace point
-      self.dialog.startMultipleChanges()
 
       for rpwc in self.replacePointWidgetsAndCallbacks:
         self.eventManager.removeWidgetEvent(rpwc['widget'], rpwc['action'])
@@ -2340,8 +2254,6 @@ class ManaWallDialog(basedialog.BaseDialog):
         pass
 
       self.replacePoint.showChild()
-      self.dialog.recalcLayout()
-      self.dialog.doneMultipleChanges()
 
   def onTimeOutEvent(self):
     logger.debug ("Timeout occurred")
@@ -2590,7 +2502,7 @@ class ManaWallDialog(basedialog.BaseDialog):
               if zone == selected_zone.label():
                 if not self.masquerade.isChecked():
                   self.masquerade.setNotify(False)
-                  self.masquerade.setValue(yui.YCheckBox_on)
+                  self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_on)
                   self.masquerade.setNotify(True)
         elif item['event'] == 'masquerade-removed':
           view_item      = self.configureViewCombobox.selectedItem()
@@ -2604,7 +2516,7 @@ class ManaWallDialog(basedialog.BaseDialog):
               if zone == selected_zone.label():
                 if self.masquerade.isChecked():
                   self.masquerade.setNotify(False)
-                  self.masquerade.setValue(yui.YCheckBox_off)
+                  self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_off)
                   self.masquerade.setNotify(True)
         elif item['event'] == 'reloaded':
           if self.runtime_view:
@@ -2612,7 +2524,6 @@ class ManaWallDialog(basedialog.BaseDialog):
           self._reloaded = False
           self.dialog.setEnabled(True)
 
-      self.dialog.pollEvent()
     except Empty as e:
       pass
 
