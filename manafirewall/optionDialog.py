@@ -8,7 +8,7 @@ Author:  Angelo Naselli <anaselli@linux.it>
 
 @package manafirewall
 '''
-import yui
+import manatools.aui.yui as MUI
 import sys
 import os
 
@@ -21,7 +21,7 @@ logger = logging.getLogger('manafirewall.optiondialog')
 
 class OptionDialog(basedialog.BaseDialog):
   def __init__(self, parent):
-    basedialog.BaseDialog.__init__(self, "manafirewall options", "manafirewall", basedialog.DialogType.POPUP, 80, 15)
+    basedialog.BaseDialog.__init__(self, "manafirewall options", "manafirewall", basedialog.DialogType.POPUP, 320, 200)
     self.parent = parent
     self.log_vbox = None
     self.widget_callbacks = []
@@ -48,36 +48,33 @@ class OptionDialog(basedialog.BaseDialog):
     ### Options items
     #YTreeItem self, std::string const & label, std::string const & iconName, bool isOpen=False)
     # TODO add icons
-    item = yui.YTreeItem(_("firewalld"))
-    item.this.own(False)
+    item = MUI.YTreeItem(label=_("firewalld"))
     itemVect.append(item)
     item.setSelected()
     self.option_items ["firewalld"] = item
 
-    item = yui.YTreeItem(_("Layout"))
-    item.this.own(False)
+    item = MUI.YTreeItem(label=_("Layout"))
     itemVect.append(item)
     self.option_items ["layout"] = item
 
-    item = yui.YTreeItem(_("Logging"))
-    item.this.own(False)
+    item = MUI.YTreeItem(label=_("Logging"))
     itemVect.append(item)
     self.option_items ["logging"] = item
 
-    itemCollection = yui.YItemCollection(itemVect)
-    self.config_tree.addItems(itemCollection)
+    self.config_tree.addItems(itemVect)
 
     self.config_tab = self.factory.createReplacePoint(hbox_config)
     self.config_tab.setWeight(0,70)
 
-    self.RestoreButton = self.factory.createIconButton(hbox_bottom,"",_("Restore &default"))
+    self.RestoreButton = self.factory.createIconButton(hbox_bottom,"edit-undo",_("Restore &default"))
+    self.RestoreButton.setHelpText(_("Restore default configuration for the selected section"))
     self.eventManager.addWidgetEvent(self.RestoreButton, self.onRestoreButton)
     self.RestoreButton.setWeight(0,1)
 
     st = self.factory.createHStretch(hbox_bottom)
     st.setWeight(0,1)
 
-    self.quitButton = self.factory.createIconButton(hbox_bottom,"",_("&Close"))
+    self.quitButton = self.factory.createIconButton(hbox_bottom,"window-close",_("&Close"))
     self.eventManager.addWidgetEvent(self.quitButton, self.onQuitEvent)
     self.quitButton.setWeight(0,1)
     self.dialog.setDefaultButton(self.quitButton)
@@ -91,7 +88,7 @@ class OptionDialog(basedialog.BaseDialog):
     fill option configuration data starting from config tree selection
     '''
     logger.debug('Config tab %s', self.selected_option)
-    if isinstance(obj, yui.YTree):
+    if obj.widgetClass() == "YTree":
       item = self.config_tree.selectedItem()
       for k in self.option_items.keys():
         if self.option_items[k] == item:
@@ -144,13 +141,12 @@ class OptionDialog(basedialog.BaseDialog):
     # fill combo with zones
     zones = self.parent.fw.getZones()
     selected_zone = self.parent.fw.getDefaultZone()
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for zone in zones:
-      item = yui.YItem(zone, False)
+      item = MUI.YItem(zone, False)
       if zone == selected_zone:
         item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     defaultZoneCombo.addItems(itemColl)
 
     logDeniedCombo = self.factory.createComboBox( hbox, _("Log Denied") )
@@ -160,13 +156,12 @@ class OptionDialog(basedialog.BaseDialog):
     # fill log denied values
     ldValues = config.LOG_DENIED_VALUES
     selected_ld = self.parent.fw.getLogDenied()
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for ldValue in ldValues:
-      item = yui.YItem(ldValue, False)
+      item = MUI.YItem(ldValue, False)
       if ldValue == selected_ld:
         item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     logDeniedCombo.addItems(itemColl)
 
     autoHelperAssignCombo = self.factory.createComboBox( hbox, _("Automatic Helper Assignment") )
@@ -176,13 +171,12 @@ class OptionDialog(basedialog.BaseDialog):
     # fill log denied values
     values = config.AUTOMATIC_HELPERS_VALUES
     selected_value = self.parent.fw.getAutomaticHelpers()
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for val in values:
-      item = yui.YItem(val, False)
+      item = MUI.YItem(val, False)
       if val == selected_value:
         item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     autoHelperAssignCombo.addItems(itemColl)
 
     self.factory.createVSpacing(vbox)
@@ -199,7 +193,6 @@ class OptionDialog(basedialog.BaseDialog):
     self.factory.createVStretch(vbox)
 
     self.config_tab.showChild()
-    self.dialog.recalcLayout()
 
   def _openLayoutOptions(self):
     '''
@@ -243,7 +236,6 @@ class OptionDialog(basedialog.BaseDialog):
 
     self.factory.createVStretch(vbox)
     self.config_tab.showChild()
-    self.dialog.recalcLayout()
 
   def _openLoggingOptions(self):
     '''
@@ -310,13 +302,12 @@ class OptionDialog(basedialog.BaseDialog):
 
     self.factory.createVStretch(vbox)
     self.config_tab.showChild()
-    self.dialog.recalcLayout()
 
   def onEnableLogging(self, obj) :
     '''
     enable logging check box event
     '''
-    if isinstance(obj, yui.YCheckBox):
+    if obj.widgetClass() == "YCheckBox":
       self.log_vbox.setEnabled(obj.isChecked())
       try:
         self.parent.config.userPreferences['settings']['log']['enabled'] = obj.isChecked()
@@ -330,12 +321,11 @@ class OptionDialog(basedialog.BaseDialog):
     Change directory button has been invoked
     '''
     start_dir = self.log_directory.text() if self.log_directory.text() else os.path.expanduser("~")
-    log_directory = yui.YUI.app().askForExistingDirectory(
+    log_directory = MUI.YUI.app().askForExistingDirectory(
           start_dir,
           _("Choose log destination directory"))
     if log_directory:
       self.log_directory.setText(log_directory)
-      self.dialog.recalcLayout()
       try:
         self.parent.config.userPreferences['settings']['log']['directory'] = self.log_directory.text()
       except:
@@ -345,7 +335,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Show All Changing
     '''
-    if isinstance(obj, yui.YCheckBox):
+    if obj.widgetClass() == "YCheckBox":
       self.parent.config.userPreferences['settings']['do not show groups at startup'] = obj.isChecked()
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
@@ -354,7 +344,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Show Updates Changing
     '''
-    if isinstance(obj, yui.YCheckBox):
+    if obj.widgetClass() == "YCheckBox":
       self.parent.config.userPreferences['settings']['show updates at startup'] = obj.isChecked()
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
@@ -363,7 +353,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Debug level Changing
     '''
-    if isinstance(obj, yui.YCheckBox):
+    if obj.widgetClass() == "YCheckBox":
       try:
         self.parent.config.userPreferences['settings']['log']['level_debug'] = obj.isChecked()
       except:
@@ -375,7 +365,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Panic Mode Changing
     '''
-    if isinstance(obj, yui.YCheckBox):
+    if obj.widgetClass() == "YCheckBox":
       if obj.isChecked():
         self.parent.fw.enablePanicMode()
       else:
@@ -388,7 +378,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Lockdown Changing
     '''
-    if isinstance(obj, yui.YCheckBox):
+    if obj.widgetClass() == "YCheckBox":
       if obj.isChecked():
         if not self.parent.fw.queryLockdown():
           logger.debug("Setting Lockdown")
@@ -407,7 +397,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Manage default zone changing
     '''
-    if isinstance(obj, yui.YComboBox):
+    if obj.widgetClass() == "YComboBox":
       new_default_zone = obj.value()
       default_zone = self.parent.fw.getDefaultZone()
       logger.debug("New default zone %s", new_default_zone)
@@ -420,7 +410,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Manage log denied changing
     '''
-    if isinstance(obj, yui.YComboBox):
+    if obj.widgetClass() == "YComboBox":
       new_ldValue = obj.value()
       old_ldValue = self.parent.fw.getLogDenied()
       logger.debug("New Log Denied %s", new_ldValue)
@@ -433,7 +423,7 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     Manage Automatic Helper Assignment Change
     '''
-    if isinstance(obj, yui.YComboBox):
+    if obj.widgetClass() == "YComboBox":
       new_ldValue = obj.value()
       old_ldValue = self.parent.fw.getAutomaticHelpers()
       logger.debug("New Helper Assignment %s", new_ldValue)
