@@ -25,6 +25,47 @@ class OptionDialog(basedialog.BaseDialog):
     self.parent = parent
     self.log_vbox = None
     self.widget_callbacks = []
+    self._HSPACING_PX = 6
+    self._VSPACING_PX = 12
+
+  # ------------------------------------------------------------------
+  # Safe config-access helpers
+  # ------------------------------------------------------------------
+
+  @staticmethod
+  def _safe_cfg_get(cfg, *keys, default=None):
+    """Navigate a nested dict safely; return *default* if any level is None or missing."""
+    try:
+      node = cfg if cfg is not None else {}
+      for key in keys:
+        if not isinstance(node, dict):
+          return default
+        node = node.get(key)
+        if node is None:
+          return default
+      return node
+    except Exception:
+      return default
+
+  def _user_prefs(self):
+    """Return config.userPreferences as a dict, or {} if None/missing."""
+    config = getattr(self.parent, 'config', None)
+    return getattr(config, 'userPreferences', None) or {}
+
+  def _system_settings(self):
+    """Return config.systemSettings as a dict, or {} if None/missing."""
+    config = getattr(self.parent, 'config', None)
+    return getattr(config, 'systemSettings', None) or {}
+
+  def _ensure_settings(self):
+    """Return config.userPreferences['settings'] dict, creating the key path if needed.
+    Safe to use both for reads and writes."""
+    config = getattr(self.parent, 'config', None)
+    if config is None:
+      return {}  # throwaway – at least we won't crash
+    if not isinstance(getattr(config, 'userPreferences', None), dict):
+      config.userPreferences = {}
+    return config.userPreferences.setdefault('settings', {})
 
   def UIlayout(self, layout):
     '''
@@ -253,56 +294,44 @@ class OptionDialog(basedialog.BaseDialog):
     if self.config_tab.hasChildren():
       self.config_tab.deleteChildren()
 
-    self.RestoreButton.setEnabled()
-
     hbox = self.factory.createHBox(self.config_tab)
-    self.factory.createHSpacing(hbox, 1.5)
+    self.factory.createHSpacing(hbox, 1.5*self._HSPACING_PX)
     vbox = self.factory.createVBox(hbox)
-    self.factory.createHSpacing(hbox, 1.5)
+    self.factory.createHSpacing(hbox, 1.5*self._HSPACING_PX)
 
     # Title
     heading=self.factory.createHeading( vbox, _("Logging options (active at next startup)") )
-    self.factory.createVSpacing(vbox, 0.3)
+    self.factory.createVSpacing(vbox, 0.3*self._VSPACING_PX)
     heading.setAutoWrap()
 
-    log_enabled = self.parent.config.userPreferences['settings']['log']['enabled'] \
-        if 'settings' in self.parent.config.userPreferences.keys() \
-          and 'log' in self.parent.config.userPreferences['settings'].keys() \
-          and 'enabled' in self.parent.config.userPreferences['settings']['log'].keys() \
-        else False
+    log_enabled = self._safe_cfg_get(self._user_prefs(), 'settings', 'log', 'enabled',
+                                      default=False)
 
-    log_directory = self.parent.config.userPreferences['settings']['log']['directory'] \
-        if 'settings' in self.parent.config.userPreferences.keys() \
-          and 'log' in self.parent.config.userPreferences['settings'].keys() \
-          and 'directory' in self.parent.config.userPreferences['settings']['log'].keys() \
-        else os.path.expanduser("~")
+    log_directory = self._safe_cfg_get(self._user_prefs(), 'settings', 'log', 'directory',
+                                        default=os.path.expanduser("~"))
 
-    level_debug = self.parent.config.userPreferences['settings']['log']['level_debug'] \
-        if 'settings' in self.parent.config.userPreferences.keys() \
-          and 'log' in self.parent.config.userPreferences['settings'].keys() \
-          and 'level_debug' in self.parent.config.userPreferences['settings']['log'].keys() \
-        else False
+    level_debug = self._safe_cfg_get(self._user_prefs(), 'settings', 'log', 'level_debug',
+                                      default=False)
 
-    if not 'log' in self.parent.config.userPreferences['settings'].keys():
-      self.parent.config.userPreferences['settings']['log'] = {}
+    # Ensure the 'log' sub-dict exists in userPreferences['settings'] for later writes
+    self._ensure_settings().setdefault('log', {})
 
-    self.log_enabled  = self.factory.createCheckBox(self.factory.createLeft(vbox) , _("Enable logging"), log_enabled )
+    ####
+    self.log_enabled = self.factory.createCheckBoxFrame(vbox, _("Enable logging"), log_enabled)
     self.log_enabled.setNotify(True)
     self.eventManager.addWidgetEvent(self.log_enabled, self.onEnableLogging, True)
     self.widget_callbacks.append( { 'widget': self.log_enabled, 'handler': self.onEnableLogging} )
-
-    self.log_vbox = self.factory.createVBox(vbox)
-    hbox = self.factory.createHBox(self.log_vbox)
-    self.factory.createHSpacing(hbox, 2.0)
-    self.log_directory = self.factory.createLabel(self.factory.createLeft(hbox), "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
-    self.choose_dir = self.factory.createIconButton(self.factory.createLeft(hbox), "", _("Change &directory"))
+    
+    self.log_vbox = self.factory.createVBox(self.log_enabled)
+    hbox = self.factory.createHBox(self.log_vbox)    
+    self.log_directory = self.factory.createLabel(self.factory.createLeft(hbox), "")
+    self.factory.createHSpacing(hbox)
+    self.choose_dir = self.factory.createIconButton(hbox, "folder", _("Change &directory"))
     self.eventManager.addWidgetEvent(self.choose_dir, self.onChangeLogDirectory)
     self.widget_callbacks.append( { 'widget': self.choose_dir, 'handler': self.onChangeLogDirectory} )
-
     self.log_directory.setText(log_directory)
-    hbox = self.factory.createHBox(self.log_vbox)
-    self.factory.createHSpacing(hbox, 2.0)
-    self.level_debug = self.factory.createCheckBox(self.factory.createLeft(hbox) , _("Debug level"), level_debug )
+        
+    self.level_debug = self.factory.createCheckBox(self.log_vbox , _("Debug level"), level_debug )
     self.level_debug.setNotify(True)
     self.eventManager.addWidgetEvent(self.level_debug, self.onLevelDebugChange, True)
     self.widget_callbacks.append( { 'widget': self.level_debug, 'handler': self.onLevelDebugChange} )
