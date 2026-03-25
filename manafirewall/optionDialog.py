@@ -263,26 +263,7 @@ class OptionDialog(basedialog.BaseDialog):
     self.factory.createVSpacing(vbox, 0.3)
     heading.setAutoWrap()
 
-    ### TODO showUpdates = self.parent.config.userPreferences['settings']['show updates at startup'] \
-    ### TODO   if 'settings' in self.parent.config.userPreferences.keys() \
-    ### TODO     and 'show updates at startup' in self.parent.config.userPreferences['settings'].keys() \
-    ### TODO   else False
-    ### TODO
-    ### TODO showAll =  self.parent.config.userPreferences['settings']['do not show groups at startup']\
-    ### TODO   if 'settings' in self.parent.config.userPreferences.keys() \
-    ### TODO     and 'do not show groups at startup' in self.parent.config.userPreferences['settings'].keys() \
-    ### TODO   else False
-    ### TODO
-    ### TODO
-    ### TODO self.showUpdates =  self.factory.createCheckBox(self.factory.createLeft(vbox) , _("Show updates"), showUpdates )
-    ### TODO self.showUpdates.setNotify(True)
-    ### TODO self.eventManager.addWidgetEvent(self.showUpdates, self.onShowUpdates, True)
-    ### TODO self.widget_callbacks.append( { 'widget': self.showUpdates, 'handler': self.onShowUpdates} )
-    ### TODO
-    ### TODO self.showAll  =  self.factory.createCheckBox(self.factory.createLeft(vbox) , _("Do not show groups view"), showAll )
-    ### TODO self.showAll.setNotify(True)
-    ### TODO self.eventManager.addWidgetEvent(self.showAll, self.onShowAll, True)
-    ### TODO self.widget_callbacks.append( { 'widget': self.showAll, 'handler': self.onShowAll} )
+    ### TODO Missing layout options
 
     self.factory.createVStretch(vbox)
     self.config_tab.showChild()
@@ -345,14 +326,11 @@ class OptionDialog(basedialog.BaseDialog):
     '''
     enable logging check box event
     '''
-    if obj.widgetClass() == "YCheckBox":
-      self.log_vbox.setEnabled(obj.isChecked())
-      try:
-        self.parent.config.userPreferences['settings']['log']['enabled'] = obj.isChecked()
-      except:
-        self.parent.config.userPreferences['settings']['log'] = { 'enabled' : obj.isChecked() }
+    if obj.widgetClass() == "YCheckBoxFrame":
+      self.log_vbox.setEnabled(obj.value())
+      self._ensure_settings().setdefault('log', {})['enabled'] = obj.value()
     else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
+      logger.error("OptionDialog: Invalid object passed %s", obj.widgetClass())
 
   def onChangeLogDirectory(self):
     '''
@@ -364,40 +342,34 @@ class OptionDialog(basedialog.BaseDialog):
           _("Choose log destination directory"))
     if log_directory:
       self.log_directory.setText(log_directory)
-      try:
-        self.parent.config.userPreferences['settings']['log']['directory'] = self.log_directory.text()
-      except:
-        self.parent.config.userPreferences['settings']['log'] = { 'directory' : self.log_directory.text() }
+      self._ensure_settings().setdefault('log', {})['directory'] = self.log_directory.text()
 
   def onShowAll(self, obj):
     '''
     Show All Changing
     '''
     if obj.widgetClass() == "YCheckBox":
-      self.parent.config.userPreferences['settings']['do not show groups at startup'] = obj.isChecked()
+      self._ensure_settings()['do not show groups at startup'] = obj.isChecked()
     else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
+      logger.error("OptionDialog: Invalid object passed %s", obj.widgetClass())
 
   def onShowUpdates(self, obj):
     '''
     Show Updates Changing
     '''
     if obj.widgetClass() == "YCheckBox":
-      self.parent.config.userPreferences['settings']['show updates at startup'] = obj.isChecked()
+      self._ensure_settings()['show updates at startup'] = obj.isChecked()
     else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
+      logger.error("OptionDialog: Invalid object passed %s", obj.widgetClass())
 
   def onLevelDebugChange(self, obj):
     '''
     Debug level Changing
     '''
     if obj.widgetClass() == "YCheckBox":
-      try:
-        self.parent.config.userPreferences['settings']['log']['level_debug'] = obj.isChecked()
-      except:
-        self.parent.config.userPreferences['settings']['log'] = { 'level_debug' : obj.isChecked() }
+      self._ensure_settings().setdefault('log', {})['level_debug'] = obj.isChecked()
     else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
+      logger.error("OptionDialog: Invalid object passed %s", obj.widgetClass())
 
   def onPanicModeChange(self, obj):
     '''
@@ -473,21 +445,12 @@ class OptionDialog(basedialog.BaseDialog):
   def onRestoreButton(self) :
     logger.debug('Restore pressed')
     k = self.selected_option
-    if k == "firewalld":
-      self.parent.config.userPreferences['settings']['always_yes'] = False
-      self.parent.always_yes = False
-      self.parent.config.userPreferences['settings']['interval for checking updates'] = 180
-      self.parent.config.userPreferences['settings']['metadata'] = {
-        'update_interval' :  48
-      }
-      self.parent.md_update_interval = 48
-      self._openSystemOptions()
-    elif  k == "layout":
-      self.parent.config.userPreferences['settings']['show updates at startup'] = False
-      self.parent.config.userPreferences['settings']['do not show groups at startup'] = False
+    if k == "layout":
+      #s = self._ensure_settings()
+      # TODO restore layout default settings
       self._openLayoutOptions()
     elif k == "logging":
-      self.parent.config.userPreferences['settings']['log'] = {
+      self._ensure_settings()['log'] = {
         'enabled': False,
         'directory': os.path.expanduser("~"),
         'level_debug': False,
