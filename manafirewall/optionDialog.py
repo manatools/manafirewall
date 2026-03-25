@@ -32,10 +32,16 @@ class OptionDialog(basedialog.BaseDialog):
     '''
 
     hbox_config = self.factory.createHBox(layout)
+    self.factory.createVStretch(layout)
     hbox_bottom = self.factory.createHBox(layout)
-    self.config_tree = self.factory.createTree(hbox_config, "")
-    self.config_tree.setWeight(0,30)
-    self.config_tree.setNotify(True)
+    # Wrap the tree in MinSize to guarantee a minimum column width regardless
+    # of the ReplacePoint content on the right (long labels in System options
+    # would otherwise squeeze the tree below its usable width).
+    tree_col = self.factory.createMinSize(hbox_config, 20, 3)
+    tree_col.setWeight(MUI.YUIDimension.YD_HORIZ, 25)
+    self.config_tree = self.factory.createTree(tree_col, "")
+    self.config_tree.setStretchable(MUI.YUIDimension.YD_VERT, True)
+    self.config_tree.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
     self.eventManager.addWidgetEvent(self.config_tree, self.onChangeConfig, sendWidget=True)
 
     itemVect = []
@@ -50,7 +56,6 @@ class OptionDialog(basedialog.BaseDialog):
     # TODO add icons
     item = MUI.YTreeItem(label=_("firewalld"))
     itemVect.append(item)
-    item.setSelected()
     self.option_items ["firewalld"] = item
 
     item = MUI.YTreeItem(label=_("Layout"))
@@ -62,9 +67,13 @@ class OptionDialog(basedialog.BaseDialog):
     self.option_items ["logging"] = item
 
     self.config_tree.addItems(itemVect)
+    self.config_tree.selectItem(itemVect[0], True)
 
-    self.config_tab = self.factory.createReplacePoint(hbox_config)
-    self.config_tab.setWeight(0,70)
+    frame = self.factory.createFrame(hbox_config)
+    frame.setStretchable(MUI.YUIDimension.YD_VERT, True)
+    frame.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
+    frame.setWeight(MUI.YUIDimension.YD_HORIZ, 75)
+    self.config_tab = self.factory.createReplacePoint(frame)
 
     self.RestoreButton = self.factory.createIconButton(hbox_bottom,"edit-undo",_("Restore &default"))
     self.RestoreButton.setHelpText(_("Restore default configuration for the selected section"))
