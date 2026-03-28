@@ -378,8 +378,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     ###
 
     #### Replace Point to change configuration view
-    self.replacePoint = self.factory.createReplacePoint(col2)
-    self.replacePoint.setWeight(MUI.YUIDimension.YD_VERT, 80)
+    frame = self.factory.createFrame(col2)
+    frame.setStretchable(MUI.YUIDimension.YD_VERT, True)
+    frame.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
+    frame.setWeight(MUI.YUIDimension.YD_HORIZ, 80)
+    self.replacePoint = self.factory.createReplacePoint(frame)
 
     #### bottom status lines
     align = self.factory.createLeft(layout)
@@ -626,7 +629,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     v = []
     for protocol in protocols:
-      item = MUI.YTableItem(protocol)
+      item = MUI.YTableItem(label=protocol)
       item.setSelected(protocol == current_protocol)
       v.append(item)
 
@@ -690,7 +693,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     v = []
     for port in ports:
-      item = MUI.YTableItem(*port)
+      item = MUI.YTableItem(label=port)
       #item.setSelected(service == current_service)
       v.append(item)
 
@@ -795,7 +798,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       v = []
       for port in ports:
-        item = MUI.YTableItem(*port)
+        item = MUI.YTableItem(label=port)
         #item.setSelected(service == current_service)
         v.append(item)
 
