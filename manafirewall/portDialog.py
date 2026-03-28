@@ -15,7 +15,7 @@ from firewall import functions
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
+import manatools.aui.yui as MUI
 
 
 
@@ -43,17 +43,16 @@ class PortDialog(basedialog.BaseDialog):
     protocols = [ 'tcp', 'udp', 'sctp', 'dccp' ]
 
     self.protocolCombobox = self.factory.createComboBox(hbox,_("Protocol"))
-    itemColl = yui.YItemCollection()
+    itemColl = []
     show_item = 'tcp'
     if 'protocol' in self._portInfo.keys():
       if self._portInfo['protocol']:
         show_item = self._portInfo['protocol']
     for p in protocols:
-      item = yui.YItem(p, False)
+      item = MUI.YItem(p, False)
       if show_item == p :
           item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     self.protocolCombobox.addItems(itemColl)
     if 'port_range' in self._portInfo.keys():

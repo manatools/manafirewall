@@ -14,7 +14,6 @@ Author:  Angelo Naselli <anaselli@linux.it>
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
 
 
 

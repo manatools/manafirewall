@@ -15,7 +15,7 @@ from firewall import functions
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
+import manatools.aui.yui as MUI
 
 
 
@@ -39,19 +39,18 @@ class ProtocolDialog(basedialog.BaseDialog):
     protocols = [ 'ah', 'esp', 'dccp', 'ddp', 'icmp', 'ipv6-icmp', 'igmp', 'mux', 'sctp', 'tcp','udp' ]
 
     self.protocolCombobox = self.factory.createComboBox(align,_("Protocol"))
-    itemColl = yui.YItemCollection()
+    itemColl = []
     show_item = ""
     selected = False
     if 'protocol' in self._info.keys():
       if self._info['protocol']:
         show_item = self._info['protocol']
     for p in protocols:
-      item = yui.YItem(p, False)
+      item = MUI.YItem(p, False)
       if show_item == p :
           item.setSelected(True)
           selected = True
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     self.protocolCombobox.addItems(itemColl)
 
     align = self.factory.createLeft(layout)
@@ -67,7 +66,7 @@ class ProtocolDialog(basedialog.BaseDialog):
     if show_item and not selected:
       self.other_protocol.setValue(show_item)
       self.other_protocol.setEnabled(True)
-      self.enable_other.setValue(yui.YCheckBox_on)
+      self.enable_other.setValue(MUI.YCheckBoxState.YCheckBox_on)
       self.protocolCombobox.setEnabled(False)
 
 

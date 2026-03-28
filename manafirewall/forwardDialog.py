@@ -15,7 +15,7 @@ from firewall import functions
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
+import manatools.aui.yui as MUI
 
 class PortForwardingDialog(basedialog.BaseDialog):
   def __init__(self, portForwardingInfo={}):
@@ -44,17 +44,16 @@ class PortForwardingDialog(basedialog.BaseDialog):
     protocols = [ 'tcp', 'udp', 'sctp', 'dccp' ]
 
     self.protocolCombobox = self.factory.createComboBox(hbox,_("Protocol"))
-    itemColl = yui.YItemCollection()
+    itemColl = []
     show_item = 'tcp'
     if 'protocol' in self._portForwardingInfo.keys():
       if self._portForwardingInfo['protocol']:
         show_item = self._portForwardingInfo['protocol']
     for p in protocols:
-      item = yui.YItem(p, False)
+      item = MUI.YItem(p, False)
       if show_item == p :
           item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     self.protocolCombobox.addItems(itemColl)
     label = self.factory.createLabel(layout, _("Destination"))
     align = self.factory.createLeft(layout)
