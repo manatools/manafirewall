@@ -60,6 +60,7 @@ import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
 import manafirewall.protocolDialog as protocolDialog
 import manafirewall.optionDialog as optionDialog
+import manafirewall.logDeniedDialog as logDeniedDialog
 import manafirewall.helpinfo as helpinfo
 
 logger = logging.getLogger('manafirewall.dialog')
@@ -227,10 +228,13 @@ class ManaWallDialog(basedialog.BaseDialog):
           'runtime_to_permanent': self.menubar.addItem(mItem, _("Runtime To Permanent"), 'document-save'),
           'reload' : self.menubar.addItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
           'sep0'     : mItem.addSeparator(),
+          'log_denied' : self.menubar.addItem(mItem, _("Change &Log Denied"), 'preferences-system'),
+          'sep1'     : mItem.addSeparator(),
           'settings' : self.menubar.addItem(mItem, _("&Settings"), 'preferences-system'),
       }
       self.eventManager.addMenuEvent(self.optionsMenu['runtime_to_permanent'], self.onRuntimeToPermanent)
       self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
+      self.eventManager.addMenuEvent(self.optionsMenu['log_denied'], self.onChangeLogDenied)
       self.eventManager.addMenuEvent(self.optionsMenu['settings'], self.onOptionSettings)
 
       # building Help menu
@@ -1456,6 +1460,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.connect("config:service-removed", self.conf_service_removed_cb)
     self.fw.connect("config:service-renamed", self.conf_service_renamed_cb)
 
+    self.fw.connect("log-denied-changed", self.log_denied_changed_cb)
     self.fw.connect("zone-of-interface-changed", self.zone_of_interface_changed_cb)
     self.fw.connect("reloaded", self.reload_cb)
 
@@ -1715,6 +1720,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fwEventQueue.put({'event': "icmp-inversion", 'value': {'zone' : zone, 'inversion': False}})
 
 
+  def log_denied_changed_cb(self, value):
+    '''
+    log-denied setting changed in firewalld
+    '''
+    self.fwEventQueue.put({'event': "log-denied-changed", 'value': value})
+
   def zone_of_interface_changed_cb(self, zone, interface):
     logger.debug("zone_of_interface_changed_cb %s - %s", zone, interface)
 
@@ -1772,6 +1783,18 @@ class ManaWallDialog(basedialog.BaseDialog):
     self._reloaded = True
     self.dialog.setEnabled(False)
     self.fw.reload()
+
+  def onChangeLogDenied(self):
+    '''
+    Change Log Denied menu pressed — opens a small selection dialog.
+    '''
+    self.dialog.setEnabled(False)
+    dlg = logDeniedDialog.LogDeniedDialog(self.log_denied)
+    new_value = dlg.run()
+    if new_value is not None and new_value != self.log_denied:
+      self.fw.setLogDenied(new_value)
+    else:
+      self.dialog.setEnabled(True)
 
   def onRuntimeToPermanent(self):
     '''
@@ -2291,6 +2314,11 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
             self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
             self.dialog.setEnabled(False)
+        elif item['event'] == 'log-denied-changed':
+          self.log_denied = item['value']
+          self.logDeniedLabel.setText(_("Log Denied: {}").format(self.log_denied))
+          self.dialog.setEnabled(True)
+          logger.debug("Log denied changed to %s", self.log_denied)
         elif item['event'] == 'panicmode-changed':
           t = self.enabled if item['value'] else self.disabled
           self.panicLabel.setText(_("Panic Mode: {}").format(t))
@@ -2500,6 +2528,8 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.onSelectedConfigurationChanged()
           self._reloaded = False
           self.dialog.setEnabled(True)
+        else:
+          logger.warning("Unmanaged event: %s - value: %s", item['event'], item['value'] if 'value' in item else 'None')
 
     except Empty as e:
       pass
