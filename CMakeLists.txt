@@ -1,36 +1,35 @@
+cmake_minimum_required(VERSION 3.4)
+
 if(POLICY CMP0048)
 	cmake_policy(SET CMP0048 NEW)
 endif(POLICY CMP0048)
 
-project(manafirewall VERSION 0.0.3 LANGUAGES NONE)
-cmake_minimum_required(VERSION 3.4)
+project(manafirewall VERSION 0.99.1 LANGUAGES NONE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
-find_package(PythonInterp 3.4 REQUIRED)
+find_package(Python3 3.9 COMPONENTS Interpreter REQUIRED)
 find_package(Gettext)
 
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(), end='')" OUTPUT_VARIABLE PYTHON_INSTALL_DIR)
+execute_process(COMMAND ${Python3_EXECUTABLE} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(), end='')" OUTPUT_VARIABLE PYTHON_INSTALL_DIR)
 string(REGEX REPLACE "\n$" "" ${PYTHON_INSTALL_DIR} "${PYTHON_INSTALL_DIR}")
-execute_process(COMMAND ${PYTHON_EXECUTABLE} -c "import sys; sys.stdout.write('%s.%s' % (sys.version_info.major, sys.version_info.minor))" OUTPUT_VARIABLE PYTHON_MAJOR_DOT_MINOR_VERSION)
+execute_process(COMMAND ${Python3_EXECUTABLE} -c "import sys; sys.stdout.write('%s.%s' % (sys.version_info.major, sys.version_info.minor))" OUTPUT_VARIABLE PYTHON_MAJOR_DOT_MINOR_VERSION)
 message(STATUS "Python install dir is ${PYTHON_INSTALL_DIR}")
 
 option(CHECK_RUNTIME_DEPENDENCIES "Verify the presence of runtime-only dependencies?" ON)
 
 if(CHECK_RUNTIME_DEPENDENCIES)
-	include(FindPythonModule)
+	include(FindPython3Module)
+
+
+	# Find manatools module
+	find_python3_module(manatools REQUIRED)
 
 	# Find the firewall module
-	find_python_module(firewall REQUIRED)
-
-	# Find yui module
-	find_python_module(yui REQUIRED)
-
-	# Find yui module
-	find_python_module(manatools REQUIRED)
+	find_python3_module(firewall REQUIRED)
 
 	# Find yaml module
-	find_python_module(yaml REQUIRED)
+	find_python3_module(yaml REQUIRED)
 
 endif(CHECK_RUNTIME_DEPENDENCIES)
 
