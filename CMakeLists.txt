@@ -1,8 +1,4 @@
-cmake_minimum_required(VERSION 3.4)
-
-if(POLICY CMP0048)
-	cmake_policy(SET CMP0048 NEW)
-endif(POLICY CMP0048)
+cmake_minimum_required(VERSION 3.12...3.27)
 
 project(manafirewall VERSION 0.99.1 LANGUAGES NONE)
 
