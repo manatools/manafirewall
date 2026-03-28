@@ -307,7 +307,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.eventManager.addWidgetEvent(self.currentViewCombobox, self.onChangeView)
 
     # mainNotebook (configure combo box)
-    # TODO icmp_types, helpers, direct_configurations, lockdown_whitelist
+    # TODO icmp_types, helpers, direct_configurations
     self.configureViews = {
             'zones'    : {'title' : _("Zones"), 'item' : None},
             'services' : {'title' : _("Services"), 'item' : None},
@@ -387,7 +387,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.logDeniedLabel = self.factory.createLabel(statusLine,        _("Log Denied: {}").format("--------"))
     self.panicLabel = self.factory.createLabel(statusLine,            _("Panic Mode: {}").format("--------"))
     self.automaticHelpersLabel = self.factory.createLabel(statusLine, _("Automatic Helpers: {}").format("--------"))
-    self.lockdownLabel = self.factory.createLabel(statusLine,         _("Lockdown: {}").format("--------"))
 
     #### buttons on the last line
     align = self.factory.createRight(layout)
@@ -1428,8 +1427,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.fw.setNotAuthorizedLoop(True)
 
     self.fw.connect("connection-changed", self.fwConnectionChanged)
-    self.fw.connect("lockdown-enabled", self.lockdown_enabled_cb)
-    self.fw.connect("lockdown-disabled", self.lockdown_disabled_cb)
     self.fw.connect("panic-mode-enabled", self.panic_mode_enabled_cb)
     self.fw.connect("panic-mode-disabled", self.panic_mode_disabled_cb)
     self.fw.connect("default-zone-changed", self.default_zone_changed_cb)
@@ -1554,18 +1551,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     else:
       self.fwEventQueue.put({'event': "connection-changed", 'value': False})
       logger.info("Firewalld disconnected")
-
-  def lockdown_enabled_cb(self):
-    '''
-    manage lockdown enabled evend from firewalld
-    '''
-    self.fwEventQueue.put({'event': "lockdown-changed", 'value': True})
-
-  def lockdown_disabled_cb(self):
-    '''
-    manage lockdown disabled evend from firewalld
-    '''
-    self.fwEventQueue.put({'event': "lockdown-changed", 'value': False})
 
   def panic_mode_enabled_cb(self):
     '''
@@ -2290,9 +2275,6 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.automatic_helpers = self.fw.getAutomaticHelpers()
             self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format(self.automatic_helpers))
             #### TODO self.set_automaticHelpersLabel(self.automatic_helpers)
-            lockdown = self.fw.queryLockdown()
-            t = self.enabled if lockdown else self.disabled
-            self.lockdownLabel.setText(_("Lockdown: {}").format(t))
             panic = self.fw.queryPanicMode()
             t = self.enabled if panic else self.disabled
             self.panicLabel.setText(_("Panic Mode: {}").format(t))
@@ -2307,13 +2289,8 @@ class ManaWallDialog(basedialog.BaseDialog):
             self.defaultZoneLabel.setText(_("Default Zone: {}").format("--------"))
             self.logDeniedLabel.setText(("Log Denied: {}").format("--------"))
             self.automaticHelpersLabel.setText(_("Automatic Helpers: {}").format("--------"))
-            self.lockdownLabel.setText(_("Lockdown: {}").format("--------"))
             self.panicLabel.setText(_("Panic Mode: {}").format("--------"))
             self.dialog.setEnabled(False)
-        elif item['event'] == 'lockdown-changed':
-          t = self.enabled if item['value'] else self.disabled
-          self.lockdownLabel.setText(_("Lockdown: {}").format(t))
-          # TODO manage menu items if needed
         elif item['event'] == 'panicmode-changed':
           t = self.enabled if item['value'] else self.disabled
           self.panicLabel.setText(_("Panic Mode: {}").format(t))
