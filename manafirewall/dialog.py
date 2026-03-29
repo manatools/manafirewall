@@ -121,7 +121,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.active_zones = { }
     self.runtime_view = True
     self.replacePointWidgetsAndCallbacks = []
-    self._reloaded = False
+    self._reloading = False
+    self._reload_pending_zones = []
+    self._reload_pending_services = []
 
     self.config = configuration.AppConfig(self.__name)
 
@@ -1581,7 +1583,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     config zone has been added
     '''
-    self.fwEventQueue.put({'event': "config-zone-added", 'value': zone})
+    if self._reloading:
+      self._reload_pending_zones.append(zone)
+    else:
+      self.fwEventQueue.put({'event': "config-zone-added", 'value': zone})
 
   def conf_zone_updated_cb(self, zone):
     '''
@@ -1605,7 +1610,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     config service has been added
     '''
-    self.fwEventQueue.put({'event': "config-service-added", 'value': service})
+    if self._reloading:
+      self._reload_pending_services.append(service)
+    else:
+      self.fwEventQueue.put({'event': "config-service-added", 'value': service})
 
   def conf_service_updated_cb(self, service):
     '''
@@ -1733,8 +1741,20 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def reload_cb(self):
     '''
-    firewalld reloaded event
+    firewalld reloaded event — emitted after all config signals of the burst.
+    Sets _reloading so that any late callbacks (daemon-triggered reload) are
+    accumulated; then queues group events for whatever was collected, then
+    queues the reloaded event.
     '''
+    self._reloading = True
+    if self._reload_pending_zones:
+      self.fwEventQueue.put({'event': "config-zones-group-added",
+                             'value': list(self._reload_pending_zones)})
+      self._reload_pending_zones.clear()
+    if self._reload_pending_services:
+      self.fwEventQueue.put({'event': "config-services-group-added",
+                             'value': list(self._reload_pending_services)})
+      self._reload_pending_services.clear()
     self.fwEventQueue.put({'event': "reloaded", 'value': True})
 
   def saveUserPreference(self):
@@ -1797,7 +1817,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     Reload Firewalld menu pressed
     '''
-    self._reloaded = True
+    self._reloading = True
     self.dialog.setEnabled(False)
     self.fw.reload()
 
@@ -2293,7 +2313,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       #let's check 20 by 20 events in that case to avoid stopping GUI too much
       #if there are no events, get_nowait rise an exception so it exits the loop
       counter = 0
-      count_max = 20 if self._reloaded else 1
+      count_max = 20 if self._reloading else 1
 
       while counter < count_max:
         counter = counter + 1
@@ -2424,6 +2444,20 @@ class ManaWallDialog(basedialog.BaseDialog):
                     # disabling/enabling edit and remove buttons accordingly
                     self.buttons['edit'].setEnabled(self.protocolList.itemsCount() > 0)
                     self.buttons['remove'].setEnabled(self.protocolList.itemsCount() > 0)
+        elif item['event'] == 'config-zones-group-added':
+          # batch event emitted during reload: replace entire zone list at once
+          logger.debug("Zones group-added: %d zones", len(item['value']))
+          if not self.runtime_view:
+            selected_configureViewItem = self.configureViewCombobox.selectedItem()
+            if selected_configureViewItem == self.configureViews['zones']['item']:
+              self.load_zones()
+        elif item['event'] == 'config-services-group-added':
+          # batch event emitted during reload: replace entire service list at once
+          logger.debug("Services group-added: %d services", len(item['value']))
+          if not self.runtime_view:
+            selected_configureViewItem = self.configureViewCombobox.selectedItem()
+            if selected_configureViewItem == self.configureViews['services']['item']:
+              self.load_services()
         elif item['event'] == 'service-added' or item['event'] == 'service-removed':
           # runtime and view zone and service is selected
           view_item      = self.configureViewCombobox.selectedItem()
@@ -2541,9 +2575,20 @@ class ManaWallDialog(basedialog.BaseDialog):
                   self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_off)
                   self.masquerade.setNotify(True)
         elif item['event'] == 'reloaded':
+          logger.debug("Firewall reloaded event received")
           if self.runtime_view:
             self.onSelectedConfigurationChanged()
-          self._reloaded = False
+          else:
+            # Ensure combobox consistency — covers daemon-triggered reload
+            # where no group events were batched, and any view.
+            selected_configureViewItem = self.configureViewCombobox.selectedItem()
+            if selected_configureViewItem == self.configureViews['zones']['item']:
+              self.load_zones()
+            elif selected_configureViewItem == self.configureViews['services']['item']:
+              self.load_services()
+            elif selected_configureViewItem == self.configureViews['ipsets']['item']:
+              self.load_ipsets()
+          self._reloading = False
           self.dialog.setEnabled(True)
         else:
           logger.warning("Unmanaged event: %s - value: %s", item['event'], item['value'] if 'value' in item else 'None')
