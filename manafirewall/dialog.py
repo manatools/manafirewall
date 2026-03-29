@@ -691,7 +691,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     fill current ports into replace point
     '''
-    ports = None
+    ports = []
     if context == 'zone_ports':
       settings = self._zoneSettings()
       if settings:
@@ -2353,7 +2353,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     manages configureCombobox changes
     '''
-    if (widgetEvent is None or (widgetEvent is not None and widgetEvent.reason() == MUI.YEventReason.ValueChanged)) :
+    if (widgetEvent is None or (widgetEvent is not None and widgetEvent.reason() == MUI.YEventReason.SelectionChanged)):
       config_item = self.configureCombobox.selectedItem()
       # cleanup replace point
 
