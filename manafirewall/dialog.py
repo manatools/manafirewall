@@ -102,6 +102,19 @@ class ManaWallDialog(basedialog.BaseDialog):
     basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.MAIN, 640, 480)
     self._application_name = _("{} - ManaTools firewalld configurator").format(PROJECT)
 
+    # Publish application metadata to the backend so AboutDialog can read
+    # it without the deprecated info-dict parameter.
+    try:
+      _app = MUI.YUI.app()
+      _app.setApplicationName(self._application_name)
+      _app.setVersion(VERSION)
+      _app.setLicense('GPLv2+')
+      _app.setAuthors('Angelo Naselli &lt;anaselli@linux.it&gt;')
+      _app.setDescription(_("{} is a graphical configuration tool for firewalld.").format(PROJECT))
+      _app.setCredits(_("Credits 2019-2026 Angelo Naselli"))
+    except Exception:
+      pass
+
     # most used text
     self.connected_label = _("Connection to firewalld established.")
     self.trying_to_connect_label = \
@@ -1965,16 +1978,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     About dialog invoked
     '''
-    ok = common.AboutDialog({
-          'name' : self._application_name,
-          'dialog_mode' : common.AboutDialogMode.TABBED,
-          'version' : VERSION,
-          'credits' : _("Credits {}").format("2019-2022 Angelo Naselli"),
-          'license' : 'GPLv2+',
-          'authors' : 'Angelo Naselli &lt;anaselli@linux.it&gt;',
-          'description' : _("{}  is a graphical configuration tool for firewalld.").format(PROJECT),
-          'size': {'column': 50, 'lines': 6},
-    })
+    common.AboutDialog(
+        dialog_mode=common.AboutDialogMode.TABBED,
+        size={'width': 360, 'height': 300},
+    )
 
   def onHelp(self):
     '''
