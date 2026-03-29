@@ -235,11 +235,6 @@ class OptionDialog(basedialog.BaseDialog):
     self.eventManager.addWidgetEvent(pmButton, self.onPanicModeChange, True)
     self.widget_callbacks.append( { 'widget': pmButton, 'handler': self.onPanicModeChange} )
 
-    ldButton = self.factory.createCheckBox(self.factory.createLeft(vbox), _("Lockdown"), self.parent.fw.queryLockdown() )
-    ldButton.setNotify(True)
-    self.eventManager.addWidgetEvent(ldButton, self.onLockdownChange, True)
-    self.widget_callbacks.append( { 'widget': ldButton, 'handler': self.onLockdownChange} )
-
     self.factory.createVStretch(vbox)
 
     self.config_tab.showChild()
@@ -381,25 +376,6 @@ class OptionDialog(basedialog.BaseDialog):
       else:
         self.parent.fw.disablePanicMode()
       logger.debug("Panic Mode %d", obj.value())
-    else:
-      logger.error("Invalid object passed %s", obj.widgetClass())
-
-  def onLockdownChange (self, obj):
-    '''
-    Lockdown Changing
-    '''
-    if obj.widgetClass() == "YCheckBox":
-      if obj.isChecked():
-        if not self.parent.fw.queryLockdown():
-          logger.debug("Setting Lockdown")
-          self.parent.fw.config().set_property("Lockdown", "yes")   # permanent
-          self.parent.fw.enableLockdown()                           # runtime
-      else:
-        if self.parent.fw.queryLockdown():
-          logger.debug("Disabling Lockdown")
-          self.parent.fw.config().set_property("Lockdown", "no")    # permanent
-          self.parent.fw.disableLockdown()                          # runtime
-      logger.debug("onLockdownChange %d", obj.value())
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
 
