@@ -486,6 +486,15 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
     return buttons
 
+  def _createsingleStrItem(self, values):
+    '''
+    create a YTableItem with string values
+    '''
+    item = MUI.YTableItem()
+    for v in values:
+      item.addCell(str(v))    
+    return item
+
   def _createSingleCBItem(self, checked, strValue):
     '''
     create a YTableItem with checkbox state and string value
@@ -706,7 +715,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     v = []
     for port in ports:
-      item = MUI.YTableItem(label=port)
+      item = self._createsingleStrItem(port)
       #item.setSelected(service == current_service)
       v.append(item)
 
@@ -1525,11 +1534,15 @@ class ManaWallDialog(basedialog.BaseDialog):
     else:
       services = self.fw.config().getServiceNames()
 
+    selected_service = service_name
+    if selected_service not in services:
+      selected_service = services[0] if services else None
+
     # services
     itemColl = []
     for service in services:
       item = MUI.YItem(service, False)
-      if service == service_name:
+      if service == selected_service:
         item.setSelected(True)
       itemColl.append(item)
 
