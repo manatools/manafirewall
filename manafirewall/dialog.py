@@ -283,8 +283,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.editFrameBox.setEnabled(False)
 
     # Column 2
-    align = self.factory.createTop(col2) #self.factory.createLeft(col2)
-    align = self.factory.createLeft(align)
+    align = self.factory.createLeft(col2)
     hbox = self.factory.createHBox(align)
     col2.setWeight(MUI.YUIDimension.YD_HORIZ, 80)
 
@@ -381,7 +380,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     frame = self.factory.createFrame(col2)
     frame.setStretchable(MUI.YUIDimension.YD_VERT, True)
     frame.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
-    frame.setWeight(MUI.YUIDimension.YD_HORIZ, 80)
+    frame.setWeight(MUI.YUIDimension.YD_VERT, 80)
     self.replacePoint = self.factory.createReplacePoint(frame)
 
     #### bottom status lines
@@ -1754,6 +1753,21 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     logger.info("Got a cancel event")
     self.saveUserPreference()
+    # In text mode a GLib.MainLoop is running in a background thread
+    # (needed for firewalld D-Bus signals).  The quit button handler
+    # (onQuitEvent) stops it explicitly, but CancelEvent (e.g. F10 in ncurses)
+    # also exits the event loop without going through onQuitEvent.  Without
+    # stopping the loop here the non-daemon glib_thread keeps the process
+    # alive and the terminal appears to hang after F10.
+    if MUI.YUI.app().isTextMode():
+      try:
+        self.glib_loop.quit()
+      except Exception:
+        pass
+      try:
+        self.glib_thread.join(timeout=2)
+      except Exception:
+        pass
 
   def onQuitEvent(self, obj) :
     '''
