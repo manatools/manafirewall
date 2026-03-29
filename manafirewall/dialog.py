@@ -261,6 +261,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     #|   |   |
     #
     paned = self.factory.createPaned(layout, MUI.YUIDimension.YD_HORIZ)
+    paned.setStretchable(MUI.YUIDimension.YD_VERT, True)
 
     # Left pane
     col1 = self.factory.createVBox(paned)
