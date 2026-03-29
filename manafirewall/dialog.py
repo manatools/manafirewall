@@ -259,15 +259,26 @@ class ManaWallDialog(basedialog.BaseDialog):
     # _______
     #|   |   |
     #
-    cols = self.factory.createHBox(layout)
-    col1 = self.factory.createVBox(cols)
-    col2 = self.factory.createVBox(cols)
+    paned = self.factory.createPaned(layout, MUI.YUIDimension.YD_HORIZ)
 
-    # Column 1
-    self.activeBindingsTree = self.factory.createTree(col1, _("Active bindings"))
+    # Left pane
+    col1 = self.factory.createVBox(paned)
     col1.setWeight(MUI.YUIDimension.YD_HORIZ, 30)
-    changeBindingsButton = self.factory.createPushButton(col1, _("&Change binding") )
-    self.eventManager.addWidgetEvent(changeBindingsButton, self.onChangeBinding, sendObjOnEvent)
+
+    self.activeBindingsTree = self.factory.createTree(col1, _("Active bindings"))
+    self.activeBindingsTree.setStretchable(MUI.YUIDimension.YD_VERT, True)
+    self.activeBindingsTree.setNotify(True)
+    self.eventManager.addWidgetEvent(self.activeBindingsTree, self._onBindingSelected, sendObjOnEvent)
+
+    # Group header items — populated by update_active_bindings()
+    self._connectionsTreeItem = None
+    self._interfacesTreeItem  = None
+    self._sourcesTreeItem     = None
+
+    self.changeBindingsButton = self.factory.createPushButton(col1, _("Change &Zone"))
+    self.changeBindingsButton.setEnabled(False)
+    self.eventManager.addWidgetEvent(self.changeBindingsButton, self.onChangeBinding, sendObjOnEvent)
+
     #### editFrameBox contains button to modify zones (add, remove, edit, load defaults)
     self.editFrameBox = self.factory.createFrame(col1, _("Edit zones"))
     hbox = self.factory.createHBox( self.editFrameBox )
@@ -283,10 +294,12 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.eventManager.addWidgetEvent(editFrameLoadDefaultsButton, self.onEditFrameLoadDefaultsButtonEvent)
     self.editFrameBox.setEnabled(False)
 
-    # Column 2
+    # Right pane
+    col2 = self.factory.createVBox(paned)
+    col2.setWeight(MUI.YUIDimension.YD_HORIZ, 70)
+
     align = self.factory.createLeft(col2)
     hbox = self.factory.createHBox(align)
-    col2.setWeight(MUI.YUIDimension.YD_HORIZ, 80)
 
     self.views = {
             'runtime'   : {'title' : _("Runtime"), 'item' : None},
@@ -1831,11 +1844,121 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     self.fw.runtimeToPermanent()
 
+  def update_active_bindings(self):
+    '''
+    Refresh the active bindings tree (Connections / Interfaces / Sources).
+    Called on connection-changed (connected), reloaded, and default-zone-changed events.
+    '''
+    self.changeBindingsButton.setEnabled(False)
+    self.activeBindingsTree.deleteAllItems()
+    self._connectionsTreeItem = None
+    self._interfacesTreeItem  = None
+    self._sourcesTreeItem     = None
+
+    if not self.fw.connected:
+      return
+
+    active_zones = {}
+    try:
+      active_zones = self.fw.getActiveZones()
+    except Exception:
+      pass
+    default_zone = ""
+    try:
+      default_zone = self.fw.getDefaultZone()
+    except Exception:
+      pass
+
+    # Separate NM connections, bare interfaces, sources
+    self._nm_connections_data = {}   # {conn_id: [zone, [ifaces], display_name]}
+    bare_interfaces = {}             # {iface: zone}
+    sources = {}                     # {source: zone}
+
+    if nm_is_imported():
+      _connections = {}       # {iface_path: conn_id}
+      _connections_name = {}  # {conn_id: display_name}
+      try:
+        nm_get_connections(_connections, _connections_name)
+      except Exception:
+        pass
+      for zone, data in active_zones.items():
+        for iface in data.get("interfaces", []):
+          if iface in _connections:
+            conn_id = _connections[iface]
+            if conn_id not in self._nm_connections_data:
+              try:
+                nm_zone = nm_get_zone_of_connection(conn_id)
+              except Exception:
+                nm_zone = ""
+              self._nm_connections_data[conn_id] = [
+                nm_zone if nm_zone else zone,
+                [],
+                _connections_name.get(conn_id, conn_id)
+              ]
+            self._nm_connections_data[conn_id][1].append(iface)
+          else:
+            bare_interfaces[iface] = zone
+        for source in data.get("sources", []):
+          sources[source] = zone
+    else:
+      for zone, data in active_zones.items():
+        for iface in data.get("interfaces", []):
+          bare_interfaces[iface] = zone
+        for source in data.get("sources", []):
+          sources[source] = zone
+
+    # Build tree
+    itemColl = []
+
+    connParent = MUI.YTreeItem(label=_("Connections"), is_open=True)
+    for conn_id in sorted(self._nm_connections_data):
+      z, ifaces, name = self._nm_connections_data[conn_id]
+      zone_str = z if z else default_zone
+      label = "{} ({})\nZone: {}".format(name, ", ".join(sorted(ifaces)), zone_str)
+      MUI.YTreeItem(parent=connParent, label=label)
+    itemColl.append(connParent)
+
+    ifaceParent = MUI.YTreeItem(label=_("Interfaces"), is_open=True)
+    for iface in sorted(bare_interfaces):
+      label = "{}\nZone: {}".format(iface, bare_interfaces[iface])
+      MUI.YTreeItem(parent=ifaceParent, label=label)
+    itemColl.append(ifaceParent)
+
+    srcParent = MUI.YTreeItem(label=_("Sources"), is_open=True)
+    for source in sorted(sources):
+      label = "{}\nZone: {}".format(source, sources[source])
+      MUI.YTreeItem(parent=srcParent, label=label)
+    itemColl.append(srcParent)
+
+    self.activeBindingsTree.addItems(itemColl)
+    self._connectionsTreeItem = connParent
+    self._interfacesTreeItem  = ifaceParent
+    self._sourcesTreeItem     = srcParent
+
+  def _onBindingSelected(self, obj):
+    '''
+    Enable Change Zone button only for leaf nodes (not group headers).
+    '''
+    item = self.activeBindingsTree.selectedItem()
+    if item is None:
+      self.changeBindingsButton.setEnabled(False)
+      return
+    # Disable for group headers
+    if item in (self._connectionsTreeItem, self._interfacesTreeItem, self._sourcesTreeItem):
+      self.changeBindingsButton.setEnabled(False)
+    else:
+      self.changeBindingsButton.setEnabled(True)
+
   def onChangeBinding(self, obj):
     '''
-    manages changeBindingsButton button pressed
+    Change Zone button pressed — determine selected binding and change its zone.
     '''
-    logger.debug ("TODO: Change binding pressed")
+    item = self.activeBindingsTree.selectedItem()
+    if item is None:
+      return
+    if item in (self._connectionsTreeItem, self._interfacesTreeItem, self._sourcesTreeItem):
+      return
+    logger.debug("TODO: change zone for binding: %s", item.label())
 
   def onAbout(self) :
     '''
@@ -2335,6 +2458,7 @@ class ManaWallDialog(basedialog.BaseDialog):
               self.load_zones()
             elif item == self.configureViews['services']['item']:
               self.load_services()
+            self.update_active_bindings()
             self.dialog.setEnabled(True)
           else:
             self.defaultZoneLabel.setText(_("Default Zone: {}").format("--------"))
@@ -2354,7 +2478,7 @@ class ManaWallDialog(basedialog.BaseDialog):
         elif item['event'] == 'default-zone-changed':
           zone = item['value']
           self.defaultZoneLabel.setText(_("Default Zone: {}").format(zone))
-          # TODO self.update_active_zones()
+          self.update_active_bindings()
         elif item['event'] == 'config-zone-added' or item['event'] == 'config-zone-updated' or \
             item['event'] == 'config-zone-renamed' or item['event'] == 'config-zone-removed':
           zone = item['value']
@@ -2579,6 +2703,7 @@ class ManaWallDialog(basedialog.BaseDialog):
               self.load_services()
             elif selected_configureViewItem == self.configureViews['ipsets']['item']:
               self.load_ipsets()
+          self.update_active_bindings()
           self._reloading = False
           self.dialog.setEnabled(True)
         else:
