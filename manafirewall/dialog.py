@@ -56,6 +56,7 @@ from queue import SimpleQueue, Empty
 
 import manafirewall.zoneBaseDialog as zoneBaseDialog
 import manafirewall.serviceBaseDialog as serviceBaseDialog
+import manafirewall.changeZoneConnectionDialog as changeZoneConnectionDialog
 import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
 import manafirewall.protocolDialog as protocolDialog
@@ -278,21 +279,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.changeBindingsButton = self.factory.createPushButton(col1, _("Change &Zone"))
     self.changeBindingsButton.setEnabled(False)
     self.eventManager.addWidgetEvent(self.changeBindingsButton, self.onChangeBinding, sendObjOnEvent)
-
-    #### editFrameBox contains button to modify zones (add, remove, edit, load defaults)
-    self.editFrameBox = self.factory.createFrame(col1, _("Edit zones"))
-    hbox = self.factory.createHBox( self.editFrameBox )
-    vbox1 = self.factory.createVBox(hbox)
-    vbox2 = self.factory.createVBox(hbox)
-    editFrameAddButton          = self.factory.createPushButton(vbox1, _("&Add") )
-    self.eventManager.addWidgetEvent(editFrameAddButton, self.onEditFrameAddButtonEvent)
-    editFrameEditButton         = self.factory.createPushButton(vbox1, _("&Edit") )
-    self.eventManager.addWidgetEvent(editFrameEditButton, self.onEditFrameEditButtonEvent)
-    editFrameRemoveButton       = self.factory.createPushButton(vbox2, _("&Remove") )
-    self.eventManager.addWidgetEvent(editFrameRemoveButton, self.onEditFrameRemoveButtonEvent)
-    editFrameLoadDefaultsButton = self.factory.createPushButton(vbox2, _("&Load default") )
-    self.eventManager.addWidgetEvent(editFrameLoadDefaultsButton, self.onEditFrameLoadDefaultsButtonEvent)
-    self.editFrameBox.setEnabled(False)
 
     # Right pane
     col2 = self.factory.createVBox(paned)
@@ -1915,7 +1901,8 @@ class ManaWallDialog(basedialog.BaseDialog):
       z, ifaces, name = self._nm_connections_data[conn_id]
       zone_str = z if z else default_zone
       label = "{} ({})\nZone: {}".format(name, ", ".join(sorted(ifaces)), zone_str)
-      MUI.YTreeItem(parent=connParent, label=label)
+      child = MUI.YTreeItem(parent=connParent, label=label)
+      child.setData(conn_id)
     itemColl.append(connParent)
 
     ifaceParent = MUI.YTreeItem(label=_("Interfaces"), is_open=True)
@@ -1937,28 +1924,41 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _onBindingSelected(self, obj):
     '''
-    Enable Change Zone button only for leaf nodes (not group headers).
+    Enable Change Zone button only for Connection leaf nodes.
     '''
     item = self.activeBindingsTree.selectedItem()
     if item is None:
       self.changeBindingsButton.setEnabled(False)
       return
-    # Disable for group headers
-    if item in (self._connectionsTreeItem, self._interfacesTreeItem, self._sourcesTreeItem):
-      self.changeBindingsButton.setEnabled(False)
-    else:
+    # Enable only when a child of the Connections group is selected
+    if self._connectionsTreeItem is not None and item.parentItem() == self._connectionsTreeItem:
       self.changeBindingsButton.setEnabled(True)
+    else:
+      self.changeBindingsButton.setEnabled(False)
 
   def onChangeBinding(self, obj):
     '''
-    Change Zone button pressed — determine selected binding and change its zone.
+    Change Zone button pressed — open zone selector for the selected connection.
     '''
     item = self.activeBindingsTree.selectedItem()
     if item is None:
       return
-    if item in (self._connectionsTreeItem, self._interfacesTreeItem, self._sourcesTreeItem):
+    if self._connectionsTreeItem is None or item.parentItem() != self._connectionsTreeItem:
       return
-    logger.debug("TODO: change zone for binding: %s", item.label())
+    conn_id = item.data()
+    if conn_id is None or conn_id not in self._nm_connections_data:
+      return
+    zone, ifaces, name = self._nm_connections_data[conn_id]
+    self.dialog.setEnabled(False)
+    dlg = changeZoneConnectionDialog.ChangeZoneConnectionDialog(self.fw, conn_id, name, zone)
+    new_zone = dlg.run()
+    self.dialog.setEnabled(True)
+    if new_zone is not None:
+      try:
+        nm_set_zone_of_connection(new_zone, conn_id)
+        self.update_active_bindings()
+      except Exception as e:
+        logger.error("Failed to change zone of connection %s: %s", conn_id, e)
 
   def onAbout(self) :
     '''
@@ -1992,7 +1992,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.runtime_view = item == self.views['runtime']['item']
     # Let's change view as if a new configuration has been chosen
     self.onConfigurationViewChanged()
-    self.editFrameBox.setEnabled(not self.runtime_view)
 
 
   def onEditFrameAddButtonEvent(self):
@@ -2296,7 +2295,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
       #self.configureCombobox.doneMultipleChanges()
-      self.editFrameBox.setLabel(_("Edit zones"))
     elif item == self.configureViews['services']['item']:
       #Services selected
       self.load_services()
@@ -2306,7 +2304,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
       #self.configureCombobox.doneMultipleChanges()
-      self.editFrameBox.setLabel(_("Edit services"))
     elif item == self.configureViews['ipsets']['item']:
       # ip sets selected
       self.load_ipsets()
@@ -2316,7 +2313,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.addItems(itemColl)
       self.configureCombobox.setEnabled(True)
       #self.configureCombobox.doneMultipleChanges()
-      self.editFrameBox.setLabel(_("Edit ipsets"))
     else:
       # disabling info combo
       #self.selectedConfigurationCombo.startMultipleChanges()
@@ -2329,7 +2325,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.configureCombobox.deleteAllItems()
       self.configureCombobox.setEnabled(False)
       #self.configureCombobox.doneMultipleChanges()
-      self.editFrameBox.setLabel("")
     self.onSelectedConfigurationComboChanged()
 
 
