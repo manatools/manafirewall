@@ -426,6 +426,8 @@ class OptionDialog(basedialog.BaseDialog):
       logger.debug("New Log Denied %s", new_ldValue)
       if new_ldValue != old_ldValue:
         self.parent.fw.setLogDenied(new_ldValue)
+        # set log denied force reload to update log denied status in runtime
+        self.parent._reloading = True
     else:
       logger.error("Invalid object passed %s", obj.widgetClass())
 

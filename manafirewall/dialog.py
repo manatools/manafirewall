@@ -60,7 +60,6 @@ import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
 import manafirewall.protocolDialog as protocolDialog
 import manafirewall.optionDialog as optionDialog
-import manafirewall.logDeniedDialog as logDeniedDialog
 import manafirewall.helpinfo as helpinfo
 
 logger = logging.getLogger('manafirewall.dialog')
@@ -153,14 +152,17 @@ class ManaWallDialog(basedialog.BaseDialog):
   def _logger_setup(self,
                     file_name='manafirewall.log',
                     logroot='manafirewall',
-                    logfmt='%(asctime)s: %(message)s',
+                    logfmt='%(asctime)s [%(name)s]{%(filename)s:%(lineno)d}(%(levelname)s) %(message)s',
                     loglvl=logging.INFO):
     """Setup Python logging."""
-    maxbytes=10*1024*1024
+    maxbytes = 10*1024*1024
+    fmt = logging.Formatter(logfmt)
     handler = logging.handlers.RotatingFileHandler(
               file_name, maxBytes=maxbytes, backupCount=5)
-    logging.basicConfig(filename=file_name, format='%(asctime)s [%(name)s]{%(filename)s:%(lineno)d}(%(levelname)s) %(message)s', level=loglvl)
+    handler.setFormatter(fmt)
     logger.addHandler(handler)
+    logger.setLevel(loglvl)
+    logger.propagate = False
 
 
   def _configFileRead(self) :
@@ -230,13 +232,10 @@ class ManaWallDialog(basedialog.BaseDialog):
           'runtime_to_permanent': self.menubar.addItem(mItem, _("Runtime To Permanent"), 'document-save'),
           'reload' : self.menubar.addItem(mItem, _("&Reload Firewalld"), 'view-refresh'),
           'sep0'     : mItem.addSeparator(),
-          'log_denied' : self.menubar.addItem(mItem, _("Change &Log Denied"), 'preferences-system'),
-          'sep1'     : mItem.addSeparator(),
           'settings' : self.menubar.addItem(mItem, _("&Settings"), 'preferences-system'),
       }
       self.eventManager.addMenuEvent(self.optionsMenu['runtime_to_permanent'], self.onRuntimeToPermanent)
       self.eventManager.addMenuEvent(self.optionsMenu['reload'], self.onReloadFirewalld)
-      self.eventManager.addMenuEvent(self.optionsMenu['log_denied'], self.onChangeLogDenied)
       self.eventManager.addMenuEvent(self.optionsMenu['settings'], self.onOptionSettings)
 
       # building Help menu
@@ -1810,8 +1809,13 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     Show optionDialog for extended settings
     '''
+    self.dialog.setEnabled(False)
     up = optionDialog.OptionDialog(self)
     up.run()
+    if self._reloading:
+      # If we are reloading, the dialog will be closed by the reload callback, so we don't need to re-enable it
+      return
+    self.dialog.setEnabled(True)
 
   def onReloadFirewalld(self):
     '''
@@ -1820,18 +1824,6 @@ class ManaWallDialog(basedialog.BaseDialog):
     self._reloading = True
     self.dialog.setEnabled(False)
     self.fw.reload()
-
-  def onChangeLogDenied(self):
-    '''
-    Change Log Denied menu pressed — opens a small selection dialog.
-    '''
-    self.dialog.setEnabled(False)
-    dlg = logDeniedDialog.LogDeniedDialog(self.log_denied)
-    new_value = dlg.run()
-    if new_value is not None and new_value != self.log_denied:
-      self.fw.setLogDenied(new_value)
-    else:
-      self.dialog.setEnabled(True)
 
   def onRuntimeToPermanent(self):
     '''
@@ -2318,7 +2310,6 @@ class ManaWallDialog(basedialog.BaseDialog):
       while counter < count_max:
         counter = counter + 1
         item = self.fwEventQueue.get_nowait()
-        logger.debug("%s %s", item['event'], item['value']) #TODO remove
 
         # managing deferred firewall events
         if item['event'] == 'connection-changed':
