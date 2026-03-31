@@ -26,7 +26,7 @@ class ProtocolDialog(basedialog.BaseDialog):
     info dictionary contains following keys
     protocol          => protocol type
     '''
-    basedialog.BaseDialog.__init__(self, _("Protocol"), "", basedialog.DialogType.POPUP, 40, 7)
+    basedialog.BaseDialog.__init__(self, _("Protocol"), "", basedialog.DialogType.POPUP, 340, 100)
     self._info = info.copy()
     self._cancelled = False
     

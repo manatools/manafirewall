@@ -27,7 +27,7 @@ class PortForwardingDialog(basedialog.BaseDialog):
     to_port     => forwarding to which port
     to_address  => forwarding to which to_address
     '''
-    basedialog.BaseDialog.__init__(self, _("Port Forwarding"), "", basedialog.DialogType.POPUP, 40, 7)
+    basedialog.BaseDialog.__init__(self, _("Port Forwarding"), "", basedialog.DialogType.POPUP, 340, 100)
     self._portForwardingInfo = portForwardingInfo.copy()
     self._cancelled = False
     

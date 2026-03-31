@@ -29,7 +29,7 @@ class ServiceBaseDialog(basedialog.BaseDialog):
     default           => default zone (True/False)
     builtin           => builtin zone (True/False)
     '''
-    basedialog.BaseDialog.__init__(self, _("Service Settings"), "", basedialog.DialogType.POPUP, 40, 15)
+    basedialog.BaseDialog.__init__(self, _("Service Settings"), "", basedialog.DialogType.POPUP, 340, 200)
     self._serviceBaseInfo = serviceBaseInfo.copy()
     self._cancelled = False
     
