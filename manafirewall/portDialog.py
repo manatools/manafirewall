@@ -27,7 +27,7 @@ class PortDialog(basedialog.BaseDialog):
     port_range        => port range
     protocol          => protocol type
     '''
-    basedialog.BaseDialog.__init__(self, _("Port and Protocol"), "", basedialog.DialogType.POPUP, 40, 7)
+    basedialog.BaseDialog.__init__(self, _("Port and Protocol"), "", basedialog.DialogType.POPUP, 340, 100)
     self._portInfo = portInfo.copy()
     self._cancelled = False
     
@@ -35,10 +35,10 @@ class PortDialog(basedialog.BaseDialog):
     '''
     layout implementation called in base class to setup UI
     '''
-    align = self.factory.createLeft(layout)
-    hbox = self.factory.createHBox(align)
+    hbox = self.factory.createHBox(layout)
     self.port_range   = self.factory.createInputField(hbox, _("Port / Port Range"))
     self.port_range.setInputMaxLength(32)
+    self.port_range.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
 
     protocols = [ 'tcp', 'udp', 'sctp', 'dccp' ]
 
