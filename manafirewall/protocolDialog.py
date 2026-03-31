@@ -40,7 +40,7 @@ class ProtocolDialog(basedialog.BaseDialog):
 
     self.protocolCombobox = self.factory.createComboBox(align,_("Protocol"))
     itemColl = []
-    show_item = ""
+    show_item = "tcp" # default protocol to show if not specified in info
     selected = False
     if 'protocol' in self._info.keys():
       if self._info['protocol']:

@@ -644,7 +644,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       if settings:
         protocols = settings.getProtocols()
 
-    current_protocol = ""
+    current_protocol = protocols[0] if protocols else ""
     current = self.protocolList.selectedItem()
     if current:
       current_protocol = current.label()
@@ -709,7 +709,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       if settings:
         ports = settings.getSourcePorts()
 
-    current_port = ""
+    current_port = ports[0] if ports else ""
     current = self.portList.selectedItem()
     #### TODO try to select the same
 
