@@ -651,8 +651,9 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     v = []
     for protocol in protocols:
-      item = MUI.YTableItem(label=protocol)
+      item = MUI.YTableItem()
       item.setSelected(protocol == current_protocol)
+      item.addCell(protocol)
       v.append(item)
 
     self.protocolList.deleteAllItems()
@@ -820,7 +821,8 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       v = []
       for port in ports:
-        item = MUI.YTableItem(label=port)
+        item = MUI.YTableItem()
+        item.addCell(port)
         #item.setSelected(service == current_service)
         v.append(item)
 
