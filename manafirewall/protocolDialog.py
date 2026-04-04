@@ -11,13 +11,14 @@ Author:  Angelo Naselli <anaselli@linux.it>
 @package manafirewall
 '''
 from firewall import functions
+import gettext
 
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
 import manatools.aui.yui as MUI
 
-
+_ = gettext.gettext
 
 class ProtocolDialog(basedialog.BaseDialog):
   def __init__(self, info={}):

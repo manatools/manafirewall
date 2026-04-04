@@ -11,11 +11,13 @@ Author:  Angelo Naselli <anaselli@linux.it>
 @package manafirewall
 '''
 
+import gettext
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
 import manatools.aui.yui as MUI
 
+_ = gettext.gettext
 
 
 class ZoneBaseDialog(basedialog.BaseDialog):

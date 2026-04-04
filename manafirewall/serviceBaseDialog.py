@@ -10,11 +10,11 @@ Author:  Angelo Naselli <anaselli@linux.it>
 
 @package manafirewall
 '''
-
+import gettext
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-
+_ = gettext.gettext
 
 
 class ServiceBaseDialog(basedialog.BaseDialog):

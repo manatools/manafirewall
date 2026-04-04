@@ -64,6 +64,7 @@ import manafirewall.optionDialog as optionDialog
 import manafirewall.helpinfo as helpinfo
 
 logger = logging.getLogger('manafirewall.dialog')
+_ = gettext.gettext
 
 def TimeFunction(func):
     """
