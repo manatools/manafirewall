@@ -107,12 +107,14 @@ class ManaWallDialog(basedialog.BaseDialog):
     # it without the deprecated info-dict parameter.
     try:
       _app = MUI.YUI.app()
-      _app.setApplicationName(self._application_name)
-      _app.setVersion(VERSION)
-      _app.setLicense('GPLv2+')
-      _app.setAuthors('Angelo Naselli &lt;anaselli@linux.it&gt;')
-      _app.setDescription(_("{} is a graphical configuration tool for firewalld.").format(PROJECT))
-      _app.setCredits(_("Credits 2019-2026 Angelo Naselli"))
+      _app.application_name = self._application_name
+      _app.version = VERSION
+      _app.license = 'GPLv2+'
+      _app.authors = 'Angelo Naselli &lt;anaselli@linux.it&gt;'
+      _app.description = _("{} is a graphical configuration tool for firewalld.").format(PROJECT)
+      _app.credits = _("Credits 2019-2026 Angelo Naselli")
+      _app.logo = 'manafirewall'
+      _app.information = ""
     except Exception:
       pass
 
@@ -482,9 +484,13 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons = { 'add' : None, 'edit': None, 'remove': None }
       align = self.factory.createLeft(container)
       hbox = self.factory.createHBox(align)
-      buttons['add']    = self.factory.createPushButton(hbox, _("A&dd"))
+      buttons['add']    = self.factory.createIconButton(hbox, 'list-add', _("&Add"))
+      #self.factory.createPushButton(hbox, _("A&dd"))
       buttons['edit']   = self.factory.createPushButton(hbox, _("&Edit"))
-      buttons['remove'] = self.factory.createPushButton(hbox, _("&Remove"))
+      buttons['remove'] = self.factory.createIconButton(hbox, 'list-remove', _("&Remove"))
+      #self.factory.createPushButton(hbox, _("&Remove"))
+      
+
     return buttons
 
   def _createsingleStrItem(self, values):
