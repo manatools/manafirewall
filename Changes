@@ -1,5 +1,6 @@
-2022-XX-YY v. 0.0.4
+2026-04-YY v. 0.99.1
 --------------------
+- Moved to manatools aui
 - Added Automatic Helper Assignment Change management
 - Added Log Denied Change management
 - Added Default Zone Change management
