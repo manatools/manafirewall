@@ -15,7 +15,7 @@ from firewall import functions
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
+import manatools.aui.yui as MUI
 
 
 
@@ -27,7 +27,7 @@ class PortDialog(basedialog.BaseDialog):
     port_range        => port range
     protocol          => protocol type
     '''
-    basedialog.BaseDialog.__init__(self, _("Port and Protocol"), "", basedialog.DialogType.POPUP, 40, 7)
+    basedialog.BaseDialog.__init__(self, _("Port and Protocol"), "", basedialog.DialogType.POPUP, 340, 100)
     self._portInfo = portInfo.copy()
     self._cancelled = False
     
@@ -35,25 +35,24 @@ class PortDialog(basedialog.BaseDialog):
     '''
     layout implementation called in base class to setup UI
     '''
-    align = self.factory.createLeft(layout)
-    hbox = self.factory.createHBox(align)
+    hbox = self.factory.createHBox(layout)
     self.port_range   = self.factory.createInputField(hbox, _("Port / Port Range"))
     self.port_range.setInputMaxLength(32)
+    self.port_range.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
 
     protocols = [ 'tcp', 'udp', 'sctp', 'dccp' ]
 
     self.protocolCombobox = self.factory.createComboBox(hbox,_("Protocol"))
-    itemColl = yui.YItemCollection()
+    itemColl = []
     show_item = 'tcp'
     if 'protocol' in self._portInfo.keys():
       if self._portInfo['protocol']:
         show_item = self._portInfo['protocol']
     for p in protocols:
-      item = yui.YItem(p, False)
+      item = MUI.YItem(p, False)
       if show_item == p :
           item.setSelected(True)
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
 
     self.protocolCombobox.addItems(itemColl)
     if 'port_range' in self._portInfo.keys():

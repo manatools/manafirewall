@@ -10,12 +10,11 @@ Author:  Angelo Naselli <anaselli@linux.it>
 
 @package manafirewall
 '''
-
+import gettext
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
-
+_ = gettext.gettext
 
 
 class ServiceBaseDialog(basedialog.BaseDialog):
@@ -30,7 +29,7 @@ class ServiceBaseDialog(basedialog.BaseDialog):
     default           => default zone (True/False)
     builtin           => builtin zone (True/False)
     '''
-    basedialog.BaseDialog.__init__(self, _("Service Settings"), "", basedialog.DialogType.POPUP, 40, 15)
+    basedialog.BaseDialog.__init__(self, _("Service Settings"), "", basedialog.DialogType.POPUP, 340, 200)
     self._serviceBaseInfo = serviceBaseInfo.copy()
     self._cancelled = False
     

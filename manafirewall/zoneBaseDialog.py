@@ -11,11 +11,13 @@ Author:  Angelo Naselli <anaselli@linux.it>
 @package manafirewall
 '''
 
+import gettext
 import manatools.ui.basedialog as basedialog
 import manatools.ui.common as ui
 
-import yui
+import manatools.aui.yui as MUI
 
+_ = gettext.gettext
 
 
 class ZoneBaseDialog(basedialog.BaseDialog):
@@ -32,7 +34,7 @@ class ZoneBaseDialog(basedialog.BaseDialog):
     default           => default zone (True/False)
     builtin           => builtin zone (True/False)
     '''
-    basedialog.BaseDialog.__init__(self, _("Zone Settings"), "", basedialog.DialogType.POPUP, 40, 15)
+    basedialog.BaseDialog.__init__(self, _("Zone Settings"), "", basedialog.DialogType.POPUP, 340, 200)
     self._zoneBaseInfo = zoneBaseInfo.copy()
     self._cancelled = False
     
@@ -77,16 +79,15 @@ class ZoneBaseDialog(basedialog.BaseDialog):
       defaultTgt = self._zoneBaseInfo['target'] if self._zoneBaseInfo['target'] != "%%REJECT%%" else "REJECT"
 
     self.currentTargetCombobox = self.factory.createComboBox(hbox,"")
-    itemColl = yui.YItemCollection()
+    itemColl = []
     for v in ordered_targets:
-      item = yui.YItem(self.targets[v]['title'], False)
+      item = MUI.YItem(self.targets[v]['title'], False)
       show_item = 'ACCEPT' if defaultTgt == "default" else defaultTgt
       if show_item == v :
           item.setSelected(True)
       # adding item to targets to find the item selected
       self.targets[v]['item'] = item
-      itemColl.push_back(item)
-      item.this.own(False)
+      itemColl.append(item)
     self.currentTargetCombobox.addItems(itemColl)
     self.defaultTarget.setValue(defaultTgt == "default")
     self.currentTargetCombobox.setEnabled(defaultTgt != "default")
