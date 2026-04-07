@@ -4,7 +4,7 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Yuri Chornoivan <yurchor@ukr.net>, 2026
 #
 #, fuzzy
 msgid ""
@@ -13,8 +13,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-06 17:26+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2022\n"
-"Language-Team: Ukrainian (https://www.transifex.com/MageiaLinux/teams/9361/"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2026\n"
+"Language-Team: Ukrainian (https://app.transifex.com/MageiaLinux/teams/9361/"
 "uk/)\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
@@ -28,7 +28,7 @@ msgstr ""
 #: manafirewall/changeZoneConnectionDialog.py:33
 #: manafirewall/changeZoneConnectionDialog.py:44
 msgid "Select zone for connection '{}'"
-msgstr ""
+msgstr "Виберіть зону для з'єднання «{}»"
 
 #: manafirewall/changeZoneConnectionDialog.py:49
 #: manafirewall/changeZoneConnectionDialog.py:80
@@ -43,7 +43,7 @@ msgstr "За&крити"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
 msgid "&OK"
-msgstr ""
+msgstr "&Гаразд"
 
 #: manafirewall/dialog.py:103
 msgid "Manatools - firewalld configurator"
@@ -55,11 +55,11 @@ msgstr "{} — засіб налаштовування firewalld у Manatools"
 
 #: manafirewall/dialog.py:114
 msgid "{} is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} — графічний інструмент налаштовування для firewalld."
 
 #: manafirewall/dialog.py:115
 msgid "Credits 2019-2026 Angelo Naselli"
-msgstr ""
+msgstr "© Angelo Naselli, 2019-2026"
 
 #: manafirewall/dialog.py:122
 msgid "Connection to firewalld established."
@@ -141,7 +141,7 @@ msgstr "Активні прив'язки"
 
 #: manafirewall/dialog.py:296
 msgid "Change &Zone"
-msgstr ""
+msgstr "Змінити &зону"
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:72
 msgid "Runtime"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1935
 msgid "Connections"
-msgstr ""
+msgstr "З'єднання"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -399,6 +399,9 @@ msgid ""
 "active. If you also want changes to be active in the runtime environment, "
 "either add them there as well or reload firewalld."
 msgstr ""
+"Остаточний режим надає змогу налаштовувати речі, які не є активними одразу. "
+"Якщо ви хочете, щоб зміни були активними і в середовищі виконання, додайте "
+"їх і туди або перезавантажте firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -407,6 +410,10 @@ msgid ""
 "want them to persist, you need to add those changes in permanent mode as "
 "well."
 msgstr ""
+"Динамічний режим надає змогу налаштувати поточні параметри роботи. Змінені у "
+"динамічному режимі параметри не буде відтворено під час наступного запуску "
+"або перезавантаження firewalld. Якщо ви хочете зробити їх сталими, вам слід "
+"внести зміни і у остаточному режимі."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -427,18 +434,26 @@ msgid ""
 "target or to select the default behaviour for packets that don't match any "
 "rule. Targets are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Для зони доступними полями є назва, версія, скорочена описова назва та опис. "
+"За допомогою поля для позначки можна активувати типове призначення або "
+"вибрати типову поведінку для пакунків, які не відповідають жодному правилу. "
+"Призначеннями є DROP, REJECT або ACCEPT. "
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - internal - "
 "public - trusted - work"
 msgstr ""
+"Попередньо визначені зони: block - dmz - drop - external - home - internal - "
+"public - trusted - work"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" as the View and one of the Zones, you can "
 "configure the selected zone. There are some parameters for each zone:"
 msgstr ""
+"Після вибору режиму перегляду «Зони» і вибору однієї з зон, ви зможете її "
+"налаштувати. Для кожної зони передбачено декілька параметрів:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -450,6 +465,13 @@ msgid ""
 "registered directly but not applied immediately; it will be applied after a "
 "firewalld reload.</li>"
 msgstr ""
+"<ul><li><b>Служби</b>: якщо вибрати пункт «Налаштувати», ви побачите список "
+"попередньо визначених служб. Залежно від зони, деякі служби вже вибрано. "
+"Якщо ви встановите або знімете позначку біля прапорця для служби, відповідні "
+"правила будуть застосовані для уможливлення або заборони цієї служби на "
+"інтерфейсах, що використовують цю зону. В остаточному режимі налаштування "
+"реєструється безпосередньо, але не застосовується негайно; їх буде "
+"застосовано після перезавантаження брандмауера.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -459,6 +481,11 @@ msgid ""
 "rules. A range is specified with a hyphen between two numbers, for example "
 "80-88. The effect is that those ports will be open.</li>"
 msgstr ""
+"<li><b>Порти</b>: за допомогою цього пункту можна визначити правило за "
+"допомогою кнопки «Додати», вказавши номер порту або діапазон портів і "
+"протокол зі списку tcp, udp, sctp та dccp. У списку буде показано вже "
+"визначені правила. Діапазон можна вказати за допомогою дефісу між двома "
+"числами, наприклад, 80-88. У результаті буде відкрито вказані порти.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -466,6 +493,9 @@ msgid ""
 "supported by firewalld, or add a custom one by name. (to complete with what "
 "is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Протоколи</b>: тут ви можете додати протокол до списку підтримуваних "
+"firewalld протоколів або додати специфічний протокол із назвою. (слід "
+"вказати, яким буде результат цього додавання)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -475,6 +505,11 @@ msgid ""
 "already defined rules. (to complete with what is the effect of this "
 "addition)</li>"
 msgstr ""
+"<li><b>Порти походження</b>: за допомогою цього пункту налаштувань ви можете "
+"вказати правило після натискання кнопки «Додати». Правило складається із "
+"номеру порту або діапазону номерів портів і протоколу, вибраного зі списку: "
+"tcp, udp, sctp або dccp. У списку буде показано вже визначені правила. (слід "
+"доповнити описом результатів додавання правила)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -482,6 +517,8 @@ msgid ""
 "masquerading for the zone (IPv4 only). (to complete with what is the effect "
 "of this addition)</li>"
 msgstr ""
+"<li><b>Маскування</b>: тут можна увімкнути або вимкнути маскування (лише для "
+"IPv4) (слід доповнити описом результатів додавання)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -493,6 +530,14 @@ msgid ""
 "either a port or range for the destination for local forwarding, or an "
 "address and optional port or range if the destination address changes.</li>"
 msgstr ""
+"<li><b>Переспрямування портів</b>: переспрямування портів – це застосування "
+"трансляції мережевих адрес (NAT), яке переспрямовує запит на зв’язок з "
+"однієї комбінації адреси та номера порту на іншу, поки пакети проходять "
+"крізь брандмауер (лише IPv4). Додавання правила вимагає визначення порту або "
+"діапазону портів для вхідних запитів та його протоколу (джерела), а також "
+"порту або діапазону призначення для локального переспрямування, або адреси "
+"та (необов'язково) порту чи діапазону, якщо адреса призначення змінюється.</"
+"li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -517,6 +562,10 @@ msgid ""
 "application by just ticking a checkbox. A lot of services are already "
 "defined, but you can add your own for an application that is not provided."
 msgstr ""
+"A service is a collection of rules that are applied together in relation to "
+"an application. This concept helps to apply what is needed for an "
+"application by just ticking a checkbox. A lot of services are already "
+"defined, but you can add your own for an application that is not provided."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -524,6 +573,8 @@ msgid ""
 "allows you to choose a service. Selecting one updates the table with a list "
 "of Port-Protocol pairs."
 msgstr ""
+"На панелі «Служби» кнопка «Налаштувати» поряд зі спадним списком надає змогу "
+"вибрати службу. Вибір служби оновлює таблиці зі списком пар порт-протокол. ."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -588,6 +639,9 @@ msgid ""
 "it can work using Qt (PySide6), GTK 4, or ncurses, i.e. both graphical and "
 "textual user interfaces."
 msgstr ""
+"ManaFirewall є частиною комплекту manatools Програму засновано на manatools."
+"aui, отже вона може працювати із використанням Qt (PySide6), GTK 4 або "
+"ncurses, тобто одночасно графічного та текстового інтерфейсів."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -595,6 +649,9 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the zone of these bindings."
 msgstr ""
+"Праворуч розташовано панель огляду активних прив'язок. Це зони, до яких "
+"прив'язано або додано з'єднання, інтерфейс або походження. За допомогою цієї "
+"панелі просто змінити зону цих прив'язок."
 
 #: manafirewall/helpinfo.py:69
 msgid ""
@@ -638,7 +695,7 @@ msgstr "Відновити &типове"
 
 #: manafirewall/optionDialog.py:120
 msgid "Restore default configuration for the selected section"
-msgstr ""
+msgstr "Відновити типові налаштування для вибраного розділу"
 
 #: manafirewall/optionDialog.py:182
 msgid "firewalld options"
@@ -756,196 +813,3 @@ msgstr "Відмовити"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sверсія: %(version)s%(NL)sсайт: %(site)s"
-
-#~ msgid "&Change binding"
-#~ msgstr "З&мінити прив'язку"
-
-#~ msgid "&Load default"
-#~ msgstr "З&авантажити типове"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows to tick or untick a "
-#~ "\"Masquerade zone\". Thus this zone is used for masquerading (only for "
-#~ "IPv4). (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Маскування</b>: тут можна позначити або зняти позначку з пункту "
-#~ "«Зона маскування». Позначені зони використовуватимуться для маскування "
-#~ "(лише для IPv4). (слід доповнити описом результатів додавання)</li>"
-
-#~ msgid ""
-#~ "<li><b>Port Forwarding</b>: port forwarding is an application of network "
-#~ "address translation (NAT) that redirects a communication request from one "
-#~ "address and port number combination to another while the packets are "
-#~ "traversing the firewall in IPv4 technology. Adding a rule needs to "
-#~ "specify a port or port range of incoming requests and its protocol "
-#~ "(source) and either a port or range for the destination for local "
-#~ "forwarding or address of the destination and optionally port or range if "
-#~ "port is changed.</li>"
-#~ msgstr ""
-#~ "<li><b>Переспрямовування портів</b>: переспрямовування портів є "
-#~ "застосуванням перенесення адрес мережі (NAT), яке переспрямовує обмін "
-#~ "запитами з однієї комбінації адреси і номеру порту до іншої під час "
-#~ "пересування пакетів крізь захисний екран (брандмауер) у технології IPv4. "
-#~ "Додавання правила потребує визначення порту або діапазону портів для "
-#~ "призначення для локального переспрямовування або адреси призначення і "
-#~ "необов'язкового порту або діапазону портів, якщо порт змінено.</li>"
-
-#~ msgid ""
-#~ "<li><b>Ports</b>: this configure option allows to specify a rule with "
-#~ "\"Add\" button with a port number or range and a protocol selected in the "
-#~ "list tcp, udp, sctp and dccp. The list view displays the already defined "
-#~ "rules. A range is defined with a hyphen between two numbers, for example "
-#~ "with 80-88. The effect will be that these ports will be open.</li>"
-#~ msgstr ""
-#~ "<li><b>Порти</b>: цей пункт налаштувань надає змогу вказати правило за "
-#~ "допомогою кнопки «Додати». Правило складається з номера порту або "
-#~ "діапазону номерів портів і протоколу, який вибрано зі списку tcp, udp, "
-#~ "sctp і dccp. На панелі буде показано вже визначені правила. Діапазон "
-#~ "визначається двома числами із дефісом між ними. Приклад: 80-88. "
-#~ "Налаштування працюватимуть, лише якщо порти буде відкрито.</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol among a list of "
-#~ "supported protocols by firewalld or to add a specific one that you can "
-#~ "name. (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Протоколи</b>: тут ви можете додати протокол до списку "
-#~ "підтримуваних firewalld протоколів або додати специфічний протокол із "
-#~ "назвою. (слід вказати, яким буде результат цього додавання)</li>"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this configure option allows to specify a rule "
-#~ "with \"Add\" button with a port number or range and a protocol selected "
-#~ "in the list tcp, udp, sctp and dccp. The list view displays the already "
-#~ "defined rules.(to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Порти походження</b>: за допомогою цього пункту налаштувань ви "
-#~ "можете вказати правило після натискання кнопки «Додати». Правило "
-#~ "складається із номеру порту або діапазону номерів портів і протоколу, "
-#~ "вибраного зі списку: tcp, udp, sctp або dccp. У списку буде показано вже "
-#~ "визначені правила. (слід доповнити описом результатів додавання правила)</"
-#~ "li>"
-
-#~ msgid ""
-#~ "<ul><li><b>Services</b>: when selected in \"Configure\" option, you see a "
-#~ "list of services that are predefined. According to the zone, some "
-#~ "services are already selected. If you tick or untick a checkbox in regard "
-#~ "to a service, the according rules will applying to allow said service on "
-#~ "interfaces having the zone. In permanent mode, the configuration is "
-#~ "registered directly, but not applied. It will be applied after a "
-#~ "firewalld reload.</li>"
-#~ msgstr ""
-#~ "<ul><li><b>Служби</b>: якщо натиснути кнопку «Налаштувати», буде показано "
-#~ "список попередньо визначених служб. Відповідно до зони, деякі служби вже "
-#~ "буде позначено. Якщо ви позначите або знімете позначку з пункту служби, "
-#~ "буде застосовано відповідні правила уможливлення служби на інтерфейсах "
-#~ "зони. У остаточному режимі налаштування буде зареєстровано, але не "
-#~ "застосовано. Застосування відбудеться після перезавантаження firewalld.</"
-#~ "li>"
-
-#~ msgid ""
-#~ "A service is a collection of rules that are applied together in relation "
-#~ "to an application. This concept helps to apply what is need for an "
-#~ "application by just ticking a checkbox. A lot of services are already "
-#~ "defined, but you can add your own for an application which is not "
-#~ "provided."
-#~ msgstr ""
-#~ "Служба є набором правил, які застосовуються разом щодо певної програми. "
-#~ "Служби допомагають застосовувати потрібні обмеження до програми шляхом "
-#~ "простого позначення певного пункту. У програмі вже визначено багато "
-#~ "служб, але ви можете додати власну для програми, якщо її немає у списку."
-
-#~ msgid "A&dd"
-#~ msgstr "&Додати"
-
-#~ msgid ""
-#~ "After selecting \"Zones\" for view and one of the Zones, you can "
-#~ "configure said zone. There are some parameters for each zone:"
-#~ msgstr ""
-#~ "Після вибору режиму перегляду «Зони» і вибору однієї з зон, ви зможете її "
-#~ "налаштувати. Для кожної зони передбачено декілька параметрів:"
-
-#~ msgid "Credits {}"
-#~ msgstr "Подяки щодо {}"
-
-#~ msgid "Edit ipsets"
-#~ msgstr "Редагувати ipsets"
-
-#~ msgid "Edit services"
-#~ msgstr "Редагувати служби"
-
-#~ msgid "Edit zones"
-#~ msgstr "Редагувати зони"
-
-#~ msgid ""
-#~ "For a zone, available fields are name, version, short as more descriptive "
-#~ "name, and description. A check box allows to activate default target or "
-#~ "to select the default behaviour for packets that don't match any rule. "
-#~ "Targets are DROP, REJECT or ACCEPT. "
-#~ msgstr ""
-#~ "Для зони доступними полями є назва, версія, скорочена описова назва та "
-#~ "опис. За допомогою поля для позначки можна активувати типове призначення "
-#~ "або вибрати типову поведінку для пакунків, які не відповідають жодному "
-#~ "правилу. Призначеннями є DROP, REJECT або ACCEPT. "
-
-#~ msgid ""
-#~ "In view \"Services\", the \"Configure\" button next to the combobox "
-#~ "allows to choose a service. Selecting one updates the table with a list "
-#~ "of couples Port-Protocol "
-#~ msgstr ""
-#~ "На панелі «Служби» кнопка «Налаштувати» поряд зі спадним списком надає "
-#~ "змогу вибрати службу. Вибір служби оновлює таблиці зі списком пар порт-"
-#~ "протокол. "
-
-#~ msgid "Lockdown"
-#~ msgstr "Блокування"
-
-#~ msgid "Lockdown: {}"
-#~ msgstr "Блокування: {}"
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncurses, i.e. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall є частиною комплекту manatools Програму засновано на libyui, "
-#~ "отже вона може працювати із використанням Gtk, Qt або ncurses, тобто "
-#~ "одночасно графічного та текстового інтерфейсів."
-
-#~ msgid ""
-#~ "On the left there is the overview of the active bindings. These are the "
-#~ "zones, that have a connection, interface or source bound or added to it. "
-#~ "Here it is possible to easily change the          zone of these bindings."
-#~ msgstr ""
-#~ "Праворуч розташовано панель огляду активних прив'язок. Це зони, до яких "
-#~ "прив'язано або додано з'єднання, інтерфейс або походження. За допомогою "
-#~ "цієї панелі просто змінити зону цих прив'язок."
-
-#~ msgid ""
-#~ "Permanent mode allows to configure things that are not active "
-#~ "immediately. If you want to have changes also in the runtime environment, "
-#~ "then either add the changes there also or reload firewalld."
-#~ msgstr ""
-#~ "Сталий режим надає змогу налаштувати речі, які не одразу стають "
-#~ "активними. Якщо ви хочете внести зміни у поточне середовище, або змініть "
-#~ "і ці параметри, або перезавантажте firewalld."
-
-#~ msgid ""
-#~ "Predefined zones are: block - dmz - drop - external - home - home - "
-#~ "internal - public - trusted - work"
-#~ msgstr ""
-#~ "Попередньо визначені зони: block - dmz - drop - external - home - home - "
-#~ "internal - public - trusted - work"
-
-#~ msgid ""
-#~ "Runtime mode allows to configure things at runtime. Things changed at "
-#~ "runtime will not present at next start up or reloading firewalld, if you "
-#~ "want that you need to add those changes in permanent mode also. "
-#~ msgstr ""
-#~ "Динамічний режим надає змогу налаштувати поточні параметри роботи. "
-#~ "Змінені у динамічному режимі параметри не буде відтворено під час "
-#~ "наступного запуску або перезавантаження firewalld. Якщо ви хочете зробити "
-#~ "їх сталими, вам слід внести зміни і у остаточному режимі."
-
-#~ msgid "{}  is a graphical configuration tool for firewalld."
-#~ msgstr "{} — графічний інструмент налаштовування для firewalld."
