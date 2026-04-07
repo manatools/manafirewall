@@ -99,6 +99,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.level_debug = False
 
     MUI.YUI.app().setApplicationIcon("manafirewall")
+    # Wayland/Plasma: tell the compositor which .desktop file represents this
+    # window so the task manager shows the correct icon and application name.
+    MUI.YUI.app().desktop_file_name = "org.mageia.manafirewall"
 
     basedialog.BaseDialog.__init__(self, _("Manatools - firewalld configurator"), "manafirewall", basedialog.DialogType.MAIN, 640, 480)
     self._application_name = _("{} - ManaTools firewalld configurator").format(PROJECT)

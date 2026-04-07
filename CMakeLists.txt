@@ -54,4 +54,5 @@ install(FILES ${CMAKE_SOURCE_DIR}/share/metainfo/org.mageia.manafirewall.metainf
 install(FILES ${CMAKE_SOURCE_DIR}/share/applications/org.mageia.manafirewall.desktop DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
 
 install(FILES ${CMAKE_SOURCE_DIR}/share/images/256x256/manafirewall.png DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/256x256/apps RENAME manafirewall.png)
+install(FILES ${CMAKE_SOURCE_DIR}/share/images/manafirewall.svg DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/scalable/apps RENAME manafirewall.svg)
 
