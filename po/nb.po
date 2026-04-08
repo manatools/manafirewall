@@ -5,7 +5,7 @@
 #
 # Translators:
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# Karl Morten Ramberg <karl.m.ramberg@gmail.com>, 2022
+# Karl Morten Ramberg <karl.m.ramberg@gmail.com>, 2026
 #
 #, fuzzy
 msgid ""
@@ -14,8 +14,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-06 17:26+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Karl Morten Ramberg <karl.m.ramberg@gmail.com>, 2022\n"
-"Language-Team: Norwegian Bokmål (https://www.transifex.com/MageiaLinux/"
+"Last-Translator: Karl Morten Ramberg <karl.m.ramberg@gmail.com>, 2026\n"
+"Language-Team: Norwegian Bokmål (https://app.transifex.com/MageiaLinux/"
 "teams/9361/nb/)\n"
 "Language: nb\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #: manafirewall/changeZoneConnectionDialog.py:33
 #: manafirewall/changeZoneConnectionDialog.py:44
 msgid "Select zone for connection '{}'"
-msgstr ""
+msgstr "Velg sone for tilkobling '{}'"
 
 #: manafirewall/changeZoneConnectionDialog.py:49
 #: manafirewall/changeZoneConnectionDialog.py:80
@@ -41,7 +41,7 @@ msgstr "Lukk"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
 msgid "&OK"
-msgstr ""
+msgstr "&OK"
 
 #: manafirewall/dialog.py:103
 msgid "Manatools - firewalld configurator"
@@ -53,11 +53,11 @@ msgstr "{} - ManaTools brannmur konfigurator"
 
 #: manafirewall/dialog.py:114
 msgid "{} is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} er et grafisk konfigurasjonsverktøy for firewalld."
 
 #: manafirewall/dialog.py:115
 msgid "Credits 2019-2026 Angelo Naselli"
-msgstr ""
+msgstr "Kreditt 2019-2026 Angelo Naselli"
 
 #: manafirewall/dialog.py:122
 msgid "Connection to firewalld established."
@@ -139,7 +139,7 @@ msgstr "Aktive koblinger"
 
 #: manafirewall/dialog.py:296
 msgid "Change &Zone"
-msgstr ""
+msgstr "Endre &Sone"
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:72
 msgid "Runtime"
@@ -298,7 +298,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1935
 msgid "Connections"
-msgstr ""
+msgstr "Tilkoblinger"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -396,6 +396,9 @@ msgid ""
 "active. If you also want changes to be active in the runtime environment, "
 "either add them there as well or reload firewalld."
 msgstr ""
+"Permanent modus lar deg konfigurere ting som ikke er umiddelbart aktive. "
+"Hvis du også vil at endringer skal være aktive i kjøretidsmiljøet, kan du "
+"enten legge dem til der også eller laste inn firewalld på nytt."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -404,6 +407,10 @@ msgid ""
 "want them to persist, you need to add those changes in permanent mode as "
 "well."
 msgstr ""
+"Kjøretidsmodus lar deg konfigurere ting under kjøring. Ting som endres under "
+"kjøring vil ikke vare etter neste oppstart eller omstart av brannmuren. Hvis "
+"du vil at de skal vare, må du også legge til disse endringene i permanent "
+"modus."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -424,18 +431,26 @@ msgid ""
 "target or to select the default behaviour for packets that don't match any "
 "rule. Targets are DROP, REJECT or ACCEPT. "
 msgstr ""
+"For en sone er tilgjengelige felt, navn, versjon, kort (et mer beskrivende "
+"navn) og beskrivelse. En avmerkingsboks lar deg aktivere standardmålet eller "
+"velge standardoppførsel for pakker som ikke samsvarer med noen regler. "
+"Målene er DROP, REJECT eller ACCEPT."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - internal - "
 "public - trusted - work"
 msgstr ""
+"Forhåndsdefinerte soner er: blokk - dmz - slipp - ekstern - hjem - intern - "
+"offentlig - klarert - arbeid"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" as the View and one of the Zones, you can "
 "configure the selected zone. There are some parameters for each zone:"
 msgstr ""
+"Etter at du har valgt «Soner» som visning og en av sonene, kan du "
+"konfigurere den valgte sonen. Det finnes noen parametere for hver sone:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -447,6 +462,13 @@ msgid ""
 "registered directly but not applied immediately; it will be applied after a "
 "firewalld reload.</li>"
 msgstr ""
+"<ul><li><b>Tjenester</b>:Når du velger alternativet «Konfigurer», ser du en "
+"liste over forhåndsdefinerte tjenester. Noen tjenester er allerede valgt, "
+"avhengig av sonen. Hvis du merker av eller fjerner merket i en "
+"avmerkingsboks for en tjeneste, vil de tilsvarende reglene bli brukt for å "
+"tillate eller nekte den tjenesten på grensesnitt som bruker sonen. I "
+"permanent modus registreres konfigurasjonen direkte, men brukes ikke "
+"umiddelbart. Den vil bli brukt etter en brannmurpåfylling.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -456,6 +478,11 @@ msgid ""
 "rules. A range is specified with a hyphen between two numbers, for example "
 "80-88. The effect is that those ports will be open.</li>"
 msgstr ""
+"<li><b>Porter</b>: Dette alternativet lar deg definere en regel ved hjelp av "
+"«Legg til»-knappen, og angi et portnummer eller -område og en protokoll "
+"valgt fra listen tcp, udp, sctp og dccp. Listevisningen viser de allerede "
+"definerte reglene. Et område angis med en bindestrek mellom to tall, for "
+"eksempel 80-88. Effekten er at disse portene vil være åpne.1"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -463,6 +490,9 @@ msgid ""
 "supported by firewalld, or add a custom one by name. (to complete with what "
 "is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protokoller</b>: Her kan du legge til en protokoll fra en liste over "
+"protokoller som støttes av firewalld, eller legge til en egendefinert "
+"protokoll med navn. (for å fullføre hva effekten av dette tillegget er)1"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -472,6 +502,11 @@ msgid ""
 "already defined rules. (to complete with what is the effect of this "
 "addition)</li>"
 msgstr ""
+"<li><b>Kilde Porter</b>: Dette alternativet lar deg definere en regel ved "
+"hjelp av «Legg til»-knappen, og angi et kildeportnummer eller -område og en "
+"protokoll valgt fra listen tcp, udp, sctp og dccp. Listevisningen viser de "
+"allerede definerte reglene. (for å fullføre hva effekten av dette tillegget "
+"er)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -479,6 +514,9 @@ msgid ""
 "masquerading for the zone (IPv4 only). (to complete with what is the effect "
 "of this addition)</li>"
 msgstr ""
+"<li><b>Maskerad</b>: Dette alternativet lar deg aktivere eller deaktivere "
+"maskering for sonen (kun IPv4). (for å fullføre hva effekten av dette "
+"tillegget er)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -490,6 +528,14 @@ msgid ""
 "either a port or range for the destination for local forwarding, or an "
 "address and optional port or range if the destination address changes.</li>"
 msgstr ""
+"<li><b>Portvideresending</b>:Portvideresending er en applikasjon av "
+"nettverksadresseoversettelse (NAT) som omdirigerer en "
+"kommunikasjonsforespørsel fra én adresse- og portnummerkombinasjon til en "
+"annen mens pakkene krysser brannmuren (kun IPv4). Å legge til en regel "
+"krever at man spesifiserer en port eller et portområde for innkommende "
+"forespørsler og dens protokoll (kilde), og enten en port eller et område for "
+"destinasjonen for lokal videresending, eller en adresse og valgfri port "
+"eller et område hvis destinasjonsadressen endres.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -514,6 +560,11 @@ msgid ""
 "application by just ticking a checkbox. A lot of services are already "
 "defined, but you can add your own for an application that is not provided."
 msgstr ""
+"En tjeneste er en samling regler som brukes sammen i forhold til en "
+"applikasjon. Dette konseptet hjelper deg med å anvende det som trengs for en "
+"applikasjon ved å bare krysse av i en avmerkingsboks. Mange tjenester er "
+"allerede definert, men du kan legge til dine egne for en applikasjon som "
+"ikke er tilgjengelig."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -521,6 +572,9 @@ msgid ""
 "allows you to choose a service. Selecting one updates the table with a list "
 "of Port-Protocol pairs."
 msgstr ""
+"I «Tjenester»-visningen lar «Konfigurer»-knappen ved siden av "
+"kombinasjonsboksen deg velge en tjeneste. Hvis du velger en, oppdateres "
+"tabellen med en liste over port-protokoll-par."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -586,6 +640,9 @@ msgid ""
 "it can work using Qt (PySide6), GTK 4, or ncurses, i.e. both graphical and "
 "textual user interfaces."
 msgstr ""
+"ManaFirewall er en del av manatools og er basert på manatools.aui slik at "
+"den kan fungere med Qt (PySide6), GTK 4 eller ncurses, dvs. både grafiske og "
+"tekstlige brukergrensesnitt."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -593,6 +650,9 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the zone of these bindings."
 msgstr ""
+"Til venstre er det en oversikt over de aktive bindingene. Dette er sonene "
+"som har en binding, et grensesnitt eller en kilde bundet til eller lagt til. "
+"Her er det mulig å enkelt endre sonen for disse bindingene."
 
 #: manafirewall/helpinfo.py:69
 msgid ""
@@ -636,7 +696,7 @@ msgstr "Gjenopprette &standard"
 
 #: manafirewall/optionDialog.py:120
 msgid "Restore default configuration for the selected section"
-msgstr ""
+msgstr "Gjenopprett standardkonfigurasjon for den valgte seksjonen"
 
 #: manafirewall/optionDialog.py:182
 msgid "firewalld options"
@@ -754,199 +814,3 @@ msgstr "Avvis"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-
-#~ msgid "&Change binding"
-#~ msgstr "&Endre kobling"
-
-#~ msgid "&Load default"
-#~ msgstr "&Last inn standard"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows to tick or untick a "
-#~ "\"Masquerade zone\". Thus this zone is used for masquerading (only for "
-#~ "IPv4). (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Maskering</b>: Dette alternativet gjør det mulig å merke eller "
-#~ "fjerne merket av en \"Maskerings sone\". Dermed brukes denne sonen til "
-#~ "maskering (bare for IPv4). (for å komplettere effekten av dette "
-#~ "tillegget)</li>"
-
-#~ msgid ""
-#~ "<li><b>Port Forwarding</b>: port forwarding is an application of network "
-#~ "address translation (NAT) that redirects a communication request from one "
-#~ "address and port number combination to another while the packets are "
-#~ "traversing the firewall in IPv4 technology. Adding a rule needs to "
-#~ "specify a port or port range of incoming requests and its protocol "
-#~ "(source) and either a port or range for the destination for local "
-#~ "forwarding or address of the destination and optionally port or range if "
-#~ "port is changed.</li>"
-#~ msgstr ""
-#~ "<li><b>Port Videresending</b>: er en applikasjon for nettverksadresse-"
-#~ "oversettelse (NAT) som omdirigerer en kommunikasjonsforespørsel fra en "
-#~ "adresse- og portnummerkombinasjon til en annen mens pakkene krysser "
-#~ "brannmuren i IPv4-teknologi. For å legge til en regel må du angi en port "
-#~ "eller portområde for innkommende forespørsler og dens protokoll (kilde) "
-#~ "og enten en port eller område for destinasjonen for lokal videresending "
-#~ "eller adresse til destinasjonen og eventuelt port eller område hvis "
-#~ "porten blir endret.</li>"
-
-#~ msgid ""
-#~ "<li><b>Ports</b>: this configure option allows to specify a rule with "
-#~ "\"Add\" button with a port number or range and a protocol selected in the "
-#~ "list tcp, udp, sctp and dccp. The list view displays the already defined "
-#~ "rules. A range is defined with a hyphen between two numbers, for example "
-#~ "with 80-88. The effect will be that these ports will be open.</li>"
-#~ msgstr ""
-#~ "<li><b>Porter</b>: Dette konfigureringsalternativet gjør det mulig å "
-#~ "spesifisere en regel med \"Legg til\" -knappen med et portnummer eller -"
-#~ "område og en protokoll valgt i listen tcp, udp, sctp og dccp. "
-#~ "Listevisningen viser allerede definerte regler. Et område er definert med "
-#~ "bindestrek mellom to tall, for eksempel med 80-88. Effekten vil være at "
-#~ "disse portene vil være åpne.</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol among a list of "
-#~ "supported protocols by firewalld or to add a specific one that you can "
-#~ "name. (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Protokoller</b>: Her kan du legge til en protokoll i en liste over "
-#~ "støttede protokoller med firewalld, eller å legge til en spesifikk, som "
-#~ "du kan navngi. (for å fullføre hva som er effekten av dette tillegget)</"
-#~ "li>"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this configure option allows to specify a rule "
-#~ "with \"Add\" button with a port number or range and a protocol selected "
-#~ "in the list tcp, udp, sctp and dccp. The list view displays the already "
-#~ "defined rules.(to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "</li></b>Kilde Porter</b>:dette konfigureringsalternativet gjør det mulig "
-#~ "å spesifisere en regel med \"Legg til\" -knappen med et portnummer eller -"
-#~ "område og en protokoll valgt fra listen tcp, udp, sctp og dccp. "
-#~ "Listevisningen viser de allerede definerte reglene. (For å fullføre hva "
-#~ "som er effekten av dette tillegget)</li>"
-
-#~ msgid ""
-#~ "<ul><li><b>Services</b>: when selected in \"Configure\" option, you see a "
-#~ "list of services that are predefined. According to the zone, some "
-#~ "services are already selected. If you tick or untick a checkbox in regard "
-#~ "to a service, the according rules will applying to allow said service on "
-#~ "interfaces having the zone. In permanent mode, the configuration is "
-#~ "registered directly, but not applied. It will be applied after a "
-#~ "firewalld reload.</li>"
-#~ msgstr ""
-#~ "<ul><li><b> Tjenester</b>:når valgt i alternativet \"Konfigurer\", ser du "
-#~ "en liste over tjenester som er forhåndsdefinert. I følge sonen er noen "
-#~ "tjenester allerede valgt. Hvis du merker av eller avmerker "
-#~ "avkrysningsruten i forbindelse med en tjeneste, vil de i aktuelle reglene "
-#~ "gjelde for nevnte tjeneste på grensesnitt i sonen. I permanent modus blir "
-#~ "konfigurasjonen registrert direkte, men ikke brukt. Det blir brukt etter "
-#~ "en brannmur lastes inn på nytt.</li>"
-
-#~ msgid ""
-#~ "A service is a collection of rules that are applied together in relation "
-#~ "to an application. This concept helps to apply what is need for an "
-#~ "application by just ticking a checkbox. A lot of services are already "
-#~ "defined, but you can add your own for an application which is not "
-#~ "provided."
-#~ msgstr ""
-#~ "En tjeneste er en samling av regler som brukes sammen for en applikasjon. "
-#~ "Dette konseptet hjelper til med å dekke behovet til en applikasjon, ved "
-#~ "bare å merke av i en avkrysningsrute. Mange tjenester er allerede "
-#~ "definert, men du kan legge til dine egne for en applikasjon som ikke blir "
-#~ "gitt."
-
-#~ msgid "A&dd"
-#~ msgstr "A&dd"
-
-#~ msgid ""
-#~ "After selecting \"Zones\" for view and one of the Zones, you can "
-#~ "configure said zone. There are some parameters for each zone:"
-#~ msgstr ""
-#~ "Etter å ha valgt visning av \"Soner\" og en av sonene, kan du konfigurere "
-#~ "nevnte sone. Det er flere parametere for hver sone:"
-
-#~ msgid "Credits {}"
-#~ msgstr "Bidragsytere {}"
-
-#~ msgid "Edit ipsets"
-#~ msgstr "Rediger IP angivelser"
-
-#~ msgid "Edit services"
-#~ msgstr "Rediger tjenester"
-
-#~ msgid "Edit zones"
-#~ msgstr "Rediger soner"
-
-#~ msgid ""
-#~ "For a zone, available fields are name, version, short as more descriptive "
-#~ "name, and description. A check box allows to activate default target or "
-#~ "to select the default behaviour for packets that don't match any rule. "
-#~ "Targets are DROP, REJECT or ACCEPT. "
-#~ msgstr ""
-#~ "For en sone er tilgjengelige felt navn, versjon, korte og mer beskrivende "
-#~ "navn og beskrivelse. En avkrysningsrute lar deg aktivere standardmål "
-#~ "eller velge standardoppførsel for pakker som ikke samsvarer med noen "
-#~ "regel. Mål er DROPP, AVVIS eller AKSEPTER."
-
-#~ msgid ""
-#~ "In view \"Services\", the \"Configure\" button next to the combobox "
-#~ "allows to choose a service. Selecting one updates the table with a list "
-#~ "of couples Port-Protocol "
-#~ msgstr ""
-#~ "I visningen \"Tjenester\" tillater knappen \"Konfigurer\" ved siden av "
-#~ "komboboksen å velge en tjeneste. Valget oppdaterer tabellen med en liste "
-#~ "over Port-Protokoller"
-
-#~ msgid "Lockdown"
-#~ msgstr "Nedstengning"
-
-#~ msgid "Lockdown: {}"
-#~ msgstr "Nedlåsing {}"
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncurses, i.e. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall er en del av manatools og det er basert på libyui slik at "
-#~ "det kan fungere ved å bruke Gtk, Qt eller ncurses, dvs. grafiske eller "
-#~ "tekst brukergrensesnitt."
-
-#~ msgid ""
-#~ "On the left there is the overview of the active bindings. These are the "
-#~ "zones, that have a connection, interface or source bound or added to it. "
-#~ "Here it is possible to easily change the          zone of these bindings."
-#~ msgstr ""
-#~ "Til venstre er oversikten over de aktive bindingene. Dette er sonene som "
-#~ "har en forbindelse, grensesnitt eller kilde tilkoblet eller lagt til. Her "
-#~ "er det mulig å enkelt endre sonen for disse bindingene."
-
-#~ msgid ""
-#~ "Permanent mode allows to configure things that are not active "
-#~ "immediately. If you want to have changes also in the runtime environment, "
-#~ "then either add the changes there also or reload firewalld."
-#~ msgstr ""
-#~ "Permanent modus lar deg konfigurere ting som ikke er aktive umiddelbart. "
-#~ "Hvis du vil ha endringer også i runtime-miljøet, kan du enten legge til "
-#~ "endringene der også eller laste inn brannmuren på nytt."
-
-#~ msgid ""
-#~ "Predefined zones are: block - dmz - drop - external - home - home - "
-#~ "internal - public - trusted - work"
-#~ msgstr ""
-#~ "Forhåndsdefinerte soner er: blokk - dmz - dropp - ekstern - hjem - hjem - "
-#~ "intern - offentlig - klarert - arbeid"
-
-#~ msgid ""
-#~ "Runtime mode allows to configure things at runtime. Things changed at "
-#~ "runtime will not present at next start up or reloading firewalld, if you "
-#~ "want that you need to add those changes in permanent mode also. "
-#~ msgstr ""
-#~ "Runtime-modus lar deg konfigurere ting under kjøretid. Ting som er endret "
-#~ "ved kjøretid, vil ikke vises ved neste oppstart eller omlasting av "
-#~ "brannmuren, hvis du vil at du må legge til endringene i permanent modus "
-#~ "også."
-
-#~ msgid "{}  is a graphical configuration tool for firewalld."
-#~ msgstr "{} er et grafisk konfigurasjonsverktøy for brannmurer."
