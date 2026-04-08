@@ -5,11 +5,11 @@
 #
 # Translators:
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
-# Adolfo Jayme-Barrientos, 2020
+# Adolfo Jayme Barrientos, 2020
 # Miguel, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2022
 # Jose Manuel López <joselp@e.email>, 2022
+# José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2026
 #
 #, fuzzy
 msgid ""
@@ -18,8 +18,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-06 17:26+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Jose Manuel López <joselp@e.email>, 2022\n"
-"Language-Team: Spanish (https://www.transifex.com/MageiaLinux/teams/9361/"
+"Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2026\n"
+"Language-Team: Spanish (https://app.transifex.com/MageiaLinux/teams/9361/"
 "es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr ""
 #: manafirewall/changeZoneConnectionDialog.py:33
 #: manafirewall/changeZoneConnectionDialog.py:44
 msgid "Select zone for connection '{}'"
-msgstr ""
+msgstr "Seleccione zona para conexión '{}'"
 
 #: manafirewall/changeZoneConnectionDialog.py:49
 #: manafirewall/changeZoneConnectionDialog.py:80
@@ -46,7 +46,7 @@ msgstr "&Cerrar"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
 msgid "&OK"
-msgstr ""
+msgstr "&OK"
 
 #: manafirewall/dialog.py:103
 msgid "Manatools - firewalld configurator"
@@ -58,11 +58,11 @@ msgstr "{} - ManaTools configuración de firewalld"
 
 #: manafirewall/dialog.py:114
 msgid "{} is a graphical configuration tool for firewalld."
-msgstr ""
+msgstr "{} es una herramienta gráfica para firewalld."
 
 #: manafirewall/dialog.py:115
 msgid "Credits 2019-2026 Angelo Naselli"
-msgstr ""
+msgstr "Créditos: 2019-2026 Angelo Naselli"
 
 #: manafirewall/dialog.py:122
 msgid "Connection to firewalld established."
@@ -116,7 +116,7 @@ msgstr " &Opciones"
 
 #: manafirewall/dialog.py:249
 msgid "Runtime To Permanent"
-msgstr "Tiempo de ejecución a permanente"
+msgstr "Inmediato a Permanente"
 
 #: manafirewall/dialog.py:250
 msgid "&Reload Firewalld"
@@ -124,7 +124,7 @@ msgstr "&Recargar Firewalld"
 
 #: manafirewall/dialog.py:252
 msgid "&Settings"
-msgstr "&Ajustes"
+msgstr "&Configuración"
 
 #: manafirewall/dialog.py:259
 msgid "&Help"
@@ -144,11 +144,11 @@ msgstr "Enlaces activos"
 
 #: manafirewall/dialog.py:296
 msgid "Change &Zone"
-msgstr ""
+msgstr "Cambiar &Zona"
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:72
 msgid "Runtime"
-msgstr "Durante ejecución"
+msgstr "Inmediato"
 
 #: manafirewall/dialog.py:309 manafirewall/helpinfo.py:72
 msgid "Permanent"
@@ -303,7 +303,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:1935
 msgid "Connections"
-msgstr ""
+msgstr "Conexiones"
 
 #: manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -404,6 +404,9 @@ msgid ""
 "active. If you also want changes to be active in the runtime environment, "
 "either add them there as well or reload firewalld."
 msgstr ""
+"El modo permanente le permite configurar cosas que no se activaran "
+"inmediatamente. Si quiere que los cambios se activen de inmediato, añádalas "
+"también en el modo Inmediato o recargue firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -412,6 +415,9 @@ msgid ""
 "want them to persist, you need to add those changes in permanent mode as "
 "well."
 msgstr ""
+"El modo Inmediato le permite configurar cosas en el entorno actual. Estas no "
+"persistirán en el siguiente inicio o al recargar firewalld. Si desea "
+"hacerlos permanente añádalas también en el modo permanente."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -432,18 +438,27 @@ msgid ""
 "target or to select the default behaviour for packets that don't match any "
 "rule. Targets are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Para una zona, los campos disponibles son nombre, versión, breve (un nombre "
+"más descriptivo), y descripción. Una caja de comprobación le permite activar "
+"el destino predeterminado o seleccionar el comportamiento predeterminado de "
+"los paquetes que no coincidan con ninguna regla. Los destinos son DROP, "
+"REJECT o ACCEPT. "
 
 #: manafirewall/helpinfo.py:40
 msgid ""
 "Predefined zones are: block - dmz - drop - external - home - internal - "
 "public - trusted - work"
 msgstr ""
+"Las  zonas predefinidas son: block - dmz - drop - external - home - internal "
+"- public - trusted - work"
 
 #: manafirewall/helpinfo.py:41
 msgid ""
 "After selecting \"Zones\" as the View and one of the Zones, you can "
 "configure the selected zone. There are some parameters for each zone:"
 msgstr ""
+"Tras seleccionar \"Zonas\" como Vista y alguna de las Zonas, podrá "
+"configurar la zona seleccionada. Hay algunos parámetros para cada zona:"
 
 #: manafirewall/helpinfo.py:42
 msgid ""
@@ -455,6 +470,13 @@ msgid ""
 "registered directly but not applied immediately; it will be applied after a "
 "firewalld reload.</li>"
 msgstr ""
+"<ul><li><b>Servicios</b>: al seleccionarlo en las opciones de "
+"\"Configuración\", verá una lista de servicios predeterminados. Dependiendo "
+"de la zona, algunos servicios ya estarán seleccionados. Si activa o "
+"desactiva la caja de comprobación para un servicio, se aplicarán las reglas "
+"correspondientes para permitir o bloquear el servicio en la interfaz que "
+"esté usando la zona. En el modo permanente, se registra la configuración "
+"pero no se aplica inmediatamente; se aplicará tras recargar firewalld.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -464,6 +486,11 @@ msgid ""
 "rules. A range is specified with a hyphen between two numbers, for example "
 "80-88. The effect is that those ports will be open.</li>"
 msgstr ""
+"<li><b>Puertos</b>: esta opción le permite definir una regla utilizando el "
+"botón \"Añadir\", especificando un puerto o rango y seleccionar un protocolo "
+"de la lista tcp, udp, sctp y dccp. La lista Vista muestra las reglas "
+"definidas. Un rango se especifica con un guion entre dos números, por "
+"ejemplo 80-88. El efecto es que estos puertos estarán abiertos.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
@@ -471,6 +498,9 @@ msgid ""
 "supported by firewalld, or add a custom one by name. (to complete with what "
 "is the effect of this addition)</li>"
 msgstr ""
+"<li><b>Protocolos</b>: Aquí podrá añadir un protocolo de una lista de "
+"protocolos soportados por firewalld, o añadir uno personalizado por nombre. "
+"(para complementar el efecto de esta adición)</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -480,6 +510,11 @@ msgid ""
 "already defined rules. (to complete with what is the effect of this "
 "addition)</li>"
 msgstr ""
+"<li><b>Puertos Origen</b>: esta opción le permite definir una regla "
+"utilizando el botón \"Añadir\", especificando un puerto de origen o rango de "
+"puertos y un protocolo seleccionado de la lista tcp, udp, sctp y dccp. La "
+"lista Vista muestra las reglas definidas (para completar el efecto de esta "
+"adición)</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
@@ -487,6 +522,9 @@ msgid ""
 "masquerading for the zone (IPv4 only). (to complete with what is the effect "
 "of this addition)</li>"
 msgstr ""
+"<li><b>Enmascarar</b>: esta opción le permite activar o desactivar el "
+"enmascaramiento para la zona (IPv4 solamente). (para completar el efecto de "
+"esta adición)</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -498,6 +536,13 @@ msgid ""
 "either a port or range for the destination for local forwarding, or an "
 "address and optional port or range if the destination address changes.</li>"
 msgstr ""
+"<li><b>Reenvío de Puertos</b>: el reenvío de puerto es una aplicación de "
+"traslación de direcciones de red (NAT) que redirige una petición desde una "
+"combinación de dirección y puerto hacia otra mientras los paquetes pasan por "
+"el firewall (IPv4 solamente). Añadir una regla requiere especificar un "
+"puerto o rango para las peticiones de entrada y su protocolo (origen), y un "
+"puerto o rango de destino para reenvío local, o  una dirección y "
+"opcionalmente un puerto o rango si la dirección destino cambia.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -522,6 +567,11 @@ msgid ""
 "application by just ticking a checkbox. A lot of services are already "
 "defined, but you can add your own for an application that is not provided."
 msgstr ""
+"Un servicio es una colección de reglas que se aplican conjuntamente con "
+"relación a una aplicación. Este concepto ayuda a aplicar lo necesario para "
+"una aplicación solamente activando una caja de comprobación. Varios "
+"servicios ya están definidos, pero puede añadir uno propio para alguna "
+"aplicación no proporcionada."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -529,6 +579,9 @@ msgid ""
 "allows you to choose a service. Selecting one updates the table with a list "
 "of Port-Protocol pairs."
 msgstr ""
+"En la vista \"Servicios\", el botón \"Configurar\" al lado de la caja "
+"combinada le permite seleccionar un servicio. Seleccionar uno actualiza la "
+"tabla con una lista de pares Puerto-Protocolo."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
@@ -585,8 +638,8 @@ msgid ""
 "options."
 msgstr ""
 "Tiene soporte para IPv4, IPv6, puentes Ethernet y también configuraciones "
-"para conjuntos de  IP. Hay una separación entre las configuraciones \"En "
-"Ejecución\" y las permanentes."
+"para conjuntos de  IP. Hay una separación entre las configuraciones "
+"Inmediatas y las permanentes."
 
 #: manafirewall/helpinfo.py:67
 msgid ""
@@ -594,6 +647,9 @@ msgid ""
 "it can work using Qt (PySide6), GTK 4, or ncurses, i.e. both graphical and "
 "textual user interfaces."
 msgstr ""
+"ManaFirewall es parte de manatools y esta basada en manatools.aui, por lo "
+"que puede utilizar Qt (PySide6), GTK 4, o ncurses, esto es, interfaces "
+"gráficas y de texto."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -601,6 +657,9 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the zone of these bindings."
 msgstr ""
+"A la izquierda esta un vistazo de los enlaces activos. Esto es, las zonas "
+"que tienen una conexión, interface u origen  enlazados ó añadidos. Aquí es "
+"posible cambiar fácilmente las zonas de estos enlaces."
 
 #: manafirewall/helpinfo.py:69
 msgid ""
@@ -645,6 +704,7 @@ msgstr "Restaurar pre&determinado"
 #: manafirewall/optionDialog.py:120
 msgid "Restore default configuration for the selected section"
 msgstr ""
+"Restaurar la configuración predeterminada para la sección seleccionada."
 
 #: manafirewall/optionDialog.py:182
 msgid "firewalld options"
@@ -762,201 +822,3 @@ msgstr "Rechazar"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversión: %(version)s%(NL)ssitio: %(site)s"
-
-#~ msgid "&Change binding"
-#~ msgstr "&Cambiar enlaces"
-
-#~ msgid "&Load default"
-#~ msgstr "Cargar &predeterminado"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows to tick or untick a "
-#~ "\"Masquerade zone\". Thus this zone is used for masquerading (only for "
-#~ "IPv4). (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Enmascarar</b>: Esta opción permite marcar o desmarcar una \"Zona "
-#~ "de enmascaramiento\". Por lo tanto, esta zona se utiliza para enmascarar "
-#~ "(solo para IPv4) (para completar cuál es el efecto de esta adición)</li>"
-
-#~ msgid ""
-#~ "<li><b>Port Forwarding</b>: port forwarding is an application of network "
-#~ "address translation (NAT) that redirects a communication request from one "
-#~ "address and port number combination to another while the packets are "
-#~ "traversing the firewall in IPv4 technology. Adding a rule needs to "
-#~ "specify a port or port range of incoming requests and its protocol "
-#~ "(source) and either a port or range for the destination for local "
-#~ "forwarding or address of the destination and optionally port or range if "
-#~ "port is changed.</li>"
-#~ msgstr ""
-#~ "<li><b>Redirección de puertos</b>: la redirección de puertos es una "
-#~ "aplicación de traslado de direcciones de red (Network Address "
-#~ "Translation) que redirige una petición dirigida a una combinación de "
-#~ "puerto y dirección hacia otra mientras los paquetes viajan por un "
-#~ "cortafuegos de tecnología IPv4. Añadiendo la regla necesaria para "
-#~ "especificar peticiones de entrada a un puerto ó rango de puertos y su "
-#~ "protocolo(origen) y un puerto o rango de puertos para un "
-#~ "redireccionamiento local ó una dirección destino y opcionalmente un "
-#~ "puerto y rango de puertos si se cambia de puerto.</li>"
-
-#~ msgid ""
-#~ "<li><b>Ports</b>: this configure option allows to specify a rule with "
-#~ "\"Add\" button with a port number or range and a protocol selected in the "
-#~ "list tcp, udp, sctp and dccp. The list view displays the already defined "
-#~ "rules. A range is defined with a hyphen between two numbers, for example "
-#~ "with 80-88. The effect will be that these ports will be open.</li>"
-#~ msgstr ""
-#~ "<li><b>Puertos</b>: esta opción de configuración permite especificar una "
-#~ "regla con el botón \"Agregar\" con un número de puerto o rango y un "
-#~ "protocolo seleccionado en la lista tcp, udp, sctp y dccp. La vista de "
-#~ "lista muestra las reglas ya definidas. Un rango se define con un guión "
-#~ "entre dos números, por ejemplo, con 80-88. El efecto será que estos "
-#~ "puertos estarán abiertos.</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol among a list of "
-#~ "supported protocols by firewalld or to add a specific one that you can "
-#~ "name. (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Protocolos</b>: Aquí, puede escoger uno entre una lista de "
-#~ "protocolos admitidos por firewalld o agregar uno específico al que puede "
-#~ "dar un nombre (a completar con el efecto de esta adición)</li>"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this configure option allows to specify a rule "
-#~ "with \"Add\" button with a port number or range and a protocol selected "
-#~ "in the list tcp, udp, sctp and dccp. The list view displays the already "
-#~ "defined rules.(to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Puertos Origen</b>: Esta opción de configuración permite "
-#~ "especificar una regla con el botón \"Agregar\" con un número de puerto o "
-#~ "rango y un protocolo seleccionado en la lista tcp, udp, sctp y dccp. La "
-#~ "vista de lista muestra las reglas ya definidas (para completar cuál es el "
-#~ "efecto de esta adición)</li>"
-
-#~ msgid ""
-#~ "<ul><li><b>Services</b>: when selected in \"Configure\" option, you see a "
-#~ "list of services that are predefined. According to the zone, some "
-#~ "services are already selected. If you tick or untick a checkbox in regard "
-#~ "to a service, the according rules will applying to allow said service on "
-#~ "interfaces having the zone. In permanent mode, the configuration is "
-#~ "registered directly, but not applied. It will be applied after a "
-#~ "firewalld reload.</li>"
-#~ msgstr ""
-#~ "<ul><li><b>Servicios</b>: cuando se selecciona en la opción "
-#~ "\"Configurar\", verá una lista de servicios predefinidos. Según la zona, "
-#~ "algunos servicios ya están seleccionados. Si marca o desmarca una casilla "
-#~ "de verificación con respecto a un servicio, se aplicarán las reglas "
-#~ "correspondientes para permitir dicho servicio en las interfaces que "
-#~ "tienen la zona. En modo permanente, la configuración se registra "
-#~ "directamente, pero no se aplica. Se aplicará después de recargar "
-#~ "Firewalld.</li>"
-
-#~ msgid ""
-#~ "A service is a collection of rules that are applied together in relation "
-#~ "to an application. This concept helps to apply what is need for an "
-#~ "application by just ticking a checkbox. A lot of services are already "
-#~ "defined, but you can add your own for an application which is not "
-#~ "provided."
-#~ msgstr ""
-#~ "Un servicio es una colección de reglas que se aplican juntas en relación "
-#~ "con una aplicación. Este concepto ayuda a aplicar lo necesario para una "
-#~ "aplicación tan solo activando una casilla. Un montón de servicios ya "
-#~ "están definidos, pero puede añadir uno propio para una aplicación que no "
-#~ "se incluya."
-
-#~ msgid "A&dd"
-#~ msgstr "&Añadir"
-
-#~ msgid ""
-#~ "After selecting \"Zones\" for view and one of the Zones, you can "
-#~ "configure said zone. There are some parameters for each zone:"
-#~ msgstr ""
-#~ "Tras seleccionar una zona en  ver \"Zonas\", se puede configurar dicha "
-#~ "zona. Hay algunos parámetros para cada zona:"
-
-#~ msgid "Credits {}"
-#~ msgstr "Créditos {}"
-
-#~ msgid "Edit ipsets"
-#~ msgstr "Editar conjunto de IPs"
-
-#~ msgid "Edit services"
-#~ msgstr "Editar servicios"
-
-#~ msgid "Edit zones"
-#~ msgstr "Editar zonas"
-
-#~ msgid ""
-#~ "For a zone, available fields are name, version, short as more descriptive "
-#~ "name, and description. A check box allows to activate default target or "
-#~ "to select the default behaviour for packets that don't match any rule. "
-#~ "Targets are DROP, REJECT or ACCEPT. "
-#~ msgstr ""
-#~ "Para una zona, los campos disponibles son nombre, versión, abreviados "
-#~ "como nombre más descriptivo y descripción. Una casilla de verificación "
-#~ "permite activar el destino predeterminado o seleccionar el comportamiento "
-#~ "predeterminado para los paquetes que no coinciden con ninguna regla. Las "
-#~ "opciones son DROP (desechar), RECHAZAR o ACEPTAR."
-
-#~ msgid ""
-#~ "In view \"Services\", the \"Configure\" button next to the combobox "
-#~ "allows to choose a service. Selecting one updates the table with a list "
-#~ "of couples Port-Protocol "
-#~ msgstr ""
-#~ "En ver \"Servicios\", el botón \"Configurar\" junto al cuadro combinado "
-#~ "permite elegir un servicio. Seleccionar uno, actualiza la tabla con una "
-#~ "lista de parejas Puerto-Protocolo "
-
-#~ msgid "Lockdown"
-#~ msgstr "Bloqueo"
-
-#~ msgid "Lockdown: {}"
-#~ msgstr "Bloquear: {}"
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncurses, i.e. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall es parte de manatools y se basa en libyui para que pueda "
-#~ "funcionar usando Gtk, Qt o ncurses, es decir, interfaces de usuario "
-#~ "gráficas o de texto."
-
-#~ msgid ""
-#~ "On the left there is the overview of the active bindings. These are the "
-#~ "zones, that have a connection, interface or source bound or added to it. "
-#~ "Here it is possible to easily change the          zone of these bindings."
-#~ msgstr ""
-#~ "A la izquierda esta un panorama de los enlaces activos. Esto es, las "
-#~ "zonas que tienen una conexión, interface u origen  enlazados ó añadidos. "
-#~ "Aquí es posible cambiar fácilmente las zonas de estos enlaces."
-
-#~ msgid ""
-#~ "Permanent mode allows to configure things that are not active "
-#~ "immediately. If you want to have changes also in the runtime environment, "
-#~ "then either add the changes there also or reload firewalld."
-#~ msgstr ""
-#~ "El modo permanente permite configurar cosas que no se activan "
-#~ "inmediatamente. Si busca que los cambios apliquen al entorno en "
-#~ "ejecución, puede añadir los cambio ahí o recargar firewalld."
-
-#~ msgid ""
-#~ "Predefined zones are: block - dmz - drop - external - home - home - "
-#~ "internal - public - trusted - work"
-#~ msgstr ""
-#~ "Las zonas predefinidas son: bloquear - zona desmilitarizada - drop "
-#~ "(desechar) - externo - hogar - hogar - interno - público - confiable - "
-#~ "trabajo"
-
-#~ msgid ""
-#~ "Runtime mode allows to configure things at runtime. Things changed at "
-#~ "runtime will not present at next start up or reloading firewalld, if you "
-#~ "want that you need to add those changes in permanent mode also. "
-#~ msgstr ""
-#~ "El modo En Ejecución permite probar cosas durante la ejecución. Estos "
-#~ "cambios no estarán presentes en el próximo inicio o al recargar "
-#~ "firewalld, si es lo que quiere, necesita añadir esos cambios en el modo "
-#~ "permanente. "
-
-#~ msgid "{}  is a graphical configuration tool for firewalld."
-#~ msgstr "{}  es una interfaz gráfica para configurar firewalld."
