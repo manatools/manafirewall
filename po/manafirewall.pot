@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 20:24+0200\n"
+"POT-Creation-Date: 2026-04-08 20:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,7 +34,10 @@ msgid "&Close"
 msgstr ""
 
 #: manafirewall/changeZoneConnectionDialog.py:66
-msgid "&OK"
+#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
+#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
+#: manafirewall/zoneBaseDialog.py:103
+msgid "&Ok"
 msgstr ""
 
 #: manafirewall/dialog.py:106
@@ -311,12 +314,6 @@ msgstr ""
 #: manafirewall/protocolDialog.py:80 manafirewall/serviceBaseDialog.py:63
 #: manafirewall/zoneBaseDialog.py:100
 msgid "&Cancel"
-msgstr ""
-
-#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
-#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
-#: manafirewall/zoneBaseDialog.py:103
-msgid "&Ok"
 msgstr ""
 
 #: manafirewall/forwardDialog.py:125
