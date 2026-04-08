@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 17:26+0200\n"
+"POT-Creation-Date: 2026-04-08 20:24+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>, 2020\n"
 "Language-Team: Mongolian (https://www.transifex.com/MageiaLinux/teams/9361/"
@@ -42,256 +42,256 @@ msgstr ""
 msgid "&OK"
 msgstr ""
 
-#: manafirewall/dialog.py:103
+#: manafirewall/dialog.py:106
 msgid "Manatools - firewalld configurator"
 msgstr ""
 
-#: manafirewall/dialog.py:104
+#: manafirewall/dialog.py:107
 msgid "{} - ManaTools firewalld configurator"
 msgstr ""
 
-#: manafirewall/dialog.py:114
+#: manafirewall/dialog.py:117
 msgid "{} is a graphical configuration tool for firewalld."
 msgstr ""
 
-#: manafirewall/dialog.py:115
+#: manafirewall/dialog.py:118
 msgid "Credits 2019-2026 Angelo Naselli"
 msgstr ""
 
-#: manafirewall/dialog.py:122
+#: manafirewall/dialog.py:125
 msgid "Connection to firewalld established."
 msgstr ""
 
-#: manafirewall/dialog.py:124
+#: manafirewall/dialog.py:127
 msgid "Trying to connect to firewalld, waiting..."
 msgstr ""
 
-#: manafirewall/dialog.py:126
+#: manafirewall/dialog.py:129
 msgid ""
 "Failed to connect to firewalld. Please make sure that the service has been "
 "started correctly and try again."
 msgstr ""
 
-#: manafirewall/dialog.py:128
+#: manafirewall/dialog.py:131
 msgid "Changes applied."
 msgstr ""
 
-#: manafirewall/dialog.py:129
+#: manafirewall/dialog.py:132
 #, python-format
 msgid "Used by network connection '%s'"
 msgstr ""
 
-#: manafirewall/dialog.py:130
+#: manafirewall/dialog.py:133
 #, python-format
 msgid "Default zone used by network connection '%s'"
 msgstr ""
 
-#: manafirewall/dialog.py:132
+#: manafirewall/dialog.py:135
 msgid "enabled"
 msgstr ""
 
-#: manafirewall/dialog.py:133
+#: manafirewall/dialog.py:136
 msgid "disabled"
 msgstr "хаалттай"
 
-#: manafirewall/dialog.py:238
+#: manafirewall/dialog.py:241
 msgid "&File"
 msgstr ""
 
-#: manafirewall/dialog.py:241 manafirewall/dialog.py:419
+#: manafirewall/dialog.py:244 manafirewall/dialog.py:422
 msgid "&Quit"
 msgstr ""
 
-#: manafirewall/dialog.py:246
+#: manafirewall/dialog.py:249
 msgid "&Options"
 msgstr ""
 
-#: manafirewall/dialog.py:249
+#: manafirewall/dialog.py:252
 msgid "Runtime To Permanent"
 msgstr ""
 
-#: manafirewall/dialog.py:250
+#: manafirewall/dialog.py:253
 msgid "&Reload Firewalld"
 msgstr ""
 
-#: manafirewall/dialog.py:252
+#: manafirewall/dialog.py:255
 msgid "&Settings"
 msgstr ""
 
-#: manafirewall/dialog.py:259
+#: manafirewall/dialog.py:262
 msgid "&Help"
 msgstr ""
 
-#: manafirewall/dialog.py:262
+#: manafirewall/dialog.py:265
 msgid "&Manual"
 msgstr ""
 
-#: manafirewall/dialog.py:264 manafirewall/dialog.py:417
+#: manafirewall/dialog.py:267 manafirewall/dialog.py:420
 msgid "&About"
 msgstr ""
 
-#: manafirewall/dialog.py:286
+#: manafirewall/dialog.py:289
 msgid "Active bindings"
 msgstr ""
 
-#: manafirewall/dialog.py:296
+#: manafirewall/dialog.py:299
 msgid "Change &Zone"
 msgstr ""
 
-#: manafirewall/dialog.py:308 manafirewall/helpinfo.py:72
+#: manafirewall/dialog.py:311 manafirewall/helpinfo.py:72
 msgid "Runtime"
 msgstr ""
 
-#: manafirewall/dialog.py:309 manafirewall/helpinfo.py:72
+#: manafirewall/dialog.py:312 manafirewall/helpinfo.py:72
 msgid "Permanent"
 msgstr ""
 
-#: manafirewall/dialog.py:313 manafirewall/helpinfo.py:26
+#: manafirewall/dialog.py:316 manafirewall/helpinfo.py:26
 msgid "Configuration"
 msgstr "Тохиргоо"
 
-#: manafirewall/dialog.py:332
+#: manafirewall/dialog.py:335
 msgid "Zones"
 msgstr ""
 
-#: manafirewall/dialog.py:333 manafirewall/dialog.py:365
+#: manafirewall/dialog.py:336 manafirewall/dialog.py:368
 msgid "Services"
 msgstr "Үйлчилгээ"
 
-#: manafirewall/dialog.py:334
+#: manafirewall/dialog.py:337
 msgid "IP Sets"
 msgstr ""
 
-#: manafirewall/dialog.py:337 manafirewall/helpinfo.py:27
+#: manafirewall/dialog.py:340 manafirewall/helpinfo.py:27
 #: manafirewall/helpinfo.py:74
 msgid "View"
 msgstr "Үзэмж"
 
-#: manafirewall/dialog.py:366 manafirewall/dialog.py:378
+#: manafirewall/dialog.py:369 manafirewall/dialog.py:381
 msgid "Ports"
 msgstr ""
 
-#: manafirewall/dialog.py:367 manafirewall/dialog.py:379
+#: manafirewall/dialog.py:370 manafirewall/dialog.py:382
 msgid "Protocols"
 msgstr ""
 
-#: manafirewall/dialog.py:368 manafirewall/dialog.py:380
+#: manafirewall/dialog.py:371 manafirewall/dialog.py:383
 msgid "Source Ports"
 msgstr ""
 
-#: manafirewall/dialog.py:369
+#: manafirewall/dialog.py:372
 msgid "Masquerading"
 msgstr ""
 
-#: manafirewall/dialog.py:370 manafirewall/forwardDialog.py:30
+#: manafirewall/dialog.py:373 manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
 msgstr ""
 
-#: manafirewall/dialog.py:371 manafirewall/dialog.py:529
+#: manafirewall/dialog.py:374 manafirewall/dialog.py:532
 msgid "ICMP Filter"
 msgstr ""
 
-#: manafirewall/dialog.py:372
+#: manafirewall/dialog.py:375
 msgid "Rich Rules"
 msgstr ""
 
-#: manafirewall/dialog.py:373 manafirewall/dialog.py:1944
+#: manafirewall/dialog.py:376 manafirewall/dialog.py:1947
 msgid "Interfaces"
 msgstr ""
 
-#: manafirewall/dialog.py:374 manafirewall/dialog.py:1950
+#: manafirewall/dialog.py:377 manafirewall/dialog.py:1953
 msgid "Sources"
 msgstr ""
 
-#: manafirewall/dialog.py:381
+#: manafirewall/dialog.py:384
 msgid "Modules"
 msgstr ""
 
-#: manafirewall/dialog.py:382
+#: manafirewall/dialog.py:385
 msgid "Destinations"
 msgstr ""
 
-#: manafirewall/dialog.py:386
+#: manafirewall/dialog.py:389
 msgid "Entries"
 msgstr ""
 
-#: manafirewall/dialog.py:388
+#: manafirewall/dialog.py:391
 msgid "Configure"
 msgstr "Тохируулах"
 
-#: manafirewall/dialog.py:409 manafirewall/dialog.py:2471
-#: manafirewall/dialog.py:2489 manafirewall/dialog.py:2505
+#: manafirewall/dialog.py:412 manafirewall/dialog.py:2474
+#: manafirewall/dialog.py:2492 manafirewall/dialog.py:2508
 msgid "Default Zone: {}"
 msgstr ""
 
-#: manafirewall/dialog.py:410 manafirewall/dialog.py:2496
+#: manafirewall/dialog.py:413 manafirewall/dialog.py:2499
 msgid "Log Denied: {}"
 msgstr ""
 
-#: manafirewall/dialog.py:411 manafirewall/dialog.py:2479
-#: manafirewall/dialog.py:2492 manafirewall/dialog.py:2501
+#: manafirewall/dialog.py:414 manafirewall/dialog.py:2482
+#: manafirewall/dialog.py:2495 manafirewall/dialog.py:2504
 msgid "Panic Mode: {}"
 msgstr ""
 
-#: manafirewall/dialog.py:412 manafirewall/dialog.py:2475
-#: manafirewall/dialog.py:2491
+#: manafirewall/dialog.py:415 manafirewall/dialog.py:2478
+#: manafirewall/dialog.py:2494
 msgid "Automatic Helpers: {}"
 msgstr ""
 
-#: manafirewall/dialog.py:487
+#: manafirewall/dialog.py:490
 msgid "&Add"
 msgstr ""
 
-#: manafirewall/dialog.py:489
+#: manafirewall/dialog.py:492
 msgid "&Edit"
 msgstr ""
 
-#: manafirewall/dialog.py:490
+#: manafirewall/dialog.py:493
 msgid "&Remove"
 msgstr ""
 
-#: manafirewall/dialog.py:537
+#: manafirewall/dialog.py:540
 msgid "Selected are accepted"
 msgstr ""
 
-#: manafirewall/dialog.py:594
+#: manafirewall/dialog.py:597
 msgid "Masquerade zone"
 msgstr ""
 
-#: manafirewall/dialog.py:626 manafirewall/dialog.py:684
-#: manafirewall/dialog.py:804 manafirewall/forwardDialog.py:46
+#: manafirewall/dialog.py:629 manafirewall/dialog.py:687
+#: manafirewall/dialog.py:807 manafirewall/forwardDialog.py:46
 #: manafirewall/portDialog.py:45 manafirewall/protocolDialog.py:30
 #: manafirewall/protocolDialog.py:42
 msgid "Protocol"
 msgstr ""
 
-#: manafirewall/dialog.py:684 manafirewall/dialog.py:804
+#: manafirewall/dialog.py:687 manafirewall/dialog.py:807
 msgid "Port"
 msgstr "Порт"
 
-#: manafirewall/dialog.py:748
+#: manafirewall/dialog.py:751
 msgid "Service"
 msgstr "Үйлчилгээ"
 
-#: manafirewall/dialog.py:804
+#: manafirewall/dialog.py:807
 msgid "To Address"
 msgstr ""
 
-#: manafirewall/dialog.py:804
+#: manafirewall/dialog.py:807
 msgid "To Port"
 msgstr ""
 
-#: manafirewall/dialog.py:1205 manafirewall/dialog.py:1219
+#: manafirewall/dialog.py:1208 manafirewall/dialog.py:1222
 msgid "Information needed"
 msgstr ""
 
-#: manafirewall/dialog.py:1206 manafirewall/dialog.py:1220
+#: manafirewall/dialog.py:1209 manafirewall/dialog.py:1223
 msgid ""
 "Forwarding to another system is only useful if the interface is masqueraded."
 "<br>Do you want to masquerade this zone?"
 msgstr ""
 
-#: manafirewall/dialog.py:1935
+#: manafirewall/dialog.py:1938
 msgid "Connections"
 msgstr ""
 
@@ -447,8 +447,7 @@ msgstr ""
 #: manafirewall/helpinfo.py:44
 msgid ""
 "<li><b>Protocols</b>: Here, you can add a protocol from a list of protocols "
-"supported by firewalld, or add a custom one by name. (to complete with what "
-"is the effect of this addition)</li>"
+"supported by firewalld, or add a custom one by name.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:45
@@ -456,15 +455,13 @@ msgid ""
 "<li><b>Source Ports</b>: this option allows you to define a rule using the "
 "\"Add\" button, specifying a source port number or range and a protocol "
 "selected from the list tcp, udp, sctp and dccp. The list view displays the "
-"already defined rules. (to complete with what is the effect of this "
-"addition)</li>"
+"already defined rules.</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:46
 msgid ""
 "<li><b>Masquerading</b>: this option allows you to enable or disable "
-"masquerading for the zone (IPv4 only). (to complete with what is the effect "
-"of this addition)</li>"
+"masquerading for the zone (IPv4 only).</li>"
 msgstr ""
 
 #: manafirewall/helpinfo.py:47
