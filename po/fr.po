@@ -19,7 +19,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 20:24+0200\n"
+"POT-Creation-Date: 2026-04-08 20:36+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: Philippe DIDIER, 2026\n"
 "Language-Team: French (https://app.transifex.com/MageiaLinux/teams/9361/"
@@ -48,7 +48,10 @@ msgid "&Close"
 msgstr "&Fermer"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
-msgid "&OK"
+#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
+#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
+#: manafirewall/zoneBaseDialog.py:103
+msgid "&Ok"
 msgstr "&OK"
 
 #: manafirewall/dialog.py:106
@@ -330,12 +333,6 @@ msgstr "Adresse IP"
 #: manafirewall/zoneBaseDialog.py:100
 msgid "&Cancel"
 msgstr "&Annuler"
-
-#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
-#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
-#: manafirewall/zoneBaseDialog.py:103
-msgid "&Ok"
-msgstr "&OK"
 
 #: manafirewall/forwardDialog.py:125
 msgid "Source port is mandatory"
