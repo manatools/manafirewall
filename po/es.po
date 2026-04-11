@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 20:24+0200\n"
+"POT-Creation-Date: 2026-04-08 20:36+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/MageiaLinux/teams/9361/"
@@ -45,8 +45,11 @@ msgid "&Close"
 msgstr "&Cerrar"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
-msgid "&OK"
-msgstr "&OK"
+#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
+#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
+#: manafirewall/zoneBaseDialog.py:103
+msgid "&Ok"
+msgstr "&Ok"
 
 #: manafirewall/dialog.py:106
 msgid "Manatools - firewalld configurator"
@@ -112,7 +115,7 @@ msgstr "&Salir"
 
 #: manafirewall/dialog.py:249
 msgid "&Options"
-msgstr " &Opciones"
+msgstr " O&pciones"
 
 #: manafirewall/dialog.py:252
 msgid "Runtime To Permanent"
@@ -124,7 +127,7 @@ msgstr "&Recargar Firewalld"
 
 #: manafirewall/dialog.py:255
 msgid "&Settings"
-msgstr "&Configuración"
+msgstr "Co&nfiguración"
 
 #: manafirewall/dialog.py:262
 msgid "&Help"
@@ -136,7 +139,7 @@ msgstr "&Manual"
 
 #: manafirewall/dialog.py:267 manafirewall/dialog.py:420
 msgid "&About"
-msgstr "A&cerca de"
+msgstr "Ac&erca de"
 
 #: manafirewall/dialog.py:289
 msgid "Active bindings"
@@ -252,7 +255,7 @@ msgstr "A&ñadir"
 
 #: manafirewall/dialog.py:492
 msgid "&Edit"
-msgstr "&Editar"
+msgstr "E&ditar"
 
 #: manafirewall/dialog.py:493
 msgid "&Remove"
@@ -327,12 +330,6 @@ msgstr "Dirección IP"
 #: manafirewall/zoneBaseDialog.py:100
 msgid "&Cancel"
 msgstr "&Cancelar"
-
-#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
-#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
-#: manafirewall/zoneBaseDialog.py:103
-msgid "&Ok"
-msgstr "&Ok"
 
 #: manafirewall/forwardDialog.py:125
 msgid "Source port is mandatory"
@@ -497,6 +494,9 @@ msgid ""
 "<li><b>Protocols</b>: Here, you can add a protocol from a list of protocols "
 "supported by firewalld, or add a custom one by name.</li>"
 msgstr ""
+"<li><b>Protocolos</b>: Aquí podrá añadir un protocolo de una lista de "
+"protocolos soportados por firewalld, o añadir uno personalizado por nombre. "
+"</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -505,12 +505,18 @@ msgid ""
 "selected from the list tcp, udp, sctp and dccp. The list view displays the "
 "already defined rules.</li>"
 msgstr ""
+"<li><b>Puertos Origen</b>: esta opción le permite definir una regla "
+"utilizando el botón \"Añadir\", especificando un puerto de origen o rango de "
+"puertos y un protocolo seleccionado de la lista tcp, udp, sctp y dccp. La "
+"lista Vista muestra las reglas definidas.</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
 "<li><b>Masquerading</b>: this option allows you to enable or disable "
 "masquerading for the zone (IPv4 only).</li>"
 msgstr ""
+"<li><b>Enmascarar</b>: esta opción le permite activar o desactivar el "
+"enmascaramiento para la zona (IPv4 solamente).</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -808,34 +814,3 @@ msgstr "Rechazar"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversión: %(version)s%(NL)ssitio: %(site)s"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows you to enable or disable "
-#~ "masquerading for the zone (IPv4 only). (to complete with what is the "
-#~ "effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Enmascarar</b>: esta opción le permite activar o desactivar el "
-#~ "enmascaramiento para la zona (IPv4 solamente). (para completar el efecto "
-#~ "de esta adición)</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol from a list of "
-#~ "protocols supported by firewalld, or add a custom one by name. (to "
-#~ "complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Protocolos</b>: Aquí podrá añadir un protocolo de una lista de "
-#~ "protocolos soportados por firewalld, o añadir uno personalizado por "
-#~ "nombre. (para complementar el efecto de esta adición)</li>"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this option allows you to define a rule using "
-#~ "the \"Add\" button, specifying a source port number or range and a "
-#~ "protocol selected from the list tcp, udp, sctp and dccp. The list view "
-#~ "displays the already defined rules. (to complete with what is the effect "
-#~ "of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Puertos Origen</b>: esta opción le permite definir una regla "
-#~ "utilizando el botón \"Añadir\", especificando un puerto de origen o rango "
-#~ "de puertos y un protocolo seleccionado de la lista tcp, udp, sctp y dccp. "
-#~ "La lista Vista muestra las reglas definidas (para completar el efecto de "
-#~ "esta adición)</li>"
