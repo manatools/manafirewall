@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 20:24+0200\n"
+"POT-Creation-Date: 2026-04-08 20:36+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: Karl Morten Ramberg <karl.m.ramberg@gmail.com>, 2026\n"
 "Language-Team: Norwegian Bokmål (https://app.transifex.com/MageiaLinux/"
@@ -40,7 +40,10 @@ msgid "&Close"
 msgstr "Lukk"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
-msgid "&OK"
+#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
+#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
+#: manafirewall/zoneBaseDialog.py:103
+msgid "&Ok"
 msgstr "&OK"
 
 #: manafirewall/dialog.py:106
@@ -323,12 +326,6 @@ msgstr "IP-adresse"
 msgid "&Cancel"
 msgstr "&Avbryt"
 
-#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
-#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
-#: manafirewall/zoneBaseDialog.py:103
-msgid "&Ok"
-msgstr "&OK"
-
 #: manafirewall/forwardDialog.py:125
 msgid "Source port is mandatory"
 msgstr "Kildeport er påkrevd"
@@ -489,6 +486,9 @@ msgid ""
 "<li><b>Protocols</b>: Here, you can add a protocol from a list of protocols "
 "supported by firewalld, or add a custom one by name.</li>"
 msgstr ""
+"<li><b>Protokoller</b>: Her kan du legge til en protokoll fra en liste over "
+"protokoller som støttes av firewalld, eller legge til en egendefinert "
+"protokoll med navn.</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -497,12 +497,18 @@ msgid ""
 "selected from the list tcp, udp, sctp and dccp. The list view displays the "
 "already defined rules.</li>"
 msgstr ""
+"Kilde Porter</b>: Dette alternativet lar deg definere en regel ved hjelp av "
+"«Legg til»-knappen, og angi et kildeportnummer eller -område og en protokoll "
+"valgt fra listen tcp, udp, sctp og dccp. Listevisningen viser de allerede "
+"definerte reglene..</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
 "<li><b>Masquerading</b>: this option allows you to enable or disable "
 "masquerading for the zone (IPv4 only).</li>"
 msgstr ""
+"<li><b>Maskerade</b>: Dette alternativet lar deg aktivere eller deaktivere "
+"maskering for sonen (kun IPv4).</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -800,35 +806,3 @@ msgstr "Avvis"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows you to enable or disable "
-#~ "masquerading for the zone (IPv4 only). (to complete with what is the "
-#~ "effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Maskerad</b>: Dette alternativet lar deg aktivere eller deaktivere "
-#~ "maskering for sonen (kun IPv4). (for å fullføre hva effekten av dette "
-#~ "tillegget er)</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol from a list of "
-#~ "protocols supported by firewalld, or add a custom one by name. (to "
-#~ "complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Protokoller</b>: Her kan du legge til en protokoll fra en liste "
-#~ "over protokoller som støttes av firewalld, eller legge til en "
-#~ "egendefinert protokoll med navn. (for å fullføre hva effekten av dette "
-#~ "tillegget er)1"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this option allows you to define a rule using "
-#~ "the \"Add\" button, specifying a source port number or range and a "
-#~ "protocol selected from the list tcp, udp, sctp and dccp. The list view "
-#~ "displays the already defined rules. (to complete with what is the effect "
-#~ "of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Kilde Porter</b>: Dette alternativet lar deg definere en regel ved "
-#~ "hjelp av «Legg til»-knappen, og angi et kildeportnummer eller -område og "
-#~ "en protokoll valgt fra listen tcp, udp, sctp og dccp. Listevisningen "
-#~ "viser de allerede definerte reglene. (for å fullføre hva effekten av "
-#~ "dette tillegget er)</li>"
