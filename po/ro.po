@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-08 20:24+0200\n"
+"POT-Creation-Date: 2026-04-08 20:36+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
 "Last-Translator: Aurelian R, 2026\n"
 "Language-Team: Romanian (https://app.transifex.com/MageiaLinux/teams/9361/"
@@ -41,8 +41,11 @@ msgid "&Close"
 msgstr "În&chide"
 
 #: manafirewall/changeZoneConnectionDialog.py:66
-msgid "&OK"
-msgstr "&Bine"
+#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
+#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
+#: manafirewall/zoneBaseDialog.py:103
+msgid "&Ok"
+msgstr "&OK"
 
 #: manafirewall/dialog.py:106
 msgid "Manatools - firewalld configurator"
@@ -324,12 +327,6 @@ msgstr "Adresă IP"
 msgid "&Cancel"
 msgstr "&Anulează"
 
-#: manafirewall/forwardDialog.py:85 manafirewall/portDialog.py:68
-#: manafirewall/protocolDialog.py:83 manafirewall/serviceBaseDialog.py:66
-#: manafirewall/zoneBaseDialog.py:103
-msgid "&Ok"
-msgstr "&OK"
-
 #: manafirewall/forwardDialog.py:125
 msgid "Source port is mandatory"
 msgstr "Portul sursă este obligatoriu"
@@ -495,6 +492,9 @@ msgid ""
 "<li><b>Protocols</b>: Here, you can add a protocol from a list of protocols "
 "supported by firewalld, or add a custom one by name.</li>"
 msgstr ""
+"<li><b>Protocoale</b>: Aici puteți adăuga un protocol dintr-o listă de "
+"protocoale acceptate de firewalld sau puteți adăuga unul personalizat după "
+"nume.</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -503,12 +503,18 @@ msgid ""
 "selected from the list tcp, udp, sctp and dccp. The list view displays the "
 "already defined rules.</li>"
 msgstr ""
+"<li><b>Porturi sursă</b>: această opțiune vă permite să definiți o regulă "
+"folosind butonul „Adăugare”, specificând un număr sau un interval de port "
+"sursă și un protocol selectat din lista tcp, udp, sctp și dccp. Vizualizarea "
+"listă afișează regulile deja definite.</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
 "<li><b>Masquerading</b>: this option allows you to enable or disable "
 "masquerading for the zone (IPv4 only).</li>"
 msgstr ""
+"<li><b>Mascare</b>: această opțiune vă permite să activați sau să "
+"dezactivați mascarea pentru zonă (doar pentru IPv4).</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -807,34 +813,3 @@ msgstr "Respinge"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversiune: %(version)s%(NL)ssit: %(site)s"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows you to enable or disable "
-#~ "masquerading for the zone (IPv4 only). (to complete with what is the "
-#~ "effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Mascare</b>: această opțiune vă permite să activați sau să "
-#~ "dezactivați mascarea pentru zonă (doar IPv4). (pentru a completa cu "
-#~ "efectul acestei adăugiri)</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol from a list of "
-#~ "protocols supported by firewalld, or add a custom one by name. (to "
-#~ "complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Protocoale</b>: Aici puteți adăuga un protocol dintr-o listă de "
-#~ "protocoale acceptate de firewalld sau puteți adăuga unul personalizat "
-#~ "după nume. (pentru a completa cu efectul acestei adăugări)</li>"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this option allows you to define a rule using "
-#~ "the \"Add\" button, specifying a source port number or range and a "
-#~ "protocol selected from the list tcp, udp, sctp and dccp. The list view "
-#~ "displays the already defined rules. (to complete with what is the effect "
-#~ "of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Porturi sursă</b>: această opțiune vă permite să definiți o regulă "
-#~ "folosind butonul „Adăugare”, specificând un număr sau un interval de port "
-#~ "sursă și un protocol selectat din lista tcp, udp, sctp și dccp. "
-#~ "Vizualizarea listă afișează regulile deja definite. (pentru a completa cu "
-#~ "efectul acestei adăugări)</li>"
