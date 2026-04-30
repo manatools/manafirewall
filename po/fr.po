@@ -11,8 +11,8 @@
 # Aurelien <aoudelet@outlook.com>, 2022
 # Eric Barbero <dune06@free.fr>, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# Yves Brungard, 2022
 # Philippe DIDIER, 2026
+# Yves Brungard, 2026
 #
 #, fuzzy
 msgid ""
@@ -21,7 +21,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-08 20:36+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Philippe DIDIER, 2026\n"
+"Last-Translator: Yves Brungard, 2026\n"
 "Language-Team: French (https://app.transifex.com/MageiaLinux/teams/9361/"
 "fr/)\n"
 "Language: fr\n"
@@ -404,6 +404,10 @@ msgid ""
 "active. If you also want changes to be active in the runtime environment, "
 "either add them there as well or reload firewalld."
 msgstr ""
+"Le mode permanent vous permet de configurer des éléments qui ne sont pas "
+"immédiatement actifs. Si vous souhaitez que ces modifications soient "
+"également prises en compte dans l'environnement d'exécution, ajoutez-les "
+"également à cet endroit ou relancez firewalld."
 
 #: manafirewall/helpinfo.py:37
 msgid ""
@@ -412,6 +416,11 @@ msgid ""
 "want them to persist, you need to add those changes in permanent mode as "
 "well."
 msgstr ""
+"Le mode d'exécution vous permet de configurer certains paramètres au moment "
+"de l'exécution. Les modifications apportées au moment de l'exécution ne "
+"seront pas conservées après le prochain démarrage ou le rechargement de "
+"firewalld ; si vous souhaitez qu'elles soient conservées, vous devez "
+"également les ajouter en mode permanent."
 
 #: manafirewall/helpinfo.py:38
 msgid ""
@@ -433,6 +442,11 @@ msgid ""
 "target or to select the default behaviour for packets that don't match any "
 "rule. Targets are DROP, REJECT or ACCEPT. "
 msgstr ""
+"Pour une zone, les champs disponibles sont : nom, version, nom court (un nom "
+"plus descriptif) et description. Une case à cocher vous permet d'activer la "
+"cible par défaut ou de sélectionner le comportement par défaut pour les "
+"paquets qui ne correspondent à aucune règle. Les cibles sont DROP, REJECT ou "
+"ACCEPT."
 
 #: manafirewall/helpinfo.py:40
 msgid ""
@@ -461,6 +475,14 @@ msgid ""
 "registered directly but not applied immediately; it will be applied after a "
 "firewalld reload.</li>"
 msgstr ""
+"<ul><li><b>Services</b>: lorsque vous sélectionnez cette option dans « "
+"Configurer », une liste de services prédéfinis s'affiche. Selon la zone, "
+"certains services sont déjà sélectionnés. Si vous cochez ou décochez la case "
+"correspondant à un service, les règles associées seront appliquées pour "
+"autoriser ou refuser ce service sur les interfaces utilisant cette zone. En "
+"mode permanent, la configuration est enregistrée directement mais n'est pas "
+"appliquée immédiatement ; elle ne sera effective qu'après un redémarrage de "
+"firewalld.</li>"
 
 #: manafirewall/helpinfo.py:43
 msgid ""
@@ -470,12 +492,21 @@ msgid ""
 "rules. A range is specified with a hyphen between two numbers, for example "
 "80-88. The effect is that those ports will be open.</li>"
 msgstr ""
+"<li><b>Ports</b>: cette option vous permet de définir une règle à l'aide du "
+"bouton « Ajouter », en précisant un numéro de port ou une plage de ports "
+"ainsi qu'un protocole choisi parmi la liste : TCP, UDP, SCTP et DCCP. La "
+"liste affiche les règles déjà définies. Une plage de ports est indiquée par "
+"un tiret entre deux chiffres, par exemple 80-88. Cela a pour effet d'ouvrir "
+"ces ports.</li>"
 
 #: manafirewall/helpinfo.py:44
 msgid ""
 "<li><b>Protocols</b>: Here, you can add a protocol from a list of protocols "
 "supported by firewalld, or add a custom one by name.</li>"
 msgstr ""
+"<li><b>Protocoles</b> : Ici, vous pouvez ajouter un protocole réseau parmi "
+"une liste de protocoles supportés par firewalld ou ajouter un protocole "
+"personnalisé que vous pouvez nommer.</li>"
 
 #: manafirewall/helpinfo.py:45
 msgid ""
@@ -484,12 +515,18 @@ msgid ""
 "selected from the list tcp, udp, sctp and dccp. The list view displays the "
 "already defined rules.</li>"
 msgstr ""
+"<li><b>Ports source</b> : cette option permet de spécifier une règle avec le "
+"bouton \"Ajouter\" avec un numéro de port ou une plage et un protocole "
+"sélectionné dans la liste tcp, udp, sctp et dccp. La vue liste affiche les "
+"règles déjà définies.</li>"
 
 #: manafirewall/helpinfo.py:46
 msgid ""
 "<li><b>Masquerading</b>: this option allows you to enable or disable "
 "masquerading for the zone (IPv4 only).</li>"
 msgstr ""
+"<li><b>Masquage</b>: cette option vous permet d'activer ou de désactiver le "
+"masquage pour la zone (IPv4 uniquement).</li>"
 
 #: manafirewall/helpinfo.py:47
 msgid ""
@@ -501,6 +538,14 @@ msgid ""
 "either a port or range for the destination for local forwarding, or an "
 "address and optional port or range if the destination address changes.</li>"
 msgstr ""
+"<li><b>Redirection de port</b> : la redirection de port est une application "
+"de traduction d'adresses réseau (NAT) qui redirige une demande de "
+"communication d'une combinaison d'adresse et de numéro de port vers une "
+"autre pendant que les paquets traversent le pare-feu, en technologie IPv4. "
+"L'ajout d'une règle doit spécifier un port ou une plage de ports pour les "
+"demandes entrantes et son protocole (source) et soit un port ou une plage "
+"pour la destination pour le transfert local ou l'adresse de la destination "
+"et éventuellement le port ou la plage si le port est modifié.</li>"
 
 #: manafirewall/helpinfo.py:48
 msgid "<li><b>ICMP Filter</b>: not yet implemented</li>"
@@ -525,6 +570,10 @@ msgid ""
 "application by just ticking a checkbox. A lot of services are already "
 "defined, but you can add your own for an application that is not provided."
 msgstr ""
+"Un service est un ensemble de règles appliquées ensemble par rapport à une "
+"application. Ce concept permet d'appliquer ce dont une application a besoin "
+"en cochant simplement une case. De nombreux services sont déjà définis, mais "
+"vous pouvez ajouter les vôtres pour une application qui n'est pas fournie."
 
 #: manafirewall/helpinfo.py:54
 msgid ""
@@ -532,6 +581,9 @@ msgid ""
 "allows you to choose a service. Selecting one updates the table with a list "
 "of Port-Protocol pairs."
 msgstr ""
+"Dans la vue \"Services\", le bouton \"Configurer\" permet de choisir un "
+"service. En sélectionner un met à jour le tableau avec une liste de couples "
+"Port / Protocole."
 
 #: manafirewall/helpinfo.py:55
 msgid "For each service, you can define:"
