@@ -1,3 +1,9 @@
+2026-XX-YY v. 0.99.2
+--------------------
+- Changed layout using tabs (requires python-manatools 0.99.2)
+- ActiveBindings tree is on requested now as external dialog
+- Added Service->Module management
+
 2026-04-12 v. 0.99.1
 --------------------
 - Moved to manatools aui
