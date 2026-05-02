@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12...3.27)
 
-project(manafirewall VERSION 0.99.1 LANGUAGES NONE)
+project(manafirewall VERSION 0.99.2 LANGUAGES NONE)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
