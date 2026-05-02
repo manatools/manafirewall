@@ -258,7 +258,70 @@ class OptionDialog(basedialog.BaseDialog):
     self.factory.createVSpacing(vbox, 0.3)
     heading.setAutoWrap()
 
-    ### TODO Missing layout options
+    # ── Expert tabs (Zones right-pane) ────────────────────────────────────
+    frame = self.factory.createCheckBoxFrame(
+        vbox, _("Show expert tabs for Zones"), False)
+    frame.setNotify(True)
+
+    s = self._ensure_settings()
+    any_expert = (
+        s.get('show_interfaces_tab', False) or
+        s.get('show_sources_tab', False) or
+        s.get('show_rich_rules_tab', False)
+    )
+    frame.setValue(any_expert)
+
+    inner = self.factory.createVBox(frame)
+    inner.setEnabled(any_expert)
+
+    cb_ifaces = self.factory.createCheckBox(
+        inner, _("Interfaces tab"), s.get('show_interfaces_tab', False))
+    cb_ifaces.setNotify(True)
+
+    cb_sources = self.factory.createCheckBox(
+        inner, _("Sources tab"), s.get('show_sources_tab', False))
+    cb_sources.setNotify(True)
+
+    cb_rich = self.factory.createCheckBox(
+        inner, _("Rich Rules tab"), s.get('show_rich_rules_tab', False))
+    cb_rich.setNotify(True)
+
+    def _onExpertFrame(obj):
+      if obj.widgetClass() == "YCheckBoxFrame":
+        enabled = obj.value()
+        inner.setEnabled(enabled)
+        if not enabled:
+          cb_ifaces.setValue(False)
+          cb_sources.setValue(False)
+          cb_rich.setValue(False)
+          s2 = self._ensure_settings()
+          s2['show_interfaces_tab'] = False
+          s2['show_sources_tab']    = False
+          s2['show_rich_rules_tab'] = False
+
+    def _onCbIfaces(obj):
+      if obj.widgetClass() == "YCheckBox":
+        self._ensure_settings()['show_interfaces_tab'] = obj.isChecked()
+
+    def _onCbSources(obj):
+      if obj.widgetClass() == "YCheckBox":
+        self._ensure_settings()['show_sources_tab'] = obj.isChecked()
+
+    def _onCbRich(obj):
+      if obj.widgetClass() == "YCheckBox":
+        self._ensure_settings()['show_rich_rules_tab'] = obj.isChecked()
+
+    self.eventManager.addWidgetEvent(frame,     _onExpertFrame, True)
+    self.eventManager.addWidgetEvent(cb_ifaces,  _onCbIfaces,   True)
+    self.eventManager.addWidgetEvent(cb_sources, _onCbSources,  True)
+    self.eventManager.addWidgetEvent(cb_rich,    _onCbRich,     True)
+
+    self.widget_callbacks += [
+      {'widget': frame,      'handler': _onExpertFrame},
+      {'widget': cb_ifaces,  'handler': _onCbIfaces},
+      {'widget': cb_sources, 'handler': _onCbSources},
+      {'widget': cb_rich,    'handler': _onCbRich},
+    ]
 
     self.factory.createVStretch(vbox)
     self.config_tab.showChild()
@@ -424,8 +487,10 @@ class OptionDialog(basedialog.BaseDialog):
     logger.debug('Restore pressed')
     k = self.selected_option
     if k == "layout":
-      #s = self._ensure_settings()
-      # TODO restore layout default settings
+      s = self._ensure_settings()
+      s['show_interfaces_tab'] = False
+      s['show_sources_tab']    = False
+      s['show_rich_rules_tab'] = False
       self._openLayoutOptions()
     elif k == "logging":
       self._ensure_settings()['log'] = {
