@@ -293,10 +293,15 @@ class ManaWallDialog(basedialog.BaseDialog):
 
 
     # ─────────────────────────────────────────────────────────────────────────
-    # Mode bar: Runtime / Permanent  +  Reload / Runtime→Permanent buttons
+    # Mode bar: [Configuration label] [Runtime/Permanent] [Reload] [Rtp]
+    # Everything on one line to save vertical space.
     # ─────────────────────────────────────────────────────────────────────────
     modeBarAlign = self.factory.createLeft(layout)
     hbox_mode = self.factory.createHBox(modeBarAlign)
+
+    confLabel = self.factory.createLabel(hbox_mode, _("Configuration"))
+    confLabel.setStretchable(MUI.YUIDimension.YD_HORIZ, False)
+    self.factory.createHSpacing(hbox_mode, 0.5)
 
     self._runtimeRadio   = None
     self._permanentRadio = None
@@ -315,7 +320,8 @@ class ManaWallDialog(basedialog.BaseDialog):
           'runtime'   : {'title': _("Runtime"),   'item': None},
           'permanent' : {'title': _("Permanent"), 'item': None},
       }
-      self.currentViewCombobox = self.factory.createComboBox(hbox_mode, _("Configuration"))
+      # Pass "" so the label does not appear above the combo (it's already inline)
+      self.currentViewCombobox = self.factory.createComboBox(hbox_mode, "")
       itemColl = []
       for k in ['runtime', 'permanent']:
         it = MUI.YItem(self.views[k]['title'], k == 'runtime')
@@ -325,7 +331,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.currentViewCombobox.setNotify(True)
       self.eventManager.addWidgetEvent(self.currentViewCombobox, self.onModeChanged)
 
-    self.factory.createHSpacing(hbox_mode, 1)
+    self.factory.createHSpacing(hbox_mode, 0.5)
     self._reloadButton = self.factory.createIconButton(hbox_mode, 'view-refresh',  _("Re&load"))
     self._rtpButton    = self.factory.createIconButton(hbox_mode, 'document-save', _("Runtime→&Permanent"))
     self.eventManager.addWidgetEvent(self._reloadButton, self.onReloadFirewalld)
