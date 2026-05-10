@@ -2368,11 +2368,18 @@ class ManaWallDialog(basedialog.BaseDialog):
   def _replacePointSummary(self):
     '''Fill replacePoint with a summary for the current item.
     Called from _refreshRightPane() which already cleared replacePoint.'''
+
+    def _row(label, value):
+      '''Return one HTML table row: bold label + value.'''
+      return '<tr><td><b>{}:</b></td><td>{}</td></tr>'.format(label, value)
+
     vbox = self.factory.createVBox(self.replacePoint)
 
     if not self._currentItem:
-      self.factory.createLabel(vbox, _("No item selected."))
+      self.factory.createRichText(vbox, '<p><i>{}</i></p>'.format(_("No item selected.")))
       return
+
+    html = ''
 
     if self._currentCategory == 'zones':
       default_zone = ''
@@ -2383,54 +2390,70 @@ class ManaWallDialog(basedialog.BaseDialog):
       except Exception:
         pass
 
-      name = self._currentItem
-      header = '{} ({})'.format(name, _('default zone')) if name == default_zone else name
-      self.factory.createHeading(vbox, header)
-      self.factory.createVSpacing(vbox, 0.3)
+      name   = self._currentItem
+      is_def = (name == default_zone)
+      title  = '{} <i>({})</i>'.format(name, _('default zone')) if is_def else name
+      html  += '<h2>{}</h2>'.format(title)
 
       settings = self._zoneSettings()
+      rows = ''
       if settings:
         target = settings.getTarget()
         short  = settings.getShort()
         desc   = settings.getDescription()
+        version= settings.getVersion()
         if target:
-          self.factory.createLabel(vbox, _("Target: {}").format(target))
+          rows += _row(_('Target'), '<tt>{}</tt>'.format(target))
+        if version:
+          rows += _row(_('Version'), version)
         if short:
-          self.factory.createLabel(vbox, short)
+          rows += _row(_('Short'), '<i>{}</i>'.format(short))
         if desc:
-          lbl = self.factory.createLabel(vbox, desc)
-          try:
-            lbl.setAutoWrap()
-          except Exception:
-            pass
+          rows += _row(_('Description'), desc)
 
       zone_data  = active_zones.get(name, {})
       interfaces = sorted(zone_data.get('interfaces', []))
-      sources    = sorted(zone_data.get('sources', []))
+      sources    = sorted(zone_data.get('sources',    []))
       if interfaces:
-        self.factory.createLabel(vbox, _("Interfaces: {}").format(', '.join(interfaces)))
+        rows += _row(_('Interfaces'), ', '.join('<tt>{}</tt>'.format(i) for i in interfaces))
       if sources:
-        self.factory.createLabel(vbox, _("Sources: {}").format(', '.join(sources)))
+        rows += _row(_('Sources'), ', '.join('<tt>{}</tt>'.format(s) for s in sources))
+
+      if rows:
+        html += '<table>{}</table>'.format(rows)
+      else:
+        html += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     elif self._currentCategory == 'services':
-      self.factory.createHeading(vbox, _("Service: {}").format(self._currentItem))
-      self.factory.createVSpacing(vbox, 0.3)
+      html += '<h2>{}: {}</h2>'.format(_('Service'), self._currentItem)
       settings = self._serviceSettings()
+      rows = ''
       if settings:
-        short = settings.getShort()
-        desc  = settings.getDescription()
+        short   = settings.getShort()
+        desc    = settings.getDescription()
+        version = settings.getVersion()
+        ports   = settings.getPorts()       or []
+        protos  = settings.getProtocols()   or []
+        modules = settings.getModules()     or []
+        if version:
+          rows += _row(_('Version'), version)
         if short:
-          self.factory.createLabel(vbox, short)
+          rows += _row(_('Short'), '<i>{}</i>'.format(short))
         if desc:
-          lbl = self.factory.createLabel(vbox, desc)
-          try:
-            lbl.setAutoWrap()
-          except Exception:
-            pass
+          rows += _row(_('Description'), desc)
+        if ports:
+          rows += _row(_('Ports'), ', '.join('<tt>{}/{}</tt>'.format(p, r) for p, r in ports))
+        if protos:
+          rows += _row(_('Protocols'), ', '.join('<tt>{}</tt>'.format(p) for p in protos))
+        if modules:
+          rows += _row(_('Modules'), ', '.join('<tt>{}</tt>'.format(m) for m in modules))
+      if rows:
+        html += '<table>{}</table>'.format(rows)
+      else:
+        html += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     elif self._currentCategory == 'ipsets':
-      self.factory.createHeading(vbox, _("IP Set: {}").format(self._currentItem))
-      self.factory.createVSpacing(vbox, 0.3)
+      html += '<h2>{}: {}</h2>'.format(_('IP Set'), self._currentItem)
       try:
         if self.runtime_view:
           settings = self.fw.getIPSetSettings(self._currentItem)
@@ -2438,27 +2461,41 @@ class ManaWallDialog(basedialog.BaseDialog):
           settings = self.fw.config().getIPSetByName(self._currentItem).getSettings()
       except Exception:
         settings = None
+      rows = ''
       if settings:
         ipset_type = settings.getType()
         version    = settings.getVersion()
         short      = settings.getShort()
         desc       = settings.getDescription()
         options    = settings.getOptions() or {}
+        fam        = options.get('family',   '')
+        timeout    = options.get('timeout',  '')
+        hashsize   = options.get('hashsize', '')
+        maxelem    = options.get('maxelem',  '')
         if ipset_type:
-          self.factory.createLabel(vbox, _("Type: {}").format(ipset_type))
-        fam = options.get('family', '')
+          rows += _row(_('Type'),    '<tt>{}</tt>'.format(ipset_type))
         if fam:
-          self.factory.createLabel(vbox, _("Family: {}").format(fam))
+          rows += _row(_('Family'),  '<tt>{}</tt>'.format(fam))
         if version:
-          self.factory.createLabel(vbox, _("Version: {}").format(version))
+          rows += _row(_('Version'), version)
         if short:
-          self.factory.createLabel(vbox, short)
+          rows += _row(_('Short'),   '<i>{}</i>'.format(short))
         if desc:
-          lbl = self.factory.createLabel(vbox, desc)
-          try:
-            lbl.setAutoWrap()
-          except Exception:
-            pass
+          rows += _row(_('Description'), desc)
+        if timeout:
+          rows += _row(_('Timeout'),  '<tt>{}</tt> s'.format(timeout))
+        if hashsize:
+          rows += _row(_('Hash size'), '<tt>{}</tt>'.format(hashsize))
+        if maxelem:
+          rows += _row(_('Max elements'), '<tt>{}</tt>'.format(maxelem))
+      if rows:
+        html += '<table>{}</table>'.format(rows)
+      else:
+        html += '<p><i>{}</i></p>'.format(_('No details available.'))
+
+    rt = self.factory.createRichText(vbox, html)
+    rt.setStretchable(MUI.YUIDimension.YD_VERT,  True)
+    rt.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
 
   # ─────────────────────────────────────────────────────────────────────────
   # New UX: mode bar handler
