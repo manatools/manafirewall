@@ -64,6 +64,7 @@ import manafirewall.optionDialog as optionDialog
 import manafirewall.helpinfo as helpinfo
 import manafirewall.moduleDialog as moduleDialog
 import manafirewall.activeBindingsDialog as activeBindingsDialog
+import manafirewall.ipsetEntryDialog as ipsetEntryDialog
 
 logger = logging.getLogger('manafirewall.dialog')
 _ = gettext.gettext
@@ -1800,6 +1801,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.protocolList    = None
     self.icmpFilterList  = None
     self.modulesList     = None
+    self.entriesList     = None
     self._destIpv4Input  = None
     self._destIpv6Input  = None
 
@@ -1860,6 +1862,8 @@ class ManaWallDialog(basedialog.BaseDialog):
         self.buttons['remove'].setEnabled(self.portForwardList is not None and self.portForwardList.itemsCount() > 0)
     elif tab == 'icmp_filter' and self._currentCategory == 'zones':
       self._replacePointICMP()
+    elif tab == 'entries' and self._currentCategory == 'ipsets':
+      self._replacePointIPSetEntries()
     elif tab == 'modules' and self._currentCategory == 'services':
       self._replacePointModules()
     elif tab == 'destinations' and self._currentCategory == 'services':
@@ -1875,6 +1879,183 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.factory.createVStretch(self.replacePoint)
 
     self.replacePoint.showChild()
+
+  def _replacePointIPSetEntries(self):
+    '''Fill replacePoint with entries for the selected IP set.
+
+    Works in both runtime mode (fw.getEntries / fw.addEntry / fw.removeEntry)
+    and permanent mode (config().getIPSetByName().addEntry / removeEntry).
+    Note: in runtime mode only entries managed by firewalld and not using the
+    timeout option are visible (same caveat as firewall-config).
+    '''
+    if len(self.replacePointWidgetsAndCallbacks) > 0:
+      logger.error("Error there are still widget events for ReplacePoint")
+      return
+    if self.replacePoint.hasChildren():
+      logger.error("Error there are still widgets into ReplacePoint")
+      return
+    vbox = self.factory.createVBox(self.replacePoint)
+
+    # Help text (matches firewall-config label)
+    help_text = _("IP Set entries. Only entries of IP sets not using the timeout "
+                  "option and only entries added by firewalld are visible at "
+                  "runtime. Entries added directly with the ipset command will "
+                  "not be shown here.")
+    lbl = self.factory.createLabel(vbox, help_text)
+    try:
+      lbl.setAutoWrap()
+    except Exception:
+      pass
+    self.factory.createVSpacing(vbox, 0.3)
+
+    # Entries table
+    entry_header = MUI.YTableHeader()
+    entry_header.addColumn(_('Entry'))
+    self.entriesList = self.factory.createTable(vbox, entry_header, False)
+    self.entriesList.setStretchable(MUI.YUIDimension.YD_VERT, True)
+    self.entriesList.setNotify(True)
+
+    # Buttons row
+    align = self.factory.createLeft(vbox)
+    hbox = self.factory.createHBox(align)
+    self._entriesAddButton    = self.factory.createIconButton(hbox, 'list-add',      _('&Add'))
+    self._entriesEditButton   = self.factory.createIconButton(hbox, 'document-edit', _('&Edit'))
+    self._entriesRemoveButton = self.factory.createIconButton(hbox, 'list-remove',   _('&Remove'))
+    # Edit/Remove require a selected row
+    self._entriesEditButton.setEnabled(False)
+    self._entriesRemoveButton.setEnabled(False)
+
+    self.eventManager.addWidgetEvent(self._entriesAddButton,    self._onIPSetEntryAdd)
+    self.eventManager.addWidgetEvent(self._entriesEditButton,   self._onIPSetEntryEdit)
+    self.eventManager.addWidgetEvent(self._entriesRemoveButton, self._onIPSetEntryRemove)
+    self.eventManager.addWidgetEvent(self.entriesList, self._onIPSetEntrySelected, True)
+    self.replacePointWidgetsAndCallbacks += [
+      {'widget': self._entriesAddButton,    'action': self._onIPSetEntryAdd},
+      {'widget': self._entriesEditButton,   'action': self._onIPSetEntryEdit},
+      {'widget': self._entriesRemoveButton, 'action': self._onIPSetEntryRemove},
+      {'widget': self.entriesList,          'action': self._onIPSetEntrySelected},
+    ]
+    self._fillRPIPSetEntries()
+
+  def _fillRPIPSetEntries(self):
+    '''Reload the entries table from firewalld.'''
+    if self.entriesList is None:
+      return
+    entries = []
+    ipset_name = self._currentItem
+    if ipset_name:
+      try:
+        if self.runtime_view:
+          entries = sorted(self.fw.getEntries(ipset_name))
+        else:
+          settings = self.fw.config().getIPSetByName(ipset_name).getSettings()
+          entries = sorted(settings.getEntries())
+      except Exception:
+        pass
+    items = []
+    for entry in entries:
+      it = MUI.YTableItem()
+      it.addCell(entry)
+      items.append(it)
+    self.entriesList.deleteAllItems()
+    self.entriesList.addItems(items)
+    # Reset selection-dependent buttons
+    self._entriesEditButton.setEnabled(False)
+    self._entriesRemoveButton.setEnabled(False)
+
+  def _onIPSetEntrySelected(self, obj):
+    if self.entriesList is None:
+      return
+    has_sel = self.entriesList.selectedItem() is not None
+    self._entriesEditButton.setEnabled(has_sel)
+    self._entriesRemoveButton.setEnabled(has_sel)
+
+  def _onIPSetEntryAdd(self):
+    '''Add a new entry to the current IP set.'''
+    if not self._currentItem:
+      return
+    ipset_name = self._currentItem
+    try:
+      if self.runtime_view:
+        settings = self.fw.getIPSetSettings(ipset_name)
+      else:
+        settings = self.fw.config().getIPSetByName(ipset_name).getSettings()
+    except Exception:
+      return
+    dlg = ipsetEntryDialog.IPSetEntryDialog(
+        settings.getType(), settings.getOptions(), old_entry='')
+    entry = dlg.run()
+    if not entry:
+      return
+    try:
+      if self.runtime_view:
+        if not self.fw.queryEntry(ipset_name, entry):
+          self.fw.addEntry(ipset_name, entry)
+      else:
+        ipset = self.fw.config().getIPSetByName(ipset_name)
+        if not ipset.queryEntry(entry):
+          ipset.addEntry(entry)
+    except Exception as exc:
+      logger.warning("_onIPSetEntryAdd: %s", exc)
+      return
+    self._fillRPIPSetEntries()
+
+  def _onIPSetEntryEdit(self):
+    '''Edit the selected entry of the current IP set.'''
+    if not self._currentItem or self.entriesList is None:
+      return
+    item = self.entriesList.selectedItem()
+    if item is None:
+      return
+    old_entry  = item.cell(0).label()
+    ipset_name = self._currentItem
+    try:
+      if self.runtime_view:
+        settings = self.fw.getIPSetSettings(ipset_name)
+      else:
+        settings = self.fw.config().getIPSetByName(ipset_name).getSettings()
+    except Exception:
+      return
+    dlg = ipsetEntryDialog.IPSetEntryDialog(
+        settings.getType(), settings.getOptions(), old_entry=old_entry)
+    new_entry = dlg.run()
+    if not new_entry or new_entry == old_entry:
+      return
+    try:
+      if self.runtime_view:
+        if not self.fw.queryEntry(ipset_name, new_entry):
+          self.fw.addEntry(ipset_name, new_entry)
+          self.fw.removeEntry(ipset_name, old_entry)
+      else:
+        ipset = self.fw.config().getIPSetByName(ipset_name)
+        if not ipset.queryEntry(new_entry):
+          ipset.removeEntry(old_entry)
+          ipset.addEntry(new_entry)
+    except Exception as exc:
+      logger.warning("_onIPSetEntryEdit: %s", exc)
+      return
+    self._fillRPIPSetEntries()
+
+  def _onIPSetEntryRemove(self):
+    '''Remove the selected entry from the current IP set.'''
+    if not self._currentItem or self.entriesList is None:
+      return
+    item = self.entriesList.selectedItem()
+    if item is None:
+      return
+    entry      = item.cell(0).label()
+    ipset_name = self._currentItem
+    try:
+      if self.runtime_view:
+        if self.fw.queryEntry(ipset_name, entry):
+          self.fw.removeEntry(ipset_name, entry)
+      else:
+        ipset = self.fw.config().getIPSetByName(ipset_name)
+        ipset.removeEntry(entry)
+    except Exception as exc:
+      logger.warning("_onIPSetEntryRemove: %s", exc)
+      return
+    self._fillRPIPSetEntries()
 
   def _replacePointZoneInterfaces(self):
     '''Show interfaces bound to the selected zone (read-only, expert tab).'''
