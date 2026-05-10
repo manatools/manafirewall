@@ -310,6 +310,8 @@ class ManaWallDialog(basedialog.BaseDialog):
       rbGroup = self.factory.createRadioButtonGroup(hbox_mode)
       self._runtimeRadio   = self.factory.createRadioButton(rbGroup, _("&Runtime"),   True)
       self._permanentRadio = self.factory.createRadioButton(rbGroup, _("&Permanent"), False)
+      self._runtimeRadio.setHelpText(_("Runtime mode: shows the active firewall configuration. Changes take effect immediately but are lost on reload or restart."))
+      self._permanentRadio.setHelpText(_("Permanent mode: shows and edits the configuration stored on disk. Changes take effect after a firewalld reload."))
       self._runtimeRadio.setNotify(True)
       self._permanentRadio.setNotify(True)
       self.eventManager.addWidgetEvent(self._runtimeRadio,   self.onModeChanged)
@@ -334,6 +336,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     self.factory.createHSpacing(hbox_mode, 0.5)
     self._reloadButton = self.factory.createIconButton(hbox_mode, 'view-refresh',  _("Re&load"))
     self._rtpButton    = self.factory.createIconButton(hbox_mode, 'document-save', _("Runtime→&Permanent"))
+    self._reloadButton.setHelpText(_("Reload firewalld: re-read the permanent configuration and apply it to the runtime state."))
+    self._rtpButton.setHelpText(_("Runtime → Permanent: save the current runtime configuration to the permanent configuration on disk. Only available in Runtime mode."))
     self.eventManager.addWidgetEvent(self._reloadButton, self.onReloadFirewalld)
     self.eventManager.addWidgetEvent(self._rtpButton,    self.onRuntimeToPermanent)
 
@@ -385,6 +389,10 @@ class ManaWallDialog(basedialog.BaseDialog):
     self._leftEditButton         = self.factory.createIconButton(hbox_btns, 'document-edit', _("&Edit"))
     self._leftRemoveButton       = self.factory.createIconButton(hbox_btns, 'list-remove',   _("&Remove"))
     self._leftLoadDefaultsButton = self.factory.createPushButton(hbox_btns, _("Load &Defaults"))
+    self._leftAddButton.setHelpText(_("Add a new item."))
+    self._leftEditButton.setHelpText(_("Edit the selected item."))
+    self._leftRemoveButton.setHelpText(_("Remove the selected item."))
+    self._leftLoadDefaultsButton.setHelpText(_("Restore the selected item to its built-in default settings."))
     self.eventManager.addWidgetEvent(self._leftAddButton,          self.onLeftAddButton)
     self.eventManager.addWidgetEvent(self._leftEditButton,         self.onLeftEditButton)
     self.eventManager.addWidgetEvent(self._leftRemoveButton,       self.onLeftRemoveButton)
@@ -515,6 +523,9 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons['add']    = self.factory.createIconButton(hbox, 'list-add',      _("&Add"))
       buttons['edit']   = self.factory.createIconButton(hbox, 'document-edit', _("&Edit"))
       buttons['remove'] = self.factory.createIconButton(hbox, 'list-remove',   _("&Remove"))
+      buttons['add'].setHelpText(_("Add a new entry."))
+      buttons['edit'].setHelpText(_("Edit the selected entry."))
+      buttons['remove'].setHelpText(_("Remove the selected entry."))
       
 
     return buttons
@@ -2419,6 +2430,35 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     elif self._currentCategory == 'ipsets':
       self.factory.createHeading(vbox, _("IP Set: {}").format(self._currentItem))
+      self.factory.createVSpacing(vbox, 0.3)
+      try:
+        if self.runtime_view:
+          settings = self.fw.getIPSetSettings(self._currentItem)
+        else:
+          settings = self.fw.config().getIPSetByName(self._currentItem).getSettings()
+      except Exception:
+        settings = None
+      if settings:
+        ipset_type = settings.getType()
+        version    = settings.getVersion()
+        short      = settings.getShort()
+        desc       = settings.getDescription()
+        options    = settings.getOptions() or {}
+        if ipset_type:
+          self.factory.createLabel(vbox, _("Type: {}").format(ipset_type))
+        fam = options.get('family', '')
+        if fam:
+          self.factory.createLabel(vbox, _("Family: {}").format(fam))
+        if version:
+          self.factory.createLabel(vbox, _("Version: {}").format(version))
+        if short:
+          self.factory.createLabel(vbox, short)
+        if desc:
+          lbl = self.factory.createLabel(vbox, desc)
+          try:
+            lbl.setAutoWrap()
+          except Exception:
+            pass
 
   # ─────────────────────────────────────────────────────────────────────────
   # New UX: mode bar handler
