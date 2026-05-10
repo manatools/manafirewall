@@ -2367,11 +2367,14 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _replacePointSummary(self):
     '''Fill replacePoint with a summary for the current item.
-    Called from _refreshRightPane() which already cleared replacePoint.'''
+    Called from _refreshRightPane() which already cleared replacePoint.
+    Uses only <h2>, <p>, <b>, <i>, <tt> — the safe HTML subset supported by
+    all three YUI backends (Qt, GTK, ncurses).
+    '''
 
-    def _row(label, value):
-      '''Return one HTML table row: bold label + value.'''
-      return '<tr><td><b>{}:</b></td><td>{}</td></tr>'.format(label, value)
+    def _field(label, value):
+      '''One paragraph: bold label followed by value.'''
+      return '<p><b>{}:</b> {}</p>'.format(label, value)
 
     vbox = self.factory.createVBox(self.replacePoint)
 
@@ -2396,60 +2399,57 @@ class ManaWallDialog(basedialog.BaseDialog):
       html  += '<h2>{}</h2>'.format(title)
 
       settings = self._zoneSettings()
-      rows = ''
       if settings:
-        target = settings.getTarget()
-        short  = settings.getShort()
-        desc   = settings.getDescription()
-        version= settings.getVersion()
+        target  = settings.getTarget()
+        version = settings.getVersion()
+        short   = settings.getShort()
+        desc    = settings.getDescription()
         if target:
-          rows += _row(_('Target'), '<tt>{}</tt>'.format(target))
+          html += _field(_('Target'),  '<tt>{}</tt>'.format(target))
         if version:
-          rows += _row(_('Version'), version)
+          html += _field(_('Version'), version)
         if short:
-          rows += _row(_('Short'), '<i>{}</i>'.format(short))
+          html += _field(_('Short'),   '<i>{}</i>'.format(short))
         if desc:
-          rows += _row(_('Description'), desc)
+          html += _field(_('Description'), desc)
 
       zone_data  = active_zones.get(name, {})
       interfaces = sorted(zone_data.get('interfaces', []))
       sources    = sorted(zone_data.get('sources',    []))
       if interfaces:
-        rows += _row(_('Interfaces'), ', '.join('<tt>{}</tt>'.format(i) for i in interfaces))
+        html += _field(_('Interfaces'), ', '.join('<tt>{}</tt>'.format(i) for i in interfaces))
       if sources:
-        rows += _row(_('Sources'), ', '.join('<tt>{}</tt>'.format(s) for s in sources))
+        html += _field(_('Sources'), ', '.join('<tt>{}</tt>'.format(s) for s in sources))
 
-      if rows:
-        html += '<table>{}</table>'.format(rows)
-      else:
+      if not html.strip().endswith('</p>'):
         html += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     elif self._currentCategory == 'services':
       html += '<h2>{}: {}</h2>'.format(_('Service'), self._currentItem)
       settings = self._serviceSettings()
-      rows = ''
       if settings:
+        version = settings.getVersion()
         short   = settings.getShort()
         desc    = settings.getDescription()
-        version = settings.getVersion()
-        ports   = settings.getPorts()       or []
-        protos  = settings.getProtocols()   or []
-        modules = settings.getModules()     or []
+        ports   = settings.getPorts()     or []
+        protos  = settings.getProtocols() or []
+        modules = settings.getModules()   or []
         if version:
-          rows += _row(_('Version'), version)
+          html += _field(_('Version'), version)
         if short:
-          rows += _row(_('Short'), '<i>{}</i>'.format(short))
+          html += _field(_('Short'), '<i>{}</i>'.format(short))
         if desc:
-          rows += _row(_('Description'), desc)
+          html += _field(_('Description'), desc)
         if ports:
-          rows += _row(_('Ports'), ', '.join('<tt>{}/{}</tt>'.format(p, r) for p, r in ports))
+          html += _field(_('Ports'),
+                         ', '.join('<tt>{}/{}</tt>'.format(p, r) for p, r in ports))
         if protos:
-          rows += _row(_('Protocols'), ', '.join('<tt>{}</tt>'.format(p) for p in protos))
+          html += _field(_('Protocols'),
+                         ', '.join('<tt>{}</tt>'.format(p) for p in protos))
         if modules:
-          rows += _row(_('Modules'), ', '.join('<tt>{}</tt>'.format(m) for m in modules))
-      if rows:
-        html += '<table>{}</table>'.format(rows)
-      else:
+          html += _field(_('Modules'),
+                         ', '.join('<tt>{}</tt>'.format(m) for m in modules))
+      if not html.strip().endswith('</p>'):
         html += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     elif self._currentCategory == 'ipsets':
@@ -2461,7 +2461,6 @@ class ManaWallDialog(basedialog.BaseDialog):
           settings = self.fw.config().getIPSetByName(self._currentItem).getSettings()
       except Exception:
         settings = None
-      rows = ''
       if settings:
         ipset_type = settings.getType()
         version    = settings.getVersion()
@@ -2473,24 +2472,22 @@ class ManaWallDialog(basedialog.BaseDialog):
         hashsize   = options.get('hashsize', '')
         maxelem    = options.get('maxelem',  '')
         if ipset_type:
-          rows += _row(_('Type'),    '<tt>{}</tt>'.format(ipset_type))
+          html += _field(_('Type'),    '<tt>{}</tt>'.format(ipset_type))
         if fam:
-          rows += _row(_('Family'),  '<tt>{}</tt>'.format(fam))
+          html += _field(_('Family'),  '<tt>{}</tt>'.format(fam))
         if version:
-          rows += _row(_('Version'), version)
+          html += _field(_('Version'), version)
         if short:
-          rows += _row(_('Short'),   '<i>{}</i>'.format(short))
+          html += _field(_('Short'),   '<i>{}</i>'.format(short))
         if desc:
-          rows += _row(_('Description'), desc)
+          html += _field(_('Description'), desc)
         if timeout:
-          rows += _row(_('Timeout'),  '<tt>{}</tt> s'.format(timeout))
+          html += _field(_('Timeout'),      '<tt>{}</tt> s'.format(timeout))
         if hashsize:
-          rows += _row(_('Hash size'), '<tt>{}</tt>'.format(hashsize))
+          html += _field(_('Hash size'),    '<tt>{}</tt>'.format(hashsize))
         if maxelem:
-          rows += _row(_('Max elements'), '<tt>{}</tt>'.format(maxelem))
-      if rows:
-        html += '<table>{}</table>'.format(rows)
-      else:
+          html += _field(_('Max elements'), '<tt>{}</tt>'.format(maxelem))
+      if not html.strip().endswith('</p>'):
         html += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     rt = self.factory.createRichText(vbox, html)
