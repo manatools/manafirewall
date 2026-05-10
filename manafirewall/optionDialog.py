@@ -254,14 +254,40 @@ class OptionDialog(basedialog.BaseDialog):
     self.factory.createHSpacing(hbox)
 
     # Title
-    heading = self.factory.createHeading( vbox, _("Layout options (active at next startup)") )
+    heading = self.factory.createHeading( vbox, _("Layout options") )
     self.factory.createVSpacing(vbox, 0.3)
     heading.setAutoWrap()
+
+    # ── View: IP Sets left tab ──────────────────────────────────────────────
+    _s = self._ensure_settings()
+    cb_ipsets = self.factory.createCheckBox(
+        self.factory.createLeft(vbox), _("Show IP Sets tab"), _s.get('show_ipsets', False))
+    cb_ipsets.setNotify(True)
+    try:
+      cb_ipsets.setHelpText(_("Show or hide the IP Sets tab in the left panel. "
+                               "Takes effect immediately."))
+    except Exception:
+      pass
+
+    def _onCbIPSets(obj):
+      if obj.widgetClass() == "YCheckBox":
+        self._ensure_settings()['show_ipsets'] = obj.isChecked()
+
+    self.eventManager.addWidgetEvent(cb_ipsets, _onCbIPSets, True)
+    self.widget_callbacks.append({'widget': cb_ipsets, 'handler': _onCbIPSets})
+
+    self.factory.createVSpacing(vbox, 0.3)
 
     # ── Expert tabs (Zones right-pane) ────────────────────────────────────
     frame = self.factory.createCheckBoxFrame(
         vbox, _("Show expert tabs for Zones"), False)
     frame.setNotify(True)
+    try:
+      frame.setHelpText(_("Enable extra tabs in the Zone configuration pane: "
+                           "Interfaces, Sources, Rich Rules. "
+                           "Takes effect when the category is next selected."))
+    except Exception:
+      pass
 
     s = self._ensure_settings()
     any_expert = (
@@ -277,14 +303,26 @@ class OptionDialog(basedialog.BaseDialog):
     cb_ifaces = self.factory.createCheckBox(
         inner, _("Interfaces tab"), s.get('show_interfaces_tab', False))
     cb_ifaces.setNotify(True)
+    try:
+      cb_ifaces.setHelpText(_("Show the Interfaces tab for Zone configuration."))
+    except Exception:
+      pass
 
     cb_sources = self.factory.createCheckBox(
         inner, _("Sources tab"), s.get('show_sources_tab', False))
     cb_sources.setNotify(True)
+    try:
+      cb_sources.setHelpText(_("Show the Sources tab for Zone configuration."))
+    except Exception:
+      pass
 
     cb_rich = self.factory.createCheckBox(
         inner, _("Rich Rules tab"), s.get('show_rich_rules_tab', False))
     cb_rich.setNotify(True)
+    try:
+      cb_rich.setHelpText(_("Show the Rich Rules tab for Zone configuration."))
+    except Exception:
+      pass
 
     def _onExpertFrame(obj):
       if obj.widgetClass() == "YCheckBoxFrame":
@@ -488,6 +526,7 @@ class OptionDialog(basedialog.BaseDialog):
     k = self.selected_option
     if k == "layout":
       s = self._ensure_settings()
+      s['show_ipsets']         = False
       s['show_interfaces_tab'] = False
       s['show_sources_tab']    = False
       s['show_rich_rules_tab'] = False

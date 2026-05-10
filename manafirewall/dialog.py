@@ -346,7 +346,16 @@ class ManaWallDialog(basedialog.BaseDialog):
     self._zonesTabItem    = MUI.YItem(_("Zones"),    True)
     self._servicesTabItem = MUI.YItem(_("Services"), False)
     self._ipsetsTabItem   = MUI.YItem(_("IP Sets"),  False)
-    for ti in [self._zonesTabItem, self._servicesTabItem, self._ipsetsTabItem]:
+    # Populate left tabs according to show_ipsets preference (default False)
+    try:
+      _lprefs = (getattr(self.config, 'userPreferences', None) or {}).get('settings', {})
+      _show_ipsets = _lprefs.get('show_ipsets', False)
+    except Exception:
+      _show_ipsets = False
+    _left_tabs = [self._zonesTabItem, self._servicesTabItem]
+    if _show_ipsets:
+      _left_tabs.append(self._ipsetsTabItem)
+    for ti in _left_tabs:
       self.leftTab.addItem(ti)
     self.leftTab.setNotify(True)
     self.eventManager.addWidgetEvent(self.leftTab, self.onLeftTabChanged)
@@ -1381,6 +1390,55 @@ class ManaWallDialog(basedialog.BaseDialog):
   # ─────────────────────────────────────────────────────────────────────────
   # New UX: left-pane fill helpers
   # ─────────────────────────────────────────────────────────────────────────
+
+  def _rebuildLeftTabs(self):
+    '''Rebuild left DumbTab, adding/removing IP Sets tab per current preference.
+
+    Must be called from the main event loop (not from inside a popup dialog
+    event loop) so that factory calls operate on the correct dialog context.
+    '''
+    try:
+      _prefs = (getattr(self.config, 'userPreferences', None) or {}).get('settings', {})
+      _show_ipsets = _prefs.get('show_ipsets', False)
+    except Exception:
+      _show_ipsets = False
+
+    # Fall back from ipsets category if tab is being hidden
+    if not _show_ipsets and self._currentCategory == 'ipsets':
+      self._currentCategory = 'zones'
+      self._currentItem     = None
+      self._currentRightTab = 'summary'
+
+    try:
+      self.leftTab.deleteAllItems()
+    except Exception:
+      pass
+
+    tabs = [self._zonesTabItem, self._servicesTabItem]
+    if _show_ipsets:
+      tabs.append(self._ipsetsTabItem)
+
+    for ti in tabs:
+      sel = (
+        (ti == self._zonesTabItem    and self._currentCategory == 'zones')    or
+        (ti == self._servicesTabItem and self._currentCategory == 'services') or
+        (ti == self._ipsetsTabItem   and self._currentCategory == 'ipsets')
+      )
+      ti.setSelected(sel)
+      self.leftTab.addItem(ti)
+
+    _cur = {
+      'zones':    self._zonesTabItem,
+      'services': self._servicesTabItem,
+      'ipsets':   self._ipsetsTabItem if _show_ipsets else None,
+    }.get(self._currentCategory)
+    if _cur is not None:
+      try:
+        self.leftTab.selectItem(_cur, True)
+      except Exception:
+        pass
+
+    self._fillLeftCategory()
 
   def _fillLeftCategory(self):
     '''Dispatch to the correct fill method for the current category.'''
@@ -2730,6 +2788,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     if self._reloading:
       # If we are reloading, the dialog will be closed by the reload callback, so we don't need to re-enable it
       return
+    # Rebuild left tabs in case show_ipsets changed while the dialog was open
+    self._rebuildLeftTabs()
     self.dialog.setEnabled(True)
 
   def onActiveBindings(self):
