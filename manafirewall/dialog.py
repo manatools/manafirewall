@@ -2076,6 +2076,8 @@ class ManaWallDialog(basedialog.BaseDialog):
         settings = self.fw.config().getIPSetByName(ipset_name).getSettings()
     except Exception:
       return
+    if settings is None:
+      return
     dlg = ipsetEntryDialog.IPSetEntryDialog(
         settings.getType(), settings.getOptions(), old_entry='')
     entry = dlg.run()
@@ -2109,6 +2111,8 @@ class ManaWallDialog(basedialog.BaseDialog):
       else:
         settings = self.fw.config().getIPSetByName(ipset_name).getSettings()
     except Exception:
+      return
+    if settings is None:
       return
     dlg = ipsetEntryDialog.IPSetEntryDialog(
         settings.getType(), settings.getOptions(), old_entry=old_entry)
