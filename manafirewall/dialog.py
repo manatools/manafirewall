@@ -56,6 +56,7 @@ from queue import SimpleQueue, Empty
 
 import manafirewall.zoneBaseDialog as zoneBaseDialog
 import manafirewall.serviceBaseDialog as serviceBaseDialog
+import manafirewall.ipsetBaseDialog as ipsetBaseDialog
 import manafirewall.changeZoneConnectionDialog as changeZoneConnectionDialog
 import manafirewall.portDialog as portDialog
 import manafirewall.forwardDialog as forwardDialog
@@ -1450,6 +1451,31 @@ class ManaWallDialog(basedialog.BaseDialog):
       self._fillLeftIPSets()
     self._updateRightTabState()
     self._refreshRightPane()
+    self._updateLeftButtonState()
+
+  def _updateLeftButtonState(self):
+    '''Show/hide and enable/disable the left-pane action buttons.
+
+    Rules (matching firewall-config behaviour):
+    - In runtime view: Add/Edit/Remove/LoadDefaults are HIDDEN (only permanent
+      mode supports adding/editing/removing zones, services and IP sets).
+    - In permanent view: buttons are SHOWN.
+      - Add: always enabled.
+      - Edit / Remove / LoadDefaults: enabled only when an item is selected.
+    '''
+    is_permanent = not self.runtime_view
+    has_item     = bool(self._currentItem)
+
+    self._leftAddButton.setVisible(is_permanent)
+    self._leftEditButton.setVisible(is_permanent)
+    self._leftRemoveButton.setVisible(is_permanent)
+    self._leftLoadDefaultsButton.setVisible(is_permanent)
+
+    if is_permanent:
+      self._leftAddButton.setEnabled(True)
+      self._leftEditButton.setEnabled(has_item)
+      self._leftRemoveButton.setEnabled(has_item)
+      self._leftLoadDefaultsButton.setEnabled(has_item)
 
   def _cleanLeftCallbacks(self):
     '''Remove widget events registered for the current left-pane content.'''
@@ -1678,6 +1704,7 @@ class ManaWallDialog(basedialog.BaseDialog):
         self.changeBindingsButton.setEnabled(True)
     else:
       self.changeBindingsButton.setEnabled(False)
+    self._updateLeftButtonState()
 
   def _onLeftListSelected(self, obj):
     '''Handle a selection change in the services/ipsets list.'''
@@ -1693,6 +1720,7 @@ class ManaWallDialog(basedialog.BaseDialog):
         self._currentItem = name
         self._updateRightTabState()
         self._refreshRightPane()
+      self._updateLeftButtonState()
 
   def onLeftTabChanged(self):
     '''Handle left DumbTab selection change (Zones / Services / IP Sets).'''
@@ -1716,24 +1744,32 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.onAddZone()
     elif self._currentCategory == 'services':
       self.onServiceConfAddService()
+    elif self._currentCategory == 'ipsets':
+      self.onIPSetConfAddIPSet()
 
   def onLeftEditButton(self):
     if self._currentCategory == 'zones':
       self.onEditZone()
     elif self._currentCategory == 'services':
       self.onServiceConfEditService()
+    elif self._currentCategory == 'ipsets':
+      self.onIPSetConfEditIPSet()
 
   def onLeftRemoveButton(self):
     if self._currentCategory == 'zones':
       self.onRemoveZone()
     elif self._currentCategory == 'services':
       self.onServiceConfRemoveService()
+    elif self._currentCategory == 'ipsets':
+      self.onIPSetConfRemoveIPSet()
 
   def onLeftLoadDefaultsButton(self):
     if self._currentCategory == 'zones':
       self.onLoadDefaultsZone()
     elif self._currentCategory == 'services':
       self.onServiceConfLoadDefaultsService()
+    elif self._currentCategory == 'ipsets':
+      self.onIPSetConfLoadDefaultsIPSet()
 
   # ─────────────────────────────────────────────────────────────────────────
   # New UX: right-pane tab and refresh helpers
@@ -3100,6 +3136,97 @@ class ManaWallDialog(basedialog.BaseDialog):
       return
     service = self.fw.config().getServiceByName(self._currentItem)
     service.loadDefaults()
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # IP Set permanent-mode actions (left panel buttons)
+  # ─────────────────────────────────────────────────────────────────────────
+
+  def onIPSetConfAddIPSet(self, *args):
+    '''Add a new IP set (permanent mode only).'''
+    if self.runtime_view:
+      return
+    self._add_edit_ipset(True)
+
+  def onIPSetConfRemoveIPSet(self, *args):
+    '''Remove the selected IP set (permanent mode only).'''
+    if self.runtime_view or not self._currentItem:
+      return
+    ipset = self.fw.config().getIPSetByName(self._currentItem)
+    ipset.remove()
+    self._currentItem = None
+    self._fillLeftIPSets()
+    self._updateLeftButtonState()
+
+  def onIPSetConfEditIPSet(self, *args):
+    '''Edit the selected IP set (permanent mode only).'''
+    if self.runtime_view or not self._currentItem:
+      return
+    self._add_edit_ipset(False)
+
+  def onIPSetConfLoadDefaultsIPSet(self, *args):
+    '''Load defaults for the selected IP set (permanent mode only).'''
+    if self.runtime_view or not self._currentItem:
+      return
+    ipset = self.fw.config().getIPSetByName(self._currentItem)
+    ipset.loadDefaults()
+
+  def _add_edit_ipset(self, add):
+    '''Open the IP set base dialog and create/update the IP set.'''
+    ipsetBaseInfo = {}
+    try:
+      ipset_types = self.fw.get_property("IPSetTypes")
+    except Exception:
+      ipset_types = None
+
+    if not add:
+      if not self._currentItem:
+        return
+      ipset    = self.fw.config().getIPSetByName(self._currentItem)
+      settings = ipset.getSettings()
+      props    = ipset.get_properties()
+      ipsetBaseInfo['name']        = ipset.get_property('name')
+      ipsetBaseInfo['type']        = settings.getType()
+      ipsetBaseInfo['version']     = settings.getVersion()
+      ipsetBaseInfo['short']       = settings.getShort()
+      ipsetBaseInfo['description'] = settings.getDescription()
+      ipsetBaseInfo['options']     = settings.getOptions()
+      ipsetBaseInfo['default']     = props.get('default', False)
+      ipsetBaseInfo['builtin']     = props.get('builtin', False)
+
+    dlg = ipsetBaseDialog.IPSetBaseDialog(ipsetBaseInfo, ipset_types)
+    newInfo = dlg.run()
+    if newInfo is None:
+      return
+
+    if not add:
+      ipset    = self.fw.config().getIPSetByName(self._currentItem)
+      settings = ipset.getSettings()
+      changed  = False
+      if ipsetBaseInfo.get('version', '')     != newInfo.get('version', ''):
+        settings.setVersion(newInfo['version']); changed = True
+      if ipsetBaseInfo.get('short', '')       != newInfo.get('short', ''):
+        settings.setShort(newInfo['short']); changed = True
+      if ipsetBaseInfo.get('description', '') != newInfo.get('description', ''):
+        settings.setDescription(newInfo['description']); changed = True
+      if ipsetBaseInfo.get('options', {})     != newInfo.get('options', {}):
+        settings.setOptions(newInfo['options']); changed = True
+      if changed:
+        ipset.update(settings)
+      if ipsetBaseInfo['name'] != newInfo['name']:
+        ipset.rename(newInfo['name'])
+        self._currentItem = newInfo['name']
+    else:
+      settings = client.FirewallClientIPSetSettings()
+      settings.setVersion(newInfo.get('version', ''))
+      settings.setShort(newInfo.get('short', ''))
+      settings.setDescription(newInfo.get('description', ''))
+      settings.setType(newInfo['type'])
+      settings.setOptions(newInfo.get('options', {}))
+      self.fw.config().addIPSet(newInfo['name'], settings)
+      self._currentItem = newInfo['name']
+
+    self._fillLeftIPSets()
+    self._updateLeftButtonState()
 
   def _add_edit_service(self, add):
     '''
