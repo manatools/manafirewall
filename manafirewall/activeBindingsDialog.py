@@ -63,7 +63,7 @@ class ActiveBindingsDialog(basedialog.BaseDialog):
         self._fillTree()
 
         align = self.factory.createRight(layout)
-        closeBtn = self.factory.createPushButton(align, _("&Close"))
+        closeBtn = self.factory.createIconButton(align, 'window-close', _("&Close"))
         self.eventManager.addWidgetEvent(closeBtn, self._onClose)
         self.eventManager.addCancelEvent(self._onClose)
         self.dialog.setDefaultButton(closeBtn)

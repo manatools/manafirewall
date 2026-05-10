@@ -68,8 +68,8 @@ class IPSetEntryDialog(basedialog.BaseDialog):
         # Buttons
         align = self.factory.createRight(layout)
         hbox_btns = self.factory.createHBox(align)
-        self._cancelButton = self.factory.createPushButton(hbox_btns, _("&Cancel"))
-        self._okButton     = self.factory.createPushButton(hbox_btns, _("&Ok"))
+        self._cancelButton = self.factory.createIconButton(hbox_btns, 'dialog-cancel', _("&Cancel"))
+        self._okButton     = self.factory.createIconButton(hbox_btns, 'dialog-ok',     _("&Ok"))
         # Ok starts disabled — user must type a valid entry (or re-type when editing)
         self._okButton.setEnabled(False)
         self.dialog.setDefaultButton(self._okButton)

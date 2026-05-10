@@ -457,9 +457,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     # ─────────────────────────────────────────────────────────────────────────
     align = self.factory.createRight(layout)
     bottomLine = self.factory.createHBox(align)
-    aboutButton = self.factory.createPushButton(bottomLine, _("&About"))
+    aboutButton = self.factory.createIconButton(bottomLine, 'help-about',       _("&About"))
     self.eventManager.addWidgetEvent(aboutButton, self.onAbout)
-    quitButton = self.factory.createPushButton(bottomLine, _("&Quit"))
+    quitButton = self.factory.createIconButton(bottomLine, 'application-exit', _("&Quit"))
     self.eventManager.addWidgetEvent(quitButton, self.onQuitEvent, sendObjOnEvent)
 
     # Let's test a cancel event

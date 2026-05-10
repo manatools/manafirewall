@@ -139,9 +139,9 @@ class IPSetBaseDialog(basedialog.BaseDialog):
         # ── Buttons ────────────────────────────────────────────────────
         align = self.factory.createRight(layout)
         bottomLine = self.factory.createHBox(align)
-        cancelButton = self.factory.createPushButton(bottomLine, _("&Cancel"))
+        cancelButton = self.factory.createIconButton(bottomLine, 'dialog-cancel', _("&Cancel"))
         self.eventManager.addWidgetEvent(cancelButton, self._onCancelButton)
-        self._okButton = self.factory.createPushButton(bottomLine, _("&Ok"))
+        self._okButton = self.factory.createIconButton(bottomLine, 'dialog-ok', _("&Ok"))
         self.eventManager.addWidgetEvent(self._okButton, self._onOkButton)
         self.eventManager.addCancelEvent(self._onCancelEvent)
 

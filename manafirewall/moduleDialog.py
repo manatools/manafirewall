@@ -70,8 +70,8 @@ class HelperDialog(basedialog.BaseDialog):
 
         align = self.factory.createRight(vbox)
         hbox = self.factory.createHBox(align)
-        self.okButton     = self.factory.createPushButton(hbox, _("&Ok"))
-        self.cancelButton = self.factory.createPushButton(hbox, _("&Cancel"))
+        self.okButton     = self.factory.createIconButton(hbox, 'dialog-ok',     _("&Ok"))
+        self.cancelButton = self.factory.createIconButton(hbox, 'dialog-cancel', _("&Cancel"))
         self.okButton.setEnabled(False)
         self.eventManager.addWidgetEvent(self.okButton,     self._onOk)
         self.eventManager.addWidgetEvent(self.cancelButton, self._onCancel)

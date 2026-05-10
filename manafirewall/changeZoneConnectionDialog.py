@@ -61,9 +61,9 @@ class ChangeZoneConnectionDialog(basedialog.BaseDialog):
     # Buttons
     align = self.factory.createRight(layout)
     hbox  = self.factory.createHBox(align)
-    closeButton = self.factory.createPushButton(hbox, _("&Close"))
+    closeButton = self.factory.createIconButton(hbox, 'window-close', _("&Close"))
     self.eventManager.addWidgetEvent(closeButton, self._onCancelButtonEvent)
-    self.okButton = self.factory.createPushButton(hbox, _("&Ok"))
+    self.okButton = self.factory.createIconButton(hbox, 'dialog-ok', _("&Ok"))
     self.okButton.setEnabled(False)
     self.eventManager.addWidgetEvent(self.okButton, self._onOkEvent)
 

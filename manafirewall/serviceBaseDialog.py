@@ -60,10 +60,10 @@ class ServiceBaseDialog(basedialog.BaseDialog):
     align = self.factory.createRight(layout)
     bottomLine = self.factory.createHBox(align)
 
-    cancelButton = self.factory.createPushButton(bottomLine, _("&Cancel"))
+    cancelButton = self.factory.createIconButton(bottomLine, 'dialog-cancel', _("&Cancel"))
     self.eventManager.addWidgetEvent(cancelButton, self.onCancelButtonEvent)
 
-    okButton = self.factory.createPushButton(bottomLine, _("&Ok"))
+    okButton = self.factory.createIconButton(bottomLine, 'dialog-ok', _("&Ok"))
     self.eventManager.addWidgetEvent(okButton, self.onOkEvent)
     
     # Let's test a cancel event
