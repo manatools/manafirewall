@@ -18,7 +18,7 @@ import manatools.ui.common as ui
 import manatools.aui.yui as MUI
 
 class PortForwardingDialog(basedialog.BaseDialog):
-  def __init__(self, portForwardingInfo={}):
+  def __init__(self, portForwardingInfo=None):
     '''
     PortForwardingDialog is a dialog to manage port forwarding changes (add/edit/remove).
     portForwardingInfo dictionary contains following keys
@@ -28,14 +28,14 @@ class PortForwardingDialog(basedialog.BaseDialog):
     to_address  => forwarding to which to_address
     '''
     basedialog.BaseDialog.__init__(self, _("Port Forwarding"), "", basedialog.DialogType.POPUP, 340, 100)
-    self._portForwardingInfo = portForwardingInfo.copy()
+    self._portForwardingInfo = (portForwardingInfo or {}).copy()
     self._cancelled = False
     
   def UIlayout(self, layout):
     '''
     layout implementation called in base class to setup UI
     '''
-    label = self.factory.createLabel(layout, _("Source"))
+    self.factory.createLabel(layout, _("Source"))
     align = self.factory.createLeft(layout)
     hbox = self.factory.createHBox(align)
     self.port   = self.factory.createInputField(hbox, _("Port / Port Range"))
@@ -55,7 +55,7 @@ class PortForwardingDialog(basedialog.BaseDialog):
           item.setSelected(True)
       itemColl.append(item)
     self.protocolCombobox.addItems(itemColl)
-    label = self.factory.createLabel(layout, _("Destination"))
+    self.factory.createLabel(layout, _("Destination"))
     align = self.factory.createLeft(layout)
     self.to_address   = self.factory.createInputField(align, _("IP address"))
     self.to_address.setInputMaxLength(60)

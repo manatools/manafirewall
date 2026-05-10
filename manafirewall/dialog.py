@@ -17,31 +17,16 @@ import os.path
 
 import manatools.ui.common as common
 import manatools.ui.basedialog as basedialog
-import manatools.services as mnservices
 import manatools.ui.helpdialog as helpdialog
 import manatools.config as configuration
 import manatools.aui.yui as MUI
 
-from dbus.exceptions import DBusException
-
-from firewall import config
 from firewall import client
 from firewall import functions
-from firewall.core.base import DEFAULT_ZONE_TARGET, REJECT_TYPES, \
-                               SOURCE_IPSET_TYPES
-from firewall.core.ipset import IPSET_MAXNAMELEN
-from firewall.core.helper import HELPER_MAXNAMELEN
-from firewall.core.io.zone import Zone
-from firewall.core.io.service import Service
-from firewall.core.io.icmptype import IcmpType
-from firewall.core.io.ipset import IPSet
-from firewall.core.io.helper import Helper
-from firewall.core import rich
-from firewall.core.fw_nm import nm_is_imported, nm_get_dbus_interface, \
+from firewall.core.base import DEFAULT_ZONE_TARGET
+from firewall.core.fw_nm import nm_is_imported, \
                                 nm_get_connections, nm_get_zone_of_connection, \
                                 nm_set_zone_of_connection
-from firewall import errors
-from firewall.errors import FirewallError
 import gettext
 import html
 import time
@@ -171,7 +156,7 @@ class ManaWallDialog(basedialog.BaseDialog):
         else:
           self._logger_setup(log_filename)
         print("Logging into %s, debug mode is %s"%(self.log_directory, ("enabled" if self.level_debug else "disabled")))
-        logger.info("%s started"%(self.__name))
+        logger.info("%s started", self.__name)
     else:
       print("Logging disabled")
 
@@ -228,7 +213,7 @@ class ManaWallDialog(basedialog.BaseDialog):
                 self.level_debug = log['level_debug']
 
     # metadata settings is needed adding it to update old configuration files
-    if not 'settings' in self.config.userPreferences.keys() :
+    if 'settings' not in self.config.userPreferences.keys() :
       self.config.userPreferences['settings'] = {}
 
 
@@ -715,9 +700,8 @@ class ManaWallDialog(basedialog.BaseDialog):
       if settings:
         ports = settings.getSourcePorts()
 
-    current_port = ports[0] if ports else ""
-    current = self.portList.selectedItem()
-    #### TODO try to select the same
+    ports[0] if ports else ""  # TODO: reselect same item after refresh
+    self.portList.selectedItem()
 
     v = []
     for port in ports:
@@ -798,9 +782,8 @@ class ManaWallDialog(basedialog.BaseDialog):
     settings = self._zoneSettings()
     if settings:
       ports = settings.getForwardPorts()
-      current_port = ""
-      current = self.portForwardList.selectedItem()
-      #### TODO try to select the same
+      ""  # TODO: reselect same forward port after refresh
+      self.portForwardList.selectedItem()
 
       v = []
       for port in ports:
@@ -2525,7 +2508,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
   def _exception_handler(self, exception_message):
     if not self.__use_exception_handler:
-      raise
+      raise RuntimeError(exception_message)
 
   def initFWClient(self):
     '''
@@ -3060,7 +3043,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     conn_id = data[1]
     if conn_id not in self._nm_connections_data:
       return
-    zone, ifaces, name = self._nm_connections_data[conn_id]
+    zone, _, name = self._nm_connections_data[conn_id]
     self.dialog.setEnabled(False)
     dlg = changeZoneConnectionDialog.ChangeZoneConnectionDialog(self.fw, conn_id, name, zone)
     new_zone = dlg.run()
@@ -3304,13 +3287,17 @@ class ManaWallDialog(basedialog.BaseDialog):
       settings = ipset.getSettings()
       changed  = False
       if ipsetBaseInfo.get('version', '')     != newInfo.get('version', ''):
-        settings.setVersion(newInfo['version']); changed = True
+        settings.setVersion(newInfo['version'])
+        changed = True
       if ipsetBaseInfo.get('short', '')       != newInfo.get('short', ''):
-        settings.setShort(newInfo['short']); changed = True
+        settings.setShort(newInfo['short'])
+        changed = True
       if ipsetBaseInfo.get('description', '') != newInfo.get('description', ''):
-        settings.setDescription(newInfo['description']); changed = True
+        settings.setDescription(newInfo['description'])
+        changed = True
       if ipsetBaseInfo.get('options', {})     != newInfo.get('options', {}):
-        settings.setOptions(newInfo['options']); changed = True
+        settings.setOptions(newInfo['options'])
+        changed = True
       if changed:
         ipset.update(settings)
       if ipsetBaseInfo['name'] != newInfo['name']:

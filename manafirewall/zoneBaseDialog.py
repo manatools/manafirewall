@@ -21,7 +21,7 @@ _ = gettext.gettext
 
 
 class ZoneBaseDialog(basedialog.BaseDialog):
-  def __init__(self, zoneBaseInfo={}):
+  def __init__(self, zoneBaseInfo=None):
     '''
     ZoneBaseDialog dialog to manage add or edit zone.
     zoneBaseInfo dictionary contains following keys most significant only for edit mode
@@ -35,7 +35,7 @@ class ZoneBaseDialog(basedialog.BaseDialog):
     builtin           => builtin zone (True/False)
     '''
     basedialog.BaseDialog.__init__(self, _("Zone Settings"), "", basedialog.DialogType.POPUP, 340, 200)
-    self._zoneBaseInfo = zoneBaseInfo.copy()
+    self._zoneBaseInfo = (zoneBaseInfo or {}).copy()
     self._cancelled = False
     
   def UIlayout(self, layout):

@@ -20,7 +20,7 @@ import manatools.aui.yui as MUI
 
 
 class PortDialog(basedialog.BaseDialog):
-  def __init__(self, portInfo={}):
+  def __init__(self, portInfo=None):
     '''
     PortDialog is a dialog to manage port changes (add/edit/remove).
     portInfo dictionary contains following keys
@@ -28,7 +28,7 @@ class PortDialog(basedialog.BaseDialog):
     protocol          => protocol type
     '''
     basedialog.BaseDialog.__init__(self, _("Port and Protocol"), "", basedialog.DialogType.POPUP, 340, 100)
-    self._portInfo = portInfo.copy()
+    self._portInfo = (portInfo or {}).copy()
     self._cancelled = False
     
   def UIlayout(self, layout):

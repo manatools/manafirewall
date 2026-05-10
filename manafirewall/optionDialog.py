@@ -9,12 +9,10 @@ Author:  Angelo Naselli <anaselli@linux.it>
 @package manafirewall
 '''
 import manatools.aui.yui as MUI
-import sys
 import os
 
 from firewall import config
 import manatools.ui.basedialog as basedialog
-import gettext
 import logging
 logger = logging.getLogger('manafirewall.optiondialog')
 
@@ -49,23 +47,23 @@ class OptionDialog(basedialog.BaseDialog):
 
   def _user_prefs(self):
     """Return config.userPreferences as a dict, or {} if None/missing."""
-    config = getattr(self.parent, 'config', None)
-    return getattr(config, 'userPreferences', None) or {}
+    app_cfg = getattr(self.parent, 'config', None)
+    return getattr(app_cfg, 'userPreferences', None) or {}
 
   def _system_settings(self):
     """Return config.systemSettings as a dict, or {} if None/missing."""
-    config = getattr(self.parent, 'config', None)
-    return getattr(config, 'systemSettings', None) or {}
+    app_cfg = getattr(self.parent, 'config', None)
+    return getattr(app_cfg, 'systemSettings', None) or {}
 
   def _ensure_settings(self):
     """Return config.userPreferences['settings'] dict, creating the key path if needed.
     Safe to use both for reads and writes."""
-    config = getattr(self.parent, 'config', None)
-    if config is None:
+    app_cfg = getattr(self.parent, 'config', None)
+    if app_cfg is None:
       return {}  # throwaway – at least we won't crash
-    if not isinstance(getattr(config, 'userPreferences', None), dict):
-      config.userPreferences = {}
-    return config.userPreferences.setdefault('settings', {})
+    if not isinstance(getattr(app_cfg, 'userPreferences', None), dict):
+      app_cfg.userPreferences = {}
+    return app_cfg.userPreferences.setdefault('settings', {})
 
   def UIlayout(self, layout):
     '''

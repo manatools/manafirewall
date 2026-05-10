@@ -18,7 +18,7 @@ _ = gettext.gettext
 
 
 class ServiceBaseDialog(basedialog.BaseDialog):
-  def __init__(self, serviceBaseInfo={}):
+  def __init__(self, serviceBaseInfo=None):
     '''
     ServiceBaseDialog dialog to manage add or edit zone.
     serviceBaseInfo dictionary contains following keys most significant only for edit mode
@@ -30,7 +30,7 @@ class ServiceBaseDialog(basedialog.BaseDialog):
     builtin           => builtin zone (True/False)
     '''
     basedialog.BaseDialog.__init__(self, _("Service Settings"), "", basedialog.DialogType.POPUP, 340, 200)
-    self._serviceBaseInfo = serviceBaseInfo.copy()
+    self._serviceBaseInfo = (serviceBaseInfo or {}).copy()
     self._cancelled = False
     
   def UIlayout(self, layout):

@@ -41,7 +41,7 @@ class ChangeZoneConnectionDialog(basedialog.BaseDialog):
 
   def UIlayout(self, layout):
     # Description label
-    label = self.factory.createLabel(layout, _("Select zone for connection '{}'").format(self._conn_name))
+    self.factory.createLabel(layout, _("Select zone for connection '{}'").format(self._conn_name))
 
     # Zone combobox: "Default Zone" first, then all zones sorted
     self.zoneCombo = self.factory.createComboBox(layout, "")

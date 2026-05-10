@@ -12,7 +12,6 @@ Author:  Angelo Naselli <anaselli@linux.it>
 '''
 
 import manatools.basehelpinfo as helpdata
-import gettext
 
 class ManaFirewallHelpInfo(helpdata.HelpInfoBase):
   '''
@@ -89,12 +88,12 @@ class ManaFirewallHelpInfo(helpdata.HelpInfoBase):
     webref = '<a href="%s">%s</a>'%(url, description)
     return webref
 
-  def show(self, index):
+  def show(self, info_to_show):
     '''
     implement show
     '''
-    if index in self.text.keys():
-      return self.text[index]
+    if info_to_show in self.text.keys():
+      return self.text[info_to_show]
 
     return ""
 
@@ -106,9 +105,8 @@ class ManaFirewallHelpInfo(helpdata.HelpInfoBase):
 
 
 if __name__ == '__main__':
+  import manatools.ui.helpdialog as helpdialog
 
-  info = HelpInfo()
+  info = ManaFirewallHelpInfo()
   td = helpdialog.HelpDialog(info)
   td.run()
-  
-  

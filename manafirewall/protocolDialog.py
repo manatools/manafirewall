@@ -21,14 +21,14 @@ import manatools.aui.yui as MUI
 _ = gettext.gettext
 
 class ProtocolDialog(basedialog.BaseDialog):
-  def __init__(self, info={}):
+  def __init__(self, info=None):
     '''
     ProtocolDialog is a dialog to manage protocols changes (add/edit/remove).
     info dictionary contains following keys
     protocol          => protocol type
     '''
     basedialog.BaseDialog.__init__(self, _("Protocol"), "", basedialog.DialogType.POPUP, 340, 100)
-    self._info = info.copy()
+    self._info = (info or {}).copy()
     self._cancelled = False
     
   def UIlayout(self, layout):
