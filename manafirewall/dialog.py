@@ -43,6 +43,7 @@ from firewall.core.fw_nm import nm_is_imported, nm_get_dbus_interface, \
 from firewall import errors
 from firewall.errors import FirewallError
 import gettext
+import html
 import time
 import threading
 #we need a glib.MainLoop in TUI :(
@@ -585,7 +586,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       current_icmp = ""
       current = self.icmpFilterList.selectedItem()
-      current_icmp = current.cell(0).label() if current else ""
+      current_icmp = current.cell(1).label() if current else ""
       v = []
       for icmp in icmp_types:
         item = self._createSingleCBItem(icmp in configured_icmp, icmp)
@@ -597,7 +598,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.icmpFilterList.addItems(v)
 
       self.icmpFilterInversionCheck.setNotify(False)
-      self.icmpFilterInversionCheck.setValue(MUI.YCheckBoxState.YCheckBox_on if icmp_block_inversion else MUI.YCheckBoxState.YCheckBox_off)
+      self.icmpFilterInversionCheck.setValue(bool(icmp_block_inversion))
       self.icmpFilterInversionCheck.setNotify(True)
 
 
@@ -621,9 +622,11 @@ class ManaWallDialog(basedialog.BaseDialog):
     sets masquerade value
     '''
     settings = self._zoneSettings()
+    if settings is None:
+      return
     masquerade = settings.getMasquerade()
     self.masquerade.setNotify(False)
-    self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_on if masquerade else MUI.YCheckBoxState.YCheckBox_off)
+    self.masquerade.setValue(bool(masquerade))
     self.masquerade.setNotify(True)
 
   def _replacePointProtocols(self, context):
@@ -647,7 +650,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''
     fill current protocols into replace point
     '''
-    protocols = None
+    protocols = []
     if context == 'zone_protocols':
       settings = self._zoneSettings()
       if settings:
@@ -757,7 +760,7 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       current_service = ""
       current = self.serviceList.selectedItem()
-      current_service = current.cell(0).label() if current else ""
+      current_service = current.cell(1).label() if current else ""
       v = []
       for service in services:
         item = self._createSingleCBItem(service in configured_services, service)
@@ -1172,13 +1175,13 @@ class ManaWallDialog(basedialog.BaseDialog):
           if not add:
             zone.removeForwardPort(oldPortForwardingInfo['port'], oldPortForwardingInfo['protocol'],
                                    oldPortForwardingInfo['to_port'], oldPortForwardingInfo['to_address'])
-            zone.addForwardPort(newPortForwardingInfo['port'], newPortForwardingInfo['protocol'],
-                                newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address'])
-            if add and newPortForwardingInfo['to_address'] and not zone.getMasquerade():
-              if common.askYesOrNo({'title': _("Information needed"),
-                                    'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone?"),
-                                    'richtext': True, 'default_button': 1}):
-                zone.setMasquerade(True)
+          zone.addForwardPort(newPortForwardingInfo['port'], newPortForwardingInfo['protocol'],
+                              newPortForwardingInfo['to_port'], newPortForwardingInfo['to_address'])
+          if add and newPortForwardingInfo['to_address'] and not zone.getMasquerade():
+            if common.askYesOrNo({'title': _("Information needed"),
+                                  'text': _("Forwarding to another system is only useful if the interface is masqueraded.<br>Do you want to masquerade this zone?"),
+                                  'richtext': True, 'default_button': 1}):
+              zone.setMasquerade(True)
 
   def _del_edit_forward_port(self):
     '''
@@ -2376,13 +2379,17 @@ class ManaWallDialog(basedialog.BaseDialog):
       '''One paragraph: bold label followed by value.'''
       return '<p><b>{}:</b> {}</p>'.format(label, value)
 
+    def _esc(s):
+      '''HTML-escape a user-supplied string to prevent display glitches.'''
+      return html.escape(str(s)) if s else ''
+
     vbox = self.factory.createVBox(self.replacePoint)
 
     if not self._currentItem:
       self.factory.createRichText(vbox, '<p><i>{}</i></p>'.format(_("No item selected.")))
       return
 
-    html = ''
+    content = ''
 
     if self._currentCategory == 'zones':
       default_zone = ''
@@ -2395,8 +2402,8 @@ class ManaWallDialog(basedialog.BaseDialog):
 
       name   = self._currentItem
       is_def = (name == default_zone)
-      title  = '{} <i>({})</i>'.format(name, _('default zone')) if is_def else name
-      html  += '<h2>{}</h2>'.format(title)
+      title  = '{} <i>({})</i>'.format(_esc(name), _('default zone')) if is_def else _esc(name)
+      content  += '<h2>{}</h2>'.format(title)
 
       settings = self._zoneSettings()
       if settings:
@@ -2405,27 +2412,27 @@ class ManaWallDialog(basedialog.BaseDialog):
         short   = settings.getShort()
         desc    = settings.getDescription()
         if target:
-          html += _field(_('Target'),  '<tt>{}</tt>'.format(target))
+          content += _field(_('Target'),  '<tt>{}</tt>'.format(_esc(target)))
         if version:
-          html += _field(_('Version'), version)
+          content += _field(_('Version'), _esc(version))
         if short:
-          html += _field(_('Short'),   '<i>{}</i>'.format(short))
+          content += _field(_('Short'),   '<i>{}</i>'.format(_esc(short)))
         if desc:
-          html += _field(_('Description'), desc)
+          content += _field(_('Description'), _esc(desc))
 
       zone_data  = active_zones.get(name, {})
       interfaces = sorted(zone_data.get('interfaces', []))
       sources    = sorted(zone_data.get('sources',    []))
       if interfaces:
-        html += _field(_('Interfaces'), ', '.join('<tt>{}</tt>'.format(i) for i in interfaces))
+        content += _field(_('Interfaces'), ', '.join('<tt>{}</tt>'.format(_esc(i)) for i in interfaces))
       if sources:
-        html += _field(_('Sources'), ', '.join('<tt>{}</tt>'.format(s) for s in sources))
+        content += _field(_('Sources'), ', '.join('<tt>{}</tt>'.format(_esc(s)) for s in sources))
 
-      if not html.strip().endswith('</p>'):
-        html += '<p><i>{}</i></p>'.format(_('No details available.'))
+      if not content.strip().endswith('</p>'):
+        content += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     elif self._currentCategory == 'services':
-      html += '<h2>{}: {}</h2>'.format(_('Service'), self._currentItem)
+      content += '<h2>{}: {}</h2>'.format(_('Service'), _esc(self._currentItem))
       settings = self._serviceSettings()
       if settings:
         version = settings.getVersion()
@@ -2435,25 +2442,25 @@ class ManaWallDialog(basedialog.BaseDialog):
         protos  = settings.getProtocols() or []
         modules = settings.getModules()   or []
         if version:
-          html += _field(_('Version'), version)
+          content += _field(_('Version'), _esc(version))
         if short:
-          html += _field(_('Short'), '<i>{}</i>'.format(short))
+          content += _field(_('Short'), '<i>{}</i>'.format(_esc(short)))
         if desc:
-          html += _field(_('Description'), desc)
+          content += _field(_('Description'), _esc(desc))
         if ports:
-          html += _field(_('Ports'),
-                         ', '.join('<tt>{}/{}</tt>'.format(p, r) for p, r in ports))
+          content += _field(_('Ports'),
+                           ', '.join('<tt>{}/{}</tt>'.format(_esc(p), _esc(r)) for p, r in ports))
         if protos:
-          html += _field(_('Protocols'),
-                         ', '.join('<tt>{}</tt>'.format(p) for p in protos))
+          content += _field(_('Protocols'),
+                           ', '.join('<tt>{}</tt>'.format(_esc(p)) for p in protos))
         if modules:
-          html += _field(_('Modules'),
-                         ', '.join('<tt>{}</tt>'.format(m) for m in modules))
-      if not html.strip().endswith('</p>'):
-        html += '<p><i>{}</i></p>'.format(_('No details available.'))
+          content += _field(_('Modules'),
+                           ', '.join('<tt>{}</tt>'.format(_esc(m)) for m in modules))
+      if not content.strip().endswith('</p>'):
+        content += '<p><i>{}</i></p>'.format(_('No details available.'))
 
     elif self._currentCategory == 'ipsets':
-      html += '<h2>{}: {}</h2>'.format(_('IP Set'), self._currentItem)
+      content += '<h2>{}: {}</h2>'.format(_('IP Set'), _esc(self._currentItem))
       try:
         if self.runtime_view:
           settings = self.fw.getIPSetSettings(self._currentItem)
@@ -2472,25 +2479,25 @@ class ManaWallDialog(basedialog.BaseDialog):
         hashsize   = options.get('hashsize', '')
         maxelem    = options.get('maxelem',  '')
         if ipset_type:
-          html += _field(_('Type'),    '<tt>{}</tt>'.format(ipset_type))
+          content += _field(_('Type'),    '<tt>{}</tt>'.format(_esc(ipset_type)))
         if fam:
-          html += _field(_('Family'),  '<tt>{}</tt>'.format(fam))
+          content += _field(_('Family'),  '<tt>{}</tt>'.format(_esc(fam)))
         if version:
-          html += _field(_('Version'), version)
+          content += _field(_('Version'), _esc(version))
         if short:
-          html += _field(_('Short'),   '<i>{}</i>'.format(short))
+          content += _field(_('Short'),   '<i>{}</i>'.format(_esc(short)))
         if desc:
-          html += _field(_('Description'), desc)
+          content += _field(_('Description'), _esc(desc))
         if timeout:
-          html += _field(_('Timeout'),      '<tt>{}</tt> s'.format(timeout))
+          content += _field(_('Timeout'),      '<tt>{}</tt> s'.format(_esc(timeout)))
         if hashsize:
-          html += _field(_('Hash size'),    '<tt>{}</tt>'.format(hashsize))
+          content += _field(_('Hash size'),    '<tt>{}</tt>'.format(_esc(hashsize)))
         if maxelem:
-          html += _field(_('Max elements'), '<tt>{}</tt>'.format(maxelem))
-      if not html.strip().endswith('</p>'):
-        html += '<p><i>{}</i></p>'.format(_('No details available.'))
+          content += _field(_('Max elements'), '<tt>{}</tt>'.format(_esc(maxelem)))
+      if not content.strip().endswith('</p>'):
+        content += '<p><i>{}</i></p>'.format(_('No details available.'))
 
-    rt = self.factory.createRichText(vbox, html)
+    rt = self.factory.createRichText(vbox, content)
     rt.setStretchable(MUI.YUIDimension.YD_VERT,  True)
     rt.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
 
@@ -3523,7 +3530,7 @@ class ManaWallDialog(basedialog.BaseDialog):
              self._currentRightTab == 'masquerade':
             if item['value'] == self._currentItem and not self.masquerade.isChecked():
               self.masquerade.setNotify(False)
-              self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_on)
+              self.masquerade.setValue(True)
               self.masquerade.setNotify(True)
 
         elif item['event'] == 'masquerade-removed':
@@ -3531,7 +3538,7 @@ class ManaWallDialog(basedialog.BaseDialog):
              self._currentRightTab == 'masquerade':
             if item['value'] == self._currentItem and self.masquerade.isChecked():
               self.masquerade.setNotify(False)
-              self.masquerade.setValue(MUI.YCheckBoxState.YCheckBox_off)
+              self.masquerade.setValue(False)
               self.masquerade.setNotify(True)
 
         elif item['event'] == 'reloaded':

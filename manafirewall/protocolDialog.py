@@ -67,7 +67,7 @@ class ProtocolDialog(basedialog.BaseDialog):
     if show_item and not selected:
       self.other_protocol.setValue(show_item)
       self.other_protocol.setEnabled(True)
-      self.enable_other.setValue(MUI.YCheckBoxState.YCheckBox_on)
+      self.enable_other.setValue(True)
       self.protocolCombobox.setEnabled(False)
 
 

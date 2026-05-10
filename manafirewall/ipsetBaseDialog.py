@@ -174,12 +174,33 @@ class IPSetBaseDialog(basedialog.BaseDialog):
             options['family'] = fam
         timeout = self._timeoutField.value().strip()
         if timeout:
+            try:
+                if int(timeout) < 0:
+                    raise ValueError
+            except ValueError:
+                ui.warningMsgBox({'title': _("Invalid value"),
+                                  'text':  _("Timeout must be a non-negative integer (seconds).")})
+                return
             options['timeout'] = timeout
         hashsize = self._hashsizeField.value().strip()
         if hashsize:
+            try:
+                if int(hashsize) <= 0:
+                    raise ValueError
+            except ValueError:
+                ui.warningMsgBox({'title': _("Invalid value"),
+                                  'text':  _("Hash size must be a positive integer.")})
+                return
             options['hashsize'] = hashsize
         maxelem = self._maxelemField.value().strip()
         if maxelem:
+            try:
+                if int(maxelem) <= 0:
+                    raise ValueError
+            except ValueError:
+                ui.warningMsgBox({'title': _("Invalid value"),
+                                  'text':  _("Max elements must be a positive integer.")})
+                return
             options['maxelem'] = maxelem
 
         self._result = {
