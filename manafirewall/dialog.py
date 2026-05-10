@@ -375,9 +375,9 @@ class ManaWallDialog(basedialog.BaseDialog):
     # Left action buttons (below DumbTab)
     btnAlign = self.factory.createLeft(col1)
     hbox_btns = self.factory.createHBox(btnAlign)
-    self._leftAddButton          = self.factory.createIconButton(hbox_btns, 'list-add',    _("&Add"))
-    self._leftEditButton         = self.factory.createPushButton(hbox_btns, _("&Edit"))
-    self._leftRemoveButton       = self.factory.createIconButton(hbox_btns, 'list-remove', _("&Remove"))
+    self._leftAddButton          = self.factory.createIconButton(hbox_btns, 'list-add',      _("&Add"))
+    self._leftEditButton         = self.factory.createIconButton(hbox_btns, 'document-edit', _("&Edit"))
+    self._leftRemoveButton       = self.factory.createIconButton(hbox_btns, 'list-remove',   _("&Remove"))
     self._leftLoadDefaultsButton = self.factory.createPushButton(hbox_btns, _("Load &Defaults"))
     self.eventManager.addWidgetEvent(self._leftAddButton,          self.onLeftAddButton)
     self.eventManager.addWidgetEvent(self._leftEditButton,         self.onLeftEditButton)
@@ -506,11 +506,9 @@ class ManaWallDialog(basedialog.BaseDialog):
       buttons = { 'add' : None, 'edit': None, 'remove': None }
       align = self.factory.createLeft(container)
       hbox = self.factory.createHBox(align)
-      buttons['add']    = self.factory.createIconButton(hbox, 'list-add', _("&Add"))
-      #self.factory.createPushButton(hbox, _("A&dd"))
-      buttons['edit']   = self.factory.createPushButton(hbox, _("&Edit"))
-      buttons['remove'] = self.factory.createIconButton(hbox, 'list-remove', _("&Remove"))
-      #self.factory.createPushButton(hbox, _("&Remove"))
+      buttons['add']    = self.factory.createIconButton(hbox, 'list-add',      _("&Add"))
+      buttons['edit']   = self.factory.createIconButton(hbox, 'document-edit', _("&Edit"))
+      buttons['remove'] = self.factory.createIconButton(hbox, 'list-remove',   _("&Remove"))
       
 
     return buttons
@@ -3155,11 +3153,14 @@ class ManaWallDialog(basedialog.BaseDialog):
     '''Remove the selected IP set (permanent mode only).'''
     if self.runtime_view or not self._currentItem:
       return
-    ipset = self.fw.config().getIPSetByName(self._currentItem)
-    ipset.remove()
+    try:
+      ipset = self.fw.config().getIPSetByName(self._currentItem)
+      ipset.remove()
+    except Exception as exc:
+      logger.warning("onIPSetConfRemoveIPSet: %s", exc)
+      return
     self._currentItem = None
-    self._fillLeftIPSets()
-    self._updateLeftButtonState()
+    self._fillLeftCategory()
 
   def onIPSetConfEditIPSet(self, *args):
     '''Edit the selected IP set (permanent mode only).'''
@@ -3229,8 +3230,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       self.fw.config().addIPSet(newInfo['name'], settings)
       self._currentItem = newInfo['name']
 
-    self._fillLeftIPSets()
-    self._updateLeftButtonState()
+    self._fillLeftCategory()
 
   def _add_edit_service(self, add):
     '''
