@@ -2425,6 +2425,15 @@ class ManaWallDialog(basedialog.BaseDialog):
     elif hasattr(self, 'currentViewCombobox'):
       item = self.currentViewCombobox.selectedItem()
       self.runtime_view = (item == self.views['runtime']['item'])
+    # Runtime→Permanent only makes sense in runtime mode:
+    # in permanent mode the user edits the permanent config directly and
+    # pressing Runtime→Permanent would overwrite those edits with the
+    # current runtime state, losing all permanent-mode changes.
+    self._rtpButton.setEnabled(self.runtime_view)
+    try:
+      self.optionsMenu['runtime_to_permanent'].setEnabled(self.runtime_view)
+    except Exception:
+      pass
     self._fillLeftCategory()
 
   def _exception_handler(self, exception_message):
