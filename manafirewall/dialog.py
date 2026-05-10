@@ -1456,7 +1456,7 @@ class ManaWallDialog(basedialog.BaseDialog):
   def _updateLeftButtonState(self):
     '''Show/hide and enable/disable the left-pane action buttons.
 
-    Rules (matching firewall-config behaviour):
+    Rules:
     - In runtime view: Add/Edit/Remove/LoadDefaults are HIDDEN (only permanent
       mode supports adding/editing/removing zones, services and IP sets).
     - In permanent view: buttons are SHOWN.
@@ -1980,7 +1980,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     Works in both runtime mode (fw.getEntries / fw.addEntry / fw.removeEntry)
     and permanent mode (config().getIPSetByName().addEntry / removeEntry).
     Note: in runtime mode only entries managed by firewalld and not using the
-    timeout option are visible (same caveat as firewall-config).
+    timeout option are visible.
     '''
     if len(self.replacePointWidgetsAndCallbacks) > 0:
       logger.error("Error there are still widget events for ReplacePoint")
@@ -1990,7 +1990,7 @@ class ManaWallDialog(basedialog.BaseDialog):
       return
     vbox = self.factory.createVBox(self.replacePoint)
 
-    # Help text (matches firewall-config label)
+    # Help text
     help_text = _("IP Set entries. Only entries of IP sets not using the timeout "
                   "option and only entries added by firewalld are visible at "
                   "runtime. Entries added directly with the ipset command will "

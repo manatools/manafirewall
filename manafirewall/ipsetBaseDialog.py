@@ -46,11 +46,21 @@ class IPSetBaseDialog(basedialog.BaseDialog):
 
     def __init__(self, ipsetInfo=None, ipset_types=None):
         basedialog.BaseDialog.__init__(
-            self, _("IP Set Settings"), "", basedialog.DialogType.POPUP, 420, 280)
+            self, _("IP Set Settings"), "", basedialog.DialogType.POPUP, 380, 180)
         self._info = (ipsetInfo or {}).copy()
         self._types = ipset_types if ipset_types else _DEFAULT_IPSET_TYPES
         self._cancelled = False
         self._result = None
+
+    # ------------------------------------------------------------------
+    def _row(self, parent, label_text):
+        '''Helper: create a horizontal row with a right-aligned label on the
+        left and return the HBox so the caller can add the widget on the right.
+        '''
+        hbox = self.factory.createHBox(parent)
+        lbl  = self.factory.createLabel(hbox, label_text)
+        lbl.setStretchable(MUI.YUIDimension.YD_HORIZ, False)
+        return hbox
 
     # ------------------------------------------------------------------
     def UIlayout(self, layout):
@@ -59,100 +69,86 @@ class IPSetBaseDialog(basedialog.BaseDialog):
         default_f = self._info.get('default', True)
         options   = self._info.get('options', {})
 
-        # ── Name ──────────────────────────────────────────────────────
-        align = self.factory.createLeft(layout)
-        self._nameField = self.factory.createInputField(align, _("Name"))
+        # ── Name  [label | field] — mandatory ─────────────────────────
+        hbox = self._row(layout, _("Name:"))
+        self._nameField = self.factory.createInputField(hbox, "")
         if 'name' in self._info:
             self._nameField.setValue(self._info['name'])
-        # builtin sets cannot be renamed
         name_editable = not (is_edit and builtin and not default_f)
         self._nameField.setEnabled(name_editable)
         self.eventManager.addWidgetEvent(self._nameField, self._onNameChanged, True)
 
-        # ── Type ──────────────────────────────────────────────────────
-        align = self.factory.createLeft(layout)
-        hbox  = self.factory.createHBox(align)
-        self.factory.createLabel(hbox, _("Type"))
+        # ── Type  [label | combo] — mandatory ─────────────────────────
+        hbox = self._row(layout, _("Type:"))
         self._typeCombo = self.factory.createComboBox(hbox, "", False)
+        self._typeCombo.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
         itemColl = []
         cur_type = self._info.get('type', 'hash:ip')
         for t in self._types:
-            it = MUI.YItem(t, t == cur_type)
-            itemColl.append(it)
+            itemColl.append(MUI.YItem(t, t == cur_type))
         if cur_type not in self._types:
-            # unknown type from existing config — add it
-            it = MUI.YItem(cur_type, True)
-            itemColl.insert(0, it)
+            itemColl.insert(0, MUI.YItem(cur_type, True))
         self._typeCombo.addItems(itemColl)
-        # type cannot be changed for existing sets
         self._typeCombo.setEnabled(not is_edit)
 
-        # ── Version ───────────────────────────────────────────────────
-        align = self.factory.createLeft(layout)
-        self._versionField = self.factory.createInputField(align, _("Version"))
-        self._versionField.setValue(self._info.get('version', ''))
-
-        # ── Short ─────────────────────────────────────────────────────
-        align = self.factory.createLeft(layout)
-        self._shortField = self.factory.createInputField(align, _("Short"))
-        self._shortField.setValue(self._info.get('short', ''))
-
-        # ── Description ───────────────────────────────────────────────
-        align = self.factory.createLeft(layout)
-        self._descField = self.factory.createMultiLineEdit(align, _("Description"))
-        self._descField.setDefaultVisibleLines(3)
-        self._descField.setValue(self._info.get('description', ''))
-
-        # ── Options ───────────────────────────────────────────────────
-        align = self.factory.createLeft(layout)
-        hbox  = self.factory.createHBox(align)
-
-        # Family
-        self.factory.createLabel(hbox, _("Family"))
+        # ── Family  [label | combo] — mandatory ───────────────────────
+        hbox = self._row(layout, _("Family:"))
         self._familyCombo = self.factory.createComboBox(hbox, "", False)
-        fam_items = []
-        cur_fam   = options.get('family', 'inet')
-        for f in _FAMILY_CHOICES:
-            fi = MUI.YItem(f, f == cur_fam)
-            fam_items.append(fi)
+        self._familyCombo.setStretchable(MUI.YUIDimension.YD_HORIZ, True)
+        cur_fam = options.get('family', 'inet')
+        fam_items = [MUI.YItem(f, f == cur_fam) for f in _FAMILY_CHOICES]
         self._familyCombo.addItems(fam_items)
 
-        # Timeout
-        self.factory.createLabel(hbox, _("Timeout"))
+        # ── Version  [label | field] ───────────────────────────────────
+        hbox = self._row(layout, _("Version:"))
+        self._versionField = self.factory.createInputField(hbox, "")
+        self._versionField.setValue(self._info.get('version', ''))
+
+        # ── Short  [label | field] ─────────────────────────────────────
+        hbox = self._row(layout, _("Short:"))
+        self._shortField = self.factory.createInputField(hbox, "")
+        self._shortField.setValue(self._info.get('short', ''))
+
+        # ── Description  [label | multiline] ──────────────────────────
+        hbox = self._row(layout, _("Description:"))
+        self._descField = self.factory.createMultiLineEdit(hbox, "")
+        self._descField.setDefaultVisibleLines(2)
+        self._descField.setValue(self._info.get('description', ''))
+
+        # ── Timeout  [label | field + tooltip] ────────────────────────
+        hbox = self._row(layout, _("Timeout:"))
         self._timeoutField = self.factory.createInputField(hbox, "")
         self._timeoutField.setValue(options.get('timeout', ''))
-        self._timeoutField.setStretchable(MUI.YUIDimension.YD_HORIZ, False)
+        self._timeoutField.setInputMaxLength(10)
+        self._timeoutField.setHelpText(_("Timeout value in seconds"))
 
-        # Hashsize
-        self.factory.createLabel(hbox, _("Hash size"))
+        # ── Hash size  [label | field + tooltip] ──────────────────────
+        hbox = self._row(layout, _("Hash size:"))
         self._hashsizeField = self.factory.createInputField(hbox, "")
         self._hashsizeField.setValue(options.get('hashsize', ''))
-        self._hashsizeField.setStretchable(MUI.YUIDimension.YD_HORIZ, False)
+        self._hashsizeField.setInputMaxLength(10)
+        self._hashsizeField.setHelpText(_("Initial hash size, default 1024"))
 
-        # Maxelem
-        self.factory.createLabel(hbox, _("Max elem"))
+        # ── Max elements  [label | field + tooltip] ────────────────────
+        hbox = self._row(layout, _("Max elements:"))
         self._maxelemField = self.factory.createInputField(hbox, "")
         self._maxelemField.setValue(options.get('maxelem', ''))
-        self._maxelemField.setStretchable(MUI.YUIDimension.YD_HORIZ, False)
+        self._maxelemField.setInputMaxLength(10)
+        self._maxelemField.setHelpText(_("Max number of elements, default 65536"))
 
-        # ── Buttons ───────────────────────────────────────────────────
+        # ── Buttons ────────────────────────────────────────────────────
         align = self.factory.createRight(layout)
         bottomLine = self.factory.createHBox(align)
-
         cancelButton = self.factory.createPushButton(bottomLine, _("&Cancel"))
         self.eventManager.addWidgetEvent(cancelButton, self._onCancelButton)
-
         self._okButton = self.factory.createPushButton(bottomLine, _("&Ok"))
         self.eventManager.addWidgetEvent(self._okButton, self._onOkButton)
-
         self.eventManager.addCancelEvent(self._onCancelEvent)
 
-        # Ok requires a non-empty name
-        has_name = bool(self._info.get('name', ''))
-        self._okButton.setEnabled(has_name)
+        self._okButton.setEnabled(bool(self._info.get('name', '')))
 
     # ------------------------------------------------------------------
-    def _onNameChanged(self):
+    def _onNameChanged(self, obj=None):
         name = self._nameField.value().strip()
         self._okButton.setEnabled(bool(name))
 
