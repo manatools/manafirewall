@@ -4,8 +4,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
+# Robert Antoni Buj i Gelonch <rbuj@fedoraproject.org>, 2026
 # Davidmp <medipas@gmail.com>, 2026
 #
 #, fuzzy
@@ -26,11 +26,11 @@ msgstr ""
 
 #: manafirewall/activeBindingsDialog.py:49
 msgid "Active Bindings"
-msgstr ""
+msgstr "Vincles actius"
 
 #: manafirewall/activeBindingsDialog.py:55
 msgid "Active zone bindings (runtime)"
-msgstr ""
+msgstr "Vincles actius de la zona (entorn d'execució)"
 
 #: manafirewall/activeBindingsDialog.py:66
 #: manafirewall/changeZoneConnectionDialog.py:64
@@ -46,7 +46,7 @@ msgstr "Connexions"
 #: manafirewall/activeBindingsDialog.py:136
 #: manafirewall/activeBindingsDialog.py:142
 msgid "Zone"
-msgstr ""
+msgstr "Zona"
 
 #: manafirewall/activeBindingsDialog.py:134 manafirewall/dialog.py:413
 #: manafirewall/dialog.py:2410 manafirewall/dialog.py:3010
@@ -153,7 +153,7 @@ msgstr "&Torna a carregar el Firewalld"
 
 #: manafirewall/dialog.py:254
 msgid "Active &Bindings…"
-msgstr ""
+msgstr "&Vincles actius..."
 
 #: manafirewall/dialog.py:256
 msgid "&Settings"
@@ -177,23 +177,28 @@ msgstr "Configuració"
 
 #: manafirewall/dialog.py:297
 msgid "&Runtime"
-msgstr ""
+msgstr "Ento&rn d'execució"
 
 #: manafirewall/dialog.py:298
 msgid "&Permanent"
-msgstr ""
+msgstr "&Permanent"
 
 #: manafirewall/dialog.py:299
 msgid ""
 "Runtime mode: shows the active firewall configuration. Changes take effect "
 "immediately but are lost on reload or restart."
 msgstr ""
+"Mode d'entorn d'execució: mostra la configuració del tallafocs activa. Els "
+"canvis tenen efecte immediatament, però es perden en tornar a carregar o "
+"reiniciar."
 
 #: manafirewall/dialog.py:300
 msgid ""
 "Permanent mode: shows and edits the configuration stored on disk. Changes "
 "take effect after a firewalld reload."
 msgstr ""
+"Mode permanent: mostra i edita la configuració emmagatzemada al disc. Els "
+"canvis tenen efecte després de recarregar el firewalld."
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:71
 msgid "Runtime"
@@ -205,23 +210,28 @@ msgstr "Permanent"
 
 #: manafirewall/dialog.py:323
 msgid "Re&load"
-msgstr ""
+msgstr "&Torna a carregar"
 
 #: manafirewall/dialog.py:324
 msgid "Runtime→&Permanent"
-msgstr ""
+msgstr "Entorn d'execució→&Permanent"
 
 #: manafirewall/dialog.py:325
 msgid ""
 "Reload firewalld: re-read the permanent configuration and apply it to the "
 "runtime state."
 msgstr ""
+"Recàrrega de firewalld: torna a llegir la configuració permanent i l'aplica "
+"a l'estat d'execució."
 
 #: manafirewall/dialog.py:326
 msgid ""
 "Runtime → Permanent: save the current runtime configuration to the permanent "
 "configuration on disk. Only available in Runtime mode."
 msgstr ""
+"Entorn d'execució → Permanent: desa la configuració actual de l'entorn "
+"d'execució a la configuració permanent del disc. Només disponible en el mode "
+"Entorn d'execució."
 
 #: manafirewall/dialog.py:343
 msgid "Zones"
@@ -252,23 +262,24 @@ msgstr "Sup&rimeix"
 
 #: manafirewall/dialog.py:377
 msgid "Load &Defaults"
-msgstr ""
+msgstr "Carrega els valors per &defecte"
 
 #: manafirewall/dialog.py:378
 msgid "Add a new item."
-msgstr ""
+msgstr "Afegeix-hi un element nou."
 
 #: manafirewall/dialog.py:379
 msgid "Edit the selected item."
-msgstr ""
+msgstr "Edita l'element seleccionat."
 
 #: manafirewall/dialog.py:380
 msgid "Remove the selected item."
-msgstr ""
+msgstr "Suprimeix l'element seleccionat."
 
 #: manafirewall/dialog.py:381
 msgid "Restore the selected item to its built-in default settings."
 msgstr ""
+"Restaura l'element seleccionat a la configuració predeterminada integrada."
 
 #: manafirewall/dialog.py:388
 msgid "Change &Zone"
@@ -276,7 +287,7 @@ msgstr "Canvia la &zona"
 
 #: manafirewall/dialog.py:402
 msgid "Summary"
-msgstr ""
+msgstr "Resum"
 
 #: manafirewall/dialog.py:404 manafirewall/dialog.py:2434
 msgid "Ports"
@@ -292,11 +303,11 @@ msgstr "Ports d'origen"
 
 #: manafirewall/dialog.py:407
 msgid "Masquerade"
-msgstr ""
+msgstr "Mascarada"
 
 #: manafirewall/dialog.py:408
 msgid "Forwarding"
-msgstr ""
+msgstr "Reenviament"
 
 #: manafirewall/dialog.py:409 manafirewall/dialog.py:547
 msgid "ICMP Filter"
@@ -326,29 +337,29 @@ msgstr "Zona per defecte: {}"
 #: manafirewall/dialog.py:437 manafirewall/dialog.py:3405
 #: manafirewall/dialog.py:3415 manafirewall/dialog.py:3422
 msgid "  Log Denied: {}"
-msgstr ""
+msgstr "Registre denegat: {}"
 
 #: manafirewall/dialog.py:438 manafirewall/dialog.py:3410
 #: manafirewall/dialog.py:3417 manafirewall/dialog.py:3428
 msgid "  Panic Mode: {}"
-msgstr ""
+msgstr "Mode de pànic: {}"
 
 #: manafirewall/dialog.py:439 manafirewall/dialog.py:3407
 #: manafirewall/dialog.py:3416
 msgid "  Automatic Helpers: {}"
-msgstr ""
+msgstr "Assistents automàtics: {}"
 
 #: manafirewall/dialog.py:512
 msgid "Add a new entry."
-msgstr ""
+msgstr "Afegeix-hi una entrada nova."
 
 #: manafirewall/dialog.py:513
 msgid "Edit the selected entry."
-msgstr ""
+msgstr "Edita l'entrada seleccionada."
 
 #: manafirewall/dialog.py:514
 msgid "Remove the selected entry."
-msgstr ""
+msgstr "Suprimeix l'entrada seleccionada."
 
 #: manafirewall/dialog.py:549
 msgid "Selected are accepted"
@@ -396,11 +407,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:1544
 msgid "default"
-msgstr ""
+msgstr "per defecte"
 
 #: manafirewall/dialog.py:1648 manafirewall/dialog.py:2446
 msgid "IP Set"
-msgstr ""
+msgstr "Conjunt d'IP"
 
 #: manafirewall/dialog.py:1995
 msgid ""
@@ -408,14 +419,18 @@ msgid ""
 "only entries added by firewalld are visible at runtime. Entries added "
 "directly with the ipset command will not be shown here."
 msgstr ""
+"Entrades de conjunt d'IP. Només les entrades dels conjunts d'IP que no usen "
+"l'opció de temps d'espera i només les entrades afegides per firewalld són "
+"visibles a l'entorn d'execució. Les entrades afegides directament amb "
+"l'ordre ipset no es mostraran aquí."
 
 #: manafirewall/dialog.py:2008
 msgid "Entry"
-msgstr ""
+msgstr "Entrada"
 
 #: manafirewall/dialog.py:2168
 msgid "Interface"
-msgstr ""
+msgstr "Interfície"
 
 #: manafirewall/dialog.py:2187 manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -423,41 +438,44 @@ msgstr "Font"
 
 #: manafirewall/dialog.py:2209
 msgid "Rich Rule"
-msgstr ""
+msgstr "Regla rica"
 
 #: manafirewall/dialog.py:2230
 msgid "Module"
-msgstr ""
+msgstr "Mòdul"
 
 #: manafirewall/dialog.py:2310
 msgid ""
 "Destination address restricts the service to IPv4 or IPv6 only.\n"
 "Leave empty to allow both.  Format: IP or CIDR (e.g. 0.0.0.0/0 or ::/0)."
 msgstr ""
+"L'adreça de destinació restringeix el servei només a IPv4 o IPv6. Deixeu-la "
+"en blanc per permetre'ls tots dos. Format: IP o CIDR (per exemple, 0.0.0.0/0 "
+"o ::/0)."
 
 #: manafirewall/dialog.py:2315
 msgid "IPv4 destination"
-msgstr ""
+msgstr "Destinació IPv4"
 
 #: manafirewall/dialog.py:2319
 msgid "IPv6 destination"
-msgstr ""
+msgstr "Destinació IPv6"
 
 #: manafirewall/dialog.py:2325
 msgid "&Apply"
-msgstr ""
+msgstr "&Aplica"
 
 #: manafirewall/dialog.py:2372
 msgid "No item selected."
-msgstr ""
+msgstr "No s'ha seleccionat cap element."
 
 #: manafirewall/dialog.py:2388
 msgid "default zone"
-msgstr ""
+msgstr "zona per defecte"
 
 #: manafirewall/dialog.py:2398
 msgid "Target"
-msgstr ""
+msgstr "Destinació"
 
 #: manafirewall/dialog.py:2400 manafirewall/dialog.py:2428
 #: manafirewall/dialog.py:2469 manafirewall/serviceBaseDialog.py:43
@@ -480,27 +498,27 @@ msgstr "Descripció"
 #: manafirewall/dialog.py:2415 manafirewall/dialog.py:2443
 #: manafirewall/dialog.py:2481
 msgid "No details available."
-msgstr ""
+msgstr "No hi ha detalls disponibles."
 
 #: manafirewall/dialog.py:2465
 msgid "Type"
-msgstr ""
+msgstr "Tipus"
 
 #: manafirewall/dialog.py:2467
 msgid "Family"
-msgstr ""
+msgstr "Família"
 
 #: manafirewall/dialog.py:2475
 msgid "Timeout"
-msgstr ""
+msgstr "Temps d'espera"
 
 #: manafirewall/dialog.py:2477
 msgid "Hash size"
-msgstr ""
+msgstr "Mida de resum"
 
 #: manafirewall/dialog.py:2479
 msgid "Max elements"
-msgstr ""
+msgstr "Màxim d'elements"
 
 #: manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
@@ -878,55 +896,55 @@ msgstr "Vista de conjunt d'IP"
 
 #: manafirewall/ipsetBaseDialog.py:49
 msgid "IP Set Settings"
-msgstr ""
+msgstr "Paràmetres del conjunt d'IP"
 
 #: manafirewall/ipsetBaseDialog.py:73
 msgid "Name:"
-msgstr ""
+msgstr "Nom:"
 
 #: manafirewall/ipsetBaseDialog.py:82 manafirewall/ipsetEntryDialog.py:49
 msgid "Type:"
-msgstr ""
+msgstr "Tipus:"
 
 #: manafirewall/ipsetBaseDialog.py:95
 msgid "Family:"
-msgstr ""
+msgstr "Família:"
 
 #: manafirewall/ipsetBaseDialog.py:103
 msgid "Version:"
-msgstr ""
+msgstr "Versió: "
 
 #: manafirewall/ipsetBaseDialog.py:108
 msgid "Short:"
-msgstr ""
+msgstr "Curt:"
 
 #: manafirewall/ipsetBaseDialog.py:113
 msgid "Description:"
-msgstr ""
+msgstr "Descripció: "
 
 #: manafirewall/ipsetBaseDialog.py:119
 msgid "Timeout:"
-msgstr ""
+msgstr "Temps d'espera:"
 
 #: manafirewall/ipsetBaseDialog.py:123
 msgid "Timeout value in seconds"
-msgstr ""
+msgstr "Valor del temps d'espera en segons"
 
 #: manafirewall/ipsetBaseDialog.py:126
 msgid "Hash size:"
-msgstr ""
+msgstr "Mida de resum:"
 
 #: manafirewall/ipsetBaseDialog.py:130
 msgid "Initial hash size, default 1024"
-msgstr ""
+msgstr "Mida de resum inicial, per defecte 1024"
 
 #: manafirewall/ipsetBaseDialog.py:133
 msgid "Max elements:"
-msgstr ""
+msgstr "Màxim d'elements:"
 
 #: manafirewall/ipsetBaseDialog.py:137
 msgid "Max number of elements, default 65536"
-msgstr ""
+msgstr "Nombre màxim d'elements, per defecte 65536"
 
 #: manafirewall/ipsetBaseDialog.py:167 manafirewall/serviceBaseDialog.py:116
 #: manafirewall/zoneBaseDialog.py:166
@@ -941,43 +959,43 @@ msgstr "El nom és obligatori"
 #: manafirewall/ipsetBaseDialog.py:181 manafirewall/ipsetBaseDialog.py:191
 #: manafirewall/ipsetBaseDialog.py:201
 msgid "Invalid value"
-msgstr ""
+msgstr "Valor no vàlid"
 
 #: manafirewall/ipsetBaseDialog.py:182
 msgid "Timeout must be a non-negative integer (seconds)."
-msgstr ""
+msgstr "El temps d'espera ha de ser un enter no negatiu (segons)."
 
 #: manafirewall/ipsetBaseDialog.py:192
 msgid "Hash size must be a positive integer."
-msgstr ""
+msgstr "La mida del resum ha de ser un nombre enter positiu."
 
 #: manafirewall/ipsetBaseDialog.py:202
 msgid "Max elements must be a positive integer."
-msgstr ""
+msgstr "El màxim d'elements ha de ser un enter positiu."
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Add Entry"
-msgstr ""
+msgstr "Afegeix-hi una entrada"
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Edit Entry"
-msgstr ""
+msgstr "Edita l'entrada"
 
 #: manafirewall/ipsetEntryDialog.py:57
 msgid "Entry:"
-msgstr ""
+msgstr "Entrada:"
 
 #: manafirewall/moduleDialog.py:36
 msgid "Add Helper"
-msgstr ""
+msgstr "Afegeix-hi un assistent"
 
 #: manafirewall/moduleDialog.py:44
 msgid "Available helpers"
-msgstr ""
+msgstr "Assistents disponibles"
 
 #: manafirewall/moduleDialog.py:56
 msgid "Helper"
-msgstr ""
+msgstr "Assistent"
 
 #: manafirewall/optionDialog.py:96
 msgid "firewalld"
@@ -1017,50 +1035,56 @@ msgstr "Mode de pànic"
 
 #: manafirewall/optionDialog.py:255
 msgid "Layout options"
-msgstr ""
+msgstr "Opcions del disseny"
 
 #: manafirewall/optionDialog.py:262
 msgid "Show IP Sets tab"
-msgstr ""
+msgstr "Mostra la pestanya de Conjunts d'IP"
 
 #: manafirewall/optionDialog.py:265
 msgid ""
 "Show or hide the IP Sets tab in the left panel. Takes effect immediately."
 msgstr ""
+"Mostra o amaga la pestanya Conjunts d'IP a l'esquerra. Té efecte "
+"immediatament."
 
 #: manafirewall/optionDialog.py:281
 msgid "Show expert tabs for Zones"
-msgstr ""
+msgstr "Mostra les pestanyes d'expert per a les zones"
 
 #: manafirewall/optionDialog.py:284
 msgid ""
 "Enable extra tabs in the Zone configuration pane: Interfaces, Sources, Rich "
 "Rules. Takes effect when the category is next selected."
 msgstr ""
+"Activa pestanyes addicionals al panell de configuració de la zona: "
+"interfícies, fonts, regles enriquides. Té efecte quan es torna a seleccionar "
+"la categoria."
 
 #: manafirewall/optionDialog.py:302
 msgid "Interfaces tab"
-msgstr ""
+msgstr "Pestanya d'interfícies"
 
 #: manafirewall/optionDialog.py:305
 msgid "Show the Interfaces tab for Zone configuration."
-msgstr ""
+msgstr "Mostra la pestanya d'interfícies per a la configuració de la zona."
 
 #: manafirewall/optionDialog.py:310
 msgid "Sources tab"
-msgstr ""
+msgstr "Pestanya de fonts"
 
 #: manafirewall/optionDialog.py:313
 msgid "Show the Sources tab for Zone configuration."
-msgstr ""
+msgstr "Mostra la pestanya de fonts per a la configuració de la zona."
 
 #: manafirewall/optionDialog.py:318
 msgid "Rich Rules tab"
-msgstr ""
+msgstr "Pestanya de regles riques"
 
 #: manafirewall/optionDialog.py:321
 msgid "Show the Rich Rules tab for Zone configuration."
 msgstr ""
+"Mostra la pestanya de regles enriquides per a la configuració de la zona."
 
 #: manafirewall/optionDialog.py:378
 msgid "Logging options (active at next startup)"
@@ -1138,24 +1162,3 @@ msgstr "Rebutja"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversió: %(version)s%(NL)slloc: %(site)s"
-
-#~ msgid "Active bindings"
-#~ msgstr "Vincles actius"
-
-#~ msgid "Automatic Helpers: {}"
-#~ msgstr "Assistents automàtics: {}"
-
-#~ msgid "Configure"
-#~ msgstr "Configura"
-
-#~ msgid "Layout options (active at next startup)"
-#~ msgstr "Opcions de disposició (actives a l'inici següent)"
-
-#~ msgid "Log Denied: {}"
-#~ msgstr "Registre denegat: {}"
-
-#~ msgid "Masquerading"
-#~ msgstr "Emmascarament"
-
-#~ msgid "Panic Mode: {}"
-#~ msgstr "Mode de pànic: {}"
