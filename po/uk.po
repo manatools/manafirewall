@@ -9,26 +9,26 @@ msgstr ""
 "Project-Id-Version: manafirewall 0.xx\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-10 23:52+0200\n"
-"PO-Revision-Date: 2026-04-08 21:41+0300\n"
+"PO-Revision-Date: 2026-05-11 12:59+0300\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
-"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
-"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
-"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11"
+" ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100"
+" > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n %"
+" 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 "X-Generator: Lokalize 23.04.3\n"
 
 #: manafirewall/activeBindingsDialog.py:49
 msgid "Active Bindings"
-msgstr ""
+msgstr "Активні прив'язки"
 
 #: manafirewall/activeBindingsDialog.py:55
 msgid "Active zone bindings (runtime)"
-msgstr ""
+msgstr "Активні прив'язки зони (середовище виконання)"
 
 #: manafirewall/activeBindingsDialog.py:66
 #: manafirewall/changeZoneConnectionDialog.py:64
@@ -44,7 +44,7 @@ msgstr "З'єднання"
 #: manafirewall/activeBindingsDialog.py:136
 #: manafirewall/activeBindingsDialog.py:142
 msgid "Zone"
-msgstr ""
+msgstr "Зона"
 
 #: manafirewall/activeBindingsDialog.py:134 manafirewall/dialog.py:413
 #: manafirewall/dialog.py:2410 manafirewall/dialog.py:3010
@@ -151,7 +151,7 @@ msgstr "П&ерезавантажити Firewalld"
 
 #: manafirewall/dialog.py:254
 msgid "Active &Bindings…"
-msgstr ""
+msgstr "Активні п&рив'язки…"
 
 #: manafirewall/dialog.py:256
 msgid "&Settings"
@@ -175,23 +175,28 @@ msgstr "Налаштовування"
 
 #: manafirewall/dialog.py:297
 msgid "&Runtime"
-msgstr ""
+msgstr "&Середовище виконання"
 
 #: manafirewall/dialog.py:298
 msgid "&Permanent"
-msgstr ""
+msgstr "С&талий"
 
 #: manafirewall/dialog.py:299
 msgid ""
 "Runtime mode: shows the active firewall configuration. Changes take effect "
 "immediately but are lost on reload or restart."
 msgstr ""
+"Режим середовища виконання: показує активні налаштування брандмауера. Зміни"
+" набувають чинності негайно, але їх буде втрачено під час перезавантаження"
+" або перезапуску системи."
 
 #: manafirewall/dialog.py:300
 msgid ""
 "Permanent mode: shows and edits the configuration stored on disk. Changes "
 "take effect after a firewalld reload."
 msgstr ""
+"Сталий режим: буде показано і редаговано налаштування, що зберігаються на"
+" диску. Зміни набувають чинності після перезавантаження firewalld."
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:71
 msgid "Runtime"
@@ -203,23 +208,28 @@ msgstr "Сталий"
 
 #: manafirewall/dialog.py:323
 msgid "Re&load"
-msgstr ""
+msgstr "Пере&завантажити"
 
 #: manafirewall/dialog.py:324
 msgid "Runtime→&Permanent"
-msgstr ""
+msgstr "Середовище виконання→&Стале"
 
 #: manafirewall/dialog.py:325
 msgid ""
 "Reload firewalld: re-read the permanent configuration and apply it to the "
 "runtime state."
 msgstr ""
+"Перезавантажити firewalld: повторно прочитати сталі налаштування і"
+" застосувати їх до стану середовища виконання."
 
 #: manafirewall/dialog.py:326
 msgid ""
 "Runtime → Permanent: save the current runtime configuration to the permanent "
 "configuration on disk. Only available in Runtime mode."
 msgstr ""
+"Середовище виконання → Стале: зберегти поточні налаштування середовища"
+" виконання до файла налаштувань на диску. Можна скористатися лише у режимі"
+" середовища виконання."
 
 #: manafirewall/dialog.py:343
 msgid "Zones"
@@ -250,23 +260,23 @@ msgstr "Ви&лучити"
 
 #: manafirewall/dialog.py:377
 msgid "Load &Defaults"
-msgstr ""
+msgstr "Завантажити &типове"
 
 #: manafirewall/dialog.py:378
 msgid "Add a new item."
-msgstr ""
+msgstr "Додати новий запис."
 
 #: manafirewall/dialog.py:379
 msgid "Edit the selected item."
-msgstr ""
+msgstr "Редагувати позначений пункт."
 
 #: manafirewall/dialog.py:380
 msgid "Remove the selected item."
-msgstr ""
+msgstr "Вилучити позначений пункт."
 
 #: manafirewall/dialog.py:381
 msgid "Restore the selected item to its built-in default settings."
-msgstr ""
+msgstr "Відновити для позначеного пункту вбудовані типові параметри."
 
 #: manafirewall/dialog.py:388
 msgid "Change &Zone"
@@ -274,7 +284,7 @@ msgstr "Змінити &зону"
 
 #: manafirewall/dialog.py:402
 msgid "Summary"
-msgstr ""
+msgstr "Резюме"
 
 #: manafirewall/dialog.py:404 manafirewall/dialog.py:2434
 msgid "Ports"
@@ -290,11 +300,11 @@ msgstr "Порти походження"
 
 #: manafirewall/dialog.py:407
 msgid "Masquerade"
-msgstr ""
+msgstr "Маскування"
 
 #: manafirewall/dialog.py:408
 msgid "Forwarding"
-msgstr ""
+msgstr "Переспрямування"
 
 #: manafirewall/dialog.py:409 manafirewall/dialog.py:547
 msgid "ICMP Filter"
@@ -324,29 +334,29 @@ msgstr "Типова зона: {}"
 #: manafirewall/dialog.py:437 manafirewall/dialog.py:3405
 #: manafirewall/dialog.py:3415 manafirewall/dialog.py:3422
 msgid "  Log Denied: {}"
-msgstr ""
+msgstr "Вносити до журналу заборонені: {}"
 
 #: manafirewall/dialog.py:438 manafirewall/dialog.py:3410
 #: manafirewall/dialog.py:3417 manafirewall/dialog.py:3428
 msgid "  Panic Mode: {}"
-msgstr ""
+msgstr "  Режим паніки: {}"
 
 #: manafirewall/dialog.py:439 manafirewall/dialog.py:3407
 #: manafirewall/dialog.py:3416
 msgid "  Automatic Helpers: {}"
-msgstr ""
+msgstr "Автоматичні допоміжні засоби: {}"
 
 #: manafirewall/dialog.py:512
 msgid "Add a new entry."
-msgstr ""
+msgstr "Додати новий запис."
 
 #: manafirewall/dialog.py:513
 msgid "Edit the selected entry."
-msgstr ""
+msgstr "Редагувати позначений запис."
 
 #: manafirewall/dialog.py:514
 msgid "Remove the selected entry."
-msgstr ""
+msgstr "Вилучити позначений запис."
 
 #: manafirewall/dialog.py:549
 msgid "Selected are accepted"
@@ -394,11 +404,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:1544
 msgid "default"
-msgstr ""
+msgstr "типове"
 
 #: manafirewall/dialog.py:1648 manafirewall/dialog.py:2446
 msgid "IP Set"
-msgstr ""
+msgstr "Набір IP"
 
 #: manafirewall/dialog.py:1995
 msgid ""
@@ -406,14 +416,18 @@ msgid ""
 "only entries added by firewalld are visible at runtime. Entries added "
 "directly with the ipset command will not be shown here."
 msgstr ""
+"Записи набору IP. Під час виконання видно лише записи наборів IP-адрес, які"
+" не використовують параметр часу очікування, і лише записи, додані"
+" firewalld. Записи, додані"
+"безпосередньо за допомогою команди ipset, тут показано не буде."
 
 #: manafirewall/dialog.py:2008
 msgid "Entry"
-msgstr ""
+msgstr "Запис"
 
 #: manafirewall/dialog.py:2168
 msgid "Interface"
-msgstr ""
+msgstr "Інтерфейс"
 
 #: manafirewall/dialog.py:2187 manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -421,41 +435,44 @@ msgstr "Походження"
 
 #: manafirewall/dialog.py:2209
 msgid "Rich Rule"
-msgstr ""
+msgstr "Докладне правило"
 
 #: manafirewall/dialog.py:2230
 msgid "Module"
-msgstr ""
+msgstr "Модуль"
 
 #: manafirewall/dialog.py:2310
 msgid ""
 "Destination address restricts the service to IPv4 or IPv6 only.\n"
 "Leave empty to allow both.  Format: IP or CIDR (e.g. 0.0.0.0/0 or ::/0)."
 msgstr ""
+"Адреса призначення обмежує службу лише IPv4 або IPv6.\n"
+"Не заповнюйте, щоб було використано обидва типи. Формат: IP або CIDR (тобто"
+" 0.0.0.0/0 або ::/0)."
 
 #: manafirewall/dialog.py:2315
 msgid "IPv4 destination"
-msgstr ""
+msgstr "Призначення IPv4"
 
 #: manafirewall/dialog.py:2319
 msgid "IPv6 destination"
-msgstr ""
+msgstr "Призначення IPv6"
 
 #: manafirewall/dialog.py:2325
 msgid "&Apply"
-msgstr ""
+msgstr "&Застосувати"
 
 #: manafirewall/dialog.py:2372
 msgid "No item selected."
-msgstr ""
+msgstr "Не вибрано жодного запису."
 
 #: manafirewall/dialog.py:2388
 msgid "default zone"
-msgstr ""
+msgstr "типова зона"
 
 #: manafirewall/dialog.py:2398
 msgid "Target"
-msgstr ""
+msgstr "Призначення"
 
 #: manafirewall/dialog.py:2400 manafirewall/dialog.py:2428
 #: manafirewall/dialog.py:2469 manafirewall/serviceBaseDialog.py:43
@@ -478,27 +495,27 @@ msgstr "Опис"
 #: manafirewall/dialog.py:2415 manafirewall/dialog.py:2443
 #: manafirewall/dialog.py:2481
 msgid "No details available."
-msgstr ""
+msgstr "Подробиці недоступні."
 
 #: manafirewall/dialog.py:2465
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: manafirewall/dialog.py:2467
 msgid "Family"
-msgstr ""
+msgstr "Сімейство"
 
 #: manafirewall/dialog.py:2475
 msgid "Timeout"
-msgstr ""
+msgstr "Час очікування"
 
 #: manafirewall/dialog.py:2477
 msgid "Hash size"
-msgstr ""
+msgstr "Розмір хешу"
 
 #: manafirewall/dialog.py:2479
 msgid "Max elements"
-msgstr ""
+msgstr "Максимальна кількість елементів"
 
 #: manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
@@ -551,7 +568,8 @@ msgstr "Вказано помилковий порт"
 
 #: manafirewall/forwardDialog.py:146
 msgid "<b>local forwarding</b><br>port and to_port must be different"
-msgstr "<b>локальне переспрямовування</b><br>port і to_port мають бути різними"
+msgstr ""
+"<b>локальне переспрямовування</b><br>port і to_port мають бути різними"
 
 #: manafirewall/forwardDialog.py:155
 msgid "Missing data"
@@ -871,55 +889,55 @@ msgstr "Панель наборів IP"
 
 #: manafirewall/ipsetBaseDialog.py:49
 msgid "IP Set Settings"
-msgstr ""
+msgstr "Параметри набору IP"
 
 #: manafirewall/ipsetBaseDialog.py:73
 msgid "Name:"
-msgstr ""
+msgstr "Назва:"
 
 #: manafirewall/ipsetBaseDialog.py:82 manafirewall/ipsetEntryDialog.py:49
 msgid "Type:"
-msgstr ""
+msgstr "Тип:"
 
 #: manafirewall/ipsetBaseDialog.py:95
 msgid "Family:"
-msgstr ""
+msgstr "Сімейство:"
 
 #: manafirewall/ipsetBaseDialog.py:103
 msgid "Version:"
-msgstr ""
+msgstr "Версія:"
 
 #: manafirewall/ipsetBaseDialog.py:108
 msgid "Short:"
-msgstr ""
+msgstr "Коротко:"
 
 #: manafirewall/ipsetBaseDialog.py:113
 msgid "Description:"
-msgstr ""
+msgstr "Опис:"
 
 #: manafirewall/ipsetBaseDialog.py:119
 msgid "Timeout:"
-msgstr ""
+msgstr "Час очікування:"
 
 #: manafirewall/ipsetBaseDialog.py:123
 msgid "Timeout value in seconds"
-msgstr ""
+msgstr "Величина часу очікування у секундах"
 
 #: manafirewall/ipsetBaseDialog.py:126
 msgid "Hash size:"
-msgstr ""
+msgstr "Розмір хешу:"
 
 #: manafirewall/ipsetBaseDialog.py:130
 msgid "Initial hash size, default 1024"
-msgstr ""
+msgstr "Початковий розмір хешу, типовий — 1024"
 
 #: manafirewall/ipsetBaseDialog.py:133
 msgid "Max elements:"
-msgstr ""
+msgstr "Макс. елементів:"
 
 #: manafirewall/ipsetBaseDialog.py:137
 msgid "Max number of elements, default 65536"
-msgstr ""
+msgstr "Максимальна кількість елементів, типовою є 65536"
 
 #: manafirewall/ipsetBaseDialog.py:167 manafirewall/serviceBaseDialog.py:116
 #: manafirewall/zoneBaseDialog.py:166
@@ -934,43 +952,43 @@ msgstr "Назва є обов'язковою"
 #: manafirewall/ipsetBaseDialog.py:181 manafirewall/ipsetBaseDialog.py:191
 #: manafirewall/ipsetBaseDialog.py:201
 msgid "Invalid value"
-msgstr ""
+msgstr "Некоректне значення"
 
 #: manafirewall/ipsetBaseDialog.py:182
 msgid "Timeout must be a non-negative integer (seconds)."
-msgstr ""
+msgstr "Час очікування має бути невід'ємним цілим числом (секунд)."
 
 #: manafirewall/ipsetBaseDialog.py:192
 msgid "Hash size must be a positive integer."
-msgstr ""
+msgstr "Розмір хешу має бути додатним цілим числом."
 
 #: manafirewall/ipsetBaseDialog.py:202
 msgid "Max elements must be a positive integer."
-msgstr ""
+msgstr "Максимальна кількість елементів має бути додатним числом."
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Add Entry"
-msgstr ""
+msgstr "Додати запис"
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Edit Entry"
-msgstr ""
+msgstr "Редагувати запис"
 
 #: manafirewall/ipsetEntryDialog.py:57
 msgid "Entry:"
-msgstr ""
+msgstr "Запис:"
 
 #: manafirewall/moduleDialog.py:36
 msgid "Add Helper"
-msgstr ""
+msgstr "Додати допоміжний засіб"
 
 #: manafirewall/moduleDialog.py:44
 msgid "Available helpers"
-msgstr ""
+msgstr "Доступні допоміжні засоби"
 
 #: manafirewall/moduleDialog.py:56
 msgid "Helper"
-msgstr ""
+msgstr "Помічник"
 
 #: manafirewall/optionDialog.py:96
 msgid "firewalld"
@@ -1010,50 +1028,55 @@ msgstr "Режим паніки"
 
 #: manafirewall/optionDialog.py:255
 msgid "Layout options"
-msgstr ""
+msgstr "Параметри компонування"
 
 #: manafirewall/optionDialog.py:262
 msgid "Show IP Sets tab"
-msgstr ""
+msgstr "Показати вкладку наборів IP"
 
 #: manafirewall/optionDialog.py:265
 msgid ""
 "Show or hide the IP Sets tab in the left panel. Takes effect immediately."
 msgstr ""
+"Показати або приховати вкладку «Набори IP» на лівій панелі. Набуває чинності"
+" негайно."
 
 #: manafirewall/optionDialog.py:281
 msgid "Show expert tabs for Zones"
-msgstr ""
+msgstr "Показати експертні вкладки для зон"
 
 #: manafirewall/optionDialog.py:284
 msgid ""
 "Enable extra tabs in the Zone configuration pane: Interfaces, Sources, Rich "
 "Rules. Takes effect when the category is next selected."
 msgstr ""
+"Увімкнути додаткові вкладки на панелі налаштувань зони: «Інтерфейси»,"
+" «Походження», «Додаткові правила». Набуває чинності після наступного вибору"
+" категорії."
 
 #: manafirewall/optionDialog.py:302
 msgid "Interfaces tab"
-msgstr ""
+msgstr "Вкладка інтерфейсів"
 
 #: manafirewall/optionDialog.py:305
 msgid "Show the Interfaces tab for Zone configuration."
-msgstr ""
+msgstr "Показувати вкладку інтерфейсів для налаштовування зон."
 
 #: manafirewall/optionDialog.py:310
 msgid "Sources tab"
-msgstr ""
+msgstr "Вкладка походження"
 
 #: manafirewall/optionDialog.py:313
 msgid "Show the Sources tab for Zone configuration."
-msgstr ""
+msgstr "Показувати вкладку походження для налаштовування зон."
 
 #: manafirewall/optionDialog.py:318
 msgid "Rich Rules tab"
-msgstr ""
+msgstr "Вкладка докладних правил"
 
 #: manafirewall/optionDialog.py:321
 msgid "Show the Rich Rules tab for Zone configuration."
-msgstr ""
+msgstr "Показувати вкладку докладних правил для налаштовування зон."
 
 #: manafirewall/optionDialog.py:378
 msgid "Logging options (active at next startup)"
