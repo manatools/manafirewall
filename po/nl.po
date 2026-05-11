@@ -7,10 +7,10 @@
 # Yves Brungard, 2020
 # Geiger David <david.david@mageialinux-online.org>, 2020
 # Marcel Pol <marcel@timelord.nl>, 2022
-# Dennis Holierhoek <dennis.hh@hotmail.com>, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# dragnadh, 2022
 # Marja van Waes, 2023
+# dragnadh, 2026
+# Dennis Holierhoek <dennis.hh@hotmail.com>, 2026
 # Marc Laan, 2026
 #
 #, fuzzy
@@ -30,11 +30,11 @@ msgstr ""
 
 #: manafirewall/activeBindingsDialog.py:49
 msgid "Active Bindings"
-msgstr ""
+msgstr "Actieve bindingen"
 
 #: manafirewall/activeBindingsDialog.py:55
 msgid "Active zone bindings (runtime)"
-msgstr ""
+msgstr "Actieve zonebindingen (runtime)"
 
 #: manafirewall/activeBindingsDialog.py:66
 #: manafirewall/changeZoneConnectionDialog.py:64
@@ -50,7 +50,7 @@ msgstr "Verbindingen"
 #: manafirewall/activeBindingsDialog.py:136
 #: manafirewall/activeBindingsDialog.py:142
 msgid "Zone"
-msgstr ""
+msgstr "Zone"
 
 #: manafirewall/activeBindingsDialog.py:134 manafirewall/dialog.py:413
 #: manafirewall/dialog.py:2410 manafirewall/dialog.py:3010
@@ -157,7 +157,7 @@ msgstr "&Firewalld herladen"
 
 #: manafirewall/dialog.py:254
 msgid "Active &Bindings…"
-msgstr ""
+msgstr "Actieve &bindingen…"
 
 #: manafirewall/dialog.py:256
 msgid "&Settings"
@@ -181,23 +181,28 @@ msgstr "Configuratie"
 
 #: manafirewall/dialog.py:297
 msgid "&Runtime"
-msgstr ""
+msgstr "&Runtime"
 
 #: manafirewall/dialog.py:298
 msgid "&Permanent"
-msgstr ""
+msgstr "&Permanent"
 
 #: manafirewall/dialog.py:299
 msgid ""
 "Runtime mode: shows the active firewall configuration. Changes take effect "
 "immediately but are lost on reload or restart."
 msgstr ""
+"Runtime-modus: toont de actieve firewallconfiguratie. Wijzigingen worden "
+"direct van kracht, maar gaan verloren bij het herladen of herstarten van de "
+"applicatie."
 
 #: manafirewall/dialog.py:300
 msgid ""
 "Permanent mode: shows and edits the configuration stored on disk. Changes "
 "take effect after a firewalld reload."
 msgstr ""
+"Permanente modus: toont en bewerkt de configuratie die op de schijf is "
+"opgeslagen. Wijzigingen worden van kracht na een herstart van firewalld."
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:71
 msgid "Runtime"
@@ -209,23 +214,27 @@ msgstr "Permanent"
 
 #: manafirewall/dialog.py:323
 msgid "Re&load"
-msgstr ""
+msgstr "Opnieuw &laden"
 
 #: manafirewall/dialog.py:324
 msgid "Runtime→&Permanent"
-msgstr ""
+msgstr "Runtime→&Permanent"
 
 #: manafirewall/dialog.py:325
 msgid ""
 "Reload firewalld: re-read the permanent configuration and apply it to the "
 "runtime state."
 msgstr ""
+"Herlaad firewalld: lees de permanente configuratie opnieuw in en pas deze "
+"toe op de runtime-status."
 
 #: manafirewall/dialog.py:326
 msgid ""
 "Runtime → Permanent: save the current runtime configuration to the permanent "
 "configuration on disk. Only available in Runtime mode."
 msgstr ""
+"Runtime → Permanent: bewaar de huidige runtime-configuratie op de schijf, "
+"als permanente configuratie. Alleen beschikbaar in de runtime-modus."
 
 #: manafirewall/dialog.py:343
 msgid "Zones"
@@ -257,22 +266,27 @@ msgstr "&Verwijderen"
 #: manafirewall/dialog.py:377
 msgid "Load &Defaults"
 msgstr ""
+"Laden &Standaardinstellingen \n"
+" \n"
+" "
 
 #: manafirewall/dialog.py:378
 msgid "Add a new item."
-msgstr ""
+msgstr "Voeg een nieuw onderwerp toe."
 
 #: manafirewall/dialog.py:379
 msgid "Edit the selected item."
-msgstr ""
+msgstr "Bewerk het geselecteerde onderwerp."
 
 #: manafirewall/dialog.py:380
 msgid "Remove the selected item."
-msgstr ""
+msgstr "Verwijder het geselecteerde onderwerp."
 
 #: manafirewall/dialog.py:381
 msgid "Restore the selected item to its built-in default settings."
 msgstr ""
+"Herstel het geselecteerde onderwerp naar zijn ingebouwde "
+"standaardinstellingen."
 
 #: manafirewall/dialog.py:388
 msgid "Change &Zone"
@@ -280,7 +294,7 @@ msgstr "Wijzig &Zone"
 
 #: manafirewall/dialog.py:402
 msgid "Summary"
-msgstr ""
+msgstr "Samenvatting"
 
 #: manafirewall/dialog.py:404 manafirewall/dialog.py:2434
 msgid "Ports"
@@ -296,11 +310,11 @@ msgstr "Bronpoorten"
 
 #: manafirewall/dialog.py:407
 msgid "Masquerade"
-msgstr ""
+msgstr "Masquerade"
 
 #: manafirewall/dialog.py:408
 msgid "Forwarding"
-msgstr ""
+msgstr "Doorsturen"
 
 #: manafirewall/dialog.py:409 manafirewall/dialog.py:547
 msgid "ICMP Filter"
@@ -330,29 +344,29 @@ msgstr "Standaardzone: {}"
 #: manafirewall/dialog.py:437 manafirewall/dialog.py:3405
 #: manafirewall/dialog.py:3415 manafirewall/dialog.py:3422
 msgid "  Log Denied: {}"
-msgstr ""
+msgstr "Loggen geweigerd: {}"
 
 #: manafirewall/dialog.py:438 manafirewall/dialog.py:3410
 #: manafirewall/dialog.py:3417 manafirewall/dialog.py:3428
 msgid "  Panic Mode: {}"
-msgstr ""
+msgstr "Paniekmodus: {}"
 
 #: manafirewall/dialog.py:439 manafirewall/dialog.py:3407
 #: manafirewall/dialog.py:3416
 msgid "  Automatic Helpers: {}"
-msgstr ""
+msgstr "Automatische helpers: {}"
 
 #: manafirewall/dialog.py:512
 msgid "Add a new entry."
-msgstr ""
+msgstr "Voeg een nieuw onderwerp toe."
 
 #: manafirewall/dialog.py:513
 msgid "Edit the selected entry."
-msgstr ""
+msgstr "Bewerk het geselecteerde onderwerp."
 
 #: manafirewall/dialog.py:514
 msgid "Remove the selected entry."
-msgstr ""
+msgstr "Verwijder het geselecteerde onderwerp."
 
 #: manafirewall/dialog.py:549
 msgid "Selected are accepted"
@@ -401,11 +415,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:1544
 msgid "default"
-msgstr ""
+msgstr "Standaard"
 
 #: manafirewall/dialog.py:1648 manafirewall/dialog.py:2446
 msgid "IP Set"
-msgstr ""
+msgstr "IP Set"
 
 #: manafirewall/dialog.py:1995
 msgid ""
@@ -413,14 +427,18 @@ msgid ""
 "only entries added by firewalld are visible at runtime. Entries added "
 "directly with the ipset command will not be shown here."
 msgstr ""
+"IP-setvermeldingen. Alleen namen van IP-sets die niet de time-outoptie "
+"gebruiken en alleen namen die door firewalld zijn toegevoegd, zijn tijdens "
+"runtime zichtbaar. Vermeldingen die direct met het ipset-commando zijn "
+"toegevoegd, worden hier niet weergegeven."
 
 #: manafirewall/dialog.py:2008
 msgid "Entry"
-msgstr ""
+msgstr "Ingang"
 
 #: manafirewall/dialog.py:2168
 msgid "Interface"
-msgstr ""
+msgstr "Interface"
 
 #: manafirewall/dialog.py:2187 manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -428,41 +446,44 @@ msgstr "Bron"
 
 #: manafirewall/dialog.py:2209
 msgid "Rich Rule"
-msgstr ""
+msgstr "Rijke regel"
 
 #: manafirewall/dialog.py:2230
 msgid "Module"
-msgstr ""
+msgstr "Module"
 
 #: manafirewall/dialog.py:2310
 msgid ""
 "Destination address restricts the service to IPv4 or IPv6 only.\n"
 "Leave empty to allow both.  Format: IP or CIDR (e.g. 0.0.0.0/0 or ::/0)."
 msgstr ""
+"Het bestemmingsadres beperkt de service tot alleen IPv4 of IPv6. Laat dit "
+"veld leeg om beide toe te staan. Formaat: IP-adres of CIDR (bijvoorbeeld "
+"0.0.0.0/0 of ::/0)."
 
 #: manafirewall/dialog.py:2315
 msgid "IPv4 destination"
-msgstr ""
+msgstr "IPv4-bestemming"
 
 #: manafirewall/dialog.py:2319
 msgid "IPv6 destination"
-msgstr ""
+msgstr "IPv6-bestemming"
 
 #: manafirewall/dialog.py:2325
 msgid "&Apply"
-msgstr ""
+msgstr "&Toepassen"
 
 #: manafirewall/dialog.py:2372
 msgid "No item selected."
-msgstr ""
+msgstr "Geen onderwerp geselecteerd."
 
 #: manafirewall/dialog.py:2388
 msgid "default zone"
-msgstr ""
+msgstr "Standaardzone"
 
 #: manafirewall/dialog.py:2398
 msgid "Target"
-msgstr ""
+msgstr "Doel"
 
 #: manafirewall/dialog.py:2400 manafirewall/dialog.py:2428
 #: manafirewall/dialog.py:2469 manafirewall/serviceBaseDialog.py:43
@@ -485,27 +506,27 @@ msgstr "Beschrijving"
 #: manafirewall/dialog.py:2415 manafirewall/dialog.py:2443
 #: manafirewall/dialog.py:2481
 msgid "No details available."
-msgstr ""
+msgstr "Geen details beschikbaar."
 
 #: manafirewall/dialog.py:2465
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: manafirewall/dialog.py:2467
 msgid "Family"
-msgstr ""
+msgstr "Family"
 
 #: manafirewall/dialog.py:2475
 msgid "Timeout"
-msgstr ""
+msgstr "Time-out"
 
 #: manafirewall/dialog.py:2477
 msgid "Hash size"
-msgstr ""
+msgstr "Hash-grootte"
 
 #: manafirewall/dialog.py:2479
 msgid "Max elements"
-msgstr ""
+msgstr "Max-elementen"
 
 #: manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
@@ -881,55 +902,55 @@ msgstr "IP-sets-weergave"
 
 #: manafirewall/ipsetBaseDialog.py:49
 msgid "IP Set Settings"
-msgstr ""
+msgstr "IP-set instellingen"
 
 #: manafirewall/ipsetBaseDialog.py:73
 msgid "Name:"
-msgstr ""
+msgstr "Naam:"
 
 #: manafirewall/ipsetBaseDialog.py:82 manafirewall/ipsetEntryDialog.py:49
 msgid "Type:"
-msgstr ""
+msgstr "Type:"
 
 #: manafirewall/ipsetBaseDialog.py:95
 msgid "Family:"
-msgstr ""
+msgstr "Family:"
 
 #: manafirewall/ipsetBaseDialog.py:103
 msgid "Version:"
-msgstr ""
+msgstr "Versie: "
 
 #: manafirewall/ipsetBaseDialog.py:108
 msgid "Short:"
-msgstr ""
+msgstr "Kort:"
 
 #: manafirewall/ipsetBaseDialog.py:113
 msgid "Description:"
-msgstr ""
+msgstr "Beschrijving: "
 
 #: manafirewall/ipsetBaseDialog.py:119
 msgid "Timeout:"
-msgstr ""
+msgstr "Time-out:"
 
 #: manafirewall/ipsetBaseDialog.py:123
 msgid "Timeout value in seconds"
-msgstr ""
+msgstr "Timeout-waarde in seconden"
 
 #: manafirewall/ipsetBaseDialog.py:126
 msgid "Hash size:"
-msgstr ""
+msgstr "Hash-grootte"
 
 #: manafirewall/ipsetBaseDialog.py:130
 msgid "Initial hash size, default 1024"
-msgstr ""
+msgstr "Oorspronkelijke hash-groote, standaard 1024"
 
 #: manafirewall/ipsetBaseDialog.py:133
 msgid "Max elements:"
-msgstr ""
+msgstr "Max-elementen:"
 
 #: manafirewall/ipsetBaseDialog.py:137
 msgid "Max number of elements, default 65536"
-msgstr ""
+msgstr "Maximaal aantal elementen, standaard 65536"
 
 #: manafirewall/ipsetBaseDialog.py:167 manafirewall/serviceBaseDialog.py:116
 #: manafirewall/zoneBaseDialog.py:166
@@ -944,43 +965,46 @@ msgstr "Een naam is verplicht"
 #: manafirewall/ipsetBaseDialog.py:181 manafirewall/ipsetBaseDialog.py:191
 #: manafirewall/ipsetBaseDialog.py:201
 msgid "Invalid value"
-msgstr ""
+msgstr "Ongeldige waarde"
 
 #: manafirewall/ipsetBaseDialog.py:182
 msgid "Timeout must be a non-negative integer (seconds)."
-msgstr ""
+msgstr "De time-out moet een niet-negatief geheel getal zijn (seconden)."
 
 #: manafirewall/ipsetBaseDialog.py:192
 msgid "Hash size must be a positive integer."
-msgstr ""
+msgstr "De hash-grootte moet een positief geheel getal zijn."
 
 #: manafirewall/ipsetBaseDialog.py:202
 msgid "Max elements must be a positive integer."
 msgstr ""
+"Max-elements moet een positief geheel getal zijn. \n"
+" \n"
+" "
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Add Entry"
-msgstr ""
+msgstr "Ingang toevoegen"
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Edit Entry"
-msgstr ""
+msgstr "Ingang aanpassen"
 
 #: manafirewall/ipsetEntryDialog.py:57
 msgid "Entry:"
-msgstr ""
+msgstr "Ingang:"
 
 #: manafirewall/moduleDialog.py:36
 msgid "Add Helper"
-msgstr ""
+msgstr "Helper toevoegen"
 
 #: manafirewall/moduleDialog.py:44
 msgid "Available helpers"
-msgstr ""
+msgstr "Beschikbare helpers"
 
 #: manafirewall/moduleDialog.py:56
 msgid "Helper"
-msgstr ""
+msgstr "Helper"
 
 #: manafirewall/optionDialog.py:96
 msgid "firewalld"
@@ -1020,50 +1044,64 @@ msgstr "Paniekmodus"
 
 #: manafirewall/optionDialog.py:255
 msgid "Layout options"
-msgstr ""
+msgstr "Indelingsopties"
 
 #: manafirewall/optionDialog.py:262
 msgid "Show IP Sets tab"
-msgstr ""
+msgstr "Toon tabblad IP-sets"
 
 #: manafirewall/optionDialog.py:265
 msgid ""
 "Show or hide the IP Sets tab in the left panel. Takes effect immediately."
 msgstr ""
+"Toon of verberg de tabblad IP-sets in het linkerpaneel. De wijziging is "
+"direct van kracht."
 
 #: manafirewall/optionDialog.py:281
 msgid "Show expert tabs for Zones"
-msgstr ""
+msgstr "Toon expert-tabbladen voor Zones"
 
 #: manafirewall/optionDialog.py:284
 msgid ""
 "Enable extra tabs in the Zone configuration pane: Interfaces, Sources, Rich "
 "Rules. Takes effect when the category is next selected."
 msgstr ""
+"Schakel extra tabbladen voor Zones in. in het configuratievenster: "
+"Interfaces, Bronnen, Uitgebreide regels. Deze wijziging wordt van kracht "
+"wanneer de categorie de volgende keer wordt geselecteerd."
 
 #: manafirewall/optionDialog.py:302
 msgid "Interfaces tab"
-msgstr ""
+msgstr "Tabblad Interfaces"
 
 #: manafirewall/optionDialog.py:305
 msgid "Show the Interfaces tab for Zone configuration."
 msgstr ""
+"Toon het tabblad Interfaces voor zone-configuratie. \n"
+" \n"
+" "
 
 #: manafirewall/optionDialog.py:310
 msgid "Sources tab"
-msgstr ""
+msgstr "Tabblad Bronnen"
 
 #: manafirewall/optionDialog.py:313
 msgid "Show the Sources tab for Zone configuration."
 msgstr ""
+"Toon het tabblad Bronnen voor Zone-configuratie. \n"
+" \n"
+" "
 
 #: manafirewall/optionDialog.py:318
 msgid "Rich Rules tab"
-msgstr ""
+msgstr "Tabblad 'Rijke Regels'"
 
 #: manafirewall/optionDialog.py:321
 msgid "Show the Rich Rules tab for Zone configuration."
 msgstr ""
+"Toon het tabblad 'Rijke Regels' voor Zone-configuratie. \n"
+" \n"
+" "
 
 #: manafirewall/optionDialog.py:378
 msgid "Logging options (active at next startup)"
@@ -1141,24 +1179,3 @@ msgstr "Verwerpen"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversie: %(version)s%(NL)swebsite: %(site)s"
-
-#~ msgid "Active bindings"
-#~ msgstr "Actieve bindingen"
-
-#~ msgid "Automatic Helpers: {}"
-#~ msgstr "Automatische helpers: {}"
-
-#~ msgid "Configure"
-#~ msgstr "Configureren"
-
-#~ msgid "Layout options (active at next startup)"
-#~ msgstr "Indelingsopties (actief bij volgende opstart)"
-
-#~ msgid "Log Denied: {}"
-#~ msgstr "Loggen geweigerd: {}"
-
-#~ msgid "Masquerading"
-#~ msgstr "Masquerading"
-
-#~ msgid "Panic Mode: {}"
-#~ msgstr "Paniekmodus: {}"
