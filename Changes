@@ -5,6 +5,7 @@
 - Added Service->Module management
 - Added document-edit icon button -> fallback is "&Edit" string
 - Added IP Set management, if enable into layout option settings
+- Improved configuration loading (user settings)
 
 2026-04-12 v. 0.99.1
 --------------------

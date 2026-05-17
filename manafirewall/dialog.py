@@ -204,6 +204,8 @@ class ManaWallDialog(basedialog.BaseDialog):
         #### Logging
         if 'log' in user_settings.keys():
           log = user_settings['log']
+          if not isinstance(log, dict):
+            log = {}
           if 'enabled' in log.keys() :
             self.log_enabled = log['enabled']
           if self.log_enabled:
@@ -212,9 +214,11 @@ class ManaWallDialog(basedialog.BaseDialog):
             if 'level_debug' in log.keys() :
                 self.level_debug = log['level_debug']
 
-    # metadata settings is needed adding it to update old configuration files
-    if 'settings' not in self.config.userPreferences.keys() :
-      self.config.userPreferences['settings'] = {}
+    # Ensure 'settings' always exists in userPreferences so that callers
+    # never need to guard against a missing or None sub-dict.
+    user_prefs = self.config.userPreferences
+    if not isinstance(user_prefs.get('settings'), dict):
+      user_prefs['settings'] = {}
 
 
   def glib_mainloop(self, loop):
