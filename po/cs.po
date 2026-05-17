@@ -4,10 +4,10 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 # Translators:
-# Appukonrad <appukonrad@gmail.com>, 2020
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# fri, 2023
-# Luděk Janča <joelp@email.cz>, 2023
+# fri, 2026
+# Appukonrad <appukonrad@gmail.com>, 2026
+# Luděk Janča <joelp@email.cz>, 2026
 #
 #, fuzzy
 msgid ""
@@ -16,7 +16,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-10 23:52+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: Luděk Janča <joelp@email.cz>, 2023\n"
+"Last-Translator: Luděk Janča <joelp@email.cz>, 2026\n"
 "Language-Team: Czech (https://app.transifex.com/MageiaLinux/teams/9361/cs/)\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr ""
 #: manafirewall/activeBindingsDialog.py:136
 #: manafirewall/activeBindingsDialog.py:142
 msgid "Zone"
-msgstr ""
+msgstr "Zóna"
 
 #: manafirewall/activeBindingsDialog.py:134 manafirewall/dialog.py:413
 #: manafirewall/dialog.py:2410 manafirewall/dialog.py:3010
@@ -341,11 +341,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:512
 msgid "Add a new entry."
-msgstr ""
+msgstr "Přidat novou položku."
 
 #: manafirewall/dialog.py:513
 msgid "Edit the selected entry."
-msgstr ""
+msgstr "Upravit vybranou položku."
 
 #: manafirewall/dialog.py:514
 msgid "Remove the selected entry."
@@ -397,11 +397,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:1544
 msgid "default"
-msgstr ""
+msgstr "výchozí"
 
 #: manafirewall/dialog.py:1648 manafirewall/dialog.py:2446
 msgid "IP Set"
-msgstr ""
+msgstr "IP Set"
 
 #: manafirewall/dialog.py:1995
 msgid ""
@@ -416,7 +416,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2168
 msgid "Interface"
-msgstr ""
+msgstr "Rozhraní"
 
 #: manafirewall/dialog.py:2187 manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -428,7 +428,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2230
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 #: manafirewall/dialog.py:2310
 msgid ""
@@ -446,7 +446,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2325
 msgid "&Apply"
-msgstr ""
+msgstr "&Použít"
 
 #: manafirewall/dialog.py:2372
 msgid "No item selected."
@@ -454,11 +454,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:2388
 msgid "default zone"
-msgstr ""
+msgstr "výchozí zóna"
 
 #: manafirewall/dialog.py:2398
 msgid "Target"
-msgstr ""
+msgstr "Cíl"
 
 #: manafirewall/dialog.py:2400 manafirewall/dialog.py:2428
 #: manafirewall/dialog.py:2469 manafirewall/serviceBaseDialog.py:43
@@ -485,15 +485,15 @@ msgstr ""
 
 #: manafirewall/dialog.py:2465
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: manafirewall/dialog.py:2467
 msgid "Family"
-msgstr ""
+msgstr "Rodina"
 
 #: manafirewall/dialog.py:2475
 msgid "Timeout"
-msgstr ""
+msgstr "Překročení času"
 
 #: manafirewall/dialog.py:2477
 msgid "Hash size"
@@ -567,8 +567,8 @@ msgid ""
 "address</b> fill port and to_address<br>         <b>forward to a remote "
 "port</b> fill port, to_address and to_port"
 msgstr ""
-"Platné konfigurace jsou::<br>        <b>místní přesměrování</b> vyplňte port "
-"a do portu, nezapomeňte, že tyto porty musí být různé<br>         "
+"Platná nastavení jsou:<br>        <b>místní přesměrování</b> vyplňte port a "
+"do portu, nezapomeňte, že tyto porty musí být různé<br>         "
 "<b>přesměrovat na adresu</b> vyplňte port a vzdálenou adresu<br>         "
 "<b>přesmerovat na vzdálený port</b> vyplňte port, vzdálenou adresu a "
 "vzdálený port"
@@ -714,6 +714,10 @@ msgid ""
 "application by just ticking a checkbox. A lot of services are already "
 "defined, but you can add your own for an application that is not provided."
 msgstr ""
+"Služba je soubor pravidel, která se společně uplatňují v souvislosti s "
+"určitou aplikací. Tento koncept umožňuje nastavit požadované parametry "
+"aplikace pouhým zaškrtnutím políčka. Mnoho služeb je již předdefinováno, ale "
+"pro aplikace, které nejsou k dispozici, si můžete přidat vlastní."
 
 #: manafirewall/helpinfo.py:53
 msgid ""
@@ -785,6 +789,9 @@ msgid ""
 "it can work using Qt (PySide6), GTK 4, or ncurses, i.e. both graphical and "
 "textual user interfaces."
 msgstr ""
+"ManaFirewall je součástí balíku manatools a je založen na knihovně manatools."
+"aui, díky čemuž může fungovat s Qt (PySide6), GTK 4 nebo ncurses, tedy jak s "
+"grafickým, tak s textovým uživatelským rozhraním"
 
 #: manafirewall/helpinfo.py:67
 msgid ""
@@ -792,6 +799,9 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the zone of these bindings."
 msgstr ""
+"Vlevo je přehled aktivních přiřazení. Jedná se o zóny, ke kterým je "
+"přiřazeno nebo přidáno připojení, rozhraní či zdroj. Zde lze snadno změnit "
+"zónu těchto přiřazení."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -823,19 +833,19 @@ msgstr ""
 
 #: manafirewall/ipsetBaseDialog.py:73
 msgid "Name:"
-msgstr ""
+msgstr "Jméno:"
 
 #: manafirewall/ipsetBaseDialog.py:82 manafirewall/ipsetEntryDialog.py:49
 msgid "Type:"
-msgstr ""
+msgstr "Typ:"
 
 #: manafirewall/ipsetBaseDialog.py:95
 msgid "Family:"
-msgstr ""
+msgstr "Rodina:"
 
 #: manafirewall/ipsetBaseDialog.py:103
 msgid "Version:"
-msgstr ""
+msgstr "Verze:"
 
 #: manafirewall/ipsetBaseDialog.py:108
 msgid "Short:"
@@ -843,7 +853,7 @@ msgstr ""
 
 #: manafirewall/ipsetBaseDialog.py:113
 msgid "Description:"
-msgstr ""
+msgstr "Popis:"
 
 #: manafirewall/ipsetBaseDialog.py:119
 msgid "Timeout:"
@@ -938,7 +948,7 @@ msgstr "Obnovit &výchozí"
 
 #: manafirewall/optionDialog.py:118
 msgid "Restore default configuration for the selected section"
-msgstr ""
+msgstr "Obnovit výchozí nastavení vybrané sekce"
 
 #: manafirewall/optionDialog.py:180
 msgid "firewalld options"
@@ -958,7 +968,7 @@ msgstr "Režim nouzového zastavení"
 
 #: manafirewall/optionDialog.py:255
 msgid "Layout options"
-msgstr ""
+msgstr "Možnosti rozložení"
 
 #: manafirewall/optionDialog.py:262
 msgid "Show IP Sets tab"
@@ -1079,214 +1089,3 @@ msgstr "Odmítnout"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sverze: %(version)s%(NL)sstránka: %(site)s"
-
-#~ msgid "&Change binding"
-#~ msgstr "&Změnit vazbu"
-
-#~ msgid "&Load default"
-#~ msgstr "&Nahrát výchozí"
-
-#~ msgid ""
-#~ "<li><b>Masquerading</b>: this option allows to tick or untick a "
-#~ "\"Masquerade zone\". Thus this zone is used for masquerading (only for "
-#~ "IPv4). (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Maskování</b>: tato možnost umožňuje zaškrtnout nebo zrušit "
-#~ "zaškrtnutí \"Zóna maskování\". Tato zóna se tedy používá pro maskování "
-#~ "(pouze pro IPv4). (pro doplnění, jaký je účinek tohoto doplňku)</li>"
-
-#~ msgid ""
-#~ "<li><b>Port Forwarding</b>: port forwarding is an application of network "
-#~ "address translation (NAT) that redirects a communication request from one "
-#~ "address and port number combination to another while the packets are "
-#~ "traversing the firewall in IPv4 technology. Adding a rule needs to "
-#~ "specify a port or port range of incoming requests and its protocol "
-#~ "(source) and either a port or range for the destination for local "
-#~ "forwarding or address of the destination and optionally port or range if "
-#~ "port is changed.</li>"
-#~ msgstr ""
-#~ "<li><b>Přesměrování portu</b>: přesměrování portů je aplikace překladu "
-#~ "síťových adres (NAT), která přesměruje komunikační požadavek z jedné "
-#~ "kombinace adresy a čísla portu na jinou, zatímco pakety procházejí "
-#~ "firewallem v technologii IPv4. Při přidávání pravidla je třeba zadat port "
-#~ "nebo rozsah portů příchozích požadavků a jejich protokol (zdroj) a buď "
-#~ "port nebo rozsah pro cíl pro místní přesměrování, nebo adresu cíle a "
-#~ "volitelně port nebo rozsah, pokud se port mění.</li>"
-
-#~ msgid ""
-#~ "<li><b>Ports</b>: this configure option allows to specify a rule with "
-#~ "\"Add\" button with a port number or range and a protocol selected in the "
-#~ "list tcp, udp, sctp and dccp. The list view displays the already defined "
-#~ "rules. A range is defined with a hyphen between two numbers, for example "
-#~ "with 80-88. The effect will be that these ports will be open.</li>"
-#~ msgstr ""
-#~ "<li><b>Porty</b>: tato možnost nastavení umožňuje zadat pravidlo pomocí "
-#~ "tlačítka \"Přidat\" s číslem nebo rozsahem portu a protokolem vybraným ze "
-#~ "seznamu tcp, udp, sctp a dccp. V zobrazení seznamu se zobrazí již "
-#~ "stanovená pravidla. Rozsah se stanovuje pomocí spojovníku mezi dvěma "
-#~ "čísly, například pomocí 80-88. Výsledkem bude, že tyto porty budou "
-#~ "otevřené.</li>"
-
-#~ msgid ""
-#~ "<li><b>Protocols</b>: Here, you can add a protocol among a list of "
-#~ "supported protocols by firewalld or to add a specific one that you can "
-#~ "name. (to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Protokoly</b>: Zde můžete přidat protokol ze seznamu protokolů "
-#~ "podporovaných firewalldem nebo přidat konkrétní protokol, který můžete "
-#~ "pojmenovat. (pro doplnění, jaký je účinek tohoto přidání)</li>"
-
-#~ msgid ""
-#~ "<li><b>Source Ports</b>: this configure option allows to specify a rule "
-#~ "with \"Add\" button with a port number or range and a protocol selected "
-#~ "in the list tcp, udp, sctp and dccp. The list view displays the already "
-#~ "defined rules.(to complete with what is the effect of this addition)</li>"
-#~ msgstr ""
-#~ "<li><b>Zdrojové porty</b>: tato možnost nastavení umožňuje zadat pravidlo "
-#~ "pomocí tlačítka \"Přidat\" s číslem nebo rozsahem portu a protokolem "
-#~ "vybraným ze seznamu tcp, udp, sctp a dccp. V zobrazení seznamu se zobrazí "
-#~ "již stanovená pravidla (pro doplnění, jaký je účinek tohoto doplnění).</"
-#~ "li>"
-
-#~ msgid ""
-#~ "<ul><li><b>Services</b>: when selected in \"Configure\" option, you see a "
-#~ "list of services that are predefined. According to the zone, some "
-#~ "services are already selected. If you tick or untick a checkbox in regard "
-#~ "to a service, the according rules will applying to allow said service on "
-#~ "interfaces having the zone. In permanent mode, the configuration is "
-#~ "registered directly, but not applied. It will be applied after a "
-#~ "firewalld reload.</li>"
-#~ msgstr ""
-#~ "<ul><li><b>Služby</b>: po výběru možnosti \"Nastavit\" se zobrazí seznam "
-#~ "předvymezených služeb. Podle zóny jsou některé služby již vybrány. Pokud "
-#~ "zaškrtnete nebo zrušíte zaškrtnutí políčka u služby, budou platit "
-#~ "příslušná pravidla pro povolení uvedené služby na rozhraních, která mají "
-#~ "danou zónu. V trvalém režimu je nastavení přímo zaregistrováno, ale není "
-#~ "použito. Bude použito po opětovném nahrání firewaldu..</li>"
-
-#~ msgid ""
-#~ "A service is a collection of rules that are applied together in relation "
-#~ "to an application. This concept helps to apply what is need for an "
-#~ "application by just ticking a checkbox. A lot of services are already "
-#~ "defined, but you can add your own for an application which is not "
-#~ "provided."
-#~ msgstr ""
-#~ "Služba je soubor pravidel, která jsou společně použita ve vztahu k "
-#~ "aplikaci. Toto pojetí pomáhá použít to, co je pro aplikaci potřeba, "
-#~ "pouhým zaškrtnutím políčka. Mnoho služeb je již stanoveno, ale můžete "
-#~ "přidat vlastní pro aplikaci, která není dostupná."
-
-#~ msgid "A&dd"
-#~ msgstr "Při&dat"
-
-#~ msgid "Active bindings"
-#~ msgstr "Aktivní vazby"
-
-#~ msgid ""
-#~ "After selecting \"Zones\" for view and one of the Zones, you can "
-#~ "configure said zone. There are some parameters for each zone:"
-#~ msgstr ""
-#~ "Po výběru \"Zóny\" pro zobrazení a jedné ze zón můžete danou zónu "
-#~ "nastavovat. Pro každou zónu je dostupných několik parametrů:"
-
-#~ msgid "Automatic Helpers: {}"
-#~ msgstr "Automatičtí pomocníci: {}"
-
-#~ msgid "Configure"
-#~ msgstr "Nastavit"
-
-#~ msgid "Credits {}"
-#~ msgstr "Zásluhy {}"
-
-#~ msgid "Edit ipsets"
-#~ msgstr "Upravit ipsety"
-
-#~ msgid "Edit services"
-#~ msgstr "Upravit služby"
-
-#~ msgid "Edit zones"
-#~ msgstr "Upravit zóny"
-
-#~ msgid ""
-#~ "For a zone, available fields are name, version, short as more descriptive "
-#~ "name, and description. A check box allows to activate default target or "
-#~ "to select the default behaviour for packets that don't match any rule. "
-#~ "Targets are DROP, REJECT or ACCEPT. "
-#~ msgstr ""
-#~ "Pro zónu jsou dostupná tato pole: název, verze, zkrácený popisný název a "
-#~ "popis. Zaškrtávací políčko umožňuje zapnout výchozí cíl nebo vybrat "
-#~ "výchozí chování pro pakety, které neodpovídají žádnému pravidlu. Cíle "
-#~ "jsou DROP, REJECT nebo ACCEPT."
-
-#~ msgid ""
-#~ "In view \"Services\", the \"Configure\" button next to the combobox "
-#~ "allows to choose a service. Selecting one updates the table with a list "
-#~ "of couples Port-Protocol "
-#~ msgstr ""
-#~ "V zobrazení \"Služby\" lze pomocí tlačítka \"Nastavit\" vedle "
-#~ "rozbalovacího seznamu vybrat službu. Výběrem jedné z nich se aktualizuje "
-#~ "tabulka se seznamem dvojic Port-Protokol."
-
-#~ msgid "Layout options (active at next startup)"
-#~ msgstr "Volby rozvržení (činné při příštím spuštění)"
-
-#~ msgid "Lockdown"
-#~ msgstr "Uzamknutí"
-
-#~ msgid "Lockdown: {}"
-#~ msgstr "Uzamknutí: {}"
-
-#~ msgid "Log Denied: {}"
-#~ msgstr "Záznam (log) odepřen: {}"
-
-#~ msgid ""
-#~ "ManaFirewall is part of manatools and it is based on libyui so that it "
-#~ "can work using Gtk, Qt or ncurses, i.e. graphical or textual user "
-#~ "interfaces."
-#~ msgstr ""
-#~ "ManaFirewall je součástí manatools a je založen na libyui, takže může "
-#~ "pracovat s Gtk, Qt nebo ncurses, tj. s grafickým nebo textovým "
-#~ "uživatelským rozhraním."
-
-#~ msgid "Masquerading"
-#~ msgstr "Maškarády"
-
-#~ msgid ""
-#~ "On the left there is the overview of the active bindings. These are the "
-#~ "zones, that have a connection, interface or source bound or added to it. "
-#~ "Here it is possible to easily change the          zone of these bindings."
-#~ msgstr ""
-#~ "Vlevo je přehled aktivních vazeb. Jedná se o zóny, které mají navázané "
-#~ "nebo přidané spojení, rozhraní nebo zdroj. Zde je možné snadno změnit "
-#~ "zónu těchto vazeb."
-
-#~ msgid "Panic Mode: {}"
-#~ msgstr "Režim nouzového zastavení: {}"
-
-#~ msgid ""
-#~ "Permanent mode allows to configure things that are not active "
-#~ "immediately. If you want to have changes also in the runtime environment, "
-#~ "then either add the changes there also or reload firewalld."
-#~ msgstr ""
-#~ "Trvalý režim umožňuje nastavovat věci, které nejsou zapnuty okamžitě. "
-#~ "Pokud chcete mít změny i v běhovém prostředí, pak je buď přidejte i tam, "
-#~ "nebo firewalld znovu nahrajete."
-
-#~ msgid ""
-#~ "Predefined zones are: block - dmz - drop - external - home - home - "
-#~ "internal - public - trusted - work"
-#~ msgstr ""
-#~ "Předvymezené zóny jsou: block - dmz - drop - external - home - home - "
-#~ "internal - public - trusted - work."
-
-#~ msgid ""
-#~ "Runtime mode allows to configure things at runtime. Things changed at "
-#~ "runtime will not present at next start up or reloading firewalld, if you "
-#~ "want that you need to add those changes in permanent mode also. "
-#~ msgstr ""
-#~ "Režim běhového prostředí umožňuje nastavovat věci za běhu. Věci změněné "
-#~ "za běhu se při dalším spuštění nebo načtení firewaldu již neobjeví, pokud "
-#~ "to chcete, musíte tyto změny přidat i v trvalém režimu."
-
-#~ msgid "{}  is a graphical configuration tool for firewalld."
-#~ msgstr "{} je grafické rozhraní pro nastavení firewalld."
