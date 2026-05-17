@@ -26,11 +26,11 @@ msgstr ""
 
 #: manafirewall/activeBindingsDialog.py:49
 msgid "Active Bindings"
-msgstr ""
+msgstr "Legături active"
 
 #: manafirewall/activeBindingsDialog.py:55
 msgid "Active zone bindings (runtime)"
-msgstr ""
+msgstr "Legături de zonă activă (în timpul execuției)"
 
 #: manafirewall/activeBindingsDialog.py:66
 #: manafirewall/changeZoneConnectionDialog.py:64
@@ -46,7 +46,7 @@ msgstr "Conexiuni"
 #: manafirewall/activeBindingsDialog.py:136
 #: manafirewall/activeBindingsDialog.py:142
 msgid "Zone"
-msgstr ""
+msgstr "Zonă"
 
 #: manafirewall/activeBindingsDialog.py:134 manafirewall/dialog.py:413
 #: manafirewall/dialog.py:2410 manafirewall/dialog.py:3010
@@ -153,7 +153,7 @@ msgstr "&Reîncărcați firewalld"
 
 #: manafirewall/dialog.py:254
 msgid "Active &Bindings…"
-msgstr ""
+msgstr "Active &Legături…"
 
 #: manafirewall/dialog.py:256
 msgid "&Settings"
@@ -177,23 +177,27 @@ msgstr "Configurare"
 
 #: manafirewall/dialog.py:297
 msgid "&Runtime"
-msgstr ""
+msgstr "&Runtime"
 
 #: manafirewall/dialog.py:298
 msgid "&Permanent"
-msgstr ""
+msgstr "&Permanent"
 
 #: manafirewall/dialog.py:299
 msgid ""
 "Runtime mode: shows the active firewall configuration. Changes take effect "
 "immediately but are lost on reload or restart."
 msgstr ""
+"Mod de execuție: afișează configurația firewall activă. Modificările au "
+"efect imediat, dar se pierd la reîncărcare sau repornire."
 
 #: manafirewall/dialog.py:300
 msgid ""
 "Permanent mode: shows and edits the configuration stored on disk. Changes "
 "take effect after a firewalld reload."
 msgstr ""
+"Mod permanent: afișează și editează configurația stocată pe disc. "
+"Modificările intră în vigoare după o reîncărcare a firewalld."
 
 #: manafirewall/dialog.py:308 manafirewall/helpinfo.py:71
 msgid "Runtime"
@@ -205,23 +209,27 @@ msgstr "Permanent"
 
 #: manafirewall/dialog.py:323
 msgid "Re&load"
-msgstr ""
+msgstr "Re&încărcare"
 
 #: manafirewall/dialog.py:324
 msgid "Runtime→&Permanent"
-msgstr ""
+msgstr "Runtime→&Permanent"
 
 #: manafirewall/dialog.py:325
 msgid ""
 "Reload firewalld: re-read the permanent configuration and apply it to the "
 "runtime state."
 msgstr ""
+"Reîncărcați firewalld: recitiți configurația permanentă și aplicați-o stării "
+"de execuție."
 
 #: manafirewall/dialog.py:326
 msgid ""
 "Runtime → Permanent: save the current runtime configuration to the permanent "
 "configuration on disk. Only available in Runtime mode."
 msgstr ""
+"Runtime → Permanent: salvează configurația curentă de runtime ca "
+"configurație permanentă pe disc. Disponibil doar în modul Runtime."
 
 #: manafirewall/dialog.py:343
 msgid "Zones"
@@ -252,23 +260,23 @@ msgstr "Înlătu&ră"
 
 #: manafirewall/dialog.py:377
 msgid "Load &Defaults"
-msgstr ""
+msgstr "Încărcare &Setări implicite"
 
 #: manafirewall/dialog.py:378
 msgid "Add a new item."
-msgstr ""
+msgstr "Adăugați un element nou."
 
 #: manafirewall/dialog.py:379
 msgid "Edit the selected item."
-msgstr ""
+msgstr "Editați elementul selectat."
 
 #: manafirewall/dialog.py:380
 msgid "Remove the selected item."
-msgstr ""
+msgstr "Înlăturați elementul selectat."
 
 #: manafirewall/dialog.py:381
 msgid "Restore the selected item to its built-in default settings."
-msgstr ""
+msgstr "Restaurați elementul selectat la setările sale implicite încorporate."
 
 #: manafirewall/dialog.py:388
 msgid "Change &Zone"
@@ -276,7 +284,7 @@ msgstr "Schimbare &Zonă"
 
 #: manafirewall/dialog.py:402
 msgid "Summary"
-msgstr ""
+msgstr "Rezumat"
 
 #: manafirewall/dialog.py:404 manafirewall/dialog.py:2434
 msgid "Ports"
@@ -292,11 +300,11 @@ msgstr "Porturi sursă"
 
 #: manafirewall/dialog.py:407
 msgid "Masquerade"
-msgstr ""
+msgstr "Mascaradă"
 
 #: manafirewall/dialog.py:408
 msgid "Forwarding"
-msgstr ""
+msgstr "Redirecționare"
 
 #: manafirewall/dialog.py:409 manafirewall/dialog.py:547
 msgid "ICMP Filter"
@@ -326,29 +334,29 @@ msgstr "Zonă implicită: {}"
 #: manafirewall/dialog.py:437 manafirewall/dialog.py:3405
 #: manafirewall/dialog.py:3415 manafirewall/dialog.py:3422
 msgid "  Log Denied: {}"
-msgstr ""
+msgstr "Jurnal respins: {}"
 
 #: manafirewall/dialog.py:438 manafirewall/dialog.py:3410
 #: manafirewall/dialog.py:3417 manafirewall/dialog.py:3428
 msgid "  Panic Mode: {}"
-msgstr ""
+msgstr "Mod de panică: {}"
 
 #: manafirewall/dialog.py:439 manafirewall/dialog.py:3407
 #: manafirewall/dialog.py:3416
 msgid "  Automatic Helpers: {}"
-msgstr ""
+msgstr "Ajutoare automate: {}"
 
 #: manafirewall/dialog.py:512
 msgid "Add a new entry."
-msgstr ""
+msgstr "Adăugați o intrare nouă."
 
 #: manafirewall/dialog.py:513
 msgid "Edit the selected entry."
-msgstr ""
+msgstr "Editați intrarea selectată."
 
 #: manafirewall/dialog.py:514
 msgid "Remove the selected entry."
-msgstr ""
+msgstr "Înlăturați intrarea selectată."
 
 #: manafirewall/dialog.py:549
 msgid "Selected are accepted"
@@ -396,11 +404,11 @@ msgstr ""
 
 #: manafirewall/dialog.py:1544
 msgid "default"
-msgstr ""
+msgstr "implicit"
 
 #: manafirewall/dialog.py:1648 manafirewall/dialog.py:2446
 msgid "IP Set"
-msgstr ""
+msgstr "Set IP"
 
 #: manafirewall/dialog.py:1995
 msgid ""
@@ -408,14 +416,18 @@ msgid ""
 "only entries added by firewalld are visible at runtime. Entries added "
 "directly with the ipset command will not be shown here."
 msgstr ""
+"Intrări din Seturi de IP-uri. Doar intrările din seturile de IP-uri care nu "
+"utilizează opțiunea de timeout și doar intrările adăugate de firewalld sunt "
+"vizibile la momentul execuției. Intrările adăugate direct cu comanda ipset "
+"nu vor fi afișate aici."
 
 #: manafirewall/dialog.py:2008
 msgid "Entry"
-msgstr ""
+msgstr "Intrare"
 
 #: manafirewall/dialog.py:2168
 msgid "Interface"
-msgstr ""
+msgstr "Interfață"
 
 #: manafirewall/dialog.py:2187 manafirewall/forwardDialog.py:38
 msgid "Source"
@@ -423,41 +435,44 @@ msgstr "Sursă"
 
 #: manafirewall/dialog.py:2209
 msgid "Rich Rule"
-msgstr ""
+msgstr "Regulă îmbogățită"
 
 #: manafirewall/dialog.py:2230
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 #: manafirewall/dialog.py:2310
 msgid ""
 "Destination address restricts the service to IPv4 or IPv6 only.\n"
 "Leave empty to allow both.  Format: IP or CIDR (e.g. 0.0.0.0/0 or ::/0)."
 msgstr ""
+"Adresa de destinație restricționează serviciul doar la IPv4 sau IPv6.\n"
+"Lăsați câmpul gol pentru a permite ambele. Format: IP sau CIDR (de exemplu, "
+"0.0.0.0/0 sau ::/0)."
 
 #: manafirewall/dialog.py:2315
 msgid "IPv4 destination"
-msgstr ""
+msgstr "Destinație IPv4"
 
 #: manafirewall/dialog.py:2319
 msgid "IPv6 destination"
-msgstr ""
+msgstr "Destinație IPv6"
 
 #: manafirewall/dialog.py:2325
 msgid "&Apply"
-msgstr ""
+msgstr "&Aplicați"
 
 #: manafirewall/dialog.py:2372
 msgid "No item selected."
-msgstr ""
+msgstr "Niciun element selectat."
 
 #: manafirewall/dialog.py:2388
 msgid "default zone"
-msgstr ""
+msgstr "zonă implicită"
 
 #: manafirewall/dialog.py:2398
 msgid "Target"
-msgstr ""
+msgstr "Țintă"
 
 #: manafirewall/dialog.py:2400 manafirewall/dialog.py:2428
 #: manafirewall/dialog.py:2469 manafirewall/serviceBaseDialog.py:43
@@ -480,27 +495,27 @@ msgstr "Descriere"
 #: manafirewall/dialog.py:2415 manafirewall/dialog.py:2443
 #: manafirewall/dialog.py:2481
 msgid "No details available."
-msgstr ""
+msgstr "Nu sunt disponibile detalii."
 
 #: manafirewall/dialog.py:2465
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #: manafirewall/dialog.py:2467
 msgid "Family"
-msgstr ""
+msgstr "Familie"
 
 #: manafirewall/dialog.py:2475
 msgid "Timeout"
-msgstr ""
+msgstr "Pauză"
 
 #: manafirewall/dialog.py:2477
 msgid "Hash size"
-msgstr ""
+msgstr "Mărimea hash-ului"
 
 #: manafirewall/dialog.py:2479
 msgid "Max elements"
-msgstr ""
+msgstr "Număr maxim de elemente"
 
 #: manafirewall/forwardDialog.py:30
 msgid "Port Forwarding"
@@ -882,55 +897,55 @@ msgstr "Vizualizare Seturi IP"
 
 #: manafirewall/ipsetBaseDialog.py:49
 msgid "IP Set Settings"
-msgstr ""
+msgstr "Setări pentru Set IP"
 
 #: manafirewall/ipsetBaseDialog.py:73
 msgid "Name:"
-msgstr ""
+msgstr "Nume:"
 
 #: manafirewall/ipsetBaseDialog.py:82 manafirewall/ipsetEntryDialog.py:49
 msgid "Type:"
-msgstr ""
+msgstr "Tip:"
 
 #: manafirewall/ipsetBaseDialog.py:95
 msgid "Family:"
-msgstr ""
+msgstr "Familie:"
 
 #: manafirewall/ipsetBaseDialog.py:103
 msgid "Version:"
-msgstr ""
+msgstr "Versiune:"
 
 #: manafirewall/ipsetBaseDialog.py:108
 msgid "Short:"
-msgstr ""
+msgstr "Scurt:"
 
 #: manafirewall/ipsetBaseDialog.py:113
 msgid "Description:"
-msgstr ""
+msgstr "Descriere:"
 
 #: manafirewall/ipsetBaseDialog.py:119
 msgid "Timeout:"
-msgstr ""
+msgstr "Pauză:"
 
 #: manafirewall/ipsetBaseDialog.py:123
 msgid "Timeout value in seconds"
-msgstr ""
+msgstr "Durata pauzei în secunde"
 
 #: manafirewall/ipsetBaseDialog.py:126
 msgid "Hash size:"
-msgstr ""
+msgstr "Mărimea hash-ului:"
 
 #: manafirewall/ipsetBaseDialog.py:130
 msgid "Initial hash size, default 1024"
-msgstr ""
+msgstr "Mărimea inițială a hash-ului, implicit 1024"
 
 #: manafirewall/ipsetBaseDialog.py:133
 msgid "Max elements:"
-msgstr ""
+msgstr "Numărul maxim de elemente:"
 
 #: manafirewall/ipsetBaseDialog.py:137
 msgid "Max number of elements, default 65536"
-msgstr ""
+msgstr "Numărul maxim de elemente, implicit 65536"
 
 #: manafirewall/ipsetBaseDialog.py:167 manafirewall/serviceBaseDialog.py:116
 #: manafirewall/zoneBaseDialog.py:166
@@ -945,43 +960,43 @@ msgstr "Numele este obligatoriu"
 #: manafirewall/ipsetBaseDialog.py:181 manafirewall/ipsetBaseDialog.py:191
 #: manafirewall/ipsetBaseDialog.py:201
 msgid "Invalid value"
-msgstr ""
+msgstr "Valoare incorectă"
 
 #: manafirewall/ipsetBaseDialog.py:182
 msgid "Timeout must be a non-negative integer (seconds)."
-msgstr ""
+msgstr "Durata pauzei trebuie să fie un număr întreg pozitiv (secunde)."
 
 #: manafirewall/ipsetBaseDialog.py:192
 msgid "Hash size must be a positive integer."
-msgstr ""
+msgstr "Mărimea hash-ului trebuie să fie un număr întreg pozitiv."
 
 #: manafirewall/ipsetBaseDialog.py:202
 msgid "Max elements must be a positive integer."
-msgstr ""
+msgstr "Numărul maxim de elemente trebuie să fie un număr întreg pozitiv."
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Add Entry"
-msgstr ""
+msgstr "Adăugați Intrare"
 
 #: manafirewall/ipsetEntryDialog.py:36
 msgid "Edit Entry"
-msgstr ""
+msgstr "Editați Intrarea"
 
 #: manafirewall/ipsetEntryDialog.py:57
 msgid "Entry:"
-msgstr ""
+msgstr "Intrare:"
 
 #: manafirewall/moduleDialog.py:36
 msgid "Add Helper"
-msgstr ""
+msgstr "Adăugați asistent pentru ajutor"
 
 #: manafirewall/moduleDialog.py:44
 msgid "Available helpers"
-msgstr ""
+msgstr "Asistenți pentru ajutor disponibili. "
 
 #: manafirewall/moduleDialog.py:56
 msgid "Helper"
-msgstr ""
+msgstr "Asistent pentru ajutor"
 
 #: manafirewall/optionDialog.py:96
 msgid "firewalld"
@@ -1021,50 +1036,54 @@ msgstr "Mod de panică"
 
 #: manafirewall/optionDialog.py:255
 msgid "Layout options"
-msgstr ""
+msgstr "Opțiuni de aspect"
 
 #: manafirewall/optionDialog.py:262
 msgid "Show IP Sets tab"
-msgstr ""
+msgstr "Afișați fila Seturi IP"
 
 #: manafirewall/optionDialog.py:265
 msgid ""
 "Show or hide the IP Sets tab in the left panel. Takes effect immediately."
 msgstr ""
+"Afișează sau ascunde fila Seturi IP din panoul din stânga. Are efect imediat."
 
 #: manafirewall/optionDialog.py:281
 msgid "Show expert tabs for Zones"
-msgstr ""
+msgstr "Afișați filele pentru experți pentru Zone"
 
 #: manafirewall/optionDialog.py:284
 msgid ""
 "Enable extra tabs in the Zone configuration pane: Interfaces, Sources, Rich "
 "Rules. Takes effect when the category is next selected."
 msgstr ""
+"Activați filele suplimentare în panoul de configurare a zonei: Interfețe, "
+"Surse, Reguli îmbogățite. Intră în vigoare la următoarea selectare a "
+"categoriei."
 
 #: manafirewall/optionDialog.py:302
 msgid "Interfaces tab"
-msgstr ""
+msgstr "Filă interfețe"
 
 #: manafirewall/optionDialog.py:305
 msgid "Show the Interfaces tab for Zone configuration."
-msgstr ""
+msgstr "Afișați fila Interfețe pentru configurarea zonei."
 
 #: manafirewall/optionDialog.py:310
 msgid "Sources tab"
-msgstr ""
+msgstr "Filă surse"
 
 #: manafirewall/optionDialog.py:313
 msgid "Show the Sources tab for Zone configuration."
-msgstr ""
+msgstr "Afișați fila Surse pentru configurarea Zonei."
 
 #: manafirewall/optionDialog.py:318
 msgid "Rich Rules tab"
-msgstr ""
+msgstr "Filă pentru reguli îmbogățite"
 
 #: manafirewall/optionDialog.py:321
 msgid "Show the Rich Rules tab for Zone configuration."
-msgstr ""
+msgstr "Afișați fila Reguli îmbogățite pentru configurarea zonei."
 
 #: manafirewall/optionDialog.py:378
 msgid "Logging options (active at next startup)"
@@ -1142,24 +1161,3 @@ msgstr "Respinge"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversiune: %(version)s%(NL)ssit: %(site)s"
-
-#~ msgid "Active bindings"
-#~ msgstr "Legături active"
-
-#~ msgid "Automatic Helpers: {}"
-#~ msgstr "Ajutoare automate: {}"
-
-#~ msgid "Configure"
-#~ msgstr "Configurează"
-
-#~ msgid "Layout options (active at next startup)"
-#~ msgstr "Opțiuni de aspect (active la următoarea pornire)"
-
-#~ msgid "Log Denied: {}"
-#~ msgstr "Jurnal respins: {}"
-
-#~ msgid "Masquerading"
-#~ msgstr "Mascare"
-
-#~ msgid "Panic Mode: {}"
-#~ msgstr "Mod de panică: {}"
