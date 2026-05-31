@@ -22,7 +22,7 @@ Example with ncurses:
 * Provides the `firewall` Python package used for all firewall interaction.
 * The `firewalld` daemon must be running (D-Bus service).
 
-### python-manatools
+### python-manatools >= 0.99.2
 * https://github.com/manatools/python-manatools
 * Provides `manatools.aui` (the UI abstraction layer), `manatools.ui` (common dialogs
   and helpers), `manatools.services`, `manatools.config`, and `manatools.basehelpinfo`.
