@@ -148,17 +148,32 @@ class ManaWallDialog(basedialog.BaseDialog):
     # settings from configuration file first
     self._configFileRead()
 
+    self._log_missing_dir_warning = None
     if self.log_enabled:
       if self.log_directory:
-        log_filename = os.path.join(self.log_directory, "manafirewall.log")
-        if self.level_debug:
-          self._logger_setup(log_filename, loglvl=logging.DEBUG)
+        if not os.path.isdir(self.log_directory):
+          print("WARNING: log directory '%s' does not exist; logging disabled" % self.log_directory)
+          self._log_missing_dir_warning = self.log_directory
         else:
-          self._logger_setup(log_filename)
-        print("Logging into %s, debug mode is %s"%(self.log_directory, ("enabled" if self.level_debug else "disabled")))
-        logger.info("%s started", self.__name)
+          log_filename = os.path.join(self.log_directory, "manafirewall.log")
+          if self.level_debug:
+            self._logger_setup(log_filename, loglvl=logging.DEBUG)
+          else:
+            self._logger_setup(log_filename)
+          print("Logging into %s, debug mode is %s"%(self.log_directory, ("enabled" if self.level_debug else "disabled")))
+          logger.info("%s started", self.__name)
     else:
       print("Logging disabled")
+
+    if self._log_missing_dir_warning:
+      common.warningMsgBox({
+        'title': _("Logging directory not found"),
+        'text': _("The configured log directory <b>%s</b> does not exist.<br>"
+                  "Logging is disabled for this session.<br>"
+                  "Please update the log directory in "
+                  "<i>Options &rarr; User preferences</i>.") % self._log_missing_dir_warning,
+        'richtext': True,
+      })
 
     self.fwEventQueue = SimpleQueue()
 
@@ -211,6 +226,11 @@ class ManaWallDialog(basedialog.BaseDialog):
           if self.log_enabled:
             if 'directory' in log.keys() :
                 self.log_directory = log['directory']
+            else:
+                # No directory configured: fall back to home dir and persist
+                # it so the dialog and next startup reflect it.
+                self.log_directory = os.path.expanduser("~")
+                log['directory'] = self.log_directory
             if 'level_debug' in log.keys() :
                 self.level_debug = log['level_debug']
 

@@ -1,3 +1,10 @@
+2026-XX-YY v. 0.99.3
+--------------------
+- Fixed logging not starting when enabled but no directory was configured:
+  home directory is now used as default and persisted in user preferences
+- Fixed logging silently disabled when the configured log directory does not
+  exist: a warning dialog is now shown at startup
+
 2026-05-31 v. 0.99.2
 --------------------
 - Changed layout using tabs (requires python-manatools 0.99.2)
