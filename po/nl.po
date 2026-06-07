@@ -9,8 +9,8 @@
 # Marcel Pol <marcel@timelord.nl>, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
 # Marja van Waes, 2023
-# dragnadh, 2026
 # Dennis Holierhoek <dennis.hh@hotmail.com>, 2026
+# dragnadh, 2026
 # Marc Laan, 2026
 #
 #, fuzzy
@@ -95,30 +95,32 @@ msgid ""
 "%s is a graphical configuration tool for firewalld that works using GTK, "
 "ncurses and QT"
 msgstr ""
+"%s is een grafisch configuratiegereedschap voor firewalld, dat werkt met "
+"GTK, ncurses en QT."
 
 #: manafirewall/dialog.py:109
 msgid "Developers"
-msgstr ""
+msgstr "Ontwikkelaars"
 
 #: manafirewall/dialog.py:114
 msgid "Current developers and maintainers"
-msgstr ""
+msgstr "Huidige ontwikkelaars en beheerders"
 
 #: manafirewall/dialog.py:119
 msgid "Translations"
-msgstr ""
+msgstr "Vertalingen"
 
 #: manafirewall/dialog.py:123
 msgid "Contributors"
-msgstr ""
+msgstr "Bijdragers"
 
 #: manafirewall/dialog.py:129
 msgid "Project Links"
-msgstr ""
+msgstr "Project-links"
 
 #: manafirewall/dialog.py:134
 msgid "Report Issues or Improvements"
-msgstr ""
+msgstr "Meldt problemen of verbeteringen"
 
 #: manafirewall/dialog.py:141
 msgid "Connection to firewalld established."
@@ -160,7 +162,7 @@ msgstr "uitgeschakeld"
 
 #: manafirewall/dialog.py:196
 msgid "Logging directory not found"
-msgstr ""
+msgstr "Log-map niet gevonden"
 
 #: manafirewall/dialog.py:198
 #, python-format
@@ -169,6 +171,9 @@ msgid ""
 "disabled for this session.<br>Please update the log directory in <i>Options "
 "&rarr; User preferences</i>."
 msgstr ""
+"De opgegeven log-map <b>%s</b> bestaat niet.<br>Het loggen is uitgeschakeld "
+"voor deze sessie.<br>Verbeter de naam van de log-map in <i>Opties &rarr; "
+"Gebruikers-voorkeuren</i>."
 
 #: manafirewall/dialog.py:291
 msgid "&File"
@@ -1214,9 +1219,3 @@ msgstr "Verwerpen"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversie: %(version)s%(NL)swebsite: %(site)s"
-
-#~ msgid "Credits 2019-2026 Angelo Naselli"
-#~ msgstr "Credits 2019-2026 Angelo Naselli"
-
-#~ msgid "{} is a graphical configuration tool for firewalld."
-#~ msgstr "{} is een grafisch configuratie-gereedschap voor firewalld."
