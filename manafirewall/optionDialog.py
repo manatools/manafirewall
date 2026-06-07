@@ -19,7 +19,7 @@ logger = logging.getLogger('manafirewall.optiondialog')
 
 class OptionDialog(basedialog.BaseDialog):
   def __init__(self, parent):
-    basedialog.BaseDialog.__init__(self, "manafirewall options", "manafirewall", basedialog.DialogType.POPUP, 320, 200)
+    basedialog.BaseDialog.__init__(self, "manafirewall options", "manafirewall", basedialog.DialogType.POPUP, 640, 300)
     self.parent = parent
     self.log_vbox = None
     self.widget_callbacks = []
@@ -70,7 +70,7 @@ class OptionDialog(basedialog.BaseDialog):
     manafirewall options layout implementation
     '''
 
-    hbox_config = self.factory.createHBox(layout)
+    hbox_config = self.factory.createPaned(layout, MUI.YUIDimension.YD_HORIZ)
     self.factory.createVStretch(layout)
     hbox_bottom = self.factory.createHBox(layout)
     # Wrap the tree in MinSize to guarantee a minimum column width regardless
