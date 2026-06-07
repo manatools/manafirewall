@@ -98,18 +98,44 @@ class ManaWallDialog(basedialog.BaseDialog):
 
     # Publish application metadata to the backend so AboutDialog can read
     # it without the deprecated info-dict parameter.
-    try:
-      _app = MUI.YUI.app()
-      _app.application_name = self._application_name
-      _app.version = VERSION
-      _app.license = 'GPLv2+'
-      _app.authors = 'Angelo Naselli &lt;anaselli@linux.it&gt;'
-      _app.description = _("{} is a graphical configuration tool for firewalld.").format(PROJECT)
-      _app.credits = _("Credits 2019-2026 Angelo Naselli")
-      _app.logo = 'manafirewall'
-      _app.information = ""
-    except Exception:
-      pass
+    _app = MUI.YUI.app()
+    _app.application_name = self._application_name
+    _app.version = VERSION
+    _app.license = 'GPLv2+'
+    _app.description = _("%s is a graphical configuration tool for firewalld that works using GTK, ncurses and QT") % PROJECT
+    _app.logo = 'manafirewall'
+
+    _app.authors = "<h3>%s</h3><ul><li>%s</li><li>%s</li></ul>"%(
+                          _("Developers"),
+                          "Angelo Naselli &lt;anaselli@linux.it&gt;",
+                          "Neal   Gompa   &lt;ngompa13@gmail.com&gt;")
+
+    # Credits with HTML formatting from AUTHORS file
+    _app.credits = "<h3>%s</h3>" % _("Current developers and maintainers") + \
+                    "<ul>" \
+                    "<li>Angelo Naselli &lt;anaselli@linux.it&gt;</li>" \
+                    "<li>Neal Gompa &lt;ngompa13@gmail.com&gt;</li>" \
+                    "</ul>" + \
+                    "<h3>%s</h3>" % _("Translations") + \
+                    "<ul>" \
+                    "<li>Yuri Chornoivan &lt;yurchor@ukr.net&gt;</li>" \
+                    "</ul>" + \
+                    "<h3>%s</h3>" % _("Contributors") + \
+                    "<ul>" \
+                    "<li>Papoteur &lt;papoteur@mageialinux-online.org&gt;</li>" \
+                    "<li>Matteo Pasotti &lt;matteo.pasotti@gmail.com&gt;</li>" \
+                    "</ul>"
+    # links to GitHub repository and issue reporting
+    _app.information = "<h3>%s</h3>" % _("Project Links") + \
+                        "<ul>" \
+                        "<li><b>manafirewall:</b> <a href='https://github.com/manatools/manafirewall'>https://github.com/manatools/manafirewall</a></li>" \
+                        "<li><b>python-manatools (AUI):</b> <a href='https://github.com/manatools/python-manatools'>https://github.com/manatools/python-manatools</a></li>" \
+                        "</ul>" + \
+                        "<h3>%s</h3>" % _("Report Issues or Improvements") + \
+                        "<ul>" \
+                        "<li><b>manafirewall:</b> <a href='https://github.com/manatools/manafirewall/issues'>https://github.com/manatools/manafirewall/issues</a></li>" \
+                        "<li><b>python-manatools:</b> <a href='https://github.com/manatools/python-manatools/issues'>https://github.com/manatools/python-manatools/issues</a></li>" \
+                        "</ul>"
 
     # most used text
     self.connected_label = _("Connection to firewalld established.")
@@ -168,6 +194,7 @@ class ManaWallDialog(basedialog.BaseDialog):
     if self._log_missing_dir_warning:
       common.warningMsgBox({
         'title': _("Logging directory not found"),
+        'size': (400, 200),
         'text': _("The configured log directory <b>%s</b> does not exist.<br>"
                   "Logging is disabled for this session.<br>"
                   "Please update the log directory in "
