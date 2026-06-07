@@ -1,5 +1,6 @@
 2026-XX-YY v. 0.99.3
 --------------------
+- Used YPaned into OptionDialog and changed the minimum size to 640x300
 - Fixed logging not starting when enabled but no directory was configured:
   home directory is now used as default and persisted in user preferences
 - Fixed logging silently disabled when the configured log directory does not
