@@ -91,30 +91,32 @@ msgid ""
 "%s is a graphical configuration tool for firewalld that works using GTK, "
 "ncurses and QT"
 msgstr ""
+"%s és una eina de configuració gràfica per a firewalld que funciona amb GTK, "
+"ncurses i QT."
 
 #: manafirewall/dialog.py:109
 msgid "Developers"
-msgstr ""
+msgstr "Desenvolupadors"
 
 #: manafirewall/dialog.py:114
 msgid "Current developers and maintainers"
-msgstr ""
+msgstr "Desenvolupadors i mantenidors actuals"
 
 #: manafirewall/dialog.py:119
 msgid "Translations"
-msgstr ""
+msgstr "Traduccions"
 
 #: manafirewall/dialog.py:123
 msgid "Contributors"
-msgstr ""
+msgstr "Col·laboradors"
 
 #: manafirewall/dialog.py:129
 msgid "Project Links"
-msgstr ""
+msgstr "Enllaços de projectes"
 
 #: manafirewall/dialog.py:134
 msgid "Report Issues or Improvements"
-msgstr ""
+msgstr "Informar de problemes o millores"
 
 #: manafirewall/dialog.py:141
 msgid "Connection to firewalld established."
@@ -156,7 +158,7 @@ msgstr "inhabilitat"
 
 #: manafirewall/dialog.py:196
 msgid "Logging directory not found"
-msgstr ""
+msgstr "No s'ha trobat el directori de registre."
 
 #: manafirewall/dialog.py:198
 #, python-format
@@ -165,6 +167,9 @@ msgid ""
 "disabled for this session.<br>Please update the log directory in <i>Options "
 "&rarr; User preferences</i>."
 msgstr ""
+"El directori de registre configurat <b>%s</b> no existeix.<br> El registre "
+"està desactivat per a aquesta sessió.<br>Actualitzeu el directori de "
+"registre a </i> Opcions i preferències de l'usuari.</i>."
 
 #: manafirewall/dialog.py:291
 msgid "&File"
@@ -1197,9 +1202,3 @@ msgstr "Rebutja"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversió: %(version)s%(NL)slloc: %(site)s"
-
-#~ msgid "Credits 2019-2026 Angelo Naselli"
-#~ msgstr "Crèdits 2019-2026: Angelo Naselli"
-
-#~ msgid "{} is a graphical configuration tool for firewalld."
-#~ msgstr "{} és una eina de configuració gràfica per a firewalld."
