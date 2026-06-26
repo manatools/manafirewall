@@ -91,30 +91,32 @@ msgid ""
 "%s is a graphical configuration tool for firewalld that works using GTK, "
 "ncurses and QT"
 msgstr ""
+"%s este un instrument de configurare grafică pentru firewalld care "
+"funcționează folosind GTK, ncurses și QT"
 
 #: manafirewall/dialog.py:109
 msgid "Developers"
-msgstr ""
+msgstr "Dezvoltatori"
 
 #: manafirewall/dialog.py:114
 msgid "Current developers and maintainers"
-msgstr ""
+msgstr "Dezvoltatori și întreținători actuali"
 
 #: manafirewall/dialog.py:119
 msgid "Translations"
-msgstr ""
+msgstr "Traducători"
 
 #: manafirewall/dialog.py:123
 msgid "Contributors"
-msgstr ""
+msgstr "Contribuitori"
 
 #: manafirewall/dialog.py:129
 msgid "Project Links"
-msgstr ""
+msgstr "Linkuri de proiect"
 
 #: manafirewall/dialog.py:134
 msgid "Report Issues or Improvements"
-msgstr ""
+msgstr "Raportați probleme sau îmbunătățiri"
 
 #: manafirewall/dialog.py:141
 msgid "Connection to firewalld established."
@@ -156,7 +158,7 @@ msgstr "dezactivat"
 
 #: manafirewall/dialog.py:196
 msgid "Logging directory not found"
-msgstr ""
+msgstr "Directorul de înregistrare în jurnal nu a fost găsit"
 
 #: manafirewall/dialog.py:198
 #, python-format
@@ -165,6 +167,9 @@ msgid ""
 "disabled for this session.<br>Please update the log directory in <i>Options "
 "&rarr; User preferences</i>."
 msgstr ""
+"Directorul <b>%s</b>de jurnal configurat nu există. <br>Înregistrarea în "
+"jurnal este dezactivată pentru această sesiune. <br>Vă rugăm să actualizați "
+"directorul de jurnal în <i>Opțiuni &rarr;  Preferințe utilizator</i>."
 
 #: manafirewall/dialog.py:291
 msgid "&File"
@@ -1196,9 +1201,3 @@ msgstr "Respinge"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversiune: %(version)s%(NL)ssit: %(site)s"
-
-#~ msgid "Credits 2019-2026 Angelo Naselli"
-#~ msgstr "Credits 2019-2026 Angelo Naselli"
-
-#~ msgid "{} is a graphical configuration tool for firewalld."
-#~ msgstr "{} este un instrument de configurare grafică pentru firewalld."
