@@ -31,7 +31,7 @@ msgstr "Aktive Bindungen"
 
 #: manafirewall/activeBindingsDialog.py:55
 msgid "Active zone bindings (runtime)"
-msgstr ""
+msgstr "Aktive Zonenbindungen (Laufzeit)"
 
 #: manafirewall/activeBindingsDialog.py:66
 #: manafirewall/changeZoneConnectionDialog.py:64
@@ -47,7 +47,7 @@ msgstr "Verbindungen"
 #: manafirewall/activeBindingsDialog.py:136
 #: manafirewall/activeBindingsDialog.py:142
 msgid "Zone"
-msgstr "Bereich"
+msgstr "Zone"
 
 #: manafirewall/activeBindingsDialog.py:134 manafirewall/dialog.py:464
 #: manafirewall/dialog.py:2461 manafirewall/dialog.py:3061
@@ -62,7 +62,7 @@ msgstr "Quellen"
 #: manafirewall/changeZoneConnectionDialog.py:33
 #: manafirewall/changeZoneConnectionDialog.py:44
 msgid "Select zone for connection '{}'"
-msgstr "Wähle Zone für Verbindung '{}'"
+msgstr "Zone für Verbindung '{}' wählen"
 
 #: manafirewall/changeZoneConnectionDialog.py:49
 #: manafirewall/changeZoneConnectionDialog.py:80
@@ -219,7 +219,7 @@ msgstr "Konfiguration"
 
 #: manafirewall/dialog.py:348
 msgid "&Runtime"
-msgstr ""
+msgstr "&Laufzeit"
 
 #: manafirewall/dialog.py:349
 msgid "&Permanent"
@@ -324,7 +324,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:439
 msgid "Change &Zone"
-msgstr "Ändere &Zone"
+msgstr "Ändere %Zone"
 
 #: manafirewall/dialog.py:453
 msgid "Summary"
@@ -373,7 +373,7 @@ msgstr "Regeln"
 #: manafirewall/dialog.py:487 manafirewall/dialog.py:3454
 #: manafirewall/dialog.py:3465 manafirewall/dialog.py:3483
 msgid "Default Zone: {}"
-msgstr "Standard Zone: {}"
+msgstr "Standardzone: {}"
 
 #: manafirewall/dialog.py:488 manafirewall/dialog.py:3456
 #: manafirewall/dialog.py:3466 manafirewall/dialog.py:3473
@@ -388,7 +388,7 @@ msgstr "  Panik Modus: {}"
 #: manafirewall/dialog.py:490 manafirewall/dialog.py:3458
 #: manafirewall/dialog.py:3467
 msgid "  Automatic Helpers: {}"
-msgstr ""
+msgstr "  Automatische Helfer: {}"
 
 #: manafirewall/dialog.py:563
 msgid "Add a new entry."
@@ -460,6 +460,10 @@ msgid ""
 "only entries added by firewalld are visible at runtime. Entries added "
 "directly with the ipset command will not be shown here."
 msgstr ""
+"IP Set Einträge. Nur Einträge von IP Sets verwenden die Option der "
+"Zeitüberschreitung nicht und nur Einträge, welche über firewalld hinzugefügt "
+"wurden, sind während der Laufzeit sichtbar. Einträge, welche direkt über den "
+"ipset Befehl hinzugefügt wurden, werden hier nicht angezeigt."
 
 #: manafirewall/dialog.py:2059
 msgid "Entry"
@@ -486,6 +490,9 @@ msgid ""
 "Destination address restricts the service to IPv4 or IPv6 only.\n"
 "Leave empty to allow both.  Format: IP or CIDR (e.g. 0.0.0.0/0 or ::/0)."
 msgstr ""
+"Eine Zieladresse beschränkt den Dienst auf IPv4 oder IPv6..\n"
+"Frei lassen um beides zu erlauben. Format: IP oder CIDR (z. B. 0.0.0.0/0 "
+"oder :/0)"
 
 #: manafirewall/dialog.py:2366
 msgid "IPv4 destination"
@@ -505,7 +512,7 @@ msgstr "Keine Auswahl getroffen."
 
 #: manafirewall/dialog.py:2439
 msgid "default zone"
-msgstr ""
+msgstr "Standardzone"
 
 #: manafirewall/dialog.py:2449
 msgid "Target"
@@ -690,9 +697,9 @@ msgid ""
 msgstr ""
 "Für Zonen sind die verfügbaren Felder: Name, Version, Kurzform (ein besser "
 "beschriebener Name) und Beschreibung. Eine Checkbox ermöglicht Ihnen das "
-"Standardziel zu aktivieren oder das Standardverhalten für Pakete "
-"auszuwählen, welche keiner Regel entsprechen. Ziele sind DROP, REJECT oder "
-"ACCEPT. "
+"voreingestellte Ziel zu aktivieren oder das voreingestellte Verhalten für "
+"Pakete auszuwählen, welches keiner Regel entspricht. Ziele sind DROP, REJECT "
+"oder ACCEPT. "
 
 #: manafirewall/helpinfo.py:39
 msgid ""
@@ -906,10 +913,10 @@ msgid ""
 "zones, that have a connection, interface or source bound or added to it. "
 "Here it is possible to easily change the zone of these bindings."
 msgstr ""
-"Auf der linken Seite befindet sich eine Übersicht an aktiven Bindungen. Dort "
-"sind die Zonen aufgeführt, welche an einer Verbindung, Gerät oder Quelle "
-"gebunden sind oder dieser hinzugefügt wurden. Hier ist es möglich die Zonen "
-"der Bindungen einfach zu verändern."
+"Auf der linken Seite gibt es eine Übersicht an aktiven Bindungen. Dort sind "
+"die Zonen aufgeführt, welche an einer Verbindung, Gerät oder Quelle gebunden "
+"sind oder dieser hinzugefügt wurden. Hier ist es möglich die Zonen der "
+"Bindungen einfach zu verändern."
 
 #: manafirewall/helpinfo.py:68
 msgid ""
@@ -1006,6 +1013,7 @@ msgstr "Ungültiger Wert"
 #: manafirewall/ipsetBaseDialog.py:182
 msgid "Timeout must be a non-negative integer (seconds)."
 msgstr ""
+"Die Zeitüberschreitung muss eine nicht-negative Ganzzahl sein (Sekunden)."
 
 #: manafirewall/ipsetBaseDialog.py:192
 msgid "Hash size must be a positive integer."
@@ -1087,20 +1095,21 @@ msgstr "Zeige den IP Sets Tab"
 msgid ""
 "Show or hide the IP Sets tab in the left panel. Takes effect immediately."
 msgstr ""
-"Zeigt oder versteckt den IP Sets Tab im linken Panel. Wird sofort angewendet."
+"Zeigt oder versteckt den IP Sets Tab im linken Bereich. Wird sofort "
+"angewendet."
 
 #: manafirewall/optionDialog.py:281
 msgid "Show expert tabs for Zones"
-msgstr "Zeige den Experten-Tab für Bereiche"
+msgstr "Zeige den Experten-Tab für Zonen"
 
 #: manafirewall/optionDialog.py:284
 msgid ""
 "Enable extra tabs in the Zone configuration pane: Interfaces, Sources, Rich "
 "Rules. Takes effect when the category is next selected."
 msgstr ""
-"Aktiviert einen zusätzlichen Tab in der Bereichskonfiguration: "
-"Schnittstellen, Quellen, ausführliche Regeln. Wird angewandt wenn die "
-"Kategorie erneut ausgewählt wird."
+"Aktiviert einen zusätzlichen Tab in der Zonenkonfiguration: Schnittstellen, "
+"Quellen, ausführliche Regeln. Wird angewandt wenn die Kategorie erneut "
+"ausgewählt wird."
 
 #: manafirewall/optionDialog.py:302
 msgid "Interfaces tab"
@@ -1108,7 +1117,7 @@ msgstr "Schnittstellen Tab"
 
 #: manafirewall/optionDialog.py:305
 msgid "Show the Interfaces tab for Zone configuration."
-msgstr "Zeigt den Schnittstellen Tab für die Bereichskonfiguration."
+msgstr "Zeigt den Schnittstellen Tab für die Zonenkonfiguration."
 
 #: manafirewall/optionDialog.py:310
 msgid "Sources tab"
@@ -1116,7 +1125,7 @@ msgstr "Quellen Tab"
 
 #: manafirewall/optionDialog.py:313
 msgid "Show the Sources tab for Zone configuration."
-msgstr "Zeigt den Quellen-Tab zur Bereichskonfiguration."
+msgstr "Zeigt den Quellen-Tab zur Zonenkonfiguration."
 
 #: manafirewall/optionDialog.py:318
 msgid "Rich Rules tab"
@@ -1124,7 +1133,7 @@ msgstr "Ausführliche Regeln Tab"
 
 #: manafirewall/optionDialog.py:321
 msgid "Show the Rich Rules tab for Zone configuration."
-msgstr "Zeigt den ausführliche Regel Tab zur Bereichskonfiguration."
+msgstr "Zeigt den ausführliche Regel Tab zur Zonenkonfiguration."
 
 #: manafirewall/optionDialog.py:378
 msgid "Logging options (active at next startup)"
@@ -1180,7 +1189,7 @@ msgstr "Name"
 
 #: manafirewall/zoneBaseDialog.py:37
 msgid "Zone Settings"
-msgstr "Zonen-Einstellungen"
+msgstr "Zoneneinstellungen"
 
 #: manafirewall/zoneBaseDialog.py:67
 msgid "Default Target"
