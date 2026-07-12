@@ -6,10 +6,10 @@
 # Translators:
 # Egoitz Rodriguez <egoitzro@gmail.com>, 2020
 # Adolfo Jayme Barrientos, 2020
-# Miguel, 2022
 # Yuri Chornoivan <yurchor@ukr.net>, 2022
-# Jose Manuel López <joselp@e.email>, 2022
+# Jose Manuel López <joselp@e.email>, 2026
 # José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2026
+# Miguel, 2026
 #
 #, fuzzy
 msgid ""
@@ -18,7 +18,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-07 14:28+0200\n"
 "PO-Revision-Date: 2020-07-21 15:45+0000\n"
-"Last-Translator: José Alberto Valle Cid <j.alberto.vc@gmail.com>, 2026\n"
+"Last-Translator: Miguel, 2026\n"
 "Language-Team: Spanish (https://app.transifex.com/MageiaLinux/teams/9361/"
 "es/)\n"
 "Language: es\n"
@@ -98,7 +98,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:109
 msgid "Developers"
-msgstr ""
+msgstr "Desarrolladores"
 
 #: manafirewall/dialog.py:114
 msgid "Current developers and maintainers"
@@ -484,7 +484,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2376
 msgid "&Apply"
-msgstr ""
+msgstr "&Aplicar"
 
 #: manafirewall/dialog.py:2423
 msgid "No item selected."
@@ -531,7 +531,7 @@ msgstr ""
 
 #: manafirewall/dialog.py:2526
 msgid "Timeout"
-msgstr ""
+msgstr "Tiempo acabado"
 
 #: manafirewall/dialog.py:2528
 msgid "Hash size"
@@ -1057,7 +1057,7 @@ msgstr "Modo pánico"
 
 #: manafirewall/optionDialog.py:255
 msgid "Layout options"
-msgstr ""
+msgstr "Opciones de diseño"
 
 #: manafirewall/optionDialog.py:262
 msgid "Show IP Sets tab"
@@ -1178,30 +1178,3 @@ msgstr "Rechazar"
 #, python-format
 msgid "%(prog)s %(NL)sversion: %(version)s%(NL)ssite: %(site)s"
 msgstr "%(prog)s %(NL)sversión: %(version)s%(NL)ssitio: %(site)s"
-
-#~ msgid "Active bindings"
-#~ msgstr "Enlaces activos"
-
-#~ msgid "Automatic Helpers: {}"
-#~ msgstr "Auxiliares Automáticos: {}"
-
-#~ msgid "Configure"
-#~ msgstr "Configurar"
-
-#~ msgid "Credits 2019-2026 Angelo Naselli"
-#~ msgstr "Créditos: 2019-2026 Angelo Naselli"
-
-#~ msgid "Layout options (active at next startup)"
-#~ msgstr "Opciones de disposición (activo en el próximo inicio)"
-
-#~ msgid "Log Denied: {}"
-#~ msgstr "Denegados(Registro) : {}"
-
-#~ msgid "Masquerading"
-#~ msgstr "Enmascarar"
-
-#~ msgid "Panic Mode: {}"
-#~ msgstr "Modo Pánico: {}"
-
-#~ msgid "{} is a graphical configuration tool for firewalld."
-#~ msgstr "{} es una herramienta gráfica para firewalld."
